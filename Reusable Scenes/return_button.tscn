@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://du6eyxexnodyu"]
+
+[ext_resource type="Script" path="res://Reusable Scenes/return_button.gd" id="1_8mne0"]
+
+[node name="Return Button" type="Button"]
+offset_left = 1050.0
+offset_top = 7.0
+offset_right = 1146.0
+offset_bottom = 38.0
+toggle_mode = true
+text = "Main Menu"
+script = ExtResource("1_8mne0")
+
+[connection signal="toggled" from="." to="." method="_on_toggled"]

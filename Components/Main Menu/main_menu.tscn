@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://corn6y012o67q"]
+
+[ext_resource type="Script" path="res://Components/Main Menu/main_menu.gd" id="1_jth7i"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jth7i")
+
+[node name="Button for Gamemode 1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 207.0
+offset_right = 673.0
+offset_bottom = 238.0
+text = "Gamemode 1"
+
+[node name="Button for Gamemode 2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 245.0
+offset_right = 674.0
+offset_bottom = 276.0
+text = "Gamemode 2"
+
+[node name="Button for Gamemode 3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 473.0
+offset_top = 283.0
+offset_right = 674.0
+offset_bottom = 314.0
+text = "Gamemode 3"
+
+[node name="Button for CC" type="Button" parent="."]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 322.0
+offset_right = 675.0
+offset_bottom = 353.0
+text = "Character Customization"
+
+[connection signal="button_up" from="Button for Gamemode 1" to="." method="_on_button_for_gamemode_1_button_up"]
+[connection signal="button_up" from="Button for Gamemode 2" to="." method="_on_button_for_gamemode_2_button_up"]
+[connection signal="button_up" from="Button for Gamemode 3" to="." method="_on_button_for_gamemode_3_button_up"]
+[connection signal="button_up" from="Button for CC" to="." method="_on_button_for_cc_button_up"]

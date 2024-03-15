@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://8xushpv5otf2"]
+
+[ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/return_button.tscn" id="1_b5gcd"]
+
+[node name="Gamemode 1" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 5.0
+offset_top = 2.0
+offset_right = 108.0
+offset_bottom = 28.0
+text = "Gamemode 1"
+
+[node name="Return Button" parent="." instance=ExtResource("1_b5gcd")]
