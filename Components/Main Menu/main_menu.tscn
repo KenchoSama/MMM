@@ -43,6 +43,11 @@ offset_right = 675.0
 offset_bottom = 353.0
 text = "Character Customization"
 
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
 [connection signal="button_up" from="Button for Gamemode 1" to="." method="_on_button_for_gamemode_1_button_up"]
 [connection signal="button_up" from="Button for Gamemode 2" to="." method="_on_button_for_gamemode_2_button_up"]
 [connection signal="button_up" from="Button for Gamemode 3" to="." method="_on_button_for_gamemode_3_button_up"]
