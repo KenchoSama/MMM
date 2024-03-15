@@ -1,0 +1,18 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1710533708
+::res://Components/::1710532795
+::res://Components/Character Customizer/::1710532177
+character_customization.tscn::PackedScene::9160424847016310280::1710532177::0::1::::<><>::uid://du6eyxexnodyu::::res://Reusable Scenes/return_button.tscn
+::res://Components/Gamemode 1/::1710533125
+Flungus.txt::TextFile::-1::1710533118::0::1::::<><>::
+gamemode_1.tscn::PackedScene::2364959404374384577::1710532177::0::1::::<><>::uid://du6eyxexnodyu::::res://Reusable Scenes/return_button.tscn
+::res://Components/Gamemode 2/::1710532177
+gamemode_2.tscn::PackedScene::3383693125649951966::1710532177::0::1::::<><>::uid://du6eyxexnodyu::::res://Reusable Scenes/return_button.tscn
+::res://Components/Gamemode 3/::1710532177
+gamemode_3.tscn::PackedScene::1412365403873042281::1710532177::0::1::::<><>::uid://du6eyxexnodyu::::res://Reusable Scenes/return_button.tscn
+::res://Components/Main Menu/::1710532177
+main_menu.gd::GDScript::-1::1710532177::0::1::::<>Control<>::
+main_menu.tscn::PackedScene::5791425581053190636::1710532177::0::1::::<><>::res://Components/Main Menu/main_menu.gd
+::res://Reusable Scenes/::1710532177
+return_button.gd::GDScript::-1::1710532177::0::1::::<>Button<>::
+return_button.tscn::PackedScene::8627321576519799920::1710532177::0::1::::<><>::res://Reusable Scenes/return_button.gd
