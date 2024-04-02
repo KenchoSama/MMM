@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://8xushpv5otf2"]
 
-[ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/return_button.tscn" id="1_b5gcd"]
+[ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_b5gcd"]
+
 
 [node name="Gamemode 1" type="Node2D"]
 
