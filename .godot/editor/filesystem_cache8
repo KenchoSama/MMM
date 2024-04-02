@@ -1,8 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1712092925
-Player.gd::GDScript::-1::1712093076::0::1::::<>CharacterBody2D<>::
+::res://::1712094277
 ::res://addons/::1712090545
-::res://addons/Todo_Manager/::1712092925
+::res://addons/Todo_Manager/::1712094594
 ColourPicker.gd::GDScript::-1::1712090545::0::1::::<>HBoxContainer<>::
 Current.gd::GDScript::-1::1712090545::0::1::::<>Panel<>::
 Dock.gd::GDScript::-1::1712090545::0::1::::<>Control<>::
@@ -10,7 +9,7 @@ Pattern.gd::GDScript::-1::1712090545::0::1::::<>HBoxContainer<>::
 plugin.cfg::TextFile::-1::1712090545::0::1::::<><>::
 plugin.gd::GDScript::-1::1712090545::0::1::::<>EditorPlugin<>::
 Project.gd::GDScript::-1::1712090545::0::1::::<>Panel<>::
-todo.cfg::TextFile::-1::1712092922::0::1::::<><>::
+todo.cfg::TextFile::-1::1712094277::0::1::::<><>::
 todoItem_class.gd::GDScript::-1::1712090545::0::1::::<>RefCounted<>::
 todo_class.gd::GDScript::-1::1712090545::0::1::::<>RefCounted<>::
 ::res://addons/Todo_Manager/doc/::1712090545
@@ -29,45 +28,50 @@ ColourPicker.tscn::PackedScene::2957809393656723737::1712090545::0::1::::<><>::r
 Dock.tscn::PackedScene::4584442902745049483::1712090545::0::1::::<><>::res://addons/Todo_Manager/Dock.gd<>res://addons/Todo_Manager/Project.gd<>res://addons/Todo_Manager/Current.gd
 Pattern.tscn::PackedScene::4056048923411208166::1712090545::0::1::::<><>::res://addons/Todo_Manager/Pattern.gd
 ::res://Components/::1712090866
-::res://Components/Character Customizer/::1712091978
-character_customization.tscn::PackedScene::9160424847016310280::1712091978::0::1::::<><>::uid://du6eyxexnodyu::::res://Reusable Scenes/Return Button/return_button.tscn
-::res://Components/Gamemode 1/::1712091948
+::res://Components/Character Customizer/::1712094138
+character_customization.tscn::PackedScene::9160424847016310280::1712094138::0::1::::<><>::uid://du6eyxexnodyu::::res://Reusable Scenes/Return Button/return_button.tscn
+::res://Components/Gamemode 1/::1712093558
 Claimed by victor.txt::TextFile::-1::1712090393::0::1::::<><>::
-gamemode_1.tscn::PackedScene::2364959404374384577::1712091948::0::1::::<><>::uid://du6eyxexnodyu
-::res://Components/Gamemode 2/::1712091948
+gamemode_1.tscn::PackedScene::2364959404374384577::1712093558::0::1::::<><>::uid://du6eyxexnodyu
+::res://Components/Gamemode 2/::1712093558
 claimed by connor.txt::TextFile::-1::1710534345::0::1::::<><>::
-gamemode_2.tscn::PackedScene::3383693125649951966::1712091948::0::1::::<><>::uid://du6eyxexnodyu
+gamemode_2.tscn::PackedScene::3383693125649951966::1712093558::0::1::::<><>::uid://du6eyxexnodyu
+Magic Math Man.gd::GDScript::-1::1712093551::0::1::::<>Area2D<>::
 Magic Math Man.tscn::PackedScene::735946195336542181::1712090043::0::1::::<><>::res://Components/Gamemode 2/Magic Math Man.gd
 testingK.txt::TextFile::-1::1710534183::0::1::::<><>::
-::res://Components/Gamemode 3/::1712091959
+::res://Components/Gamemode 3/::1712094138
 claimed for ken.txt::TextFile::-1::1712090919::0::1::::<><>::
-gamemode_3.tscn::PackedScene::1412365403873042281::1712091959::0::1::::<><>::uid://du6eyxexnodyu::::res://Reusable Scenes/Return Button/return_button.tscn
-::res://Components/Gamemode 4/::1712091959
+gamemode_3.tscn::PackedScene::1412365403873042281::1712094138::0::1::::<><>::uid://du6eyxexnodyu::::res://Reusable Scenes/Return Button/return_button.tscn
+::res://Components/Gamemode 4/::1712094138
 claimed for jensen.txt::TextFile::-1::1710534804::0::1::::<><>::
-gamemode_4.tscn::PackedScene::953645513252645082::1712091959::0::1::::<><>::uid://du6eyxexnodyu::::res://Reusable Scenes/Return Button/return_button.tscn
-::res://Components/Main Menu/::1712091978
-main_menu.gd::GDScript::-1::1712091978::0::1::::<>Control<>::
-main_menu.tscn::PackedScene::5791425581053190636::1712091959::0::1::::<><>::res://Components/Main Menu/main_menu.gd
-::res://Reusable Scenes/::1712092917
-Important.txt::TextFile::-1::1712092891::0::1::::<><>::
-::res://Reusable Scenes/Player/::1712092922
-::res://Reusable Scenes/Player/Scripts/::1712092925
-CustomBody.gd::GDScript::-1::1712091959::0::1::::<>Node2D<>::
-::res://Reusable Scenes/Player/Sprites/::1712091876
-::res://Reusable Scenes/Player/Sprites/Facial Hair/::1712092856
-DefaultBeard.png::CompressedTexture2D::5622732335306229814::1712092856::1712092856::1::::<><>::
-::res://Reusable Scenes/Player/Sprites/Hats/::1712092861
-DefaultHat.png::CompressedTexture2D::9048371777101604073::1712092861::1712092861::1::::<><>::
-::res://Reusable Scenes/Player/Sprites/Legs/::1712092849
-Legs.png::CompressedTexture2D::2694153178025947552::1712092846::1712092849::1::::<><>::
-LegsLeftUp.png::CompressedTexture2D::1609893924525864408::1712092846::1712092849::1::::<><>::
-LegsRightUp.png::CompressedTexture2D::1277526909582616109::1712092846::1712092849::1::::<><>::
-::res://Reusable Scenes/Player/Sprites/Shirts/::1712092867
-DefaultRobe.png::CompressedTexture2D::8864300827963460507::1712092867::1712092867::1::::<><>::
-::res://Reusable Scenes/Player/Sprites/Skins/::1712092875
-DefaultSkin.png::CompressedTexture2D::199229135802731705::1712092875::1712092875::1::::<><>::
-::res://Reusable Scenes/Player/Sprites/Vehicles/::1712091959
-Readme.txt::TextFile::-1::1712091959::0::1::::<><>::
-::res://Reusable Scenes/Return Button/::1712091948
-return_button.gd::GDScript::-1::1710532177::0::1::::<>Button<>::
-return_button.tscn::PackedScene::8627321576519799920::1712091947::0::1::::<><>::res://Reusable Scenes/Return Button/return_button.gd
+gamemode_4.tscn::PackedScene::953645513252645082::1712094138::0::1::::<><>::uid://du6eyxexnodyu::::res://Reusable Scenes/Return Button/return_button.tscn
+::res://Components/Main Menu/::1712094138
+main_menu.gd::GDScript::-1::1712093558::0::1::::<>Control<>::
+main_menu.tscn::PackedScene::5791425581053190636::1712094138::0::1::::<><>::res://Components/Main Menu/main_menu.gd
+::res://Reusable Scenes/::1712093700
+Important.txt::TextFile::-1::1712093700::0::1::::<><>::
+::res://Reusable Scenes/Player/::1712094138
+Player.tscn::PackedScene::8831443299477130584::1712094138::0::1::::<><>::res://Reusable Scenes/Player/Scripts/Player.gd<>res://Reusable Scenes/Player/Scripts/CustomBody.gd<>uid://benckrpvwuit1::::res://Reusable Scenes/Player/Sprites/Legs/Legs.png<>uid://w63ynxuoqsdk::::res://Reusable Scenes/Player/Sprites/Legs/LegsLeftUp.png<>uid://sg3xf4yhnf1n::::res://Reusable Scenes/Player/Sprites/Legs/LegsRightUp.png
+::res://Reusable Scenes/Player/Scripts/::1712094126
+CustomBody.gd::GDScript::-1::1712094126::0::1::::<>Node2D<>::
+Player.gd::GDScript::-1::1712093558::0::1::::<>CharacterBody2D<>::
+::res://Reusable Scenes/Player/Sprites/::1712094284
+::res://Reusable Scenes/Player/Sprites/Face/::1712094594
+DefaultFace.png::CompressedTexture2D::4697858828493284516::1712094593::1712094594::1::::<><>::
+::res://Reusable Scenes/Player/Sprites/Facial Hair/::1712093558
+DefaultBeard.png::CompressedTexture2D::5622732335306229814::1712093558::1712093558::1::::<><>::
+::res://Reusable Scenes/Player/Sprites/Hand/::1712094599
+DefaultHand.png::CompressedTexture2D::9154959543093179015::1712094599::1712094599::1::::<><>::
+::res://Reusable Scenes/Player/Sprites/Hats/::1712093558
+DefaultHat.png::CompressedTexture2D::9048371777101604073::1712093558::1712093558::1::::<><>::
+::res://Reusable Scenes/Player/Sprites/Legs/::1712093558
+Legs.png::CompressedTexture2D::2694153178025947552::1712093558::1712093558::1::::<><>::
+LegsLeftUp.png::CompressedTexture2D::1609893924525864408::1712093558::1712093558::1::::<><>::
+LegsRightUp.png::CompressedTexture2D::1277526909582616109::1712093558::1712093558::1::::<><>::
+::res://Reusable Scenes/Player/Sprites/Shirts/::1712093558
+DefaultRobe.png::CompressedTexture2D::8864300827963460507::1712093558::1712093558::1::::<><>::
+::res://Reusable Scenes/Player/Sprites/Vehicles/::1712093558
+Readme.txt::TextFile::-1::1712093558::0::1::::<><>::
+::res://Reusable Scenes/Return Button/::1712093558
+return_button.gd::GDScript::-1::1712093558::0::1::::<>Button<>::
+return_button.tscn::PackedScene::8627321576519799920::1712093558::0::1::::<><>::res://Reusable Scenes/Return Button/return_button.gd
