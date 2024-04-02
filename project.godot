@@ -19,6 +19,10 @@ config/features=PackedStringArray("4.1", "Mobile")
 window/size/mode=3
 window/stretch/mode="viewport"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
+
 [input]
 
 debug_quit={

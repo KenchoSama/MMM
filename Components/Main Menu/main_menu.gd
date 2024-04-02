@@ -20,3 +20,5 @@ func _on_button_for_gamemode_3_button_up():
 
 func _on_button_for_cc_button_up():
 	get_tree().change_scene_to_file("res://Components/Character Customizer/character_customization.tscn")
+
+# TODO setup gamemode 4 button
