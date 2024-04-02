@@ -1,7 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1712090545
+::res://::1712090866
 ::res://addons/::1712090545
-::res://addons/Todo_Manager/::1712090545
+::res://addons/Todo_Manager/::1712090886
 ColourPicker.gd::GDScript::-1::1712090545::0::1::::<>HBoxContainer<>::
 Current.gd::GDScript::-1::1712090545::0::1::::<>Panel<>::
 Dock.gd::GDScript::-1::1712090545::0::1::::<>Control<>::
@@ -9,11 +9,12 @@ Pattern.gd::GDScript::-1::1712090545::0::1::::<>HBoxContainer<>::
 plugin.cfg::TextFile::-1::1712090545::0::1::::<><>::
 plugin.gd::GDScript::-1::1712090545::0::1::::<>EditorPlugin<>::
 Project.gd::GDScript::-1::1712090545::0::1::::<>Panel<>::
+todo.cfg::TextFile::-1::1712090863::0::1::::<><>::
 todoItem_class.gd::GDScript::-1::1712090545::0::1::::<>RefCounted<>::
 todo_class.gd::GDScript::-1::1712090545::0::1::::<>RefCounted<>::
 ::res://addons/Todo_Manager/doc/::1712090545
 example.gd::GDScript::-1::1712090545::0::1::::<>Node<>::
-::res://addons/Todo_Manager/doc/images/::1712090545
+::res://addons/Todo_Manager/doc/images/::1712090549
 example1.png::CompressedTexture2D::8063086250666186557::1712090545::1712090549::1::::<><>::
 example2.png::CompressedTexture2D::635969974175099808::1712090545::1712090549::1::::<><>::
 Instruct1.png::CompressedTexture2D::6805462855100783579::1712090545::1712090549::1::::<><>::
@@ -26,9 +27,9 @@ TODO_Manager_Logo.png::CompressedTexture2D::5045764491391471010::1712090545::171
 ColourPicker.tscn::PackedScene::2957809393656723737::1712090545::0::1::::<><>::res://addons/Todo_Manager/ColourPicker.gd
 Dock.tscn::PackedScene::4584442902745049483::1712090545::0::1::::<><>::res://addons/Todo_Manager/Dock.gd<>res://addons/Todo_Manager/Project.gd<>res://addons/Todo_Manager/Current.gd
 Pattern.tscn::PackedScene::4056048923411208166::1712090545::0::1::::<><>::res://addons/Todo_Manager/Pattern.gd
-::res://Components/::1710535246
-::res://Components/Character Customizer/::1712090309
-character_customization.tscn::PackedScene::9160424847016310280::1712090309::0::1::::<><>::uid://du6eyxexnodyu::::res://Reusable Scenes/return_button.tscn
+::res://Components/::1712090866
+::res://Components/Character Customizer/::1712090886
+character_customization.tscn::PackedScene::9160424847016310280::1712090886::0::1::::<><>::uid://du6eyxexnodyu::::res://Reusable Scenes/return_button.tscn
 ::res://Components/Gamemode 1/::1712090393
 Claimed by victor.txt::TextFile::-1::1712090393::0::1::::<><>::
 gamemode_1.tscn::PackedScene::2364959404374384577::1710532177::0::1::::<><>::uid://du6eyxexnodyu
@@ -37,13 +38,15 @@ claimed by connor.txt::TextFile::-1::1710534345::0::1::::<><>::
 gamemode_2.tscn::PackedScene::3383693125649951966::1710532177::0::1::::<><>::uid://du6eyxexnodyu
 Magic Math Man.tscn::PackedScene::735946195336542181::1712090043::0::1::::<><>::res://Components/Gamemode 2/Magic Math Man.gd
 testingK.txt::TextFile::-1::1710534183::0::1::::<><>::
-::res://Components/Gamemode 3/::1710532177
-gamemode_3.tscn::PackedScene::1412365403873042281::1710532177::0::1::::<><>::uid://du6eyxexnodyu
-::res://Components/Gamemode 4/::1710534804
+::res://Components/Gamemode 3/::1712090886
+claimed for ken.txt::TextFile::-1::1712090919::0::1::::<><>::
+gamemode_3.tscn::PackedScene::1412365403873042281::1712090886::0::1::::<><>::uid://du6eyxexnodyu::::res://Reusable Scenes/return_button.tscn
+::res://Components/Gamemode 4/::1712090886
 commit folder.txt::TextFile::-1::1710534804::0::1::::<><>::
-::res://Components/Main Menu/::1712090393
-main_menu.gd::GDScript::-1::1710532177::0::1::::<>Control<>::
-main_menu.tscn::PackedScene::5791425581053190636::1712090393::0::1::::<><>::res://Components/Main Menu/main_menu.gd
+gamemode_4.tscn::PackedScene::953645513252645082::1712090886::0::1::::<><>::uid://du6eyxexnodyu::::res://Reusable Scenes/return_button.tscn
+::res://Components/Main Menu/::1712090886
+main_menu.gd::GDScript::-1::1712090832::0::1::::<>Control<>::
+main_menu.tscn::PackedScene::5791425581053190636::1712090886::0::1::::<><>::res://Components/Main Menu/main_menu.gd
 ::res://Reusable Scenes/::1710532177
 return_button.gd::GDScript::-1::1710532177::0::1::::<>Button<>::
 return_button.tscn::PackedScene::8627321576519799920::1710532177::0::1::::<><>::res://Reusable Scenes/return_button.gd

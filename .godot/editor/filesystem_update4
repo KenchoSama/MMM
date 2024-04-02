@@ -2,3 +2,5 @@ res://Components/Character Customizer/character_customization.tscn
 res://Components/Main Menu/main_menu.tscn
 res://Components/Gamemode 1/Claimed by victor.txt
 res://Components/Main Menu/main_menu.gd
+res://Components/Gamemode 4/gamemode_4.tscn
+res://Components/Gamemode 3/gamemode_3.tscn

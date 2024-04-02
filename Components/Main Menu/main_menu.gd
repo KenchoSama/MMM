@@ -18,6 +18,10 @@ func _on_button_for_gamemode_3_button_up():
 	get_tree().change_scene_to_file("res://Components/Gamemode 3/gamemode_3.tscn")
 
 
+func _on_button_for_gamemode_4_button_up():
+	get_tree().change_scene_to_file("res://Components/Gamemode 4/gamemode_4.tscn")
+	
+
 func _on_button_for_cc_button_up():
 	get_tree().change_scene_to_file("res://Components/Character Customizer/character_customization.tscn")
 
