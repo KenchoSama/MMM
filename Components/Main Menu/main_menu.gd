@@ -1,5 +1,14 @@
 extends Control
 
+# TODO should load on startup:
+# Customization options
+# High scores
+# Currency (when implemented)
+
+func _ready():
+	pass
+	
+	
 func _process(_delta):
 	
 	#Implemented this to make our lives easier; pressing escape will exit the program if you're in the main menu
