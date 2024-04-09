@@ -16,6 +16,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_42la4"]
 friction = 0.0
+bounce = 0.38
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ql60"]
 animations = [{
@@ -62,8 +63,9 @@ text = "Gamemode 1"
 [node name="Return Button" parent="UI Layer/UI" instance=ExtResource("1_b5gcd")]
 
 [node name="Player" type="RigidBody2D" parent="."]
-position = Vector2(290, 113)
+position = Vector2(175, 114)
 physics_material_override = SubResource("PhysicsMaterial_42la4")
+freeze = true
 script = ExtResource("2_b6iiq")
 
 [node name="Sprites" type="Node2D" parent="Player"]
@@ -95,8 +97,11 @@ shape = SubResource("CircleShape2D_aij12")
 [node name="Wave" type="Node2D" parent="."]
 position = Vector2(0, 323)
 script = ExtResource("12_2hd1j")
+amplitude = null
+wavelength = null
+scale_factor = null
 
-[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player", "wave")]
+[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+position = Vector2(575, 323)
 script = ExtResource("11_yis6w")
 player = NodePath("../Player")
-wave = NodePath("../Wave")
