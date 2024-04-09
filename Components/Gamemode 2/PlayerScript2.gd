@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 var minSpeed = 300
-var speed = 400
-var acceleration = 0.01
-var maxSpeed = 1200
+var speed = 300
+var acceleration = 0.09
+var maxSpeed = 800
 var target = position
 
 # used for preventing unnecessary math
@@ -28,9 +28,9 @@ func _input(event):
 		target = event.get_position()
 
 func _physics_process(delta):
-	if position.distance_to(target) > 200 and speed < maxSpeed:
+	if position.distance_to(target) > 125 and speed < maxSpeed:
 		speed = speed + speed * acceleration
-	elif position.distance_to(target) < 200 and speed > minSpeed:
+	elif position.distance_to(target) < 25 and speed > minSpeed:
 		speed = speed - speed * acceleration
 	
 	velocity = position.direction_to(target) * speed
