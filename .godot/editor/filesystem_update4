@@ -1,9 +1,13 @@
-res://Reusable Scenes/Player/Player.tscn
+res://Components/Gamemode 1/gamemode_1.tscn
 res://Reusable Scenes/Player/Scripts/CustomBody.gd
 res://Components/Main Menu/main_menu.tscn
 res://Components/Character Customizer/character_customization.tscn
 res://Components/Gamemode 3/gamemode_3.tscn
 res://Components/Gamemode 4/gamemode_4.tscn
-res://Reusable Scenes/Player/Scripts/Player.gd
-res://Components/Gamemode 1/gamemode_1.tscn
+res://Reusable Scenes/Player/Player.tscn
 res://Components/Gamemode 2/gamemode_2.tscn
+res://Components/Gamemode 1/Camera.gd
+res://Components/Gamemode 2/PlayerScript2.gd
+res://Components/Gamemode 1/PlayerScript1.gd
+res://Components/Gamemode 3/PlayerScript3.gd
+res://Components/Gamemode 4/PlayerScript4.gd

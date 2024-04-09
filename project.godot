@@ -16,7 +16,6 @@ config/features=PackedStringArray("4.1", "Mobile")
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="viewport"
 
 [editor_plugins]

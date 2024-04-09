@@ -1,13 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://dx3at0p2654oi"]
+[gd_scene load_steps=12 format=3 uid="uid://dx3at0p2654oi"]
 
 [ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/CustomBody.gd" id="2_3k8ve"]
 [ext_resource type="Texture2D" uid="uid://benckrpvwuit1" path="res://Reusable Scenes/Player/Sprites/Legs/Legs.png" id="3_cciy0"]
-[ext_resource type="Texture2D" uid="uid://b76xbwd2dwmdo" path="res://Reusable Scenes/Player/Sprites/Face/DefaultFace.png" id="3_ve31x"]
+[ext_resource type="Texture2D" uid="uid://ckswognketwcg" path="res://Reusable Scenes/Player/Sprites/Skin/DefaultSkin.png" id="3_ggchx"]
 [ext_resource type="Texture2D" uid="uid://w63ynxuoqsdk" path="res://Reusable Scenes/Player/Sprites/Legs/LegsLeftUp.png" id="4_n3fa7"]
 [ext_resource type="Texture2D" uid="uid://d16dmjsa12jrl" path="res://Reusable Scenes/Player/Sprites/Hats/DefaultHat.png" id="4_oxwvi"]
 [ext_resource type="Texture2D" uid="uid://sg3xf4yhnf1n" path="res://Reusable Scenes/Player/Sprites/Legs/LegsRightUp.png" id="5_4abq8"]
 [ext_resource type="Texture2D" uid="uid://dyj60e6d7blyx" path="res://Reusable Scenes/Player/Sprites/Shirts/DefaultRobe.png" id="5_8ckay"]
-[ext_resource type="Texture2D" uid="uid://d3oy31d3q8lat" path="res://Reusable Scenes/Player/Sprites/Hand/DefaultHand.png" id="6_p4haj"]
 [ext_resource type="Texture2D" uid="uid://cmdxtytd1w5j3" path="res://Reusable Scenes/Player/Sprites/Facial Hair/DefaultBeard.png" id="7_27nou"]
 
 [sub_resource type="GDScript" id="GDScript_bwulf"]
@@ -48,17 +47,14 @@ script = SubResource("GDScript_bwulf")
 [node name="Sprites" type="Node2D" parent="."]
 script = ExtResource("2_3k8ve")
 
-[node name="Face" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("3_ve31x")
-
-[node name="Hat" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("4_oxwvi")
-
 [node name="Shirt" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("5_8ckay")
 
-[node name="Hand" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("6_p4haj")
+[node name="Skin" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("3_ggchx")
+
+[node name="Hat" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("4_oxwvi")
 
 [node name="Facial Hair" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("7_27nou")
