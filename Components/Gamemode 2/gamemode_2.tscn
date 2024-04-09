@@ -78,3 +78,8 @@ animation = &"Idle"
 [node name="Hitbox" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_aij12")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Player"]
+
+[connection signal="pressed" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_pressed"]
+[connection signal="released" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_released"]
