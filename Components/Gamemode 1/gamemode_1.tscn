@@ -46,20 +46,21 @@ radius = 13.0
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
-[node name="UI" type="Control" parent="UI Layer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="UI Layer/UI"]
+[node name="Label" type="Label" parent="UI Layer"]
 offset_left = 5.0
 offset_top = 2.0
 offset_right = 108.0
 offset_bottom = 28.0
 text = "Gamemode 1"
 
-[node name="Return Button" parent="UI Layer/UI" instance=ExtResource("1_b5gcd")]
+[node name="Return Button" parent="UI Layer" instance=ExtResource("1_b5gcd")]
+
+[node name="UI" type="Control" parent="UI Layer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Player" type="RigidBody2D" parent="."]
 position = Vector2(290, 113)
