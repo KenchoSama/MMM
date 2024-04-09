@@ -1,7 +1,11 @@
+Line2D
+RayCast2D
+Timer
+Sprite2D
+Node2D
 TouchScreenButton
 CollisionShape2D
 StaticBody2D
-Node2D
 RigidBody2D
 CollisionPolygon2D
 CanvasLayer
@@ -21,6 +25,5 @@ NinePatchRect
 Panel
 HSplitContainer
 AnimatedSprite2D
-Sprite2D
 CharacterBody2D
 TextEdit

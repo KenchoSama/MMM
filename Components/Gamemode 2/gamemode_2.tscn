@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bohc6wymllyla"]
+[gd_scene load_steps=17 format=3 uid="uid://bohc6wymllyla"]
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_kfx5p"]
 [ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/CustomBody.gd" id="2_gm15n"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://benckrpvwuit1" path="res://Reusable Scenes/Player/Sprites/Legs/Legs.png" id="8_c3aeb"]
 [ext_resource type="Texture2D" uid="uid://w63ynxuoqsdk" path="res://Reusable Scenes/Player/Sprites/Legs/LegsLeftUp.png" id="9_p5k5b"]
 [ext_resource type="Texture2D" uid="uid://sg3xf4yhnf1n" path="res://Reusable Scenes/Player/Sprites/Legs/LegsRightUp.png" id="10_htsml"]
+[ext_resource type="Script" path="res://Components/Gamemode 2/Laser Cannon.gd" id="12_y37jy"]
+[ext_resource type="Script" path="res://Components/Gamemode 2/RayCast2D.gd" id="13_j826a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ql60"]
 animations = [{
@@ -37,7 +39,11 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_aij12"]
 radius = 13.0
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_2dqln"]
+
 [node name="Gamemode 2" type="Node2D"]
+metadata/_edit_vertical_guides_ = [0.0]
+metadata/_edit_horizontal_guides_ = [648.0, 648.0]
 
 [node name="Label" type="Label" parent="."]
 offset_left = 5.0
@@ -80,6 +86,20 @@ position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_aij12")
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="Player"]
+
+[node name="Laser Cannon" type="Node2D" parent="."]
+script = ExtResource("12_y37jy")
+
+[node name="Sprite2D" type="Sprite2D" parent="Laser Cannon"]
+texture = SubResource("CanvasTexture_2dqln")
+
+[node name="RayCast2D" type="RayCast2D" parent="Laser Cannon"]
+script = ExtResource("13_j826a")
+
+[node name="Line2D" type="Line2D" parent="Laser Cannon/RayCast2D"]
+points = PackedVector2Array(0, 44, 0, 0)
+
+[node name="Timer" type="Timer" parent="Laser Cannon/RayCast2D"]
 
 [connection signal="pressed" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_pressed"]
 [connection signal="released" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_released"]
