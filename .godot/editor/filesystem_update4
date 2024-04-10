@@ -1,7 +1,0 @@
-res://Components/Main Menu/main_menu.tscn
-res://Components/Gamemode 1/gamemode_1.tscn
-res://Components/Gamemode 2/gamemode_2.tscn
-res://Components/Gamemode 2/PlayerScript2.gd
-res://Components/Gamemode 2/RayCast2D.gd
-res://Components/Gamemode 2/Laser Cannon.gd
-res://Components/Gamemode 2/Line2D.gd
