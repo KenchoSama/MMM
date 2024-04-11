@@ -16,7 +16,8 @@ func _input(event):
 				end_swipe(event.position)
 
 func start_swipe(position):
-	#TODO	
+	#TODO
+	pass
 
 func end_swipe(position):
 	pass
