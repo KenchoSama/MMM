@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d3rm4g4ikjnfc"]
 
-[ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_7h7es"]
 [ext_resource type="Script" path="res://Components/Character Customizer/character_customization.gd" id="1_s4pfs"]
+[ext_resource type="Script" path="res://Reusable Scenes/Return Button/return_and_save_changes.gd" id="2_66uck"]
 [ext_resource type="Texture2D" uid="uid://2g8lrxb6ckqw" path="res://Reusable Scenes/Player/Sprites/TestWizard.png" id="3_jpbjg"]
 
 [node name="Character Customization" type="Node2D"]
@@ -15,7 +15,14 @@ offset_bottom = 28.0
 text = "Character Customizer
 "
 
-[node name="Return Button" parent="." instance=ExtResource("1_7h7es")]
+[node name="Return & Save" type="Button" parent="."]
+offset_left = 1050.0
+offset_top = 7.0
+offset_right = 1146.0
+offset_bottom = 38.0
+toggle_mode = true
+text = "Main Menu"
+script = ExtResource("2_66uck")
 
 [node name="Container" type="CenterContainer" parent="."]
 offset_left = 481.0
@@ -78,3 +85,6 @@ item_count = 2
 max_columns = 3
 item_0/text = "Hi"
 item_1/text = "Hello"
+
+[connection signal="save_changes" from="Return & Save" to="." method="save_choices"]
+[connection signal="toggled" from="Return & Save" to="Return & Save" method="_on_toggled" flags=18]

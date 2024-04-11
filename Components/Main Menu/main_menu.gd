@@ -5,9 +5,21 @@ extends Control
 # High scores
 # Currency (when implemented)
 
+# If there is no PlayerData file, then it's the user's first time booting the game. Initialize it.
 func _ready():
-	pass
+	var PlayerData = ConfigFile.new()
+	var err = PlayerData.load("user://PlayerData.cfg")
 	
+	
+	if err != OK: # First time booting (or some error, shouldn't happen) save config file first, then load it.
+		PlayerData.set_value("CustomSprites", "skin", "res://Reusable Scenes/Player/Sprites/Skin/DefaultSkin.png")
+		PlayerData.set_value("CustomSprites", "hat", "res://Reusable Scenes/Player/Sprites/Hats/DefaultHat.png")
+		PlayerData.set_value("CustomSprites", "facialhair", "res://Reusable Scenes/Player/Sprites/Facial Hair/DefaultBeard.png")
+		PlayerData.set_value("CustomSprites", "shirt", "res://Reusable Scenes/Player/Sprites/Shirts/DefaultRobe.png")
+		PlayerData.save("user://PlayerData.cfg")
+		# TODO set appropriate high scores, currency to default
+	
+	# TODO read appropriate high scores, currency
 	
 func _process(_delta):
 	

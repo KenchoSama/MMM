@@ -1,7 +1,9 @@
 extends Node2D
 var player: RigidBody2D = null
+var sprites
 
 func _ready():
+	sprites = load("res://Reusable Scenes/Player/WizardSprites.tscn").instantiate()
 	pass # - Show inital UI (set amplitude, set wavelength, play)
 
 
@@ -23,11 +25,12 @@ func _process(delta):
 
 func begin_game():
 	if player != null:
+		player.remove_child(sprites)
 		player.queue_free()
 		
 	player = load("res://Components/Gamemode 1/WizardRigidBodyGamemode1.tscn").instantiate()
 	player.connect("lost", _on_player_lost)
-	player.add_child(load("res://Components/Gamemode 1/WizardSprites.tscn").instantiate()) # TODO load sprites from user disk instead
+	player.add_child(sprites)
 	
 	
 	# Update camera's followed player

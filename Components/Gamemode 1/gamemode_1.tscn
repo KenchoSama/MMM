@@ -30,7 +30,6 @@ offset_bottom = 40.0
 position = Vector2(0, 323)
 script = ExtResource("12_2hd1j")
 
-[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player", "wave")]
+[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("wave")]
 script = ExtResource("11_yis6w")
-player = NodePath("")
 wave = NodePath("../Wave")
