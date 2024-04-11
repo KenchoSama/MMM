@@ -1,6 +1,7 @@
 extends Node2D
 var player: RigidBody2D = null
 var sprites
+signal beginGame
 
 func _ready():
 	sprites = load("res://Reusable Scenes/Player/WizardSprites.tscn").instantiate()
@@ -30,12 +31,20 @@ func begin_game():
 		
 	player = load("res://Components/Gamemode 1/WizardRigidBodyGamemode1.tscn").instantiate()
 	player.connect("lost", _on_player_lost)
+	player.connect("shift_waves", $Wave._shift_wave_right)
 	player.add_child(sprites)
 	
+	
+	emit_signal("beginGame")
+	
+	# Bad practice, probably. Oh well. 
+	await($Wave.period_length_known)
+	player.calculated_period_length = $Wave.calculated_period_length
 	
 	# Update camera's followed player
 	$Camera.player = player
 	add_child(player)
+	
 	
 
 # Todo, will eventually call to update high scores

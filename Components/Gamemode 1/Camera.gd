@@ -13,5 +13,5 @@ func _process(delta):
 		position.x = player.position.x
 
 		player_height = -1 * int(player.position.y - wave.position.y)
-		print(player_height)
+		#print(player_height)
 		position.y = lerp(wave.position.y, player.position.y, 0.5)

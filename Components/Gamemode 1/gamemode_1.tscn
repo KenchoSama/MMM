@@ -33,3 +33,5 @@ script = ExtResource("12_2hd1j")
 [node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("wave")]
 script = ExtResource("11_yis6w")
 wave = NodePath("../Wave")
+
+[connection signal="beginGame" from="." to="Wave" method="_on_begin"]
