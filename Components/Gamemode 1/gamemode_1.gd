@@ -38,6 +38,7 @@ func begin_game():
 	add_child(player)
 	
 
+# Todo, will eventually call to update high scores
 func _on_player_lost():
 	print("Lost.")
 	pass # Replace with function body.
