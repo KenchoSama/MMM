@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmvncpbne41ro"]
+
+[ext_resource type="Script" path="res://Components/Gamemode 1/PlayerScript1.gd" id="1_o0p1a"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_42la4"]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aij12"]
+radius = 13.0
+
+[node name="Player" type="RigidBody2D"]
+position = Vector2(290, 113)
+physics_material_override = SubResource("PhysicsMaterial_42la4")
+script = ExtResource("1_o0p1a")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_aij12")

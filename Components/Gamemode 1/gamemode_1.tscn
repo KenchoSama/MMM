@@ -1,48 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://8xushpv5otf2"]
+[gd_scene load_steps=5 format=3 uid="uid://8xushpv5otf2"]
 
+[ext_resource type="Script" path="res://Components/Gamemode 1/gamemode_1.gd" id="1_1dpkc"]
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_b5gcd"]
-[ext_resource type="Script" path="res://Components/Gamemode 1/PlayerScript1.gd" id="2_b6iiq"]
-[ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/CustomBody.gd" id="2_r5l0x"]
-[ext_resource type="Texture2D" uid="uid://b76xbwd2dwmdo" path="res://Reusable Scenes/Player/Sprites/Face/DefaultFace.png" id="3_xurys"]
-[ext_resource type="Texture2D" uid="uid://d16dmjsa12jrl" path="res://Reusable Scenes/Player/Sprites/Hats/DefaultHat.png" id="4_q6n8o"]
-[ext_resource type="Texture2D" uid="uid://dyj60e6d7blyx" path="res://Reusable Scenes/Player/Sprites/Shirts/DefaultRobe.png" id="5_127h2"]
-[ext_resource type="Texture2D" uid="uid://d3oy31d3q8lat" path="res://Reusable Scenes/Player/Sprites/Hand/DefaultHand.png" id="6_w8pgd"]
-[ext_resource type="Texture2D" uid="uid://cmdxtytd1w5j3" path="res://Reusable Scenes/Player/Sprites/Facial Hair/DefaultBeard.png" id="7_3ge4i"]
-[ext_resource type="Texture2D" uid="uid://benckrpvwuit1" path="res://Reusable Scenes/Player/Sprites/Legs/Legs.png" id="8_68xh1"]
-[ext_resource type="Texture2D" uid="uid://w63ynxuoqsdk" path="res://Reusable Scenes/Player/Sprites/Legs/LegsLeftUp.png" id="9_re03j"]
-[ext_resource type="Texture2D" uid="uid://sg3xf4yhnf1n" path="res://Reusable Scenes/Player/Sprites/Legs/LegsRightUp.png" id="10_swq7b"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/Camera.gd" id="11_yis6w"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/Wave.gd" id="12_2hd1j"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_42la4"]
-friction = 0.0
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0ql60"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_68xh1")
-}],
-"loop": false,
-"name": &"Idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_re03j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_swq7b")
-}],
-"loop": true,
-"name": &"Walking",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_aij12"]
-radius = 13.0
-
 [node name="Gamemode 1" type="Node2D"]
+script = ExtResource("1_1dpkc")
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
@@ -62,42 +26,11 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Player" type="RigidBody2D" parent="."]
-position = Vector2(290, 113)
-physics_material_override = SubResource("PhysicsMaterial_42la4")
-script = ExtResource("2_b6iiq")
-
-[node name="Sprites" type="Node2D" parent="Player"]
-script = ExtResource("2_r5l0x")
-
-[node name="Face" type="Sprite2D" parent="Player/Sprites"]
-texture = ExtResource("3_xurys")
-
-[node name="Hat" type="Sprite2D" parent="Player/Sprites"]
-texture = ExtResource("4_q6n8o")
-
-[node name="Shirt" type="Sprite2D" parent="Player/Sprites"]
-texture = ExtResource("5_127h2")
-
-[node name="Hand" type="Sprite2D" parent="Player/Sprites"]
-texture = ExtResource("6_w8pgd")
-
-[node name="Facial Hair" type="Sprite2D" parent="Player/Sprites"]
-texture = ExtResource("7_3ge4i")
-
-[node name="Legs" type="AnimatedSprite2D" parent="Player/Sprites"]
-sprite_frames = SubResource("SpriteFrames_0ql60")
-animation = &"Idle"
-
-[node name="Hitbox" type="CollisionShape2D" parent="Player"]
-position = Vector2(0, 4)
-shape = SubResource("CircleShape2D_aij12")
-
 [node name="Wave" type="Node2D" parent="."]
 position = Vector2(0, 323)
 script = ExtResource("12_2hd1j")
 
 [node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player", "wave")]
 script = ExtResource("11_yis6w")
-player = NodePath("../Player")
+player = NodePath("")
 wave = NodePath("../Wave")

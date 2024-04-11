@@ -1,10 +1,14 @@
 extends RigidBody2D
-# Write code for the player in gamemode 1 here
+signal lost
 
 func _ready():
 	gravity_scale = 0.2 # Default
 	
 func _physics_process(_delta):
+	if linear_velocity.x < 0:
+		emit_signal("lost")
+		
+		
 	if Input.is_key_label_pressed(KEY_S):
 		var new_scale = gravity_scale
 		new_scale += 0.05
@@ -12,4 +16,3 @@ func _physics_process(_delta):
 		gravity_scale = new_scale
 	else:
 		gravity_scale = 0.2
-		
