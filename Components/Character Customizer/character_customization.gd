@@ -9,15 +9,16 @@ extends Node2D
 # shirt : "path"
 
 # Filepaths, changed by input to UI.
-var skin_texture: Texture2D = "res://Reusable Scenes/Player/Sprites/Skin/DefaultSkin.png"
-var hat_texture: Texture2D = "res://Reusable Scenes/Player/Sprites/Hats/DefaultHat.png"
-var facialhair_texture: Texture2D = "res://Reusable Scenes/Player/Sprites/Facial Hair/DefaultBeard.png"
-var shirt_texture: Texture2D = "res://Reusable Scenes/Player/Sprites/Shirts/DefaultRobe.png"
+var skin_texture = "res://Reusable Scenes/Player/Sprites/Skin/DefaultSkin.png"
+var hat_texture= "res://Reusable Scenes/Player/Sprites/Hats/DefaultHat.png"
+var facialhair_texture = "res://Reusable Scenes/Player/Sprites/Facial Hair/DefaultBeard.png"
+var shirt_texture = "res://Reusable Scenes/Player/Sprites/Shirts/DefaultRobe.png"
 
 
 func _ready():
 	# TODO load current choices from user disk.
 	# dict = ?
+	pass
 	
 # Called on change scene. 
 func save_choices():
@@ -26,7 +27,7 @@ func save_choices():
 		skin = skin_texture,
 		hat = hat_texture,
 		facialhair = facialhair_texture,
-		shirt = shirte_texture
+		shirt = shirt_texture
 	}
 	pass
 

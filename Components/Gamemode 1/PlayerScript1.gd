@@ -14,12 +14,12 @@ func _physics_process(_delta):
 			waves_traversed += 1
 			if waves_traversed > 4:
 				emit_signal("shift_waves")
-				print("shifted. ")
-				print("traversed waves: ", waves_traversed)
 	
 	
 	if linear_velocity.x < 0:
 		emit_signal("lost")
+		set_physics_process(false)
+		return
 		
 	if Input.is_key_label_pressed(KEY_S): # TODO work w/ touchscreen
 		var new_scale = gravity_scale

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3rm4g4ikjnfc"]
+[gd_scene load_steps=5 format=3 uid="uid://d3rm4g4ikjnfc"]
 
 [ext_resource type="Script" path="res://Components/Character Customizer/character_customization.gd" id="1_s4pfs"]
 [ext_resource type="Script" path="res://Reusable Scenes/Return Button/return_and_save_changes.gd" id="2_66uck"]
 [ext_resource type="Texture2D" uid="uid://2g8lrxb6ckqw" path="res://Reusable Scenes/Player/Sprites/TestWizard.png" id="3_jpbjg"]
+[ext_resource type="Script" path="res://Components/Character Customizer/CurrentWizard.gd" id="4_0nh33"]
 
 [node name="Character Customization" type="Node2D"]
 script = ExtResource("1_s4pfs")
@@ -43,9 +44,10 @@ layout_mode = 2
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="Container/PanelContainer/SplitContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Container/PanelContainer/SplitContainer/PanelContainer/AspectRatioContainer"]
+[node name="CurrentWizard" type="TextureRect" parent="Container/PanelContainer/SplitContainer/PanelContainer/AspectRatioContainer"]
 layout_mode = 2
 texture = ExtResource("3_jpbjg")
+script = ExtResource("4_0nh33")
 
 [node name="TabContainer" type="TabContainer" parent="Container/PanelContainer/SplitContainer"]
 layout_mode = 2

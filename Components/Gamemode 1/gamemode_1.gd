@@ -2,6 +2,7 @@ extends Node2D
 var player: RigidBody2D = null
 var sprites
 signal beginGame
+signal gameLost # The world will handle the loss condition. The player does the math to figure out that he's lost
 
 func _ready():
 	sprites = load("res://Reusable Scenes/Player/WizardSprites.tscn").instantiate()
@@ -30,6 +31,7 @@ func begin_game():
 		player.queue_free()
 		
 	player = load("res://Components/Gamemode 1/WizardRigidBodyGamemode1.tscn").instantiate()
+	player.global_position = Vector2(-200,-150)
 	player.connect("lost", _on_player_lost)
 	player.connect("shift_waves", $Wave._shift_wave_right)
 	player.add_child(sprites)
@@ -49,5 +51,5 @@ func begin_game():
 
 # Todo, will eventually call to update high scores
 func _on_player_lost():
-	print("Lost.")
+	emit_signal("gameLost")
 	pass # Replace with function body.
