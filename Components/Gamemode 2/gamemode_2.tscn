@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bohc6wymllyla"]
+[gd_scene load_steps=17 format=3 uid="uid://bohc6wymllyla"]
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_kfx5p"]
 [ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/WizardSprites.gd" id="2_gm15n"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://w63ynxuoqsdk" path="res://Reusable Scenes/Player/Sprites/Legs/LegsLeftUp.png" id="9_p5k5b"]
 [ext_resource type="Texture2D" uid="uid://sg3xf4yhnf1n" path="res://Reusable Scenes/Player/Sprites/Legs/LegsRightUp.png" id="10_htsml"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/Laser Cannon.gd" id="12_y37jy"]
+[ext_resource type="Texture2D" uid="uid://51jisaoyubir" path="res://assets/glowing circle.png" id="13_gsolb"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/RayCast2D.gd" id="13_j826a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ql60"]
@@ -86,6 +87,8 @@ shape = SubResource("CircleShape2D_aij12")
 [node name="Laser Cannon" type="Node2D" parent="."]
 script = ExtResource("12_y37jy")
 
+[node name="Timer" type="Timer" parent="Laser Cannon"]
+
 [node name="Sprite2D" type="Sprite2D" parent="Laser Cannon"]
 texture = SubResource("CanvasTexture_2dqln")
 
@@ -93,9 +96,15 @@ texture = SubResource("CanvasTexture_2dqln")
 script = ExtResource("13_j826a")
 
 [node name="Line2D" type="Line2D" parent="Laser Cannon/RayCast2D"]
-points = PackedVector2Array(0, 44, 0, 0)
+points = PackedVector2Array(0, 49, 0, 0)
+default_color = Color(1, 0.45098, 0.384314, 1)
 
-[node name="Timer" type="Timer" parent="Laser Cannon/RayCast2D"]
+[node name="LaserTimer" type="Timer" parent="Laser Cannon/RayCast2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Laser Cannon/RayCast2D"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("13_gsolb")
 
 [connection signal="pressed" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_pressed"]
 [connection signal="released" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_released"]
+[connection signal="timeout" from="Laser Cannon/Timer" to="Laser Cannon" method="_on_timer_timeout"]
