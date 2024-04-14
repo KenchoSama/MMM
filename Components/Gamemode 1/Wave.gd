@@ -19,7 +19,7 @@ class Period extends StaticBody2D:
 			var new_segment = SegmentShape2D.new()
 			new_segment.a = lastpos
 			
-			var x_value = ((2 * PI) / accuracy) * (i + 1)
+			var x_value = ((1 / frequency * 2 * PI) / accuracy) * (i + 1)
 			new_segment.b = Vector2(x_value, amplitude * sin(frequency * x_value)) * scalefactor # follows sinusoidal equation. Scalefactor to make the wave bigger.
 			lastpos = new_segment.b
 			period_length = new_segment.b.x # Finds final position

@@ -29,7 +29,7 @@ func _physics_process(_delta):
 	else:
 		gravity_scale = 0.4
 
-const MAXSPEED = 2000
+const MAXSPEED = 1500
 func _integrate_forces(state):
 	
 	var x_vel = clamp(linear_velocity.x, -MAXSPEED, MAXSPEED)
