@@ -34,8 +34,9 @@ offset_left = 60.0
 offset_top = 59.0
 offset_right = 188.0
 offset_bottom = 90.0
-min_value = 1.0
-max_value = 3.0
+min_value = 0.5
+max_value = 2.0
+step = 0.1
 value = 1.0
 prefix = "Amplitude:"
 
@@ -69,7 +70,7 @@ texture = ExtResource("5_5esu5")
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ramp"]
-polygon = PackedVector2Array(-278, 355, -278, 36, -211, 36, -174, 249, -170, 260, -165, 269, -159, 277, -155, 282, -148, 288, -136, 297, -125, 302, -115, 305, -106, 307, -99, 308, -83, 308, -72, 306, -62, 303, -53, 299, -44, 294, -31, 283, 0, 283, 0, 355)
+polygon = PackedVector2Array(-278, 355, -278, 36, -211, 36, -174, 249, -170, 260, -165, 269, -162, 274, -155, 282, -148, 288, -137, 296, -125, 302, -115, 305, -106, 307, -99, 308, -83, 308, -72, 306, -62, 303, -53, 299, -44, 294, -30, 283, 0, 283, 0, 355)
 
 [node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("wave")]
 script = ExtResource("11_yis6w")

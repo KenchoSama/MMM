@@ -13,10 +13,13 @@ func _process(delta):
 		position.x = player.position.x
 
 		player_height = -1 * int(player.position.y - wave.position.y)
-		print(player_height)
-		position.y = lerp(wave.position.y, player.position.y, 0.5)
+		#print(player_height)
+		
+		if player_height < 1000: 
+			position.y = lerp(wave.position.y, player.position.y, 0.5)
 		
 		if player_height > 500:
-			zoom.x = max(0.2, 1 - ((player_height - 500) * 0.001))
-			zoom.y = max(0.2, 1 - ((player_height - 500) * 0.001))
+			if player_height < 1000:
+				zoom.x = max(0.2, 1 - ((player_height - 500) * 0.001))
+				zoom.y = max(0.2, 1 - ((player_height - 500) * 0.001))
 	
