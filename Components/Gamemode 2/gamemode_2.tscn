@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://bohc6wymllyla"]
+[gd_scene load_steps=18 format=3 uid="uid://bohc6wymllyla"]
 
+[ext_resource type="Theme" uid="uid://xqaborpo2yku" path="res://Reusable Scenes/BlueTheme.tres" id="1_aqh5w"]
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_kfx5p"]
 [ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/WizardSprites.gd" id="2_gm15n"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/PlayerScript2.gd" id="2_rwuf6"]
@@ -45,14 +46,30 @@ radius = 13.0
 metadata/_edit_vertical_guides_ = [0.0]
 metadata/_edit_horizontal_guides_ = [648.0, 648.0]
 
-[node name="Label" type="Label" parent="."]
-offset_left = 5.0
-offset_top = 2.0
-offset_right = 108.0
-offset_bottom = 28.0
+[node name="UI Layer" type="CanvasLayer" parent="."]
+
+[node name="Debug" type="Control" parent="UI Layer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_aqh5w")
+
+[node name="Label" type="Label" parent="UI Layer/Debug"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 7.0
+offset_right = 137.0
+offset_bottom = 33.0
+theme = ExtResource("1_aqh5w")
 text = "Gamemode 2"
 
-[node name="Return Button" parent="." instance=ExtResource("1_kfx5p")]
+[node name="Return Button" parent="UI Layer/Debug" instance=ExtResource("1_kfx5p")]
+layout_mode = 0
+offset_left = 1006.0
+offset_top = 7.0
+offset_right = 1147.0
+offset_bottom = 38.0
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(510, 269)

@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://8xushpv5otf2"]
+[gd_scene load_steps=9 format=3 uid="uid://8xushpv5otf2"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 1/gamemode_1.gd" id="1_1dpkc"]
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_b5gcd"]
+[ext_resource type="Theme" uid="uid://xqaborpo2yku" path="res://Reusable Scenes/BlueTheme.tres" id="2_4ifvl"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/BeforeStart.gd" id="3_xxdqj"]
+[ext_resource type="Script" path="res://Components/Gamemode 1/DeathScreen.gd" id="4_a2mkr"]
 [ext_resource type="Texture2D" uid="uid://cih6uj1h4351u" path="res://Components/Gamemode 1/Gamemode1 Sprites/TestRamp.png" id="5_5esu5"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/Camera.gd" id="11_yis6w"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/Wave.gd" id="12_2hd1j"]
@@ -12,27 +14,45 @@ script = ExtResource("1_1dpkc")
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="UI Layer"]
-offset_left = 5.0
-offset_top = 2.0
-offset_right = 108.0
-offset_bottom = 28.0
+[node name="Control" type="Control" parent="UI Layer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_4ifvl")
+
+[node name="Debug" type="Control" parent="UI Layer/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI Layer/Control/Debug"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 135.0
+offset_bottom = 34.0
 text = "Gamemode 1"
 
-[node name="Return Button" parent="UI Layer" instance=ExtResource("1_b5gcd")]
+[node name="Return Button" parent="UI Layer/Control/Debug" instance=ExtResource("1_b5gcd")]
+layout_mode = 0
+offset_left = 1006.0
+offset_top = 4.0
+offset_right = 1147.0
+offset_bottom = 35.0
 
-[node name="BeforeStart" type="Control" parent="UI Layer"]
+[node name="BeforeStart" type="Control" parent="UI Layer/Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("3_xxdqj")
 
-[node name="Amplitude" type="SpinBox" parent="UI Layer/BeforeStart"]
+[node name="Amplitude" type="SpinBox" parent="UI Layer/Control/BeforeStart"]
 layout_mode = 0
 offset_left = 60.0
-offset_top = 59.0
-offset_right = 188.0
+offset_top = 52.0
+offset_right = 250.0
 offset_bottom = 90.0
 min_value = 0.5
 max_value = 2.0
@@ -40,23 +60,32 @@ step = 0.1
 value = 1.0
 prefix = "Amplitude:"
 
-[node name="Frequency" type="SpinBox" parent="UI Layer/BeforeStart"]
+[node name="Frequency" type="SpinBox" parent="UI Layer/Control/BeforeStart"]
 layout_mode = 0
 offset_left = 60.0
 offset_top = 90.0
-offset_right = 188.0
-offset_bottom = 121.0
-min_value = 1.0
-max_value = 3.0
+offset_right = 274.0
+offset_bottom = 124.0
+scale = Vector2(1.00166, 1)
+min_value = 0.5
+max_value = 1.5
+step = 0.1
 value = 1.0
 prefix = "Frequency:"
 
-[node name="Play" type="TextureButton" parent="UI Layer/BeforeStart"]
+[node name="Play" type="TextureButton" parent="UI Layer/Control/BeforeStart"]
 layout_mode = 0
 offset_left = 208.0
 offset_top = 84.0
 offset_right = 216.0
 offset_bottom = 92.0
+
+[node name="DeathScreen" type="Control" parent="UI Layer/Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_a2mkr")
 
 [node name="Wave" type="Node2D" parent="."]
 position = Vector2(0, 323)
@@ -76,9 +105,9 @@ polygon = PackedVector2Array(-278, 355, -278, 36, -211, 36, -174, 249, -170, 260
 script = ExtResource("11_yis6w")
 wave = NodePath("../Wave")
 
-[connection signal="beginGame" from="." to="UI Layer/BeforeStart" method="_on_game_begin"]
+[connection signal="beginGame" from="." to="UI Layer/Control/BeforeStart" method="_on_game_begin"]
 [connection signal="beginGame" from="." to="Wave" method="_on_begin"]
-[connection signal="gameLost" from="." to="UI Layer/BeforeStart" method="_on_player_lost"]
+[connection signal="gameLost" from="." to="UI Layer/Control/BeforeStart" method="_on_player_lost"]
 [connection signal="gameLost" from="." to="Wave" method="_on_lost"]
-[connection signal="value_changed" from="UI Layer/BeforeStart/Amplitude" to="Wave" method="_amplitude_changed"]
-[connection signal="value_changed" from="UI Layer/BeforeStart/Frequency" to="Wave" method="_frequency_changed"]
+[connection signal="value_changed" from="UI Layer/Control/BeforeStart/Amplitude" to="Wave" method="_amplitude_changed"]
+[connection signal="value_changed" from="UI Layer/Control/BeforeStart/Frequency" to="Wave" method="_frequency_changed"]
