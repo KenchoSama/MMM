@@ -28,14 +28,13 @@ func _physics_process(delta):
 	#TODO update target location correctly
 	if laserTimer.is_stopped():
 		_disappear()
-		set_physics_process(false)
 
 func _appear() -> void:
-	tween = create_tween()
-	tween.stop_all()
-	tween.interpolate_property($Line2D, "width", 10.0, 0, 0.1)
+	tween.stop()
+	tween.tween_property($Line2D, "width", 10.0, 0.1)
 	tween.start()
 func _disappear() -> void:
-	tween.stop_all()
-	tween.interpolate_property($Line2D, "width", 10.0, 0, 0.1)
+	set_physics_process(false)
+	tween.stop()
+	tween.tween_property($Line2D, "width", 0, 0.1)
 	tween.start()

@@ -5,12 +5,14 @@ var timerStopped
 var timePassed
 var countDown
 var reload
+var rng
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer = $Timer
 	timePassed = 0
 	timerStopped = true
 	reload = true
+	rng = RandomNumberGenerator.new()
 	_cannon_timer()
 
 
