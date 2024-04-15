@@ -15,7 +15,7 @@ func _physics_process(_delta):
 			if waves_traversed > 4:
 				emit_signal("shift_waves")
 	
-	print(linear_velocity)
+	#print(linear_velocity)
 	if linear_velocity.x < 0:
 		emit_signal("lost")
 		set_physics_process(false)

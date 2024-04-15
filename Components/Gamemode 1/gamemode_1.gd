@@ -26,10 +26,12 @@ func _process(delta):
 
 
 func begin_game():
+	# Delete old rigidbody, if it exists. 
 	if player != null:
 		player.remove_child(sprites)
 		player.queue_free()
-		
+	
+	# Recreate rigidbody.
 	player = load("res://Components/Gamemode 1/WizardRigidBodyGamemode1.tscn").instantiate()
 	player.global_position = Vector2(-200,-150)
 	player.connect("lost", _on_player_lost)
@@ -38,9 +40,10 @@ func begin_game():
 	
 	
 	emit_signal("beginGame")
-	
+	print("h")
 	# Bad practice, probably. Oh well. 
-	await($Wave.period_length_known)
+	#await($Wave.period_length_known)
+	print("f")
 	player.calculated_period_length = $Wave.calculated_period_length
 	
 	# Update camera's followed player

@@ -17,6 +17,24 @@ region = Rect2(0, 0, 32, 32)
 [node name="Gamemode 1" type="Node2D"]
 script = ExtResource("1_1dpkc")
 
+[node name="Wave" type="Node2D" parent="."]
+position = Vector2(0, 323)
+script = ExtResource("12_2hd1j")
+
+[node name="Ramp" type="StaticBody2D" parent="."]
+
+[node name="RampImage" type="Sprite2D" parent="Ramp"]
+position = Vector2(-278, 35)
+texture = ExtResource("5_5esu5")
+centered = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ramp"]
+polygon = PackedVector2Array(-278, 355, -278, 36, -211, 36, -174, 249, -170, 260, -165, 269, -162, 274, -155, 282, -148, 288, -137, 296, -125, 302, -115, 305, -106, 307, -99, 308, -83, 308, -72, 306, -62, 303, -53, 299, -44, 294, -30, 283, 0, 283, 0, 355)
+
+[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("wave")]
+script = ExtResource("11_yis6w")
+wave = NodePath("../Wave")
+
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="UI Layer"]
@@ -47,10 +65,18 @@ offset_right = 1147.0
 offset_bottom = 35.0
 
 [node name="BeforeStart" type="Control" parent="UI Layer/Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 408.0
+offset_top = 171.0
+offset_right = 448.0
+offset_bottom = 211.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("3_xxdqj")
 
 [node name="Amplitude" type="SpinBox" parent="UI Layer/Control/BeforeStart"]
@@ -80,10 +106,11 @@ prefix = "Frequency:"
 
 [node name="Play" type="TextureButton" parent="UI Layer/Control/BeforeStart"]
 layout_mode = 0
-offset_left = 143.0
-offset_top = 143.0
-offset_right = 175.0
-offset_bottom = 175.0
+offset_left = 125.0
+offset_top = 124.0
+offset_right = 157.0
+offset_bottom = 156.0
+scale = Vector2(2.10483, 2.10483)
 texture_normal = SubResource("AtlasTexture_3ax17")
 
 [node name="DeathScreen" type="Control" parent="UI Layer/Control"]
@@ -93,23 +120,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_a2mkr")
 
-[node name="Wave" type="Node2D" parent="."]
-position = Vector2(0, 323)
-script = ExtResource("12_2hd1j")
-
-[node name="Ramp" type="StaticBody2D" parent="."]
-
-[node name="RampImage" type="Sprite2D" parent="Ramp"]
-position = Vector2(-278, 35)
-texture = ExtResource("5_5esu5")
-centered = false
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ramp"]
-polygon = PackedVector2Array(-278, 355, -278, 36, -211, 36, -174, 249, -170, 260, -165, 269, -162, 274, -155, 282, -148, 288, -137, 296, -125, 302, -115, 305, -106, 307, -99, 308, -83, 308, -72, 306, -62, 303, -53, 299, -44, 294, -30, 283, 0, 283, 0, 355)
-
-[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("wave")]
-script = ExtResource("11_yis6w")
-wave = NodePath("../Wave")
-
+[connection signal="beginGame" from="." to="UI Layer/Control/BeforeStart" method="_on_game_begin"]
+[connection signal="beginGame" from="." to="Wave" method="_on_begin"]
+[connection signal="gameLost" from="." to="UI Layer/Control/BeforeStart" method="_pregame_selection"]
 [connection signal="value_changed" from="UI Layer/Control/BeforeStart/Amplitude" to="Wave" method="_amplitude_changed"]
 [connection signal="value_changed" from="UI Layer/Control/BeforeStart/Frequency" to="Wave" method="_frequency_changed"]
+[connection signal="button_up" from="UI Layer/Control/BeforeStart/Play" to="." method="begin_game"]
