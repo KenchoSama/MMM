@@ -6,6 +6,9 @@ var timePassed
 var countDown
 var reload
 var rng
+var xMulti
+var xOffset
+var laserTarget
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer = $Timer
@@ -20,16 +23,18 @@ func _ready():
 func _process(delta):
 	timePassed += delta
 	if reload:
-		#TODO load first equation and start tim
+		xMulti = rng.randi_range(-3,3)
+		xOffset = rng.randi_range(-3,3) * 54
+		position.x = 252
+		position.y = 324 + 324 * xMulti - xOffset
+		laserTarget = Vector2(1152, (xMulti*(-1152+xOffset)))
 		reload = false
-		pass
 	if timerStopped:
-		
+		$RayCast2D._function_shoot()
+		_cannon_timer()
 		timer.start(countDown)
 		timerStopped = false
-
-func _enemy_position():
-	pass
+		reload = true
 	
 func _cannon_timer():
 	if timePassed < 20:

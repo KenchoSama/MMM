@@ -18,23 +18,22 @@ func _function_shoot():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	target = Vector2(500,-500)
-	var cast_point = target
+	target = $"..".laserTarget
+	target_position = target
+	$Line2D.points[1] = target - position
 	force_raycast_update()
 	
 	if is_colliding():
-		cast_point = get_collision_point()
-		
-	#TODO update target location correctly
+		target_position = get_collision_point()
 	if laserTimer.is_stopped():
 		_disappear()
+		set_physics_process(false)
 
 func _appear() -> void:
 	tween.stop()
 	tween.tween_property($Line2D, "width", 10.0, 0.1)
-	tween.start()
+	tween.play()
 func _disappear() -> void:
-	set_physics_process(false)
 	tween.stop()
 	tween.tween_property($Line2D, "width", 0, 0.1)
-	tween.start()
+	tween.play()
