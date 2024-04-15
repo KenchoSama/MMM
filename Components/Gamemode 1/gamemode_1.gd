@@ -40,10 +40,8 @@ func begin_game():
 	
 	
 	emit_signal("beginGame")
-	print("h")
 	# Bad practice, probably. Oh well. 
 	#await($Wave.period_length_known)
-	print("f")
 	player.calculated_period_length = $Wave.calculated_period_length
 	
 	# Update camera's followed player
