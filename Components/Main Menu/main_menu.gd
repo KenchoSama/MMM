@@ -7,6 +7,7 @@ extends Control
 
 # If there is no PlayerData file, then it's the user's first time booting the game. Initialize it.
 func _ready():
+	Engine.max_fps = 60
 	var PlayerData = ConfigFile.new()
 	var err = PlayerData.load("user://PlayerData.cfg")
 	

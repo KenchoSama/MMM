@@ -6,3 +6,6 @@ func _ready():
 # Connected to loss condition signal 
 func _on_death():
 	show()
+
+func _on_pregame_start():
+	hide()

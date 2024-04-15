@@ -1,18 +1,18 @@
 extends Node2D
 var player: RigidBody2D = null
-var sprites
-signal beginGame
+
+var WizardSprites # WizardSprites child, moved manually or moved in accordance with the rigidbody.
+
+signal preGame # Amplitude / frequency setting
+signal beginGame # Generate waves and initiate begin animation
 signal gameLost # The world will handle the loss condition. The player does the math to figure out that he's lost
 
 func _ready():
-	sprites = load("res://Reusable Scenes/Player/WizardSprites.tscn").instantiate()
-	pass # - Show inital UI (set amplitude, set wavelength, play)
-
-
-func _process(delta):
-	if Input.is_key_pressed(KEY_SPACE): #Debug
-		begin_game()
-
+	set_process(false)
+	WizardSprites = load("res://Reusable Scenes/Player/WizardSprites.tscn").instantiate()
+	emit_signal("preGame") 
+	
+	
 # What happens when a player begins the game:
 # - Show inital UI (set amplitude, set wavelength, play)
 # - Reset camera position.
@@ -24,31 +24,31 @@ func _process(delta):
 # - Camera stays in place until call to begin game.
 # - Player rigidbody sinks, then is released from tree.
 
+var follow_rigidbody: bool = false
+func _process(_delta):
+	WizardSprites.position = beginGame
 
 func begin_game():
 	# Delete old rigidbody, if it exists. 
-	if player != null:
-		player.remove_child(sprites)
-		player.queue_free()
 	
 	# Recreate rigidbody.
 	player = load("res://Components/Gamemode 1/WizardRigidBodyGamemode1.tscn").instantiate()
-	player.global_position = Vector2(-200,-150)
+	player.position = Vector2(250,-450)
 	player.connect("lost", _on_player_lost)
 	player.connect("shift_waves", $Wave._shift_wave_right)
-	player.add_child(sprites)
-	
 	
 	emit_signal("beginGame")
-	# Bad practice, probably. Oh well. 
-	#await($Wave.period_length_known)
+	
 	player.calculated_period_length = $Wave.calculated_period_length
 	
 	# Update camera's followed player
 	$Camera.player = player
 	add_child(player)
 	
-	
+func _on_restart():
+	if player != null:
+		player.queue_free()
+	emit_signal("preGame")
 
 # Todo, will eventually call to update high scores
 func _on_player_lost():
