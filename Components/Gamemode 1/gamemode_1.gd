@@ -8,8 +8,8 @@ signal beginGame # Generate waves and initiate begin animation
 signal gameLost # The world will handle the loss condition. The player does the math to figure out that he's lost
 
 func _ready():
-	set_process(false)
 	WizardSprites = load("res://Reusable Scenes/Player/WizardSprites.tscn").instantiate()
+	add_child(WizardSprites)
 	emit_signal("preGame") 
 	
 	
@@ -26,10 +26,12 @@ func _ready():
 
 var follow_rigidbody: bool = false
 func _process(_delta):
-	WizardSprites.position = beginGame
+	if follow_rigidbody:
+		if player != null:
+			WizardSprites.position = player.position
+			WizardSprites.rotation = player.linear_velocity.angle()
 
 func begin_game():
-	# Delete old rigidbody, if it exists. 
 	
 	# Recreate rigidbody.
 	player = load("res://Components/Gamemode 1/WizardRigidBodyGamemode1.tscn").instantiate()
@@ -52,5 +54,9 @@ func _on_restart():
 
 # Todo, will eventually call to update high scores
 func _on_player_lost():
+	follow_rigidbody = false # Do this before game lost, maybe
 	emit_signal("gameLost")
 	pass # Replace with function body.
+
+func _on_pre_game():
+	follow_rigidbody = true

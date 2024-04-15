@@ -165,6 +165,7 @@ offset_bottom = 340.0
 [connection signal="beginGame" from="." to="Camera" method="_game_begin"]
 [connection signal="beginGame" from="." to="UI Layer/Control/BeforeStart" method="_on_game_begin"]
 [connection signal="gameLost" from="." to="UI Layer/Control/DeathScreen" method="_on_death"]
+[connection signal="preGame" from="." to="." method="_on_pre_game"]
 [connection signal="preGame" from="." to="Camera" method="_pregame_begin"]
 [connection signal="preGame" from="." to="UI Layer/Control/BeforeStart" method="_pregame_selection"]
 [connection signal="preGame" from="." to="UI Layer/Control/DeathScreen" method="_on_pregame_start"]
