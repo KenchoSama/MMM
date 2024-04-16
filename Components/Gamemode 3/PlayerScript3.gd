@@ -17,26 +17,26 @@ func _process(delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
 	position += direction * delta * 400
 	move_and_slide()
+
+	
+	
 	
 	#rotate wizard
 	look_at(get_global_mouse_position())
 	
 
 	#activation of spells
-	var spell_type = get_mouse_input_action()
+	#var spell_type = get_mouse_input_action()
 	var spell_marker = $spellposition.get_children()
 	var player_direction = (get_global_mouse_position() - position).normalized()
 	
-			
-			
 	
 	if Input.is_action_pressed("primary") and spellcooldown:
+		print("spell is being used")
 		spellcooldown = false
 		$SpellTimer1.start()
 		firespellActivated.emit(spell_marker[0].global_position, player_direction)
-	if Input.is_action_just_released("primary"):
-		spellReleased.emit()
-		print("spell released")
+	
 		
 		
 		
@@ -73,3 +73,6 @@ func get_mouse_input_action():
 		return "thirdAction"
 	else:
 		return "no_input"
+		
+
+

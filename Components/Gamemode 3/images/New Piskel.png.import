@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lbovx3ddtpvt"
-path="res://.godot/imported/waterspell.png-243cb61acaf3aeee306688d10f399b74.ctex"
+uid="uid://cacac1yomjtno"
+path="res://.godot/imported/New Piskel.png-c718adfedb23f4190d5045b3ed0256b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Components/Gamemode 3/waterspell.png"
-dest_files=["res://.godot/imported/waterspell.png-243cb61acaf3aeee306688d10f399b74.ctex"]
+source_file="res://Components/Gamemode 3/images/New Piskel.png"
+dest_files=["res://.godot/imported/New Piskel.png-c718adfedb23f4190d5045b3ed0256b4.ctex"]
 
 [params]
 
