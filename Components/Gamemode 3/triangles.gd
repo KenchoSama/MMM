@@ -1,4 +1,4 @@
-extends Node2D
+extends Polygon2D
 
 
 signal body_on_triangle
@@ -18,8 +18,3 @@ func _process(delta):
 func _on_area_2d_body_entered(body):
 	body_on_triangle.emit(body)
 	queue_free()  # Delete the triangle when a body enters it
-
-
-func _on_area_2d_area_entered(area):
-	print(area)
-	queue_free()

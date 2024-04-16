@@ -1,22 +1,12 @@
 extends Node2D
-#testing for backup
+
 var fireSpell: PackedScene = preload("res://Components/Gamemode 3/fire.tscn")
 var lightingSpell: PackedScene = preload("res://Components/Gamemode 3/lighting.tscn")
 var waterSpell: PackedScene = preload("res://Components/Gamemode 3/water.tscn")
-var triangles: PackedScene = preload("res://Components/Gamemode 3/triangles.tscn")
-var triangleTimer: Timer
 
 
 func _on_triangles_body_on_triangle(body):
 	print("body was crushed, gamemode ending")
-
-
-func _ready():
-	triangleTimer = Timer.new()
-	triangleTimer.wait_time = 5
-	triangleTimer.one_shot = false
-	add_child(triangleTimer)
-	triangleTimer.start()
 
 
 
@@ -27,6 +17,8 @@ func _on_player_firespell_activated(pos, direction):
 	spell1.rotation_degrees = rad_to_deg(direction.angle()) + 90
 	spell1.direction = direction
 	$AllSpells.add_child(spell1)
+	if _on_player_spell_released():
+		fireSpell.queue_free()
 
 	
 

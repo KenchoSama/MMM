@@ -3,8 +3,6 @@ extends CharacterBody2D
 
 var spellcooldown: bool = true
 var primary_action_pressed = false  # Flag to track primary action press state
-var speed = 400
-
 
 #fire spells
 signal firespellActivated(pos, direction)
@@ -16,44 +14,41 @@ signal waterspellActivated(pos, direction)
 func _process(delta):
 	
 	#input for move
-	#var direction = Input.get_vector("left", "right", "up", "down")
-	#position += direction * delta * 400
-	#move_and_slide()
-	var input_vector = Vector2.ZERO
-	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	input_vector = input_vector.normalized()
-	var motion = input_vector * speed * delta
-	move_and_collide(motion)
-	
-	
-	
+	var direction = Input.get_vector("left", "right", "up", "down")
+	position += direction * delta * 400
+	move_and_slide()
 	
 	#rotate wizard
 	look_at(get_global_mouse_position())
 	
 
 	#activation of spells
-	#var spell_type = get_mouse_input_action()
+	var spell_type = get_mouse_input_action()
 	var spell_marker = $spellposition.get_children()
 	var player_direction = (get_global_mouse_position() - position).normalized()
-	var Spell_type = get_mouse_input_action()
 	
+			
+			
 	
-	#usse mouse to exectue spells
-	if Spell_type == "primary" and spellcooldown:
-		print("spell is being used")
+	if Input.is_action_pressed("primary") and spellcooldown:
 		spellcooldown = false
 		$SpellTimer1.start()
 		firespellActivated.emit(spell_marker[0].global_position, player_direction)
-	
-	if Spell_type == "secondary" and spellcooldown:
+	if Input.is_action_just_released("primary"):
+		spellReleased.emit()
+		print("spell released")
+		
+		
+		
+		
+		
+	if Input.is_action_pressed("secondary") and spellcooldown:
 		#print("lighting spell")
 		spellcooldown = false
 		$SpellTimer1.start()
 		lightingspellActivated.emit(spell_marker[0].global_position, player_direction)
 		
-	if Spell_type == "thirdAction" and spellcooldown:
+	if Input.is_action_pressed("thirdAction") and spellcooldown:
 		#print("lighting spell")
 		spellcooldown = false
 		$SpellTimer1.start()
@@ -78,6 +73,3 @@ func get_mouse_input_action():
 		return "thirdAction"
 	else:
 		return "no_input"
-		
-
-

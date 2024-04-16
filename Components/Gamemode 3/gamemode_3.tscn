@@ -1,6 +1,5 @@
-[gd_scene load_steps=16 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=14 format=3 uid="uid://uefpmlu6ommb"]
 
-[ext_resource type="Script" path="res://Components/Gamemode 3/gamemode_3.gd" id="1_4rv1c"]
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_p6bw8"]
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_rgdqb"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/PlayerScript3.gd" id="2_eates"]
@@ -12,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://benckrpvwuit1" path="res://Reusable Scenes/Player/Sprites/Legs/Legs.png" id="8_lguju"]
 [ext_resource type="Texture2D" uid="uid://w63ynxuoqsdk" path="res://Reusable Scenes/Player/Sprites/Legs/LegsLeftUp.png" id="9_nn13b"]
 [ext_resource type="Texture2D" uid="uid://sg3xf4yhnf1n" path="res://Reusable Scenes/Player/Sprites/Legs/LegsRightUp.png" id="10_h6bwa"]
-[ext_resource type="PackedScene" uid="uid://4nyr3sr12iuu" path="res://Components/Gamemode 3/triangles.tscn" id="12_fo4cl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ql60"]
 animations = [{
@@ -40,7 +38,6 @@ animations = [{
 radius = 13.0
 
 [node name="Gamemode 3" type="Node2D"]
-script = ExtResource("1_4rv1c")
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
@@ -61,13 +58,13 @@ text = "Gamemode 3"
 
 [node name="Return Button" parent="UI Layer/Debug" instance=ExtResource("1_p6bw8")]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 4.0
-offset_right = 148.0
-offset_bottom = 35.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 141.0
+offset_bottom = 31.0
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(658, 175)
+position = Vector2(520, 258)
 motion_mode = 1
 script = ExtResource("2_eates")
 
@@ -93,21 +90,3 @@ animation = &"Idle"
 [node name="Hitbox" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_aij12")
-
-[node name="spellposition" type="Node2D" parent="Player"]
-
-[node name="Marker2D" type="Marker2D" parent="Player/spellposition"]
-position = Vector2(13, 4)
-
-[node name="SpellTimer1" type="Timer" parent="Player"]
-wait_time = 2.0
-one_shot = true
-
-[node name="triangles" parent="." instance=ExtResource("12_fo4cl")]
-
-[node name="AllSpells" type="Node2D" parent="."]
-
-[connection signal="firespellActivated" from="Player" to="." method="_on_player_firespell_activated"]
-[connection signal="lightingspellActivated" from="Player" to="." method="_on_player_lightingspell_activated"]
-[connection signal="waterspellActivated" from="Player" to="." method="_on_player_waterspell_activated"]
-[connection signal="timeout" from="Player/SpellTimer1" to="Player" method="_on_spell_timer_1_timeout"]
