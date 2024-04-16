@@ -12,7 +12,7 @@ func _physics_process(_delta):
 	if calculated_period_length != 0: # Has been set by wave node.
 		if global_position.x / calculated_period_length > waves_traversed:
 			waves_traversed += 1
-			if waves_traversed > 4:
+			if waves_traversed > 6:
 				emit_signal("shift_waves")
 	
 	#print(linear_velocity)
