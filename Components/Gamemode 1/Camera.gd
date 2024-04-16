@@ -18,6 +18,7 @@ var fixing_offset = false
 func _process(delta):
 	#position = player.position
 	if player != null:
+		print(offset.y)
 		position.x = player.position.x
 		player_height = -1 * int(player.position.y - wave.position.y)
 		
@@ -31,9 +32,10 @@ func _process(delta):
 			#print(dist)
 			offset.y = dist / 6
 			#print(offset.y)
-			if offset.y >= 0:
+			if dist >= -6:
 				offset.y = 0
 				fixing_offset = false
+				
 		
 		else:
 			position.y = lerp(wave.position.y, player.position.y, 0.5)

@@ -10,7 +10,6 @@ friction = 0.05
 [node name="Player" type="RigidBody2D"]
 position = Vector2(290, 113)
 physics_material_override = SubResource("PhysicsMaterial_42la4")
-lock_rotation = true
 script = ExtResource("1_o0p1a")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
