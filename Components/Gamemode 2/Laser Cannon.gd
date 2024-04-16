@@ -4,7 +4,6 @@ var timer
 var timePassed
 var reloadTimer
 var countDown
-var reload
 var rng
 var xMulti
 var xOffset
