@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 var spellcooldown: bool = true
 var primary_action_pressed = false  # Flag to track primary action press state
+var speed = 400
+
 
 #fire spells
 signal firespellActivated(pos, direction)
@@ -14,10 +16,16 @@ signal waterspellActivated(pos, direction)
 func _process(delta):
 	
 	#input for move
-	var direction = Input.get_vector("left", "right", "up", "down")
-	position += direction * delta * 400
-	move_and_slide()
-
+	#var direction = Input.get_vector("left", "right", "up", "down")
+	#position += direction * delta * 400
+	#move_and_slide()
+	var input_vector = Vector2.ZERO
+	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left") + Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	input_vector = input_vector.normalized()
+	var motion = input_vector * speed * delta
+	move_and_collide(motion)
+	
 	
 	
 	
