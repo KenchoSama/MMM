@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://bohc6wymllyla"]
+[gd_scene load_steps=21 format=3 uid="uid://bohc6wymllyla"]
 
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_aqh5w"]
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_kfx5p"]
+[ext_resource type="Script" path="res://Components/Gamemode 2/gamemode_2.gd" id="1_vyval"]
 [ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/WizardSprites.gd" id="2_gm15n"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/PlayerScript2.gd" id="2_rwuf6"]
 [ext_resource type="Texture2D" uid="uid://d16dmjsa12jrl" path="res://Reusable Scenes/Player/Sprites/Hats/DefaultHat.png" id="4_xwa1g"]
@@ -13,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://sg3xf4yhnf1n" path="res://Reusable Scenes/Player/Sprites/Legs/LegsRightUp.png" id="10_htsml"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/Laser Cannon.gd" id="12_y37jy"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/RayCast2D.gd" id="13_j826a"]
+[ext_resource type="Texture2D" uid="uid://hix6u4wlpt5g" path="res://assets/border.png" id="14_ertyx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ql60"]
 animations = [{
@@ -41,9 +43,16 @@ radius = 13.0
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_2dqln"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhq7s"]
+size = Vector2(252, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ke13v"]
+size = Vector2(252, 648)
+
 [node name="Gamemode 2" type="Node2D"]
-metadata/_edit_vertical_guides_ = [0.0, 1152.0, 1169.0, 576.0, 254.0, 898.0]
-metadata/_edit_horizontal_guides_ = [648.0, 648.0, -155.0, 324.0, 54.0, 108.0, 108.0, 162.0, 216.0, 270.0, 378.0, 432.0, 487.0, 540.0, 648.0, 54.0, 648.0]
+script = ExtResource("1_vyval")
+metadata/_edit_vertical_guides_ = [0.0, 1152.0, 252.0, 900.0, 900.0]
+metadata/_edit_horizontal_guides_ = [648.0, 648.0, 648.0]
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
@@ -55,19 +64,22 @@ offset_bottom = 40.0
 theme = ExtResource("1_aqh5w")
 
 [node name="Label" type="Label" parent="UI Layer/Debug"]
+top_level = true
 layout_mode = 0
 offset_left = 9.0
 offset_top = 7.0
-offset_right = 137.0
-offset_bottom = 33.0
+offset_right = 245.0
+offset_bottom = 38.0
 theme = ExtResource("1_aqh5w")
 text = "Gamemode 2"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Return Button" parent="UI Layer/Debug" instance=ExtResource("1_kfx5p")]
 layout_mode = 0
-offset_left = 1006.0
+offset_left = 909.0
 offset_top = 7.0
-offset_right = 1147.0
+offset_right = 1146.0
 offset_bottom = 38.0
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -104,6 +116,10 @@ shape = SubResource("CircleShape2D_aij12")
 script = ExtResource("12_y37jy")
 
 [node name="Timer" type="Timer" parent="Laser Cannon"]
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="Laser Cannon"]
+one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Laser Cannon"]
 texture = SubResource("CanvasTexture_2dqln")
@@ -112,15 +128,46 @@ texture = SubResource("CanvasTexture_2dqln")
 script = ExtResource("13_j826a")
 
 [node name="Line2D" type="Line2D" parent="Laser Cannon/RayCast2D"]
-points = PackedVector2Array(0, 0, 0, 49)
+points = PackedVector2Array(0, 0, 0, 50)
 default_color = Color(1, 0.45098, 0.384314, 1)
 
-[node name="LaserTimer" type="Timer" parent="Laser Cannon/RayCast2D"]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(576, 0, 576, 648, 1152, 648, 1152, 324, 0, 324)
-width = 2.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1026, 324)
+shape = SubResource("RectangleShape2D_xhq7s")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(126, 324)
+shape = SubResource("RectangleShape2D_ke13v")
+
+[node name="Border" type="Sprite2D" parent="."]
+position = Vector2(126, 324)
+scale = Vector2(0.992126, 1)
+texture = ExtResource("14_ertyx")
+
+[node name="Border" type="Sprite2D" parent="Border"]
+position = Vector2(907.143, 0)
+texture = ExtResource("14_ertyx")
+
+[node name="Equation" type="Label" parent="."]
+top_level = true
+offset_left = 12.0
+offset_top = 196.0
+offset_right = 239.0
+offset_bottom = 270.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 908.0
+offset_top = 192.0
+offset_right = 1143.0
+offset_bottom = 274.0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_pressed"]
 [connection signal="released" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_released"]
 [connection signal="timeout" from="Laser Cannon/Timer" to="Laser Cannon" method="_on_timer_timeout"]
+[connection signal="timeout" from="Laser Cannon/Timer2" to="Laser Cannon" method="_on_timer_2_timeout"]
