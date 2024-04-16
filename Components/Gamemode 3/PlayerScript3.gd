@@ -5,6 +5,7 @@ var spellcooldown: bool = true
 var primary_action_pressed = false  # Flag to track primary action press state
 var speed = 300
 #fire spells
+signal lost
 signal firespellActivated(pos, direction)
 signal spellReleased
 signal lightingspellActivated(pos, direction)
@@ -72,3 +73,4 @@ func _on_area_2d_body_entered(body):
 	if "triangle" in body:
 		queue_free()
 		print("body was crushed")
+		emit_signal("lost")

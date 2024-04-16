@@ -35,3 +35,9 @@ func _on_player_waterspell_activated(pos, direction):
 	$AllSpells.add_child(spell2)
 
 
+
+
+func _on_triangles_respawn(pos):
+	var triangles = triangle.instantiate()
+	$AllSpells.add_child(triangles)
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=17 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_p6bw8"]
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_rgdqb"]
@@ -39,6 +39,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_aij12"]
 radius = 13.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hkmgt"]
+radius = 13.0
+
 [node name="Gamemode 3" type="Node2D"]
 script = ExtResource("1_ycoyy")
 
@@ -67,7 +70,7 @@ offset_right = 141.0
 offset_bottom = 31.0
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(520, 258)
+position = Vector2(760, 115)
 motion_mode = 1
 script = ExtResource("2_eates")
 
@@ -97,9 +100,16 @@ shape = SubResource("CircleShape2D_aij12")
 [node name="spellposition" type="Node2D" parent="Player"]
 
 [node name="Marker2D" type="Marker2D" parent="Player/spellposition"]
+position = Vector2(18, 2)
 
 [node name="SpellTimer1" type="Timer" parent="Player"]
 wait_time = 2.0
+
+[node name="Area2D" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_hkmgt")
 
 [node name="AllSpells" type="Node2D" parent="."]
 
@@ -109,3 +119,5 @@ wait_time = 2.0
 [connection signal="lightingspellActivated" from="Player" to="." method="_on_player_lightingspell_activated"]
 [connection signal="waterspellActivated" from="Player" to="." method="_on_player_waterspell_activated"]
 [connection signal="timeout" from="Player/SpellTimer1" to="Player" method="_on_spell_timer_1_timeout"]
+[connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="respawn" from="triangles" to="." method="_on_triangles_respawn"]
