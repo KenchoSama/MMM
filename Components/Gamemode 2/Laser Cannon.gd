@@ -55,7 +55,7 @@ func _on_timer_timeout():
 		string = "Y = %dX"
 		stringActual = string % xMulti
 	$"../Equation".set_text(stringActual)
-	reloadTimer.start(1)
+	reloadTimer.start(countDown)
 
 
 func _on_timer_2_timeout():
@@ -66,4 +66,4 @@ func _on_timer_2_timeout():
 	else:
 		position.y = 324 + xOffset
 	$RayCast2D._function_shoot()
-	timer.start(countDown)
+	timer.start(1)
