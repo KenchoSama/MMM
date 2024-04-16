@@ -1,20 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://corn6y012o67q"]
+[gd_scene load_steps=14 format=3 uid="uid://corn6y012o67q"]
 
 [ext_resource type="Script" path="res://Components/Main Menu/main_menu.gd" id="1_jth7i"]
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_jwc0v"]
-[ext_resource type="Texture2D" uid="uid://dlx8dvocl6d71" path="res://Components/Main Menu/M.png" id="3_rgrsw"]
+[ext_resource type="Script" path="res://Components/Main Menu/MMMFollow.gd" id="3_kdqbl"]
+[ext_resource type="FontFile" uid="uid://dltk8r13eljo4" path="res://Reusable Scenes/joystix monospace.otf" id="3_rjifg"]
+[ext_resource type="Script" path="res://Components/Main Menu/MMM.gd" id="4_412fd"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q2at7"]
-atlas = ExtResource("3_rgrsw")
-region = Rect2(0, 32, 32, 32)
+[sub_resource type="Curve2D" id="Curve2D_4ejxc"]
+_data = {
+"points": PackedVector2Array(-57.8403, 21.2326, 57.8403, -21.2326, -24, -216, -46.4882, 20.3584, 46.4882, -20.3584, 45, -166, 21.4716, 12.4366, -21.4716, -12.4366, 41, -218, 35.9144, 17.0807, -35.9144, -17.0807, -27, -167, -8.09, 0, 0, 0, -24, -216)
+}
+point_count = 5
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v1gu2"]
-atlas = ExtResource("3_rgrsw")
-region = Rect2(0, 32, 32, 32)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ijjv8"]
+content_margin_left = 30.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wsmi0"]
-atlas = ExtResource("3_rgrsw")
-region = Rect2(0, 32, 32, 32)
+[sub_resource type="LabelSettings" id="LabelSettings_ge07q"]
+font = ExtResource("3_rjifg")
+font_size = 240
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x6786"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_onbsj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c5dv8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jk5sb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kg5rp"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -27,22 +43,48 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_jwc0v")
 script = ExtResource("1_jth7i")
+metadata/_edit_vertical_guides_ = [506.0, 646.0, 1152.0]
+metadata/_edit_horizontal_guides_ = [-32.0]
 
-[node name="MMM" type="Node2D" parent="."]
-position = Vector2(-194, -351)
-scale = Vector2(3.4, 3.4)
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(0, 49)
+curve = SubResource("Curve2D_4ejxc")
 
-[node name="M1" type="Sprite2D" parent="MMM"]
-position = Vector2(22.9412, 51.7647)
-texture = SubResource("AtlasTexture_q2at7")
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(4, -207)
+progress = 95.8
+rotates = false
+script = ExtResource("3_kdqbl")
 
-[node name="M2" type="Sprite2D" parent="MMM"]
-position = Vector2(56, 52)
-texture = SubResource("AtlasTexture_v1gu2")
+[node name="MMM" type="Label" parent="Path2D/PathFollow2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -331.5
+offset_top = -165.5
+offset_right = 331.5
+offset_bottom = 165.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ijjv8")
+text = "MMM"
+label_settings = SubResource("LabelSettings_ge07q")
+script = ExtResource("4_412fd")
 
-[node name="M3" type="Sprite2D" parent="MMM"]
-position = Vector2(88.8235, 52.0588)
-texture = SubResource("AtlasTexture_wsmi0")
+[node name="ColorChangeButton" type="Button" parent="Path2D/PathFollow2D"]
+offset_left = -294.0
+offset_top = -101.0
+offset_right = 290.0
+offset_bottom = 82.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_x6786")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_onbsj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_c5dv8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jk5sb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kg5rp")
+
+[node name="ColorTimer" type="Timer" parent="Path2D/PathFollow2D/ColorChangeButton"]
 
 [node name="CenterContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -52,9 +94,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -68.0
-offset_top = -54.0
+offset_top = 24.0
 offset_right = 68.0
-offset_bottom = 54.0
+offset_bottom = 132.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(68, 54)
@@ -83,6 +125,8 @@ text = "Gamemode 4"
 layout_mode = 2
 text = "Wizard"
 
+[connection signal="button_down" from="Path2D/PathFollow2D/ColorChangeButton" to="Path2D/PathFollow2D/MMM" method="_change_color"]
+[connection signal="timeout" from="Path2D/PathFollow2D/ColorChangeButton/ColorTimer" to="Path2D/PathFollow2D/MMM" method="_on_color_timer_timeout"]
 [connection signal="button_up" from="CenterContainer/Buttons/Button for Gamemode 1" to="." method="_on_button_for_gamemode_1_button_up"]
 [connection signal="button_up" from="CenterContainer/Buttons/Button for Gamemode 2" to="." method="_on_button_for_gamemode_2_button_up"]
 [connection signal="button_up" from="CenterContainer/Buttons/Button for Gamemode 3" to="." method="_on_button_for_gamemode_3_button_up"]
