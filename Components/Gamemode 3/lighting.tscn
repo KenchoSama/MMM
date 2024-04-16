@@ -6,23 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdljx"]
 size = Vector2(181, 43.5)
 
-[sub_resource type="Animation" id="Animation_1qohu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_pq6m6"]
-resource_name = "lightinganimation"
+[sub_resource type="Animation" id="Animation_ygbd7"]
+resource_name = "lightingAnimation"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -37,10 +22,25 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2wl8i"]
+[sub_resource type="Animation" id="Animation_wjhwv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6grt6"]
 _data = {
-"RESET": SubResource("Animation_1qohu"),
-"lightinganimation": SubResource("Animation_pq6m6")
+"RESET": SubResource("Animation_wjhwv"),
+"lightingAnimation": SubResource("Animation_ygbd7")
 }
 
 [node name="lighting" type="Area2D"]
@@ -61,6 +61,6 @@ shape = SubResource("RectangleShape2D_rdljx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_2wl8i")
+"": SubResource("AnimationLibrary_6grt6")
 }
-autoplay = "lightinganimation"
+autoplay = "lightingAnimation"
