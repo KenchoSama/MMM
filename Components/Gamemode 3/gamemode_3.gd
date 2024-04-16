@@ -36,7 +36,3 @@ func _on_player_waterspell_activated(pos, direction):
 	spell2.rotation_degrees = rad_to_deg(direction.angle())
 	spell2.direction = direction
 	$AllSpells.add_child(spell2)
-
-
-func _on_player_spell_released():
-	pass

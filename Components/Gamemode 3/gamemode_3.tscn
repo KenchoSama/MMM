@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=16 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_p6bw8"]
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_rgdqb"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://benckrpvwuit1" path="res://Reusable Scenes/Player/Sprites/Legs/Legs.png" id="8_lguju"]
 [ext_resource type="Texture2D" uid="uid://w63ynxuoqsdk" path="res://Reusable Scenes/Player/Sprites/Legs/LegsLeftUp.png" id="9_nn13b"]
 [ext_resource type="Texture2D" uid="uid://sg3xf4yhnf1n" path="res://Reusable Scenes/Player/Sprites/Legs/LegsRightUp.png" id="10_h6bwa"]
+[ext_resource type="PackedScene" uid="uid://4nyr3sr12iuu" path="res://Components/Gamemode 3/triangles.tscn" id="13_5ugqq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ql60"]
 animations = [{
@@ -99,3 +100,12 @@ shape = SubResource("CircleShape2D_aij12")
 
 [node name="SpellTimer1" type="Timer" parent="Player"]
 wait_time = 2.0
+
+[node name="AllSpells" type="Node2D" parent="."]
+
+[node name="triangles" parent="." instance=ExtResource("13_5ugqq")]
+
+[connection signal="firespellActivated" from="Player" to="." method="_on_player_firespell_activated"]
+[connection signal="lightingspellActivated" from="Player" to="." method="_on_player_lightingspell_activated"]
+[connection signal="waterspellActivated" from="Player" to="." method="_on_player_waterspell_activated"]
+[connection signal="timeout" from="Player/SpellTimer1" to="Player" method="_on_spell_timer_1_timeout"]
