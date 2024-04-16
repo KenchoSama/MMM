@@ -55,7 +55,7 @@ func _on_timer_timeout():
 		string = "Y = %dX"
 		stringActual = string % xMulti
 	$"../Equation".set_text(stringActual)
-	reloadTimer.start(2)
+	reloadTimer.start(1)
 
 
 func _on_timer_2_timeout():
