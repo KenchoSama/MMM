@@ -3,10 +3,7 @@ extends Node2D
 var fireSpell: PackedScene = preload("res://Components/Gamemode 3/fire.tscn")
 var lightingSpell: PackedScene = preload("res://Components/Gamemode 3/lighting.tscn")
 var waterSpell: PackedScene = preload("res://Components/Gamemode 3/water.tscn")
-
-
-func _on_triangles_body_on_triangle(body):
-	print("body was crushed, gamemode ending")
+var triangle: PackedScene = preload("res://Components/Gamemode 3/triangles.tscn")
 
 
 
@@ -36,3 +33,5 @@ func _on_player_waterspell_activated(pos, direction):
 	spell2.rotation_degrees = rad_to_deg(direction.angle())
 	spell2.direction = direction
 	$AllSpells.add_child(spell2)
+
+

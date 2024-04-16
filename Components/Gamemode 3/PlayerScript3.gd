@@ -7,7 +7,6 @@ var speed = 300
 #fire spells
 signal firespellActivated(pos, direction)
 signal spellReleased
-
 signal lightingspellActivated(pos, direction)
 signal waterspellActivated(pos, direction)
 
@@ -18,8 +17,8 @@ func _process(delta):
 	#position += direction * delta * 400
 	#move_and_slide()
 	var input_vector = Vector2.ZERO
-	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left") + Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up") + Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_vector = input_vector.normalized()
 	var motion = input_vector * speed * delta
 	var collision = move_and_collide(motion)
@@ -66,3 +65,9 @@ func get_mouse_input_action():
 		return "thirdAction"
 	else:
 		return "no_input"
+
+
+func _on_area_2d_body_entered(body):
+	print("body is crushed")
+	if "hit" in body:
+		queue_free()
