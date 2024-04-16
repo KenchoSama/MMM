@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=15 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_p6bw8"]
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_rgdqb"]
+[ext_resource type="Script" path="res://Components/Gamemode 3/gamemode_3.gd" id="1_ycoyy"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/PlayerScript3.gd" id="2_eates"]
 [ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/WizardSprites.gd" id="2_o8ocu"]
 [ext_resource type="Texture2D" uid="uid://d16dmjsa12jrl" path="res://Reusable Scenes/Player/Sprites/Hats/DefaultHat.png" id="4_4cnjm"]
@@ -38,6 +39,7 @@ animations = [{
 radius = 13.0
 
 [node name="Gamemode 3" type="Node2D"]
+script = ExtResource("1_ycoyy")
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
@@ -90,3 +92,10 @@ animation = &"Idle"
 [node name="Hitbox" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_aij12")
+
+[node name="spellposition" type="Node2D" parent="Player"]
+
+[node name="Marker2D" type="Marker2D" parent="Player/spellposition"]
+
+[node name="SpellTimer1" type="Timer" parent="Player"]
+wait_time = 2.0

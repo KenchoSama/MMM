@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://dqay6i8p18pa6"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 3/lighting.gd" id="1_gndqf"]
-[ext_resource type="Texture2D" uid="uid://c7ltnf83gcidi" path="res://Components/Gamemode 3/godotImages/lightingspell.png" id="2_y13kr"]
+[ext_resource type="Texture2D" uid="uid://dwbxkqq2q5lqd" path="res://Components/Gamemode 3/lightingspell.png" id="2_nd362"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdljx"]
 size = Vector2(181, 43.5)
 
-[sub_resource type="Animation" id="Animation_6ij7l"]
-resource_name = "lightingspell"
+[sub_resource type="Animation" id="Animation_rg042"]
+resource_name = "lightingAnimation"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -19,10 +19,10 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 4, 2, 2, 1]
+"values": [0, 1, 2, 3, 4]
 }
 
-[sub_resource type="Animation" id="Animation_nhtq0"]
+[sub_resource type="Animation" id="Animation_lgbac"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -37,10 +37,10 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gul78"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nj7x0"]
 _data = {
-"RESET": SubResource("Animation_nhtq0"),
-"lightingspell": SubResource("Animation_6ij7l")
+"RESET": SubResource("Animation_lgbac"),
+"lightingAnimation": SubResource("Animation_rg042")
 }
 
 [node name="lighting" type="Area2D"]
@@ -51,7 +51,7 @@ script = ExtResource("1_gndqf")
 position = Vector2(85.3333, 1.625)
 rotation = 1.5708
 scale = Vector2(2.60156, 5.64583)
-texture = ExtResource("2_y13kr")
+texture = ExtResource("2_nd362")
 hframes = 2
 vframes = 3
 
@@ -61,6 +61,6 @@ shape = SubResource("RectangleShape2D_rdljx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_gul78")
+"": SubResource("AnimationLibrary_nj7x0")
 }
-autoplay = "lightingspell"
+autoplay = "lightingAnimation"

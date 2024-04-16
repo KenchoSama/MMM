@@ -17,10 +17,6 @@ func _on_player_firespell_activated(pos, direction):
 	spell1.rotation_degrees = rad_to_deg(direction.angle()) + 90
 	spell1.direction = direction
 	$AllSpells.add_child(spell1)
-	if _on_player_spell_released():
-		fireSpell.queue_free()
-
-	
 
 
 
