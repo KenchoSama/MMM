@@ -41,7 +41,10 @@ func _on_timer_timeout():
 	$RayCast2D._fucntion_reload()
 	xMulti = rng.randi_range(-3,3)
 	xOffset = rng.randi_range(-5,5) * 54
-	laserTarget = Vector2(648, (xMulti*-648+xOffset))
+	if xMulti != 0:
+		laserTarget = Vector2(648, (xMulti*-648+xOffset))
+	else:
+		laserTarget = Vector2(648, 0)
 	if -1*xOffset < 0:
 		string = "Y = %dX - %d"
 		stringActual = string % [xMulti, xOffset/54]
