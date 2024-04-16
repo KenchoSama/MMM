@@ -4,9 +4,12 @@ extends Node2D
 var direction = Vector2.RIGHT
 
 
+func _ready():
+	# Start a Timer to delete the node after 2 seconds
+	$Timer.start()
+
 func _process(delta):
-	pass
-	
+	position += direction * delta * speed
 	
 
 
@@ -18,4 +21,8 @@ func _on_area_2d_area_entered(area):
 
 func _on_area_2d_body_entered(body):
 	body.hit()
+	queue_free()
+
+
+func _on_timer_timeout():
 	queue_free()

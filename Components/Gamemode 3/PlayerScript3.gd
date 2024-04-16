@@ -1,6 +1,6 @@
 extends CharacterBody2D
 # Write code for the player in gamemode 3 here
-
+var wizard: bool = true
 var spellcooldown: bool = true
 var primary_action_pressed = false  # Flag to track primary action press state
 var speed = 300
@@ -68,6 +68,7 @@ func get_mouse_input_action():
 
 
 func _on_area_2d_body_entered(body):
-	print("body is crushed")
-	if "hit" in body:
+	
+	if "triangle" in body:
 		queue_free()
+		print("body was crushed")
