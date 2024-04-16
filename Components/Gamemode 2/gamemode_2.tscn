@@ -51,8 +51,8 @@ size = Vector2(252, 648)
 
 [node name="Gamemode 2" type="Node2D"]
 script = ExtResource("1_vyval")
-metadata/_edit_vertical_guides_ = [0.0, 1152.0, 252.0, 900.0, 900.0]
-metadata/_edit_horizontal_guides_ = [648.0, 648.0, 648.0]
+metadata/_edit_vertical_guides_ = [0.0, 1152.0, 252.0, 900.0, 900.0, 576.0]
+metadata/_edit_horizontal_guides_ = [648.0, 648.0, 648.0, 324.0, 108.0, 162.0, 216.0, 270.0, 378.0, 432.0, 486.0, 540.0, 594.0, 54.0]
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
