@@ -1,12 +1,17 @@
 [gd_scene load_steps=16 format=3 uid="uid://corn6y012o67q"]
 
 [ext_resource type="Script" path="res://Components/Main Menu/main_menu.gd" id="1_jth7i"]
+<<<<<<< Updated upstream
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_jwc0v"]
 [ext_resource type="Script" path="res://Components/Main Menu/MMMFollow.gd" id="3_kdqbl"]
 [ext_resource type="FontFile" uid="uid://dltk8r13eljo4" path="res://Reusable Scenes/joystix monospace.otf" id="3_rjifg"]
 [ext_resource type="Script" path="res://Components/Main Menu/MMM.gd" id="4_412fd"]
 [ext_resource type="Texture2D" uid="uid://bkxdjkmrmtg6j" path="res://assets/unmuted.png" id="6_d0rm1"]
 [ext_resource type="AudioStream" uid="uid://ogd8yydafdum" path="res://assets/HEADPHONE WARNING.wav" id="7_rq6rx"]
+=======
+[ext_resource type="Theme" path="res://Reusable Scenes/BlueTheme.tres" id="1_jwc0v"]
+[ext_resource type="Texture2D" uid="uid://dlx8dvocl6d71" path="res://Components/Main Menu/M.png" id="3_rgrsw"]
+>>>>>>> Stashed changes
 
 [sub_resource type="Curve2D" id="Curve2D_4ejxc"]
 _data = {
