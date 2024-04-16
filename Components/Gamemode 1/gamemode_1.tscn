@@ -25,7 +25,7 @@ script = ExtResource("1_1dpkc")
 position = Vector2(58, -338)
 
 [node name="Wave" type="Node2D" parent="."]
-position = Vector2(836, 450)
+position = Vector2(821, 457)
 script = ExtResource("12_2hd1j")
 
 [node name="Ramp" type="StaticBody2D" parent="."]

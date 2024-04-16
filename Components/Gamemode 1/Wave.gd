@@ -24,10 +24,27 @@ class Period extends StaticBody2D:
 			lastpos = new_segment.b
 			period_length = new_segment.b.x # Finds final position
 			
+			# Water lines
+			var enabled = true # for debug
+			if enabled:
+				var water_rect = ColorRect.new()
+				water_rect.color = Color.DARK_CYAN
+				water_rect.position = lastpos - Vector2(2, 0)
+				water_rect.size = Vector2(2 + new_segment.b.x - new_segment.a.x, 1000)
+				add_child(water_rect)
+				
+				var surface_water_rect = ColorRect.new()
+				surface_water_rect.color = Color.CADET_BLUE
+				surface_water_rect.position = lastpos - Vector2(2, 0)
+				surface_water_rect.size = Vector2(2 + new_segment.b.x - new_segment.a.x, 10)
+				add_child(surface_water_rect)
+			
 			var new_collision_shape = CollisionShape2D.new()
 			new_collision_shape.shape = new_segment
 			add_child(new_collision_shape)
-			
+		
+		queue_redraw()
+
 
 # Generates first 10 waves when signalled to begin.
 @export var starting_pos = Vector2.ZERO
