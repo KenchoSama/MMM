@@ -1,6 +1,5 @@
 extends Node2D
 
-
 signal respawn(pos)
 
 
@@ -15,11 +14,12 @@ func _ready():
 
 func _process(delta):
 	# Move the triangle
-	pass
 	var movement = direction * move_speed * delta
 	translate(movement)
-	var triangle_marker = $"respawn points".get_children()
 	$Timer.start()
+	
+	
+
 
 
 func _on_area_2d_body_entered(body):
@@ -31,13 +31,12 @@ func _on_area_2d_area_entered(area):
 	pass
 	
 	
+
 func hit():
 	print("hit")
 	queue_free()
 
 
-func _on_timer_timeout(pos):
-	var triangle_marker = $"respawn points".get_children()
-	respawn.emit(triangle_marker)
 
-
+func _on_timer_timeout():
+	respawn.emit()

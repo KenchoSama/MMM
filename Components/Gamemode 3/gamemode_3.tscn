@@ -95,7 +95,7 @@ offset_bottom = 301.0
 texture_normal = SubResource("AtlasTexture_0q3jm")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(260, 340)
+position = Vector2(759, 348)
 motion_mode = 1
 script = ExtResource("2_eates")
 
@@ -139,7 +139,12 @@ shape = SubResource("CircleShape2D_hkmgt")
 [node name="AllSpells" type="Node2D" parent="."]
 
 [node name="triangles" parent="." instance=ExtResource("13_5ugqq")]
-position = Vector2(640, 343)
+position = Vector2(273, 353)
+
+[node name="AllTriangles" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="AllTriangles"]
+position = Vector2(53, 338)
 
 [connection signal="gameLost" from="." to="UI Layer/control/Control" method="_on_gamemode_3_game_lost"]
 [connection signal="button_up" from="UI Layer/control/Control/Restart" to="." method="_on_restart_button_up"]

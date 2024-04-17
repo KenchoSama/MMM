@@ -38,16 +38,12 @@ func _on_player_waterspell_activated(pos, direction):
 
 
 
-func _on_triangles_respawn(pos):
-	var triangles = triangle.instantiate()
-	$AllSpells.add_child(triangles)
-	
-
-
 
 func _on_player_lost():
 	emit_signal("gameLost")
 
-#fix
+
+
+
 func _on_restart_button_up():
 	get_tree().change_scene_to_file("res://Components/Main Menu/main_menu.tscn")
