@@ -10,7 +10,7 @@ const options = [
 	Rect2(0,64,64,64),
 	Rect2(64,64,64,64),
 	Rect2(128,64,64,64),
-	Rect2(0,0,128,64)
+	Rect2(0,128,64,64)
 ]
 
 func generate_sign():
