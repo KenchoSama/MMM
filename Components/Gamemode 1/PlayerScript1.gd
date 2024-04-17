@@ -6,7 +6,8 @@ signal lost
 signal shift_waves
 
 func _ready():
-	gravity_scale = 0.4 # Default
+	gravity_scale = 0.4
+	$AudioStreamPlayer2D.play() # Default
 	
 func _physics_process(_delta):
 	if calculated_period_length != 0: # Has been set by wave node.
@@ -17,6 +18,7 @@ func _physics_process(_delta):
 	
 	#print(linear_velocity)
 	if linear_velocity.x < 0:
+		$AudioStreamPlayer2D.stop()
 		emit_signal("lost")
 		set_physics_process(false)
 		return
@@ -38,3 +40,7 @@ func _integrate_forces(state):
 	
 	linear_velocity = Vector2(x_vel, y_vel)
 	
+
+
+func _on_audio_stream_player_2d_finished():
+	$AudioStreamPlayer2D.play() # Replace with function body.

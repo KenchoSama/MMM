@@ -62,3 +62,5 @@ func _on_player_lost():
 
 func _on_pre_game():
 	follow_rigidbody = true
+
+
