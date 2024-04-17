@@ -26,12 +26,14 @@ func _physics_process(delta):
 	
 	
 func _cannon_timer():
-	if timePassed < 20:
-		countDown = 5
-	elif timePassed < 40:
-		countDown = 2.5
-	else:
-		countDown = 1
+	if int(timePassed) % 20 == 0:
+		countDown = countDown / 2
+	#if timePassed < 20:
+		#countDown = 5
+	#elif timePassed < 40:
+		#countDown = 2.5
+	#else:
+		#countDown = 1
 
 
 
@@ -64,7 +66,10 @@ func _on_timer_2_timeout():
 	else:
 		position.y = 324 + xOffset
 	$RayCast2D._function_shoot()
-	timer.start(1)
+	if timePassed < 60:
+		timer.start(1)
+	else:
+		timer.start(0.5)
 
 
 func _on_ray_cast_2d_loss():
@@ -75,6 +80,7 @@ func _on_ray_cast_2d_loss():
 
 func _on_gamemode_2_begin_game():
 	timePassed = 0
+	countDown = 5
 	_cannon_timer()
 	timer.start(1)
 	set_physics_process(true) # Replace with function body.
