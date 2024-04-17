@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://8xushpv5otf2"]
+[gd_scene load_steps=22 format=3 uid="uid://8xushpv5otf2"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 1/gamemode_1.gd" id="1_1dpkc"]
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_b5gcd"]
@@ -9,11 +9,11 @@
 [ext_resource type="Script" path="res://Components/Gamemode 1/Sign.gd" id="4_5an1x"]
 [ext_resource type="Texture2D" uid="uid://bhx7ppj453jy4" path="res://Components/Gamemode 1/Gamemode1 Sprites/WoodTiles.png" id="4_8nxyf"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/DeathScreen.gd" id="4_a2mkr"]
+[ext_resource type="Texture2D" uid="uid://bb1v4nppfnv4e" path="res://Components/Gamemode 1/Gamemode1 Sprites/Beach.png" id="4_n1itg"]
 [ext_resource type="Texture2D" uid="uid://btyvk0e7aalu3" path="res://Components/Gamemode 1/Gamemode1 Sprites/RampWood.png" id="5_1wmex"]
 [ext_resource type="Texture2D" uid="uid://8htax3pkoq4r" path="res://Reusable Scenes/PixelArtUI.png" id="5_17sk6"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/Camera.gd" id="11_yis6w"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/Wave.gd" id="12_2hd1j"]
-[ext_resource type="Texture2D" uid="uid://2g8lrxb6ckqw" path="res://Reusable Scenes/Player/Sprites/TestWizard.png" id="16_tvefm"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cdkbh"]
 load_path = "res://.godot/imported/BackgroundOcean.png-07b4aa23a64ccce46258944db132373c.ctex"
@@ -73,21 +73,6 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("5_17sk6")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="Shader" id="Shader_itddq"]
-code = "shader_type canvas_item;
-
-// Uniform for controlling transparency level
-uniform float alpha : hint_range(0.0, 1.0);
-
-void fragment() {
-    // Set the output color with the input color and adjusted alpha value
-    COLOR.a *= alpha;
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oey0v"]
-shader = SubResource("Shader_itddq")
-shader_parameter/alpha = 0.533
-
 [node name="Gamemode 1" type="Node2D"]
 script = ExtResource("1_1dpkc")
 
@@ -108,6 +93,14 @@ texture = SubResource("CompressedTexture2D_cdkbh")
 position = Vector2(579, -250)
 texture = ExtResource("3_333kw")
 
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, -552)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(583, 395)
+texture = SubResource("CompressedTexture2D_cdkbh")
+
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
 visible = false
@@ -116,8 +109,13 @@ visible = false
 position = Vector2(58, -338)
 
 [node name="Wave" type="Node2D" parent="."]
-position = Vector2(1020, 478)
+position = Vector2(1023, 526)
 script = ExtResource("12_2hd1j")
+
+[node name="Beach" type="Sprite2D" parent="."]
+position = Vector2(1475, 243)
+scale = Vector2(5.57921, 2.36883)
+texture = ExtResource("4_n1itg")
 
 [node name="Ramp" type="StaticBody2D" parent="."]
 position = Vector2(836, -418)
@@ -352,11 +350,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.32, 2.32)
 texture_normal = SubResource("AtlasTexture_3rtn6")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_oey0v")
-position = Vector2(-1271, 75)
-texture = ExtResource("16_tvefm")
 
 [connection signal="beginGame" from="." to="Wave" method="_on_begin"]
 [connection signal="beginGame" from="." to="Camera" method="_game_begin"]
