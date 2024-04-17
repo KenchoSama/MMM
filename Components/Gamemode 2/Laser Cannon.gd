@@ -80,7 +80,7 @@ func _on_ray_cast_2d_loss():
 
 func _on_gamemode_2_begin_game():
 	timePassed = 0
-	countDown = 5
+	countDown = 10
 	_cannon_timer()
 	timer.start(1)
 	set_physics_process(true) # Replace with function body.
