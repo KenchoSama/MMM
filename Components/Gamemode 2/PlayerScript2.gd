@@ -52,8 +52,14 @@ func _physics_process(delta):
 
 
 func _on_gamemode_2_begin_game():
+	$"../AudioStreamPlayer2D".play(0)
 	set_physics_process(true) # Replace with function body.
 
 
 func _on_ray_cast_2d_loss():
+	$"../AudioStreamPlayer2D".stop()
 	set_physics_process(false) # Replace with function body.
+
+
+func _on_audio_stream_player_2d_finished():
+	$"../AudioStreamPlayer2D".play()# Replace with function body.
