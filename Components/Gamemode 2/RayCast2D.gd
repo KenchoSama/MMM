@@ -1,13 +1,12 @@
 extends RayCast2D
 
 var target
-var timePassed
 var tween
+signal loss
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_physics_process(false)
 	add_exception($"../../StaticBody2D")
-	timePassed = 0
 	tween = create_tween()
 
 func _function_shoot():
@@ -27,12 +26,14 @@ func _physics_process(delta):
 	
 	if is_colliding():
 		target_position = get_collision_point()
+		_fucntion_reload()
+		loss.emit()
 
 func _appear() -> void:
 	tween.kill()
+	tween = create_tween()
 	tween.tween_property($Line2D, "width", 10.0, 0.1)
-	tween.play()
 func _disappear() -> void:
 	tween.kill()
+	tween = create_tween()
 	tween.tween_property($Line2D, "width", 0, 0.1)
-	tween.play()

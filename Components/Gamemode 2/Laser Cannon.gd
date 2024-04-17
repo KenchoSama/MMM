@@ -15,10 +15,8 @@ var stringActual
 func _ready():
 	timer = $Timer
 	reloadTimer = $Timer2
-	timePassed = 0
-	_cannon_timer()
-	timer.start(1)
 	rng = RandomNumberGenerator.new()
+	set_physics_process(false)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -67,3 +65,16 @@ func _on_timer_2_timeout():
 		position.y = 324 + xOffset
 	$RayCast2D._function_shoot()
 	timer.start(1)
+
+
+func _on_ray_cast_2d_loss():
+	timer.stop()
+	reloadTimer.stop()
+	set_physics_process(false)
+
+
+func _on_gamemode_2_begin_game():
+	timePassed = 0
+	_cannon_timer()
+	timer.start(1)
+	set_physics_process(true) # Replace with function body.

@@ -19,6 +19,7 @@ func _ready():
 	shirt = $Sprites/Shirt
 	facialHair = $"Sprites/Facial Hair"
 	legs = $Sprites/Legs
+	set_physics_process(false)
 
 func _input(event):
 	if event is InputEventScreenTouch and event.is_pressed():
@@ -48,3 +49,11 @@ func _physics_process(delta):
 	if position.distance_to(target) > 20:
 		move_and_slide()
 
+
+
+func _on_gamemode_2_begin_game():
+	set_physics_process(true) # Replace with function body.
+
+
+func _on_ray_cast_2d_loss():
+	set_physics_process(false) # Replace with function body.
