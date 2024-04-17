@@ -220,10 +220,10 @@ stream = ExtResource("20_0l4y0")
 volume_db = -32.0
 
 [connection signal="beginGame" from="." to="." method="_on_begin_game"]
-[connection signal="beginGame" from="." to="Player" method="_on_gamemode_2_begin_game"]
-[connection signal="beginGame" from="." to="Laser Cannon" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="UI Layer/Debug/DeathScreen" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_begin_game"]
+[connection signal="beginGame" from="." to="Player" method="_on_gamemode_2_begin_game"]
+[connection signal="beginGame" from="." to="Laser Cannon" method="_on_gamemode_2_begin_game"]
 [connection signal="startScreen" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_start_screen"]
 [connection signal="button_up" from="UI Layer/Debug/DeathScreen/RestartButton" to="." method="_on_restart_button_button_up"]
 [connection signal="button_up" from="UI Layer/Debug/StartScreen/StartButton" to="." method="_on_start_button_button_up"]
@@ -231,7 +231,7 @@ volume_db = -32.0
 [connection signal="released" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_released"]
 [connection signal="timeout" from="Laser Cannon/Timer" to="Laser Cannon" method="_on_timer_timeout"]
 [connection signal="timeout" from="Laser Cannon/Timer2" to="Laser Cannon" method="_on_timer_2_timeout"]
+[connection signal="loss" from="Laser Cannon/RayCast2D" to="UI Layer/Debug/DeathScreen" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="Player" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="Laser Cannon" method="_on_ray_cast_2d_loss"]
-[connection signal="loss" from="Laser Cannon/RayCast2D" to="UI Layer/Debug/DeathScreen" method="_on_ray_cast_2d_loss"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="Player" method="_on_audio_stream_player_2d_finished"]
