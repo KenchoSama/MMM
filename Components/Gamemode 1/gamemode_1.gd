@@ -8,6 +8,7 @@ signal beginGame # Generate waves and initiate begin animation
 signal gameLost # The world will handle the loss condition. The player does the math to figure out that he's lost
 
 func _ready():
+	RenderingServer.set_default_clear_color(Color.AQUA)
 	WizardSprites = load("res://Reusable Scenes/Player/WizardSprites.tscn").instantiate()
 	add_child(WizardSprites)
 	WizardSprites.position = Vector2(250, -450)

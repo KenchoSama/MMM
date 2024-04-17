@@ -10,7 +10,6 @@ class Period extends StaticBody2D:
 	# This determines how many segments to generate per period
 	var accuracy: int = 64
 	var period_length: float
-	
 	func _init(scalefactor, initial_pos, amplitude, frequency): # Creating a new period takes in the position to build it at
 		global_position = initial_pos
 		
@@ -28,15 +27,15 @@ class Period extends StaticBody2D:
 			var enabled = true # for debug
 			if enabled:
 				var water_rect = ColorRect.new()
-				water_rect.color = Color.DARK_CYAN
+				water_rect.color = Color.LIGHT_SEA_GREEN
 				water_rect.position = lastpos - Vector2(2, 0)
 				water_rect.size = Vector2(2 + new_segment.b.x - new_segment.a.x, 1000)
 				add_child(water_rect)
 				
 				var surface_water_rect = ColorRect.new()
-				surface_water_rect.color = Color.CADET_BLUE
+				surface_water_rect.color = Color.TEAL
 				surface_water_rect.position = lastpos - Vector2(2, 0)
-				surface_water_rect.size = Vector2(2 + new_segment.b.x - new_segment.a.x, 10)
+				surface_water_rect.size = Vector2(2 + new_segment.b.x - new_segment.a.x, 5)
 				add_child(surface_water_rect)
 			
 			var new_collision_shape = CollisionShape2D.new()

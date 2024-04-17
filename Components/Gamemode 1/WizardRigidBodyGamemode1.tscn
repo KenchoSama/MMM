@@ -6,6 +6,7 @@
 friction = 0.05
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aij12"]
+custom_solver_bias = 1.0
 
 [node name="Player" type="RigidBody2D"]
 position = Vector2(290, 113)
