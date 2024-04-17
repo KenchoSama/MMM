@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://dltk8r13eljo4" path="res://Reusable Scenes/joystix monospace.otf" id="3_rjifg"]
 [ext_resource type="Script" path="res://Components/Main Menu/MMM.gd" id="4_412fd"]
 [ext_resource type="Texture2D" uid="uid://bkxdjkmrmtg6j" path="res://assets/unmuted.png" id="6_d0rm1"]
-[ext_resource type="AudioStream" uid="uid://ogd8yydafdum" path="res://assets/HEADPHONE WARNING.wav" id="7_rq6rx"]
+[ext_resource type="AudioStream" uid="uid://wouc4ngqbirc" path="res://assets/wizzy loop.wav" id="7_6mgid"]
 
 [sub_resource type="Curve2D" id="Curve2D_4ejxc"]
 _data = {
@@ -137,7 +137,7 @@ icon = ExtResource("6_d0rm1")
 icon_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_rq6rx")
+stream = ExtResource("7_6mgid")
 volume_db = -32.0
 autoplay = true
 

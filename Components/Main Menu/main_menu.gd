@@ -56,8 +56,8 @@ func _on_mute_button_button_up():
 
 
 func _on_audio_stream_player_2d_finished():
-	$loopTimer.start(2)
+	streamPlayer.play()
 
 
 func _on_loop_timer_timeout():
-	streamPlayer.play() # Replace with function body.
+	pass #add timer to audio stream player if desire unloopable song
