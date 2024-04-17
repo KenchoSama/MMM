@@ -53,4 +53,12 @@ func _on_restart_button_up():
 
 func _on_timer_timeout():
 	var new_triangle = triangle.instantiate()
+	var direction = ($Player.global_position - position).normalized() 
+	#var player_direction = (get_global_mouse_position() - position).normalized()
+	var triangle_positions = $AllTriangles.get_children()
+	var positionSpawn = triangle_positions[randi() % triangle_positions.size()]
+	new_triangle.position = positionSpawn.global_position
+	new_triangle.rotation_degrees = rad_to_deg(direction.angle())
+	new_triangle.direction = direction
 	add_child(new_triangle)
+	

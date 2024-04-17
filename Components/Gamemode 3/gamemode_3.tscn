@@ -141,11 +141,24 @@ shape = SubResource("CircleShape2D_hkmgt")
 [node name="AllTriangles" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="AllTriangles"]
-position = Vector2(53, 338)
+position = Vector2(37, 562)
+
+[node name="Marker2D2" type="Marker2D" parent="AllTriangles"]
+position = Vector2(1071, 587)
+
+[node name="Marker2D3" type="Marker2D" parent="AllTriangles"]
+position = Vector2(948, 90)
+
+[node name="Marker2D4" type="Marker2D" parent="AllTriangles"]
+position = Vector2(563, 586)
+
+[node name="Marker2D5" type="Marker2D" parent="AllTriangles"]
+position = Vector2(294, 85)
 
 [node name="triangles" parent="." instance=ExtResource("13_5ugqq")]
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 
 [connection signal="gameLost" from="." to="UI Layer/control/Control" method="_on_gamemode_3_game_lost"]
 [connection signal="button_up" from="UI Layer/control/Control/Restart" to="." method="_on_restart_button_up"]
