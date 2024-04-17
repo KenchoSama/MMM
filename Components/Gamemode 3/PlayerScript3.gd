@@ -31,12 +31,10 @@ func _process(delta):
 	var spell_type = get_mouse_input_action()
 	var spell_marker = $spellposition.get_children()
 	var player_direction = (get_global_mouse_position() - position).normalized()
-	print(player_direction)
 	
 	var player_sprite = $Sprites
 	# Check if the player direction's x component is negative
 	if player_direction.x < 0:
-	# Flip the player sprite over the Y-axis
 		player_sprite.scale.y = -1
 	else:
 	# Reset the player sprite scale if the direction is not negative
@@ -62,11 +60,16 @@ func _process(delta):
 		spellcooldown = false
 		$SpellTimer1.start()
 		waterspellActivated.emit(spell_marker[0].global_position, player_direction)
-	
-	
+
+
+
+
 func _on_spell_timer_1_timeout():
 	spellcooldown = true
 		
+
+
+
 
 func get_mouse_input_action():
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
