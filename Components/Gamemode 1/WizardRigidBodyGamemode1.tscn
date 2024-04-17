@@ -9,6 +9,7 @@ friction = 0.05
 
 [node name="Player" type="RigidBody2D"]
 position = Vector2(290, 113)
+collision_priority = 10.0
 physics_material_override = SubResource("PhysicsMaterial_42la4")
 script = ExtResource("1_o0p1a")
 
