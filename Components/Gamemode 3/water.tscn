@@ -64,3 +64,7 @@ libraries = {
 "": SubResource("AnimationLibrary_60p82")
 }
 autoplay = "waterAnimation"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

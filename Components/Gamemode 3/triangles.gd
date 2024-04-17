@@ -11,7 +11,7 @@ var direction = Vector2.RIGHT  # Initial movement direction
 
 func _ready():
 	set_process(true)  # Enable _process function
-	$Timer.start()
+
 
 func _process(delta):
 	# Move the triangle
@@ -19,6 +19,7 @@ func _process(delta):
 	var movement = direction * move_speed * delta
 	translate(movement)
 	var triangle_marker = $"respawn points".get_children()
+	$Timer.start()
 
 
 func _on_area_2d_body_entered(body):

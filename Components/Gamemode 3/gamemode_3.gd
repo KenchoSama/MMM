@@ -5,7 +5,7 @@ var lightingSpell: PackedScene = preload("res://Components/Gamemode 3/lighting.t
 var waterSpell: PackedScene = preload("res://Components/Gamemode 3/water.tscn")
 var triangle: PackedScene = preload("res://Components/Gamemode 3/triangles.tscn")
 
-
+signal gameLost
 
 func _on_player_firespell_activated(pos, direction):
 	#print("spell activated from the gamemode script")
@@ -41,3 +41,12 @@ func _on_triangles_respawn(pos):
 	var triangles = triangle.instantiate()
 	$AllSpells.add_child(triangles)
 	
+
+
+
+func _on_player_lost():
+	emit_signal("gameLost")
+
+
+func _on_restart_button_up():
+	print("game restarts")

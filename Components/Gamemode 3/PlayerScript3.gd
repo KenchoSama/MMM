@@ -69,7 +69,6 @@ func get_mouse_input_action():
 
 
 func _on_area_2d_body_entered(body):
-	
 	if "triangle" in body:
 		queue_free()
 		print("body was crushed")

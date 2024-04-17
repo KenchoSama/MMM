@@ -24,6 +24,7 @@ polygon = PackedVector2Array(54.3837, 29.7599, -154.087, 239.432, 364.069, 243.4
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
+one_shot = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(285.033, 60.7801, -27.146, -139.665, -232.249, 59.4869)
