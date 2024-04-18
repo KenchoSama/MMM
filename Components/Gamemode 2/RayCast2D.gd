@@ -21,8 +21,8 @@ func _physics_process(delta):
 	target = $"..".laserTarget
 	target_position = target
 	$Line2D.points[1] = target_position
-	force_raycast_update()
 	_appear()
+	force_raycast_update()
 	
 	if is_colliding():
 		target_position = get_collision_point()
