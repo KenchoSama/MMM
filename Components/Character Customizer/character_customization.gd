@@ -9,16 +9,24 @@ extends Node2D
 # shirt : "path"
 
 # Filepaths, changed by input to UI.
-var skin_texture = "res://Reusable Scenes/Player/Sprites/Skin/DefaultSkin.png"
-var hat_texture= "res://Reusable Scenes/Player/Sprites/Hats/DefaultHat.png"
-var facialhair_texture = "res://Reusable Scenes/Player/Sprites/Facial Hair/DefaultBeard.png"
-var shirt_texture = "res://Reusable Scenes/Player/Sprites/Shirts/DefaultRobe.png"
+var skin_texture
+var hat_texture
+var facialhair_texture
+var shirt_texture
 
 
 func _ready():
-	# TODO load current choices from user disk.
-	# dict = ?
-	pass
+	# Load current choices from user disk.
+	var cfg = ConfigFile.new()
+	var err = cfg.load("user://PlayerData.cfg")
+	if err != OK:
+		printerr(err) # Shouldn't happen.
+		return 
+	
+	skin_texture = load(cfg.get_value("CustomSprites", "skin"))
+	hat_texture = load(cfg.get_value("CustomSprites", "hat"))
+	facialhair_texture = load(cfg.get_value("CustomSprites", "facialhair"))
+	shirt_texture = load(cfg.get_value("CustomSprites", "shirt"))
 	
 # Called on change scene. 
 func save_choices():
@@ -31,3 +39,14 @@ func save_choices():
 	}
 	pass
 
+
+
+
+func _on_skin_item_selected(index):
+	var newpath = "res://Reusable Scenes/Player/Sprites/Skin/Skin" + str(index + 1) + ".png"
+	var cfg = ConfigFile.new()
+	cfg.load("user://PlayerData.cfg")
+	cfg.set_value("CustomSprites", "skin", newpath)
+	cfg.save("user://PlayerData.cfg")
+		
+	$WizardSprites.load_sprites()

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/WizardSprites.gd" id="1_ro3t0"]
 [ext_resource type="Texture2D" uid="uid://d16dmjsa12jrl" path="res://Reusable Scenes/Player/Sprites/Hats/DefaultHat.png" id="3_2vs2a"]
-[ext_resource type="Texture2D" uid="uid://ckswognketwcg" path="res://Reusable Scenes/Player/Sprites/Skin/DefaultSkin.png" id="4_71dgh"]
+[ext_resource type="Texture2D" uid="uid://biq1kq8g211ex" path="res://Reusable Scenes/Player/Sprites/Skin/Skin2.png" id="4_jbnmq"]
 [ext_resource type="Texture2D" uid="uid://dyj60e6d7blyx" path="res://Reusable Scenes/Player/Sprites/Shirts/DefaultRobe.png" id="4_pc28a"]
 [ext_resource type="Texture2D" uid="uid://cmdxtytd1w5j3" path="res://Reusable Scenes/Player/Sprites/Facial Hair/DefaultBeard.png" id="6_bso1b"]
 [ext_resource type="Texture2D" uid="uid://benckrpvwuit1" path="res://Reusable Scenes/Player/Sprites/Legs/Legs.png" id="7_iwglh"]
@@ -41,7 +41,7 @@ texture = ExtResource("3_2vs2a")
 texture = ExtResource("4_pc28a")
 
 [node name="Skin" type="Sprite2D" parent="."]
-texture = ExtResource("4_71dgh")
+texture = ExtResource("4_jbnmq")
 
 [node name="Facial Hair" type="Sprite2D" parent="."]
 texture = ExtResource("6_bso1b")
