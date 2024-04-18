@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bohc6wymllyla"]
+[gd_scene load_steps=30 format=3 uid="uid://bohc6wymllyla"]
 
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_aqh5w"]
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_kfx5p"]
@@ -61,6 +61,12 @@ size = Vector2(252, 648)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ke13v"]
 size = Vector2(252, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02a1b"]
+size = Vector2(1152, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awalx"]
+size = Vector2(1152, 27)
 
 [node name="Gamemode 2" type="Node2D"]
 script = ExtResource("1_vyval")
@@ -182,6 +188,14 @@ shape = SubResource("RectangleShape2D_xhq7s")
 position = Vector2(126, 324)
 shape = SubResource("RectangleShape2D_ke13v")
 
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, -10)
+shape = SubResource("RectangleShape2D_02a1b")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, 661.5)
+shape = SubResource("RectangleShape2D_awalx")
+
 [node name="Border" type="Sprite2D" parent="."]
 position = Vector2(126, 324)
 scale = Vector2(0.992126, 1)
@@ -220,10 +234,10 @@ stream = ExtResource("20_0l4y0")
 volume_db = -32.0
 
 [connection signal="beginGame" from="." to="." method="_on_begin_game"]
-[connection signal="beginGame" from="." to="Player" method="_on_gamemode_2_begin_game"]
-[connection signal="beginGame" from="." to="Laser Cannon" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="UI Layer/Debug/DeathScreen" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_begin_game"]
+[connection signal="beginGame" from="." to="Player" method="_on_gamemode_2_begin_game"]
+[connection signal="beginGame" from="." to="Laser Cannon" method="_on_gamemode_2_begin_game"]
 [connection signal="startScreen" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_start_screen"]
 [connection signal="button_up" from="UI Layer/Debug/DeathScreen/RestartButton" to="." method="_on_restart_button_button_up"]
 [connection signal="button_up" from="UI Layer/Debug/StartScreen/StartButton" to="." method="_on_start_button_button_up"]
@@ -231,7 +245,7 @@ volume_db = -32.0
 [connection signal="released" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_released"]
 [connection signal="timeout" from="Laser Cannon/Timer" to="Laser Cannon" method="_on_timer_timeout"]
 [connection signal="timeout" from="Laser Cannon/Timer2" to="Laser Cannon" method="_on_timer_2_timeout"]
+[connection signal="loss" from="Laser Cannon/RayCast2D" to="UI Layer/Debug/DeathScreen" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="Player" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="Laser Cannon" method="_on_ray_cast_2d_loss"]
-[connection signal="loss" from="Laser Cannon/RayCast2D" to="UI Layer/Debug/DeathScreen" method="_on_ray_cast_2d_loss"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="Player" method="_on_audio_stream_player_2d_finished"]

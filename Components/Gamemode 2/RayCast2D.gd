@@ -10,7 +10,6 @@ func _ready():
 	tween = create_tween()
 
 func _function_shoot():
-	_appear()
 	set_physics_process(true)
 	
 func _fucntion_reload():
@@ -23,6 +22,7 @@ func _physics_process(delta):
 	target_position = target
 	$Line2D.points[1] = target_position
 	force_raycast_update()
+	_appear()
 	
 	if is_colliding():
 		target_position = get_collision_point()
