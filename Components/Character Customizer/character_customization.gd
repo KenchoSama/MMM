@@ -50,3 +50,15 @@ func _on_skin_item_selected(index):
 	cfg.save("user://PlayerData.cfg")
 		
 	$WizardSprites.load_sprites()
+
+
+
+
+func _on_hats_item_selected(index):
+	var newpath = "res://Reusable Scenes/Player/Sprites/Hats/Hat" + str(index + 1) + ".png"
+	var cfg = ConfigFile.new()
+	cfg.load("user://PlayerData.cfg")
+	cfg.set_value("CustomSprites", "hat", newpath)
+	cfg.save("user://PlayerData.cfg")
+		
+	$WizardSprites.load_sprites()

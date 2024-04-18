@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d3rm4g4ikjnfc"]
+[gd_scene load_steps=30 format=3 uid="uid://d3rm4g4ikjnfc"]
 
 [ext_resource type="Script" path="res://Components/Character Customizer/character_customization.gd" id="1_s4pfs"]
 [ext_resource type="Script" path="res://Reusable Scenes/Return Button/return_and_save_changes.gd" id="2_66uck"]
@@ -14,7 +14,19 @@
 [ext_resource type="Texture2D" uid="uid://1v4t4txdx72u" path="res://Reusable Scenes/Player/Sprites/Skin/Skin9.png" id="12_q8vc0"]
 [ext_resource type="Texture2D" uid="uid://xi7hyaspnfiy" path="res://Reusable Scenes/Player/Sprites/Skin/Skin10.png" id="13_yo2ek"]
 [ext_resource type="Texture2D" uid="uid://dqlaunukh8r78" path="res://Reusable Scenes/Player/Sprites/Skin/Skin11.png" id="14_wo3ol"]
+[ext_resource type="Texture2D" uid="uid://bl0kwdggjtu6q" path="res://Reusable Scenes/Player/Sprites/Hats/Hat1.png" id="15_51acv"]
 [ext_resource type="Texture2D" uid="uid://bom13xq1holtv" path="res://Reusable Scenes/Player/Sprites/Skin/Skin12.png" id="15_tasci"]
+[ext_resource type="Texture2D" uid="uid://bsxflpfd7fnnn" path="res://Reusable Scenes/Player/Sprites/Hats/Hat2.png" id="16_td6ef"]
+[ext_resource type="Texture2D" uid="uid://djt7s0443bj8f" path="res://Reusable Scenes/Player/Sprites/Hats/Hat3.png" id="17_y1vqa"]
+[ext_resource type="Texture2D" uid="uid://b4hwn73wntd1u" path="res://Reusable Scenes/Player/Sprites/Hats/Hat4.png" id="18_5jaua"]
+[ext_resource type="Texture2D" uid="uid://b710ml2kxx1pw" path="res://Reusable Scenes/Player/Sprites/Hats/Hat5.png" id="19_hlj66"]
+[ext_resource type="Texture2D" uid="uid://codagum12ocm" path="res://Reusable Scenes/Player/Sprites/Hats/Hat6.png" id="20_ndi58"]
+[ext_resource type="Texture2D" uid="uid://65pq6sxknaic" path="res://Reusable Scenes/Player/Sprites/Hats/Hat7.png" id="21_88vtk"]
+[ext_resource type="Texture2D" uid="uid://c7gxkeygtnwh4" path="res://Reusable Scenes/Player/Sprites/Hats/Hat8.png" id="22_epbas"]
+[ext_resource type="Texture2D" uid="uid://dmfmvm7ikqbsx" path="res://Reusable Scenes/Player/Sprites/Hats/Hat9.png" id="23_wa556"]
+[ext_resource type="Texture2D" uid="uid://b075lk1h5kj0p" path="res://Reusable Scenes/Player/Sprites/Hats/Hat10.png" id="24_gbkyv"]
+[ext_resource type="Texture2D" uid="uid://bnfdo3nhmdo14" path="res://Reusable Scenes/Player/Sprites/Hats/Hat11.png" id="25_u62ym"]
+[ext_resource type="Texture2D" uid="uid://d4nve7pictocx" path="res://Reusable Scenes/Player/Sprites/Hats/Hat12.png" id="26_wk1w7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gs0ff"]
 bg_color = Color(0, 0.545098, 0.796078, 1)
@@ -126,10 +138,34 @@ item_11/icon = ExtResource("15_tasci")
 visible = false
 layout_mode = 2
 auto_height = true
-item_count = 2
-fixed_icon_size = Vector2i(64, 64)
+item_count = 12
+max_columns = 4
+fixed_column_width = 75
+fixed_icon_size = Vector2i(96, 96)
 item_0/text = ""
+item_0/icon = ExtResource("15_51acv")
 item_1/text = ""
+item_1/icon = ExtResource("16_td6ef")
+item_2/text = ""
+item_2/icon = ExtResource("17_y1vqa")
+item_3/text = ""
+item_3/icon = ExtResource("18_5jaua")
+item_4/text = ""
+item_4/icon = ExtResource("19_hlj66")
+item_5/text = ""
+item_5/icon = ExtResource("20_ndi58")
+item_6/text = ""
+item_6/icon = ExtResource("21_88vtk")
+item_7/text = ""
+item_7/icon = ExtResource("22_epbas")
+item_8/text = ""
+item_8/icon = ExtResource("23_wa556")
+item_9/text = ""
+item_9/icon = ExtResource("24_gbkyv")
+item_10/text = ""
+item_10/icon = ExtResource("25_u62ym")
+item_11/text = ""
+item_11/icon = ExtResource("26_wk1w7")
 
 [node name="Shirts" type="ItemList" parent="Control/Panel/Container/TabContainer"]
 visible = false
@@ -156,3 +192,4 @@ scale = Vector2(5.24, 5.24)
 [connection signal="save_changes" from="Control/Return & Save" to="." method="save_choices"]
 [connection signal="toggled" from="Control/Return & Save" to="Control/Return & Save" method="_on_toggled" flags=18]
 [connection signal="item_selected" from="Control/Panel/Container/TabContainer/Skin" to="." method="_on_skin_item_selected"]
+[connection signal="item_selected" from="Control/Panel/Container/TabContainer/Hats" to="." method="_on_hats_item_selected"]

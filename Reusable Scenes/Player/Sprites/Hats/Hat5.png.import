@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmdxtytd1w5j3"
-path="res://.godot/imported/DefaultBeard.png-a382cf40e0a849714fb119ad38597092.ctex"
+uid="uid://b710ml2kxx1pw"
+path="res://.godot/imported/Hat5.png-ce63fee2a13165f2b6d7e2eb747f5931.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Reusable Scenes/Player/Sprites/Facial Hair/DefaultBeard.png"
-dest_files=["res://.godot/imported/DefaultBeard.png-a382cf40e0a849714fb119ad38597092.ctex"]
+source_file="res://Reusable Scenes/Player/Sprites/Hats/Hat5.png"
+dest_files=["res://.godot/imported/Hat5.png-ce63fee2a13165f2b6d7e2eb747f5931.ctex"]
 
 [params]
 

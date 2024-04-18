@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dyj60e6d7blyx"
-path="res://.godot/imported/DefaultRobe.png-0f81af9ccc0b931f7def4b30d9f36caf.ctex"
+path="res://.godot/imported/Shirt1.png-15fd61a0f5356a92e98b66bd04e28555.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Reusable Scenes/Player/Sprites/Shirts/DefaultRobe.png"
-dest_files=["res://.godot/imported/DefaultRobe.png-0f81af9ccc0b931f7def4b30d9f36caf.ctex"]
+source_file="res://Reusable Scenes/Player/Sprites/Shirts/Shirt1.png"
+dest_files=["res://.godot/imported/Shirt1.png-15fd61a0f5356a92e98b66bd04e28555.ctex"]
 
 [params]
 
