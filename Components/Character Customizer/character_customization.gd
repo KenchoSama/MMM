@@ -28,17 +28,6 @@ func _ready():
 	facialhair_texture = load(cfg.get_value("CustomSprites", "facialhair"))
 	shirt_texture = load(cfg.get_value("CustomSprites", "shirt"))
 	
-# Called on change scene. 
-func save_choices():
-	#TODO write chosen filepaths to user disk. 
-	var customization_data = {
-		skin = skin_texture,
-		hat = hat_texture,
-		facialhair = facialhair_texture,
-		shirt = shirt_texture
-	}
-	pass
-
 
 
 
