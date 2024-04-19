@@ -19,9 +19,9 @@ func _fucntion_reload():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	target = $"..".laserTarget
-	target_position = target
-	$Line2D.points[1] = target_position
+	$Line2D.points[1] = target
 	_appear()
+	target_position = target
 	force_raycast_update()
 	
 	if is_colliding():
