@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyj60e6d7blyx"
-path="res://.godot/imported/DefaultRobe.png-0f81af9ccc0b931f7def4b30d9f36caf.ctex"
+uid="uid://cbhbf8knh0own"
+path="res://.godot/imported/Skin3.png-9f5ae041810e2d7e8694d8c0f4cd56e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Reusable Scenes/Player/Sprites/Shirts/DefaultRobe.png"
-dest_files=["res://.godot/imported/DefaultRobe.png-0f81af9ccc0b931f7def4b30d9f36caf.ctex"]
+source_file="res://Reusable Scenes/Player/Sprites/Skin/Skin3.png"
+dest_files=["res://.godot/imported/Skin3.png-9f5ae041810e2d7e8694d8c0f4cd56e3.ctex"]
 
 [params]
 

@@ -8,9 +8,11 @@ extends Node2D
 class Period extends StaticBody2D:
 	# All segmentshapes should be children of the period node
 	# This determines how many segments to generate per period
+	
 	var accuracy: int = 64
 	var period_length: float
 	func _init(scalefactor, initial_pos, amplitude, frequency): # Creating a new period takes in the position to build it at
+		
 		global_position = initial_pos
 		
 		var lastpos = global_position
@@ -40,6 +42,8 @@ class Period extends StaticBody2D:
 			
 			var new_collision_shape = CollisionShape2D.new()
 			new_collision_shape.shape = new_segment
+			new_collision_shape.one_way_collision = true
+			new_collision_shape.one_way_collision_margin = 10
 			add_child(new_collision_shape)
 		
 		queue_redraw()

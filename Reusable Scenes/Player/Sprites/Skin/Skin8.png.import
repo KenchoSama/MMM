@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d16dmjsa12jrl"
-path="res://.godot/imported/DefaultHat.png-c6a5cc8e16f3faf94b9d98ef3ee6af12.ctex"
+uid="uid://b70kofnimcn7k"
+path="res://.godot/imported/Skin8.png-2643649a94083a6ee8898cd8c0e1eab7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Reusable Scenes/Player/Sprites/Hats/DefaultHat.png"
-dest_files=["res://.godot/imported/DefaultHat.png-c6a5cc8e16f3faf94b9d98ef3ee6af12.ctex"]
+source_file="res://Reusable Scenes/Player/Sprites/Skin/Skin8.png"
+dest_files=["res://.godot/imported/Skin8.png-2643649a94083a6ee8898cd8c0e1eab7.ctex"]
 
 [params]
 

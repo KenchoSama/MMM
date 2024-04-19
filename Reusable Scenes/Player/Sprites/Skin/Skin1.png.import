@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckswognketwcg"
-path="res://.godot/imported/DefaultSkin.png-aa329b9fb8a6bb1a3b93548bb46fd109.ctex"
+uid="uid://313bs33j03xm"
+path="res://.godot/imported/Skin1.png-cffecc252e7b789970f929795d0f40f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Reusable Scenes/Player/Sprites/Skin/DefaultSkin.png"
-dest_files=["res://.godot/imported/DefaultSkin.png-aa329b9fb8a6bb1a3b93548bb46fd109.ctex"]
+source_file="res://Reusable Scenes/Player/Sprites/Skin/Skin1.png"
+dest_files=["res://.godot/imported/Skin1.png-cffecc252e7b789970f929795d0f40f8.ctex"]
 
 [params]
 

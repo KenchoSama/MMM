@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dwoxpar5s6yce"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dwoxpar5s6yce"]
 
 [ext_resource type="FontFile" uid="uid://dltk8r13eljo4" path="res://Reusable Scenes/joystix monospace.otf" id="1_2rfdc"]
 
@@ -31,6 +31,19 @@ border_color = Color(1.37173e-06, 0.274379, 0.43831, 1)
 shadow_size = 4
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_th660"]
+bg_color = Color(0.219608, 0.627451, 0.945098, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0461363, 0.370937, 0.596065, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 3
+
 [resource]
 default_font = ExtResource("1_2rfdc")
 Button/styles/focus = SubResource("StyleBoxEmpty_bqkrg")
@@ -40,3 +53,4 @@ Button/styles/pressed = SubResource("StyleBoxFlat_qjj2x")
 Label/font_sizes/font_size = 15
 Label/styles/normal = SubResource("StyleBoxFlat_1la0o")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_1la0o")
+Panel/styles/panel = SubResource("StyleBoxFlat_th660")

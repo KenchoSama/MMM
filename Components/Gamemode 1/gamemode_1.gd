@@ -12,6 +12,7 @@ func _ready():
 	WizardSprites = load("res://Reusable Scenes/Player/WizardSprites.tscn").instantiate()
 	add_child(WizardSprites)
 	WizardSprites.position = Vector2(250, -450)
+	WizardSprites.scale = Vector2(1.5,1.5)
 	emit_signal("preGame") 
 	
 	
@@ -30,8 +31,9 @@ var follow_rigidbody: bool = false
 func _process(_delta):
 	if follow_rigidbody:
 		if player != null:
-			WizardSprites.position = player.position + Vector2(0,-10) # Pixel offset
 			WizardSprites.rotation = player.linear_velocity.angle()
+			WizardSprites.position = player.position + player.linear_velocity.normalized().orthogonal() * 10 # Pixel offset
+			
 
 func begin_game():
 	
