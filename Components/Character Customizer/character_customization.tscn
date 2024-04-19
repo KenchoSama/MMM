@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://d3rm4g4ikjnfc"]
+[gd_scene load_steps=50 format=3 uid="uid://d3rm4g4ikjnfc"]
 
 [ext_resource type="Script" path="res://Components/Character Customizer/character_customization.gd" id="1_s4pfs"]
 [ext_resource type="Script" path="res://Reusable Scenes/Return Button/return_and_save_changes.gd" id="2_66uck"]
@@ -27,6 +27,26 @@
 [ext_resource type="Texture2D" uid="uid://b075lk1h5kj0p" path="res://Reusable Scenes/Player/Sprites/Hats/Hat10.png" id="24_gbkyv"]
 [ext_resource type="Texture2D" uid="uid://bnfdo3nhmdo14" path="res://Reusable Scenes/Player/Sprites/Hats/Hat11.png" id="25_u62ym"]
 [ext_resource type="Texture2D" uid="uid://d4nve7pictocx" path="res://Reusable Scenes/Player/Sprites/Hats/Hat12.png" id="26_wk1w7"]
+[ext_resource type="Texture2D" uid="uid://cmdxtytd1w5j3" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard1.png" id="27_7pxft"]
+[ext_resource type="Texture2D" uid="uid://d0as07e2sdeq" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard2.png" id="28_3ltu1"]
+[ext_resource type="Texture2D" uid="uid://caj40y2bjjgjl" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard3.png" id="29_8rndv"]
+[ext_resource type="Texture2D" uid="uid://bd6kpm1tb82s8" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard4.png" id="30_fnvov"]
+[ext_resource type="Texture2D" uid="uid://bkxr1x1xg12vi" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard5.png" id="31_33yrq"]
+[ext_resource type="Texture2D" uid="uid://b2ofjcbm4at5p" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard6.png" id="32_tt6p1"]
+[ext_resource type="Texture2D" uid="uid://bdb048uk6q0mt" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard7.png" id="33_coul3"]
+[ext_resource type="Texture2D" uid="uid://pb5hcfcdjlqb" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard8.png" id="34_i82qn"]
+[ext_resource type="Texture2D" uid="uid://d3c147dvfq3g8" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard9.png" id="35_xock3"]
+[ext_resource type="Texture2D" uid="uid://b78ja4agtcqfw" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard10.png" id="36_nhiqr"]
+[ext_resource type="Texture2D" uid="uid://shkvlo3yxnjn" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard11.png" id="37_m0ua0"]
+[ext_resource type="Texture2D" uid="uid://bmg5g0ibr0f1g" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard12.png" id="38_oec3o"]
+[ext_resource type="Texture2D" uid="uid://bojseywjti4ve" path="res://Reusable Scenes/Player/Sprites/Facial Hair Palette/White.png" id="39_t6ie2"]
+[ext_resource type="Texture2D" uid="uid://c6xk1og1jnhln" path="res://Reusable Scenes/Player/Sprites/Facial Hair Palette/Grey.png" id="40_2iuxn"]
+[ext_resource type="Texture2D" uid="uid://drp3pjkav6577" path="res://Reusable Scenes/Player/Sprites/Facial Hair Palette/Black.png" id="41_3kjaw"]
+[ext_resource type="Texture2D" uid="uid://cberqlqbfaar3" path="res://Reusable Scenes/Player/Sprites/Facial Hair Palette/Blonde.png" id="42_k6yrl"]
+[ext_resource type="Texture2D" uid="uid://d3t7wdlqd7vjh" path="res://Reusable Scenes/Player/Sprites/Facial Hair Palette/Ginger.png" id="43_tvflb"]
+[ext_resource type="Texture2D" uid="uid://gptkvmp477f2" path="res://Reusable Scenes/Player/Sprites/Facial Hair Palette/Red.png" id="44_d7wum"]
+[ext_resource type="Texture2D" uid="uid://bqj57w5wwj6ag" path="res://Reusable Scenes/Player/Sprites/Facial Hair Palette/Blue.png" id="45_ajule"]
+[ext_resource type="Texture2D" uid="uid://baamytck6wdpw" path="res://Reusable Scenes/Player/Sprites/Facial Hair Palette/Green.png" id="46_8dcpu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gs0ff"]
 bg_color = Color(0, 0.545098, 0.796078, 1)
@@ -172,7 +192,9 @@ visible = false
 layout_mode = 2
 auto_height = true
 item_count = 2
-max_columns = 3
+max_columns = 4
+fixed_column_width = 75
+fixed_icon_size = Vector2i(96, 96)
 item_0/text = "Hi"
 item_1/text = "Hello"
 
@@ -180,15 +202,80 @@ item_1/text = "Hello"
 visible = false
 layout_mode = 2
 auto_height = true
-item_count = 2
-max_columns = 3
-item_0/text = "Hi"
-item_1/text = "Hello"
+item_count = 12
+max_columns = 4
+fixed_column_width = 75
+fixed_icon_size = Vector2i(96, 96)
+item_0/text = ""
+item_0/icon = ExtResource("27_7pxft")
+item_1/text = ""
+item_1/icon = ExtResource("28_3ltu1")
+item_2/text = ""
+item_2/icon = ExtResource("29_8rndv")
+item_3/text = ""
+item_3/icon = ExtResource("30_fnvov")
+item_4/text = ""
+item_4/icon = ExtResource("31_33yrq")
+item_5/text = ""
+item_5/icon = ExtResource("32_tt6p1")
+item_6/text = ""
+item_6/icon = ExtResource("33_coul3")
+item_7/text = ""
+item_7/icon = ExtResource("34_i82qn")
+item_8/text = ""
+item_8/icon = ExtResource("35_xock3")
+item_9/text = ""
+item_9/icon = ExtResource("36_nhiqr")
+item_10/text = ""
+item_10/icon = ExtResource("37_m0ua0")
+item_11/text = ""
+item_11/icon = ExtResource("38_oec3o")
+
+[node name="Beard Colors" type="ItemList" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 40.5
+offset_top = 289.5
+offset_right = 344.5
+offset_bottom = 408.5
+allow_search = false
+auto_height = true
+item_count = 8
+max_columns = 4
+fixed_column_width = 64
+icon_mode = 0
+fixed_icon_size = Vector2i(48, 64)
+item_0/text = ""
+item_0/icon = ExtResource("39_t6ie2")
+item_1/text = ""
+item_1/icon = ExtResource("40_2iuxn")
+item_2/text = ""
+item_2/icon = ExtResource("41_3kjaw")
+item_3/text = ""
+item_3/icon = ExtResource("42_k6yrl")
+item_4/text = ""
+item_4/icon = ExtResource("43_tvflb")
+item_5/text = ""
+item_5/icon = ExtResource("44_d7wum")
+item_6/text = ""
+item_6/icon = ExtResource("45_ajule")
+item_7/text = ""
+item_7/icon = ExtResource("46_8dcpu")
+
+[node name="Label" type="Label" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 52.5
+offset_top = 267.5
+offset_right = 192.5
+offset_bottom = 291.5
+text = "Beard Color
+"
 
 [node name="WizardSprites" parent="." instance=ExtResource("4_ylvjm")]
-position = Vector2(303, 311)
+position = Vector2(344, 228)
 scale = Vector2(5.24, 5.24)
 
 [connection signal="toggled" from="Control/Return & Save" to="Control/Return & Save" method="_on_toggled" flags=18]
 [connection signal="item_selected" from="Control/Panel/Container/TabContainer/Skin" to="." method="_on_skin_item_selected"]
 [connection signal="item_selected" from="Control/Panel/Container/TabContainer/Hats" to="." method="_on_hats_item_selected"]
+[connection signal="item_selected" from="Control/Panel/Container/TabContainer/Beards" to="." method="_on_beards_item_selected"]
+[connection signal="item_selected" from="Control/Panel/Beard Colors" to="." method="_on_beard_colors_item_selected"]

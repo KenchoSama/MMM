@@ -51,3 +51,35 @@ func _on_hats_item_selected(index):
 	cfg.save("user://PlayerData.cfg")
 		
 	$WizardSprites.load_sprites()
+
+
+
+
+func _on_beards_item_selected(index):
+	var newpath = "res://Reusable Scenes/Player/Sprites/Facial Hair/Beard" + str(index + 1) + ".png"
+	var cfg = ConfigFile.new()
+	cfg.load("user://PlayerData.cfg")
+	cfg.set_value("CustomSprites", "facialhair", newpath)
+	cfg.save("user://PlayerData.cfg")
+		
+	$WizardSprites.load_sprites()
+
+const colors = {
+	0 : Color.WHITE,
+	1 : Color.DIM_GRAY,
+	2 : Color("202020"),
+	3 : Color.BURLYWOOD,
+	4 : Color.ORANGE,
+	5 : Color.ORANGE_RED,
+	6 : Color.CORNFLOWER_BLUE,
+	7 : Color.GREEN
+}
+func _on_beard_colors_item_selected(index):
+	var cfg = ConfigFile.new()
+	cfg.load("user://PlayerData.cfg")
+	cfg.set_value("CustomSprites", "haircolor", colors[index])
+	cfg.save("user://PlayerData.cfg")
+	
+	$WizardSprites.load_sprites()
+	
+	

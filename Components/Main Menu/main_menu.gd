@@ -20,6 +20,7 @@ func _ready():
 		PlayerData.set_value("CustomSprites", "hat", "res://Reusable Scenes/Player/Sprites/Hats/Hat2.png")
 		PlayerData.set_value("CustomSprites", "facialhair", "res://Reusable Scenes/Player/Sprites/Facial Hair/Beard1.png")
 		PlayerData.set_value("CustomSprites", "shirt", "res://Reusable Scenes/Player/Sprites/Shirts/Shirt1.png")
+		PlayerData.set_value("CustomSprites", "haircolor", Color.WHITE)
 		PlayerData.set_value("Settings", "mute_music", false)
 		PlayerData.save("user://PlayerData.cfg")
 		# TODO set appropriate high scores, currency to default

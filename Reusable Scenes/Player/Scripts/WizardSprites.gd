@@ -7,6 +7,7 @@ var skin_texture: Texture2D
 var hat_texture: Texture2D
 var facialhair_texture: Texture2D
 var shirt_texture: Texture2D
+var haircolor: Color = Color.WHITE
 
 # Automatic call to load sprites on ready.
 func _ready():
@@ -24,6 +25,9 @@ func load_sprites():
 	hat_texture = load(cfg.get_value("CustomSprites", "hat"))
 	facialhair_texture = load(cfg.get_value("CustomSprites", "facialhair"))
 	shirt_texture = load(cfg.get_value("CustomSprites", "shirt"))
+	haircolor = cfg.get_value("CustomSprites", "haircolor")
+
+	
 	update_sprites()
 		
 # Just a call to update the sprites. Should be called by the customizer or the main menu.
@@ -32,3 +36,6 @@ func update_sprites():
 	$Hat.texture = hat_texture
 	$"Facial Hair".texture = facialhair_texture
 	$Shirt.texture = shirt_texture
+	$"Facial Hair".modulate = haircolor
+	
+	
