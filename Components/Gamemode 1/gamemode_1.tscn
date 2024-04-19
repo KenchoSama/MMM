@@ -104,13 +104,6 @@ motion_mirroring = Vector2(1152, 0)
 position = Vector2(583, 395)
 texture = SubResource("CompressedTexture2D_cdkbh")
 
-[node name="Background" type="CanvasLayer" parent="."]
-layer = -1
-visible = false
-
-[node name="HomePoint" type="Node2D" parent="."]
-position = Vector2(58, -338)
-
 [node name="Wave" type="Node2D" parent="."]
 position = Vector2(1023, 526)
 script = ExtResource("12_2hd1j")

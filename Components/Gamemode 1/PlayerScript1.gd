@@ -8,11 +8,14 @@ signal shift_waves
 func _ready():
 	gravity_scale = 0.4
 	$AudioStreamPlayer2D.play() # Default
-	
+	$WaterParticles.emitting = false
+
 func _physics_process(_delta):
 	if position.y > 700:
 		emit_signal("lost")
 		set_physics_process(false)
+		freeze = true
+		$WaterParticles.emitting = false
 		return
 	
 	if calculated_period_length != 0: # Has been set by wave node.
@@ -26,6 +29,8 @@ func _physics_process(_delta):
 		$AudioStreamPlayer2D.stop()
 		emit_signal("lost")
 		set_physics_process(false)
+		freeze = true
+		$WaterParticles.emitting = false
 		return
 		
 	if Input.is_key_label_pressed(KEY_S): # TODO work w/ touchscreen
@@ -49,3 +54,12 @@ func _integrate_forces(state):
 
 func _on_audio_stream_player_2d_finished():
 	$AudioStreamPlayer2D.play() # Replace with function body.
+
+
+
+func _on_body_entered(body):
+	if global_position.x > 800: #Past ramp
+		$WaterParticles.emitting = true
+	
+func _on_body_exited(body):
+	$WaterParticles.emitting = false
