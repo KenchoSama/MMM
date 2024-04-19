@@ -10,6 +10,11 @@ func _ready():
 	$AudioStreamPlayer2D.play() # Default
 	
 func _physics_process(_delta):
+	if position.y > 700:
+		emit_signal("lost")
+		set_physics_process(false)
+		return
+	
 	if calculated_period_length != 0: # Has been set by wave node.
 		if global_position.x / calculated_period_length > waves_traversed:
 			waves_traversed += 1
@@ -31,7 +36,7 @@ func _physics_process(_delta):
 	else:
 		gravity_scale = 0.4
 
-const MAXSPEED = 1500
+const MAXSPEED = 3000
 func _integrate_forces(state):
 	
 	var x_vel = clamp(linear_velocity.x, -MAXSPEED, MAXSPEED)

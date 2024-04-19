@@ -18,7 +18,6 @@ var fixing_offset = false
 func _process(delta):
 	#position = player.position
 	if player != null:
-		print(offset.y)
 		position.x = player.position.x
 		player_height = -1 * int(player.position.y - wave.position.y)
 		

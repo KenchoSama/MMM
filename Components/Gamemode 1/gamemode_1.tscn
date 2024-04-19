@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://8xushpv5otf2"]
+[gd_scene load_steps=24 format=3 uid="uid://8xushpv5otf2"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 1/gamemode_1.gd" id="1_1dpkc"]
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_b5gcd"]
@@ -12,11 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://bb1v4nppfnv4e" path="res://Components/Gamemode 1/Gamemode1 Sprites/Beach.png" id="4_n1itg"]
 [ext_resource type="Texture2D" uid="uid://btyvk0e7aalu3" path="res://Components/Gamemode 1/Gamemode1 Sprites/RampWood.png" id="5_1wmex"]
 [ext_resource type="Texture2D" uid="uid://8htax3pkoq4r" path="res://Reusable Scenes/PixelArtUI.png" id="5_17sk6"]
+[ext_resource type="Script" path="res://Components/Gamemode 1/Boundary.gd" id="5_nirlf"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/Camera.gd" id="11_yis6w"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/Wave.gd" id="12_2hd1j"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cdkbh"]
 load_path = "res://.godot/imported/BackgroundOcean.png-07b4aa23a64ccce46258944db132373c.ctex"
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5xj1l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_giahs"]
 atlas = ExtResource("3_q4s3v")
@@ -111,11 +114,19 @@ position = Vector2(58, -338)
 [node name="Wave" type="Node2D" parent="."]
 position = Vector2(1023, 526)
 script = ExtResource("12_2hd1j")
+scalefactor = 120
 
 [node name="Beach" type="Sprite2D" parent="."]
 position = Vector2(1475, 243)
 scale = Vector2(5.57921, 2.36883)
 texture = ExtResource("4_n1itg")
+
+[node name="ClipDetector" type="StaticBody2D" parent="."]
+
+[node name="Boundary" type="CollisionShape2D" parent="ClipDetector"]
+position = Vector2(0, 784)
+shape = SubResource("WorldBoundaryShape2D_5xj1l")
+script = ExtResource("5_nirlf")
 
 [node name="Ramp" type="StaticBody2D" parent="."]
 position = Vector2(836, -418)
