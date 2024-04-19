@@ -27,7 +27,7 @@ func _input(event):
 	elif event is InputEventScreenDrag:
 		target = event.get_position()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if position.distance_to(target) > 150 and speed < maxSpeed:
 		speed = speed + speed * acceleration
 	elif position.distance_to(target) < 50 and speed > minSpeed:
