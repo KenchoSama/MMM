@@ -67,9 +67,9 @@ func _on_timer_2_timeout():
 		position.y = 324 + xOffset
 	$RayCast2D._function_shoot()
 	if timePassed < 60:
-		timer.start(0.2)
+		timer.start(0.4)
 	else:
-		timer.start(0.1)
+		timer.start(0.2)
 
 
 func _on_ray_cast_2d_loss():

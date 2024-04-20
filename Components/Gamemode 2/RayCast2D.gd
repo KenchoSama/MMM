@@ -33,6 +33,7 @@ func _appear() -> void:
 	tween.kill()
 	tween = create_tween()
 	tween.tween_property($Line2D, "width", 10.0, 0.1)
+	
 func _disappear() -> void:
 	tween.kill()
 	tween = create_tween()
