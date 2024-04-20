@@ -65,4 +65,19 @@ func _on_player_lost():
 func _on_pre_game():
 	follow_rigidbody = true
 
+#TODO highscores
+
+
+@onready var jump_ref = $"UI Layer/Control/GameControls/Jump"
+func _on_jump_button_down():
+	if jump_ref.can_jump:
+		if player.linear_velocity.y > 0: # If going down, arrest fall speed
+			player.linear_velocity.y = 0
+			player.apply_central_impulse(Vector2(0,-500))
+		else:
+			player.apply_central_impulse(Vector2(0,-200))
+		
+		player._on_jump()
+		
+
 

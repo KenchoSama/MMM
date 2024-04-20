@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmvncpbne41ro"]
+[gd_scene load_steps=7 format=3 uid="uid://dmvncpbne41ro"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 1/PlayerScript1.gd" id="1_o0p1a"]
 [ext_resource type="AudioStream" uid="uid://c80ecy5xcu87a" path="res://assets/Numa Numa Original Music Video [ ezmp3.cc ].mp3" id="2_4j8h2"]
+[ext_resource type="Material" uid="uid://c55s3lpmrxuyk" path="res://Components/Gamemode 1/jump_particles.tres" id="3_obciw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_42la4"]
 friction = 0.05
@@ -44,6 +45,14 @@ position = Vector2(20, 21)
 amount = 18
 process_material = SubResource("ParticleProcessMaterial_e1v2c")
 lifetime = 0.4
+
+[node name="JumpParticles" type="GPUParticles2D" parent="."]
+position = Vector2(0, 28)
+emitting = false
+amount = 50
+process_material = ExtResource("3_obciw")
+one_shot = true
+explosiveness = 0.83
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

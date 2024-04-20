@@ -6,7 +6,7 @@ signal lost
 signal shift_waves
 
 func _ready():
-	gravity_scale = 0.4
+	gravity_scale = 0.6
 	$AudioStreamPlayer2D.play() # Default
 	$WaterParticles.emitting = false
 
@@ -36,10 +36,10 @@ func _physics_process(_delta):
 	if Input.is_key_label_pressed(KEY_S): # TODO work w/ touchscreen
 		var new_scale = gravity_scale
 		new_scale += 0.2
-		new_scale = clamp(new_scale, 0.4, 2)
+		new_scale = clamp(new_scale, 0.6, 2.4)
 		gravity_scale = new_scale
 	else:
-		gravity_scale = 0.4
+		gravity_scale = 0.6
 
 const MAXSPEED = 3000
 func _integrate_forces(state):
@@ -63,3 +63,7 @@ func _on_body_entered(body):
 	
 func _on_body_exited(body):
 	$WaterParticles.emitting = false
+
+
+func _on_jump():
+	$JumpParticles.emitting = true
