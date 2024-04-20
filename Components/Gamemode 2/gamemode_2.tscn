@@ -229,7 +229,6 @@ texture = ExtResource("19_lyy0v")
 stream = ExtResource("20_0l4y0")
 volume_db = -32.0
 
-[connection signal="beginGame" from="." to="." method="_on_begin_game"]
 [connection signal="beginGame" from="." to="UI Layer/Debug/DeathScreen" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="Player" method="_on_gamemode_2_begin_game"]

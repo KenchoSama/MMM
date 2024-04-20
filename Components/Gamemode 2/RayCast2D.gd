@@ -17,7 +17,7 @@ func _fucntion_reload():
 	set_physics_process(false)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
 	target = $"..".laserTarget
 	$Line2D.points[1] = target
 	_appear()
