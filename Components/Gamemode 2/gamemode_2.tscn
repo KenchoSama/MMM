@@ -170,6 +170,9 @@ texture = SubResource("CanvasTexture_2dqln")
 [node name="RayCast2D" type="RayCast2D" parent="Laser Cannon"]
 script = ExtResource("13_j826a")
 
+[node name="tweenTimer" type="Timer" parent="Laser Cannon/RayCast2D"]
+one_shot = true
+
 [node name="Line2D" type="Line2D" parent="Laser Cannon/RayCast2D"]
 points = PackedVector2Array(0, 0, 0, 50)
 default_color = Color(1, 0.45098, 0.384314, 1)
@@ -243,4 +246,5 @@ volume_db = -32.0
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="UI Layer/Debug/DeathScreen" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="Player" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="Laser Cannon" method="_on_ray_cast_2d_loss"]
+[connection signal="timeout" from="Laser Cannon/RayCast2D/tweenTimer" to="Laser Cannon/RayCast2D" method="_on_tween_timer_timeout"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="Player" method="_on_audio_stream_player_2d_finished"]
