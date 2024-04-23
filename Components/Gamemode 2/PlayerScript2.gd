@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-var minSpeed = 300
+const minSpeed = 300
+const maxSpeed = 800
 var speed = 300
 var acceleration = 0.03
-var maxSpeed = 800
 var target = position
 
 # used for preventing unnecessary math

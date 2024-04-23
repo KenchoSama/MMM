@@ -22,7 +22,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	timePassed += delta
-	$"../Label".set_text(str(int(timePassed)))
+	$"../UI Layer/Counter".set_text(str(int(timePassed)))
 	
 	
 func _cannon_timer():
@@ -54,7 +54,7 @@ func _on_timer_timeout():
 	else:
 		string = "Y = %dX"
 		stringActual = string % xMulti
-	$"../Equation".set_text(stringActual)
+	$"../UI Layer/Equation".set_text(stringActual)
 	reloadTimer.start(countDown)
 
 

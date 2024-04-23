@@ -10,6 +10,7 @@ signal loss
 func _ready():
 	set_physics_process(false)
 	add_exception($"../../StaticBody2D")
+	add_exception($"../../UFO")
 	tween = create_tween()
 	tween2 = create_tween()
 	isVisible = false
