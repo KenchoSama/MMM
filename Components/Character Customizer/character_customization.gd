@@ -83,3 +83,13 @@ func _on_beard_colors_item_selected(index):
 	$WizardSprites.load_sprites()
 	
 	
+
+
+func _on_shirts_item_selected(index):
+	var newpath = "res://Reusable Scenes/Player/Sprites/Shirts/Shirt" + str(index + 1) + ".png"
+	var cfg = ConfigFile.new()
+	cfg.load("user://PlayerData.cfg")
+	cfg.set_value("CustomSprites", "shirt", newpath)
+	cfg.save("user://PlayerData.cfg")
+		
+	$WizardSprites.load_sprites()
