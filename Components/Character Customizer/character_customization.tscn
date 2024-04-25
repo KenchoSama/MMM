@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://d3rm4g4ikjnfc"]
+[gd_scene load_steps=63 format=3 uid="uid://d3rm4g4ikjnfc"]
 
 [ext_resource type="Script" path="res://Components/Character Customizer/character_customization.gd" id="1_s4pfs"]
 [ext_resource type="Script" path="res://Reusable Scenes/Return Button/return_and_save_changes.gd" id="2_66uck"]
@@ -59,6 +59,7 @@
 [ext_resource type="Texture2D" uid="uid://gptkvmp477f2" path="res://Reusable Scenes/Player/Sprites/Facial Hair Palette/Red.png" id="44_d7wum"]
 [ext_resource type="Texture2D" uid="uid://bqj57w5wwj6ag" path="res://Reusable Scenes/Player/Sprites/Facial Hair Palette/Blue.png" id="45_ajule"]
 [ext_resource type="Texture2D" uid="uid://baamytck6wdpw" path="res://Reusable Scenes/Player/Sprites/Facial Hair Palette/Green.png" id="46_8dcpu"]
+[ext_resource type="AudioStream" uid="uid://bctb66elb28t" path="res://assets/Nintendo Wii - Shop Channel Music (Extended) HQ.mp3" id="60_kbga4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gs0ff"]
 bg_color = Color(0, 0.545098, 0.796078, 1)
@@ -308,9 +309,15 @@ text = "Beard Color
 position = Vector2(344, 228)
 scale = Vector2(5.24, 5.24)
 
+[node name="ShopTheme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("60_kbga4")
+volume_db = -32.0
+autoplay = true
+
 [connection signal="toggled" from="Control/Return & Save" to="Control/Return & Save" method="_on_toggled" flags=18]
 [connection signal="item_selected" from="Control/Panel/Container/TabContainer/Skin" to="." method="_on_skin_item_selected"]
 [connection signal="item_selected" from="Control/Panel/Container/TabContainer/Hats" to="." method="_on_hats_item_selected"]
 [connection signal="item_selected" from="Control/Panel/Container/TabContainer/Shirts" to="." method="_on_shirts_item_selected"]
 [connection signal="item_selected" from="Control/Panel/Container/TabContainer/Beards" to="." method="_on_beards_item_selected"]
 [connection signal="item_selected" from="Control/Panel/Beard Colors" to="." method="_on_beard_colors_item_selected"]
+[connection signal="finished" from="ShopTheme" to="." method="_on_shop_theme_finished"]

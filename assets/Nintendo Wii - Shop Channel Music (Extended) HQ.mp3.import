@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bctb66elb28t"
+path="res://.godot/imported/Nintendo Wii - Shop Channel Music (Extended) HQ.mp3-ed300e26afd6cbd314ed2587ecdab690.mp3str"
+
+[deps]
+
+source_file="res://assets/Nintendo Wii - Shop Channel Music (Extended) HQ.mp3"
+dest_files=["res://.godot/imported/Nintendo Wii - Shop Channel Music (Extended) HQ.mp3-ed300e26afd6cbd314ed2587ecdab690.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

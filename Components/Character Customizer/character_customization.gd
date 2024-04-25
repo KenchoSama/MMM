@@ -93,3 +93,7 @@ func _on_shirts_item_selected(index):
 	cfg.save("user://PlayerData.cfg")
 		
 	$WizardSprites.load_sprites()
+
+
+func _on_shop_theme_finished():
+	$ShopTheme.start(0) # Replace with function body.
