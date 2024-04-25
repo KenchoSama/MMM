@@ -28,8 +28,6 @@ func _ready():
 	if PlayerData.get_value("Settings", "mute_music"): #Otherwise, it'll just be normal
 		$MuteButton.icon = load("res://assets/muted.png") 
 		streamPlayer.volume_db = -99.0
-		
-	# TODO read appropriate high scores, currency
 	
 func _process(_delta):
 	

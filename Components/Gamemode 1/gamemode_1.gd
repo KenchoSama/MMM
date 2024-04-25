@@ -27,6 +27,12 @@ func _ready():
 # - Camera stays in place until call to begin game.
 # - Player rigidbody sinks, then is released from tree.
 
+
+# ----- HIGH SCORES INFO ---------
+# Player height / distance travelled is calculated by the camera. 
+# Done in this way to reuse code, since camera previously had to calculate player height.
+# To keep code in one place, high scores are fully handled by the camera.
+
 var follow_rigidbody: bool = false
 func _process(_delta):
 	if follow_rigidbody:
