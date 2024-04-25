@@ -39,3 +39,7 @@ func _on_area_2d_area_entered(area):
 	if area.is_in_group("player"):
 		$"../Laser Cannon/RayCast2D".loss.emit()
 		set_physics_process(false)
+
+
+func _on_ray_cast_2d_loss():
+	set_physics_process(false) # Replace with function body.

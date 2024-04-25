@@ -42,7 +42,7 @@ func _on_timer_timeout():
 	xMulti = rng.randi_range(-3,3)
 	xOffset = rng.randi_range(-5,5) * 54
 	if xMulti != 0:
-		laserTarget = Vector2(648, (xMulti*-648+xOffset))
+		laserTarget = Vector2((648 + xOffset)*10, (xMulti* -(648 + xOffset)) *10)
 	else:
 		laserTarget = Vector2(648, 0)
 	if -1*xOffset < 0:

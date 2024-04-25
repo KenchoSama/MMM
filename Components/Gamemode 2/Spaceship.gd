@@ -11,6 +11,7 @@ signal changeSize
 func _ready():
 	rng = RandomNumberGenerator.new()
 	target = position
+	set_physics_process(false)
 
 func _physics_process(delta):
 	if position.distance_to(target) < 5:
@@ -39,3 +40,11 @@ func _physics_process(delta):
 	if position.distance_to(target) > 0:
 		look_at(target)
 		move_and_slide()
+
+
+func _on_ray_cast_2d_loss():
+	set_physics_process(false) # Replace with function body.
+
+
+func _on_gamemode_2_begin_game():
+	set_physics_process(true) # Replace with function body.

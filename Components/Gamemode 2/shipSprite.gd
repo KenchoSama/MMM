@@ -31,6 +31,7 @@ const ship4 = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_process(false)
 	rng = RandomNumberGenerator.new() 
 
 
@@ -52,3 +53,11 @@ func _on_spaceship_change_size():
 	scaleToBe = rng.randf_range(0.5,1)
 	scale.x = scaleToBe
 	scale.y = scaleToBe
+
+
+func _on_gamemode_2_begin_game():
+	set_process(true) # Replace with function body.
+
+
+func _on_ray_cast_2d_loss():
+	set_process(false) # Replace with function body.
