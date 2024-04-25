@@ -2,7 +2,6 @@ extends Node2D
 
 signal startScreen
 signal beginGame
-signal loss
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	startScreen.emit()
@@ -12,10 +11,9 @@ func _ready():
 func _process(_delta):
 	pass
 
-
-func _on_restart_button_button_up():
+func _on_start_button_button_up():
 	beginGame.emit() # Replace with function body.
 
 
-func _on_start_button_button_up():
+func _on_restart_button_button_up():
 	beginGame.emit() # Replace with function body.

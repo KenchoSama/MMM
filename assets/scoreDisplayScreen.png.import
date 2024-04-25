@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctsu6fi37waro"
-path="res://.godot/imported/crosshairline.png-8925d4d59ea2858a5256ca451503708b.ctex"
+uid="uid://oew7047xyg1v"
+path="res://.godot/imported/scoreDisplayScreen.png-7be306ada1a1ba4563224911e2e4fcaf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/crosshairline.png"
-dest_files=["res://.godot/imported/crosshairline.png-8925d4d59ea2858a5256ca451503708b.ctex"]
+source_file="res://assets/scoreDisplayScreen.png"
+dest_files=["res://.godot/imported/scoreDisplayScreen.png-7be306ada1a1ba4563224911e2e4fcaf.ctex"]
 
 [params]
 

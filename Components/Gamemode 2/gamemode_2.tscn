@@ -1,18 +1,21 @@
-[gd_scene load_steps=39 format=3 uid="uid://bohc6wymllyla"]
+[gd_scene load_steps=43 format=3 uid="uid://bohc6wymllyla"]
 
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_aqh5w"]
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_kfx5p"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/gamemode_2.gd" id="1_vyval"]
 [ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/WizardSprites.gd" id="2_gm15n"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/PlayerScript2.gd" id="2_rwuf6"]
+[ext_resource type="Script" path="res://Components/Gamemode 2/ColumnUI.gd" id="3_xy25s"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/DeathScreen.gd" id="4_pvdla"]
-[ext_resource type="Texture2D" uid="uid://8htax3pkoq4r" path="res://Reusable Scenes/PixelArtUI.png" id="5_aeqwi"]
 [ext_resource type="Texture2D" uid="uid://85j0p2x2ppwu" path="res://Reusable Scenes/Player/Sprites/Shirts/Shirt1.png" id="5_gmhr6"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/StartScreen.gd" id="6_4xocm"]
 [ext_resource type="Texture2D" uid="uid://cmdxtytd1w5j3" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard1.png" id="7_ejc77"]
+[ext_resource type="Script" path="res://Components/Gamemode 2/MainMeneuButton.gd" id="7_hei8t"]
 [ext_resource type="Texture2D" uid="uid://benckrpvwuit1" path="res://Reusable Scenes/Player/Sprites/Legs/Legs.png" id="8_c3aeb"]
+[ext_resource type="Texture2D" uid="uid://bpv4u5g1sluck" path="res://assets/StartScreen.png" id="9_lx130"]
 [ext_resource type="Texture2D" uid="uid://w63ynxuoqsdk" path="res://Reusable Scenes/Player/Sprites/Legs/LegsLeftUp.png" id="9_p5k5b"]
 [ext_resource type="Texture2D" uid="uid://sg3xf4yhnf1n" path="res://Reusable Scenes/Player/Sprites/Legs/LegsRightUp.png" id="10_htsml"]
+[ext_resource type="Texture2D" uid="uid://dftmj42hkwtrc" path="res://assets/LaserExample.png" id="11_w827n"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/Laser Cannon.gd" id="12_y37jy"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/RayCast2D.gd" id="13_j826a"]
 [ext_resource type="Texture2D" uid="uid://hix6u4wlpt5g" path="res://assets/border.png" id="14_ertyx"]
@@ -24,15 +27,11 @@
 [ext_resource type="AudioStream" uid="uid://b4gsbmng2hg3g" path="res://assets/Chaos Japan - Castle Crashers.mp3" id="20_0l4y0"]
 [ext_resource type="Texture2D" uid="uid://cnjbvcg735ver" path="res://assets/UFO.png" id="20_ibxlk"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/Spaceship.gd" id="21_2dgoo"]
+[ext_resource type="Script" path="res://Components/Gamemode 2/GraphMain.gd" id="21_dn4no"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/shipSprite.gd" id="23_hhkpq"]
+[ext_resource type="Texture2D" uid="uid://oew7047xyg1v" path="res://assets/scoreDisplayScreen.png" id="27_g3ib0"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l027k"]
-atlas = ExtResource("5_aeqwi")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ixvlb"]
-atlas = ExtResource("5_aeqwi")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="Theme" id="Theme_plp58"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ql60"]
 animations = [{
@@ -86,7 +85,7 @@ height = 48.71
 
 [node name="Gamemode 2" type="Node2D"]
 script = ExtResource("1_vyval")
-metadata/_edit_vertical_guides_ = [0.0, 1152.0, 252.0, 900.0, 900.0, 576.0, 576.0, 522.0, 468.0, 414.0, 360.0, 306.0]
+metadata/_edit_vertical_guides_ = [0.0, 1152.0, 252.0, 900.0, 900.0, 576.0, 576.0, 522.0, 468.0, 414.0, 360.0, 306.0, 425.0, 569.0, 583.0]
 metadata/_edit_horizontal_guides_ = [648.0, 648.0, 648.0, 324.0, 108.0, 162.0, 216.0, 270.0, 378.0, 432.0, 486.0, 540.0, 594.0, 54.0]
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
@@ -95,11 +94,24 @@ layer = 2
 [node name="Debug" type="Control" parent="UI Layer"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 39.0
+offset_bottom = 41.0
 theme = ExtResource("1_aqh5w")
 
-[node name="Label" type="Label" parent="UI Layer/Debug"]
+[node name="ColumnUI" type="Control" parent="UI Layer/Debug"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_xy25s")
+
+[node name="Return Button" parent="UI Layer/Debug/ColumnUI" instance=ExtResource("1_kfx5p")]
+layout_mode = 0
+offset_left = 909.0
+offset_top = 7.0
+offset_right = 1146.0
+offset_bottom = 38.0
+
+[node name="GameModeLabel" type="Label" parent="UI Layer/Debug/ColumnUI"]
 top_level = true
 layout_mode = 0
 offset_left = 9.0
@@ -111,26 +123,40 @@ text = "Gamemode 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Return Button" parent="UI Layer/Debug" instance=ExtResource("1_kfx5p")]
-layout_mode = 0
-offset_left = 909.0
-offset_top = 7.0
-offset_right = 1146.0
-offset_bottom = 38.0
-
 [node name="DeathScreen" type="Control" parent="UI Layer/Debug"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_pvdla")
 
-[node name="RestartButton" type="TextureButton" parent="UI Layer/Debug/DeathScreen"]
+[node name="ScoreBoard" type="Sprite2D" parent="UI Layer/Debug/DeathScreen"]
+position = Vector2(576, 324)
+texture = ExtResource("27_g3ib0")
+
+[node name="RestartButton" type="Button" parent="UI Layer/Debug/DeathScreen"]
 layout_mode = 0
-offset_left = 560.0
-offset_top = 254.0
-offset_right = 592.0
-offset_bottom = 286.0
-texture_normal = SubResource("AtlasTexture_l027k")
+offset_left = 427.0
+offset_top = 387.0
+offset_right = 569.0
+offset_bottom = 423.0
+text = "PLAY AGAIN"
+
+[node name="HintsButton" type="Button" parent="UI Layer/Debug/DeathScreen"]
+layout_mode = 0
+offset_left = 585.0
+offset_top = 387.0
+offset_right = 728.0
+offset_bottom = 423.0
+text = "HINTS"
+
+[node name="MainMeneuButton" type="Button" parent="UI Layer/Debug/DeathScreen"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 434.0
+offset_right = 728.0
+offset_bottom = 470.0
+text = "RETURN TO MAIN MENU"
+script = ExtResource("7_hei8t")
 
 [node name="StartScreen" type="Control" parent="UI Layer/Debug"]
 anchors_preset = 0
@@ -138,13 +164,60 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("6_4xocm")
 
-[node name="StartButton" type="TextureButton" parent="UI Layer/Debug/StartScreen"]
+[node name="StartScreen" type="Sprite2D" parent="UI Layer/Debug/StartScreen"]
+position = Vector2(576, 324)
+texture = ExtResource("9_lx130")
+
+[node name="StartButton" type="Button" parent="UI Layer/Debug/StartScreen"]
 layout_mode = 0
-offset_left = 562.0
-offset_top = 254.0
-offset_right = 594.0
-offset_bottom = 286.0
-texture_normal = SubResource("AtlasTexture_ixvlb")
+offset_left = 427.0
+offset_top = 428.0
+offset_right = 727.0
+offset_bottom = 475.0
+text = "PLAY GAME"
+
+[node name="Label" type="Label" parent="UI Layer/Debug/StartScreen"]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 169.0
+offset_right = 731.0
+offset_bottom = 202.0
+text = "COOL GAMEMODE 2 NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Enemy Example" type="Sprite2D" parent="UI Layer/Debug/StartScreen"]
+position = Vector2(674.835, 254.915)
+scale = Vector2(2.985, 2.985)
+texture = ExtResource("20_ibxlk")
+
+[node name="Enemy Explanation" type="Label" parent="UI Layer/Debug/StartScreen"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 216.0
+offset_right = 582.0
+offset_bottom = 307.0
+theme = SubResource("Theme_plp58")
+text = "The Ufo enemy
+will chase you
+be sure to keep
+an eye on it!"
+
+[node name="Laser Warning!" type="Label" parent="UI Layer/Debug/StartScreen"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 324.0
+offset_right = 617.0
+offset_bottom = 411.0
+text = "An Equation
+on the left
+warns you of an
+incoming laser!"
+
+[node name="Equation Example" type="Sprite2D" parent="UI Layer/Debug/StartScreen"]
+position = Vector2(674, 367)
+scale = Vector2(0.133, 0.133)
+texture = ExtResource("11_w827n")
 
 [node name="Equation" type="Label" parent="UI Layer"]
 top_level = true
@@ -238,119 +311,120 @@ shape = SubResource("RectangleShape2D_02a1b")
 position = Vector2(576, 661.5)
 shape = SubResource("RectangleShape2D_awalx")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CrosshairLayer" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+[node name="BackGround" type="Sprite2D" parent="CrosshairLayer"]
 position = Vector2(576, 324)
 texture = ExtResource("19_lyy0v")
 
-[node name="GraphMain" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(576, 324)
-texture = ExtResource("17_gt5rb")
-
-[node name="Line11" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(0, 162)
-texture = ExtResource("18_rm1h5")
-
-[node name="Line10" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(-270, 0)
-rotation = 1.5708
-texture = ExtResource("18_rm1h5")
-
-[node name="Line22" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(0, 270)
-texture = ExtResource("18_rm1h5")
-
-[node name="Line9" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(0, 216)
-texture = ExtResource("18_rm1h5")
-
-[node name="Line8" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(0, 108)
-texture = ExtResource("18_rm1h5")
-
-[node name="Line6" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(0, 54)
-texture = ExtResource("18_rm1h5")
-
-[node name="Line5" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(0, -270)
-texture = ExtResource("18_rm1h5")
-
-[node name="Line4" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(0, -216)
-texture = ExtResource("18_rm1h5")
-
-[node name="Line3" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(0, -162)
-texture = ExtResource("18_rm1h5")
-
-[node name="Line2" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(0, -108)
-texture = ExtResource("18_rm1h5")
-
-[node name="Line" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(0, -54)
-texture = ExtResource("18_rm1h5")
-
-[node name="Line21" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(270, 0)
-rotation = 1.5708
-texture = ExtResource("18_rm1h5")
-
-[node name="Line20" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(216, 0)
-rotation = 1.5708
-texture = ExtResource("18_rm1h5")
-
-[node name="Line19" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(162, 0)
-rotation = 1.5708
-texture = ExtResource("18_rm1h5")
-
-[node name="Line18" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(108, 0)
-rotation = 1.5708
-texture = ExtResource("18_rm1h5")
-
-[node name="Line17" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(54, 0)
-rotation = 1.5708
-texture = ExtResource("18_rm1h5")
-
-[node name="Line15" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(-54, 0)
-rotation = 1.5708
-texture = ExtResource("18_rm1h5")
-
-[node name="Line14" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(-108, 0)
-rotation = 1.5708
-texture = ExtResource("18_rm1h5")
-
-[node name="Line13" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(-162, 0)
-rotation = 1.5708
-texture = ExtResource("18_rm1h5")
-
-[node name="Line12" type="Sprite2D" parent="CanvasLayer/GraphMain"]
-position = Vector2(-216, 0)
-rotation = 1.5708
-texture = ExtResource("18_rm1h5")
-
-[node name="Spaceship" type="CharacterBody2D" parent="CanvasLayer"]
+[node name="Spaceship" type="CharacterBody2D" parent="CrosshairLayer"]
 script = ExtResource("21_2dgoo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Spaceship"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrosshairLayer/Spaceship"]
 z_index = -1
 shape = SubResource("CircleShape2D_yffef")
 disabled = true
 
-[node name="shipSprite" type="Sprite2D" parent="CanvasLayer/Spaceship"]
+[node name="shipSprite" type="Sprite2D" parent="CrosshairLayer/Spaceship"]
 rotation = 1.5708
 texture = SubResource("AtlasTexture_ba5f2")
 script = ExtResource("23_hhkpq")
+
+[node name="GraphMain" type="Sprite2D" parent="CrosshairLayer"]
+position = Vector2(576, 324)
+texture = ExtResource("17_gt5rb")
+script = ExtResource("21_dn4no")
+
+[node name="Line11" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(0, 162)
+texture = ExtResource("18_rm1h5")
+
+[node name="Line10" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(-270, 0)
+rotation = 1.5708
+texture = ExtResource("18_rm1h5")
+
+[node name="Line22" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(0, 270)
+texture = ExtResource("18_rm1h5")
+
+[node name="Line9" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(0, 216)
+texture = ExtResource("18_rm1h5")
+
+[node name="Line8" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(0, 108)
+texture = ExtResource("18_rm1h5")
+
+[node name="Line6" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(0, 54)
+texture = ExtResource("18_rm1h5")
+
+[node name="Line5" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(0, -270)
+texture = ExtResource("18_rm1h5")
+
+[node name="Line4" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(0, -216)
+texture = ExtResource("18_rm1h5")
+
+[node name="Line3" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(0, -162)
+texture = ExtResource("18_rm1h5")
+
+[node name="Line2" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(0, -108)
+texture = ExtResource("18_rm1h5")
+
+[node name="Line" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(0, -54)
+texture = ExtResource("18_rm1h5")
+
+[node name="Line21" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(270, 0)
+rotation = 1.5708
+texture = ExtResource("18_rm1h5")
+
+[node name="Line20" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(216, 0)
+rotation = 1.5708
+texture = ExtResource("18_rm1h5")
+
+[node name="Line19" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(162, 0)
+rotation = 1.5708
+texture = ExtResource("18_rm1h5")
+
+[node name="Line18" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(108, 0)
+rotation = 1.5708
+texture = ExtResource("18_rm1h5")
+
+[node name="Line17" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(54, 0)
+rotation = 1.5708
+texture = ExtResource("18_rm1h5")
+
+[node name="Line15" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(-54, 0)
+rotation = 1.5708
+texture = ExtResource("18_rm1h5")
+
+[node name="Line14" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(-108, 0)
+rotation = 1.5708
+texture = ExtResource("18_rm1h5")
+
+[node name="Line13" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(-162, 0)
+rotation = 1.5708
+texture = ExtResource("18_rm1h5")
+
+[node name="Line12" type="Sprite2D" parent="CrosshairLayer/GraphMain"]
+position = Vector2(-216, 0)
+rotation = 1.5708
+texture = ExtResource("18_rm1h5")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("20_0l4y0")
@@ -396,11 +470,15 @@ texture = ExtResource("14_ertyx")
 [connection signal="beginGame" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="Player" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="Laser Cannon" method="_on_gamemode_2_begin_game"]
-[connection signal="beginGame" from="." to="CanvasLayer/Spaceship" method="_on_gamemode_2_begin_game"]
-[connection signal="beginGame" from="." to="CanvasLayer/Spaceship/shipSprite" method="_on_gamemode_2_begin_game"]
+[connection signal="beginGame" from="." to="CrosshairLayer" method="_on_gamemode_2_begin_game"]
+[connection signal="beginGame" from="." to="CrosshairLayer/GraphMain" method="_on_gamemode_2_begin_game"]
+[connection signal="beginGame" from="." to="CrosshairLayer/Spaceship" method="_on_gamemode_2_begin_game"]
+[connection signal="beginGame" from="." to="CrosshairLayer/Spaceship/shipSprite" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="UFO" method="_on_gamemode_2_begin_game"]
+[connection signal="beginGame" from="." to="UI Layer/Debug/ColumnUI" method="_on_gamemode_2_begin_game"]
 [connection signal="startScreen" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_start_screen"]
 [connection signal="button_up" from="UI Layer/Debug/DeathScreen/RestartButton" to="." method="_on_restart_button_button_up"]
+[connection signal="button_up" from="UI Layer/Debug/DeathScreen/MainMeneuButton" to="UI Layer/Debug/DeathScreen/MainMeneuButton" method="_on_button_up"]
 [connection signal="button_up" from="UI Layer/Debug/StartScreen/StartButton" to="." method="_on_start_button_button_up"]
 [connection signal="pressed" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_pressed"]
 [connection signal="released" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_released"]
@@ -409,10 +487,12 @@ texture = ExtResource("14_ertyx")
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="UI Layer/Debug/DeathScreen" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="Player" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="Laser Cannon" method="_on_ray_cast_2d_loss"]
-[connection signal="loss" from="Laser Cannon/RayCast2D" to="CanvasLayer/Spaceship" method="_on_ray_cast_2d_loss"]
-[connection signal="loss" from="Laser Cannon/RayCast2D" to="CanvasLayer/Spaceship/shipSprite" method="_on_ray_cast_2d_loss"]
+[connection signal="loss" from="Laser Cannon/RayCast2D" to="CrosshairLayer/GraphMain" method="_on_ray_cast_2d_loss"]
+[connection signal="loss" from="Laser Cannon/RayCast2D" to="CrosshairLayer/Spaceship" method="_on_ray_cast_2d_loss"]
+[connection signal="loss" from="Laser Cannon/RayCast2D" to="CrosshairLayer/Spaceship/shipSprite" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="UFO" method="_on_ray_cast_2d_loss"]
+[connection signal="loss" from="Laser Cannon/RayCast2D" to="UI Layer/Debug/ColumnUI" method="_on_ray_cast_2d_loss"]
 [connection signal="timeout" from="Laser Cannon/RayCast2D/tweenTimer" to="Laser Cannon/RayCast2D" method="_on_tween_timer_timeout"]
-[connection signal="changeSize" from="CanvasLayer/Spaceship" to="CanvasLayer/Spaceship/shipSprite" method="_on_spaceship_change_size"]
+[connection signal="changeSize" from="CrosshairLayer/Spaceship" to="CrosshairLayer/Spaceship/shipSprite" method="_on_spaceship_change_size"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="Player" method="_on_audio_stream_player_2d_finished"]
 [connection signal="area_entered" from="UFO/Area2D" to="UFO" method="_on_area_2d_area_entered"]

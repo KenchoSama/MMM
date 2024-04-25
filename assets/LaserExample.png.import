@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1paxl2jksf20"
-path="res://.godot/imported/SpaceBackgroundCrosshair.png-4a58b0f75cde7b912f8256b7c511025f.ctex"
+uid="uid://dftmj42hkwtrc"
+path="res://.godot/imported/LaserExample.png-93ca40001199d0a2c8c0520e492e39fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/SpaceBackgroundCrosshair.png"
-dest_files=["res://.godot/imported/SpaceBackgroundCrosshair.png-4a58b0f75cde7b912f8256b7c511025f.ctex"]
+source_file="res://assets/LaserExample.png"
+dest_files=["res://.godot/imported/LaserExample.png-93ca40001199d0a2c8c0520e492e39fe.ctex"]
 
 [params]
 

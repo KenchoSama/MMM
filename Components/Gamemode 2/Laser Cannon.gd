@@ -75,6 +75,8 @@ func _on_timer_2_timeout():
 func _on_ray_cast_2d_loss():
 	timer.stop()
 	reloadTimer.stop()
+	$"../UI Layer/Equation".set_text("")
+	$"../UI Layer/Counter".set_text("")
 	set_physics_process(false)
 
 
