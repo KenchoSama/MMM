@@ -77,6 +77,7 @@ func _on_ray_cast_2d_loss():
 	reloadTimer.stop()
 	$"../UI Layer/Equation".set_text("")
 	$"../UI Layer/Counter".set_text("")
+	$"../UI Layer/Debug/DeathScreen/YourScore".set_text(str(int(timePassed * 100)))
 	set_physics_process(false)
 
 

@@ -8,6 +8,14 @@ var target_position
 var rng
 var xstart
 var ystart
+var lossMessage
+
+const lossMessages = [
+	"Abducted by aliens :(",
+	"Was it too shiny?",
+	"A NEW TEST SUBJECT!",
+	"^-?!*.Glorp Glirp."
+]
 
 func _ready():
 	player = $"../Player"
@@ -37,6 +45,8 @@ func _on_gamemode_2_begin_game():
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("player"):
+		lossMessage = lossMessages.pick_random()
+		$"../UI Layer/Debug/DeathScreen/LossMessage".set_text(lossMessage)
 		$"../Laser Cannon/RayCast2D".loss.emit()
 		set_physics_process(false)
 

@@ -44,7 +44,7 @@ func flip():
 	get_parent().rotation = 0
 	timer.queue_free()
 
-const strings = ["HI!", "BOO", "CAT", "DOG", "ADD", "LOL", "WOW", "BRB", "POW", "ZAP", "AH!", "BOP", "POP", "HA!", "REE", "OOF"] # MUST BE 3 LETTERS
+const strings = ["HI!", "BOO", "CAT", "DOG", "ADD", "LOL", "WOW", "BRB", "POW", "ZAP", "AH!", "BOP", "POP", "HA!", "REE", "OOF", "BAM", "EZ!", "GAP", "BBB"] # MUST BE 3 LETTERS
 func change():
 	var timer = Timer.new()
 	add_child(timer)

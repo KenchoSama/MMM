@@ -123,41 +123,6 @@ text = "Gamemode 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DeathScreen" type="Control" parent="UI Layer/Debug"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("4_pvdla")
-
-[node name="ScoreBoard" type="Sprite2D" parent="UI Layer/Debug/DeathScreen"]
-position = Vector2(576, 324)
-texture = ExtResource("27_g3ib0")
-
-[node name="RestartButton" type="Button" parent="UI Layer/Debug/DeathScreen"]
-layout_mode = 0
-offset_left = 427.0
-offset_top = 387.0
-offset_right = 569.0
-offset_bottom = 423.0
-text = "PLAY AGAIN"
-
-[node name="HintsButton" type="Button" parent="UI Layer/Debug/DeathScreen"]
-layout_mode = 0
-offset_left = 585.0
-offset_top = 387.0
-offset_right = 728.0
-offset_bottom = 423.0
-text = "HINTS"
-
-[node name="MainMeneuButton" type="Button" parent="UI Layer/Debug/DeathScreen"]
-layout_mode = 0
-offset_left = 427.0
-offset_top = 434.0
-offset_right = 728.0
-offset_bottom = 470.0
-text = "RETURN TO MAIN MENU"
-script = ExtResource("7_hei8t")
-
 [node name="StartScreen" type="Control" parent="UI Layer/Debug"]
 anchors_preset = 0
 offset_right = 40.0
@@ -218,6 +183,88 @@ incoming laser!"
 position = Vector2(674, 367)
 scale = Vector2(0.133, 0.133)
 texture = ExtResource("11_w827n")
+
+[node name="DeathScreen" type="Control" parent="UI Layer/Debug"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_pvdla")
+
+[node name="ScoreBoard" type="Sprite2D" parent="UI Layer/Debug/DeathScreen"]
+position = Vector2(576, 324)
+texture = ExtResource("27_g3ib0")
+
+[node name="RestartButton" type="Button" parent="UI Layer/Debug/DeathScreen"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 387.0
+offset_right = 569.0
+offset_bottom = 423.0
+text = "PLAY AGAIN"
+
+[node name="HintsButton" type="Button" parent="UI Layer/Debug/DeathScreen"]
+layout_mode = 0
+offset_left = 585.0
+offset_top = 387.0
+offset_right = 728.0
+offset_bottom = 423.0
+text = "HINTS"
+
+[node name="MainMeneuButton" type="Button" parent="UI Layer/Debug/DeathScreen"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 434.0
+offset_right = 728.0
+offset_bottom = 470.0
+text = "RETURN TO MAIN MENU"
+script = ExtResource("7_hei8t")
+
+[node name="HiScore" type="Label" parent="UI Layer/Debug/DeathScreen"]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 251.0
+offset_right = 565.0
+offset_bottom = 331.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="YourScore" type="Label" parent="UI Layer/Debug/DeathScreen"]
+layout_mode = 0
+offset_left = 589.0
+offset_top = 251.0
+offset_right = 723.0
+offset_bottom = 331.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TITLE1" type="Label" parent="UI Layer/Debug/DeathScreen"]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 227.0
+offset_right = 565.0
+offset_bottom = 251.0
+text = "HIgh score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TITLE2" type="Label" parent="UI Layer/Debug/DeathScreen"]
+layout_mode = 0
+offset_left = 589.0
+offset_top = 227.0
+offset_right = 723.0
+offset_bottom = 251.0
+text = "YOUR SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LossMessage" type="Label" parent="UI Layer/Debug/DeathScreen"]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 169.0
+offset_right = 731.0
+offset_bottom = 202.0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Equation" type="Label" parent="UI Layer"]
 top_level = true
@@ -477,9 +524,9 @@ texture = ExtResource("14_ertyx")
 [connection signal="beginGame" from="." to="UFO" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="UI Layer/Debug/ColumnUI" method="_on_gamemode_2_begin_game"]
 [connection signal="startScreen" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_start_screen"]
+[connection signal="button_up" from="UI Layer/Debug/StartScreen/StartButton" to="." method="_on_start_button_button_up"]
 [connection signal="button_up" from="UI Layer/Debug/DeathScreen/RestartButton" to="." method="_on_restart_button_button_up"]
 [connection signal="button_up" from="UI Layer/Debug/DeathScreen/MainMeneuButton" to="UI Layer/Debug/DeathScreen/MainMeneuButton" method="_on_button_up"]
-[connection signal="button_up" from="UI Layer/Debug/StartScreen/StartButton" to="." method="_on_start_button_button_up"]
 [connection signal="pressed" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_pressed"]
 [connection signal="released" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_released"]
 [connection signal="timeout" from="Laser Cannon/Timer" to="Laser Cannon" method="_on_timer_timeout"]

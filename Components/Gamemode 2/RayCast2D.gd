@@ -5,7 +5,16 @@ var tween
 var tween2
 var isVisible
 var tweenTimer
+var lossMessage
 signal loss
+
+const lossMessages = [
+	"Laser is bad!",
+	"Burnt to a crisp!",
+	"Equation ignored",
+	"Cannon Calibrated 100%",
+	"Cannons are dangerous!"
+]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_physics_process(false)
@@ -35,6 +44,8 @@ func _physics_process(_delta):
 	if is_colliding() && isVisible:
 		target_position = get_collision_point()
 		_fucntion_reload()
+		lossMessage = lossMessages.pick_random()
+		$"../../UI Layer/Debug/DeathScreen/LossMessage".set_text(lossMessage)
 		loss.emit()
 
 func _appear() -> void:
