@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bohc6wymllyla"]
+[gd_scene load_steps=36 format=3 uid="uid://bohc6wymllyla"]
 
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_aqh5w"]
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_kfx5p"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Components/Gamemode 2/PlayerScript2.gd" id="2_rwuf6"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/DeathScreen.gd" id="4_pvdla"]
 [ext_resource type="Texture2D" uid="uid://8htax3pkoq4r" path="res://Reusable Scenes/PixelArtUI.png" id="5_aeqwi"]
-[ext_resource type="Texture2D" uid="uid://dyj60e6d7blyx" path="res://Reusable Scenes/Player/Sprites/Shirts/Shirt1.png" id="5_gmhr6"]
+[ext_resource type="Texture2D" uid="uid://85j0p2x2ppwu" path="res://Reusable Scenes/Player/Sprites/Shirts/Shirt1.png" id="5_gmhr6"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/StartScreen.gd" id="6_4xocm"]
 [ext_resource type="Texture2D" uid="uid://cmdxtytd1w5j3" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard1.png" id="7_ejc77"]
 [ext_resource type="Texture2D" uid="uid://benckrpvwuit1" path="res://Reusable Scenes/Player/Sprites/Legs/Legs.png" id="8_c3aeb"]
@@ -16,10 +16,13 @@
 [ext_resource type="Script" path="res://Components/Gamemode 2/Laser Cannon.gd" id="12_y37jy"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/RayCast2D.gd" id="13_j826a"]
 [ext_resource type="Texture2D" uid="uid://hix6u4wlpt5g" path="res://assets/border.png" id="14_ertyx"]
+[ext_resource type="Texture2D" uid="uid://b4ylvpyg5u6jx" path="res://assets/spacecrafts.png" id="18_lo2y8"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/UFO.gd" id="19_fxexf"]
 [ext_resource type="Texture2D" uid="uid://b7ki5qi4dddxf" path="res://assets/SpaceBackground.png" id="19_lyy0v"]
 [ext_resource type="AudioStream" uid="uid://b4gsbmng2hg3g" path="res://assets/Chaos Japan - Castle Crashers.mp3" id="20_0l4y0"]
 [ext_resource type="Texture2D" uid="uid://cnjbvcg735ver" path="res://assets/UFO.png" id="20_ibxlk"]
+[ext_resource type="Script" path="res://Components/Gamemode 2/Spaceship.gd" id="21_2dgoo"]
+[ext_resource type="Script" path="res://Components/Gamemode 2/shipSprite.gd" id="23_hhkpq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l027k"]
 atlas = ExtResource("5_aeqwi")
@@ -67,6 +70,12 @@ size = Vector2(1152, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_awalx"]
 size = Vector2(1152, 27)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yffef"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba5f2"]
+atlas = ExtResource("18_lo2y8")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tfcdi"]
 
@@ -150,6 +159,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+z_index = -1
 position = Vector2(510, 269)
 motion_mode = 1
 script = ExtResource("2_rwuf6")
@@ -230,6 +240,19 @@ layer = -1
 position = Vector2(576, 324)
 texture = ExtResource("19_lyy0v")
 
+[node name="Spaceship" type="CharacterBody2D" parent="CanvasLayer"]
+script = ExtResource("21_2dgoo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Spaceship"]
+z_index = -1
+shape = SubResource("CircleShape2D_yffef")
+disabled = true
+
+[node name="shipSprite" type="Sprite2D" parent="CanvasLayer/Spaceship"]
+rotation = 1.5708
+texture = SubResource("AtlasTexture_ba5f2")
+script = ExtResource("23_hhkpq")
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("20_0l4y0")
 volume_db = -32.0
@@ -282,5 +305,6 @@ texture = ExtResource("14_ertyx")
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="Player" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="Laser Cannon" method="_on_ray_cast_2d_loss"]
 [connection signal="timeout" from="Laser Cannon/RayCast2D/tweenTimer" to="Laser Cannon/RayCast2D" method="_on_tween_timer_timeout"]
+[connection signal="changeSize" from="CanvasLayer/Spaceship" to="CanvasLayer/Spaceship/shipSprite" method="_on_spaceship_change_size"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="Player" method="_on_audio_stream_player_2d_finished"]
 [connection signal="area_entered" from="UFO/Area2D" to="UFO" method="_on_area_2d_area_entered"]
