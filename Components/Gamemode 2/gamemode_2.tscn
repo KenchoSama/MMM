@@ -1,8 +1,8 @@
 [gd_scene load_steps=50 format=3 uid="uid://bohc6wymllyla"]
 
-[ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_aqh5w"]
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_kfx5p"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/gamemode_2.gd" id="1_vyval"]
+[ext_resource type="Theme" uid="uid://by7bsrnatsqel" path="res://Reusable Scenes/GreenTheme.tres" id="2_52exn"]
 [ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/WizardSprites.gd" id="2_gm15n"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/PlayerScript2.gd" id="2_rwuf6"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/ColumnUI.gd" id="3_xy25s"]
@@ -125,12 +125,13 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 39.0
 offset_bottom = 41.0
-theme = ExtResource("1_aqh5w")
+theme = ExtResource("2_52exn")
 
 [node name="ColumnUI" type="Control" parent="UI Layer/Debug"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("2_52exn")
 script = ExtResource("3_xy25s")
 
 [node name="Return Button" parent="UI Layer/Debug/ColumnUI" instance=ExtResource("1_kfx5p")]
@@ -139,6 +140,7 @@ offset_left = 909.0
 offset_top = 7.0
 offset_right = 1146.0
 offset_bottom = 38.0
+theme = ExtResource("2_52exn")
 
 [node name="GameModeLabel" type="Label" parent="UI Layer/Debug/ColumnUI"]
 top_level = true
@@ -147,7 +149,7 @@ offset_left = 9.0
 offset_top = 7.0
 offset_right = 245.0
 offset_bottom = 38.0
-theme = ExtResource("1_aqh5w")
+theme = ExtResource("2_52exn")
 text = "Gamemode 2"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -156,6 +158,7 @@ vertical_alignment = 1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("2_52exn")
 script = ExtResource("6_4xocm")
 
 [node name="StartScreen" type="Sprite2D" parent="UI Layer/Debug/StartScreen"]
@@ -217,6 +220,7 @@ texture = ExtResource("11_w827n")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("2_52exn")
 script = ExtResource("4_pvdla")
 
 [node name="ScoreBoard" type="Sprite2D" parent="UI Layer/Debug/DeathScreen"]
