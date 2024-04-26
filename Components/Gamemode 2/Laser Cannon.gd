@@ -77,7 +77,30 @@ func _on_ray_cast_2d_loss():
 	reloadTimer.stop()
 	$"../UI Layer/Equation".set_text("")
 	$"../UI Layer/Counter".set_text("")
-	$"../UI Layer/Debug/DeathScreen/YourScore".set_text(str(int(timePassed * 100)))
+	
+	
+	# ------ Score + High Score logic, written neatly by Victor 
+	var score = int(timePassed * 100)
+	
+	# Read high score from disk
+	var cfg = ConfigFile.new()
+	cfg.load("user://PlayerData.cfg")
+	var current_high_score = cfg.get_value("GM2Score", "score", 0) # 0 if none
+	
+	# If score is better, update it and save it.
+	if score > current_high_score:
+		current_high_score = score
+		cfg.set_value("GM2Score", "score", score)
+		cfg.save("user://PlayerData.cfg")
+	
+	# Display to user
+	$"../UI Layer/Debug/DeathScreen/YourScore".set_text(str(score))
+	$"../UI Layer/Debug/DeathScreen/HiScore".set_text(str(current_high_score))
+	
+	
+	# --------------------------------------------
+	
+	
 	set_physics_process(false)
 
 
