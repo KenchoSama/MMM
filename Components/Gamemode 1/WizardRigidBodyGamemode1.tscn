@@ -32,6 +32,7 @@ max_contacts_reported = 8
 contact_monitor = true
 lock_rotation = true
 script = ExtResource("1_o0p1a")
+base_gravity = 0.75
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_aij12")

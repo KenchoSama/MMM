@@ -1,12 +1,14 @@
 extends RigidBody2D
 
+@export var base_gravity: float
+
 var waves_traversed: int = 0
 var calculated_period_length: float = 0
 signal lost
 signal shift_waves
 
 func _ready():
-	gravity_scale = 0.6
+	gravity_scale = base_gravity
 	$AudioStreamPlayer2D.play() # Default
 	$WaterParticles.emitting = false
 
@@ -36,10 +38,10 @@ func _physics_process(_delta):
 	if Input.is_key_label_pressed(KEY_S): # TODO work w/ touchscreen
 		var new_scale = gravity_scale
 		new_scale += 0.2
-		new_scale = clamp(new_scale, 0.6, 2.4)
+		new_scale = clamp(new_scale, base_gravity, 2.4)
 		gravity_scale = new_scale
 	else:
-		gravity_scale = 0.6
+		gravity_scale = base_gravity
 
 const MAXSPEED = 3000
 func _integrate_forces(state):

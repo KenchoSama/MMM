@@ -87,6 +87,6 @@ func _on_jump_button_down():
 			player.linear_velocity.y = 0
 			player.apply_central_impulse(Vector2(0,-500))
 		else:
-			player.apply_central_impulse(Vector2(0,-200))
+			player.apply_central_impulse(Vector2(0,-300))
 		
 		player._on_jump()
