@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_kfx5p"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/gamemode_2.gd" id="1_vyval"]
-[ext_resource type="Theme" uid="uid://by7bsrnatsqel" path="res://Reusable Scenes/GreenTheme.tres" id="2_52exn"]
+[ext_resource type="Theme" uid="uid://by35faieybjhf" path="res://Reusable Scenes/GreenTheme.tres" id="2_52exn"]
 [ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/WizardSprites.gd" id="2_gm15n"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/PlayerScript2.gd" id="2_rwuf6"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/ColumnUI.gd" id="3_xy25s"]
