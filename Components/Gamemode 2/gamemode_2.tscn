@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bohc6wymllyla"]
+[gd_scene load_steps=54 format=3 uid="uid://bohc6wymllyla"]
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_kfx5p"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/gamemode_2.gd" id="1_vyval"]
@@ -30,7 +30,9 @@
 [ext_resource type="Script" path="res://Components/Gamemode 2/shipSprite.gd" id="23_hhkpq"]
 [ext_resource type="Texture2D" uid="uid://oew7047xyg1v" path="res://assets/scoreDisplayScreen.png" id="27_g3ib0"]
 [ext_resource type="Texture2D" uid="uid://dx6vu87utk5w7" path="res://assets/columnDriverSide (1).png" id="30_mt5rm"]
+[ext_resource type="FontFile" uid="uid://dltk8r13eljo4" path="res://Reusable Scenes/joystix monospace.otf" id="31_01vj6"]
 [ext_resource type="Texture2D" uid="uid://dkiwhqtcrexl3" path="res://assets/ColumnPassenger (1).png" id="31_ltmca"]
+[ext_resource type="Script" path="res://Components/Gamemode 2/DANGER.gd" id="32_x8nt2"]
 
 [sub_resource type="Theme" id="Theme_plp58"]
 
@@ -111,6 +113,16 @@ region = Rect2(32, 0, 32, 32)
 height = 48.71
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tfcdi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vxt4d"]
+font = ExtResource("31_01vj6")
+font_size = 26
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0vy5p"]
+font = ExtResource("31_01vj6")
+font_size = 23
+font_color = Color(0, 1, 0.00784314, 1)
 
 [node name="Gamemode 2" type="Node2D"]
 script = ExtResource("1_vyval")
@@ -548,11 +560,41 @@ position = Vector2(126, 324)
 scale = Vector2(0.992126, 1)
 texture = ExtResource("30_mt5rm")
 
+[node name="DANGER" type="Label" parent="CanvasLayer2/Border"]
+offset_left = -106.0
+offset_top = -77.0
+offset_right = 106.0
+offset_bottom = -42.0
+text = "DANGER !"
+label_settings = SubResource("LabelSettings_vxt4d")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("32_x8nt2")
+
+[node name="HideTimer" type="Timer" parent="CanvasLayer2/Border/DANGER"]
+one_shot = true
+
+[node name="ShowTimer" type="Timer" parent="CanvasLayer2/Border/DANGER"]
+one_shot = true
+
+[node name="FlashTimer" type="Timer" parent="CanvasLayer2/Border/DANGER"]
+one_shot = true
+
 [node name="Border2" type="Sprite2D" parent="CanvasLayer2"]
 visibility_layer = 512
 position = Vector2(1026, 324)
 scale = Vector2(0.992126, 1)
 texture = ExtResource("31_ltmca")
+
+[node name="Label" type="Label" parent="CanvasLayer2/Border2"]
+offset_left = -106.0
+offset_top = -77.0
+offset_right = 106.0
+offset_bottom = -42.0
+text = "YOUR SCORE"
+label_settings = SubResource("LabelSettings_0vy5p")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="beginGame" from="." to="UI Layer/Debug/ColumnUI" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_begin_game"]
@@ -585,3 +627,6 @@ texture = ExtResource("31_ltmca")
 [connection signal="changeSize" from="CrosshairLayer/Spaceship" to="CrosshairLayer/Spaceship/shipSprite" method="_on_spaceship_change_size"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="Player" method="_on_audio_stream_player_2d_finished"]
 [connection signal="area_entered" from="UFO/Area2D" to="UFO" method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="CanvasLayer2/Border/DANGER/HideTimer" to="CanvasLayer2/Border/DANGER" method="_on_hide_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer2/Border/DANGER/ShowTimer" to="CanvasLayer2/Border/DANGER" method="_on_show_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer2/Border/DANGER/FlashTimer" to="CanvasLayer2/Border/DANGER" method="_on_flash_timer_timeout"]

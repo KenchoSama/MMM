@@ -56,6 +56,7 @@ func _on_timer_timeout():
 		stringActual = string % xMulti
 	$"../UI Layer/Equation".set_text(stringActual)
 	reloadTimer.start(countDown)
+	$"../CanvasLayer2/Border/DANGER".flash()
 
 
 func _on_timer_2_timeout():
