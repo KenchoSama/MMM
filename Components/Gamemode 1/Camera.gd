@@ -68,7 +68,7 @@ func _process(delta):
 		# Shifting inital offset to game offset
 		if fixing_offset:
 			
-			position.y = player.position.y
+			position.y = player.position.y 
 			
 			var dist = 450 - player.position.y
 			dist *= -1

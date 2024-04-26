@@ -11,8 +11,7 @@ func _ready():
 	RenderingServer.set_default_clear_color(Color.AQUA)
 	WizardSprites = load("res://Reusable Scenes/Player/WizardSprites.tscn").instantiate()
 	add_child(WizardSprites)
-	WizardSprites.position = Vector2(250, -450)
-	WizardSprites.scale = Vector2(1.5,1.5)
+	
 	emit_signal("preGame") 
 	
 	
@@ -34,7 +33,7 @@ func _ready():
 # To keep code in one place, high scores are fully handled by the camera.
 
 var follow_rigidbody: bool = false
-func _process(_delta):
+func _process(_delta): 
 	if follow_rigidbody:
 		if player != null:
 			WizardSprites.rotation = player.linear_velocity.angle()
@@ -45,9 +44,12 @@ func begin_game():
 	
 	# Recreate rigidbody.
 	player = load("res://Components/Gamemode 1/WizardRigidBodyGamemode1.tscn").instantiate()
-	player.position = Vector2(250,-450)
+	player.position = Vector2(180,-365)
 	player.connect("lost", _on_player_lost)
 	player.connect("shift_waves", $Wave._shift_wave_right)
+	
+	# Initial jump here
+	player.apply_central_impulse(Vector2(40,-450))
 	
 	emit_signal("beginGame")
 	
@@ -56,7 +58,7 @@ func begin_game():
 	# Update camera's followed player
 	$Camera.player = player
 	add_child(player)
-	
+
 func _on_restart():
 	if player != null:
 		player.queue_free()
@@ -70,7 +72,11 @@ func _on_player_lost():
 
 func _on_pre_game():
 	follow_rigidbody = true
-
+	
+	WizardSprites.position = Vector2(180, -365)
+	WizardSprites.scale = Vector2(1.5,1.5)
+	WizardSprites.rotation = 0
+	
 #TODO highscores
 
 
@@ -84,6 +90,3 @@ func _on_jump_button_down():
 			player.apply_central_impulse(Vector2(0,-200))
 		
 		player._on_jump()
-		
-
-
