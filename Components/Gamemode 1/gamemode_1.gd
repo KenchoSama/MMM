@@ -49,7 +49,7 @@ func begin_game():
 	player.connect("shift_waves", $Wave._shift_wave_right)
 	
 	# Initial jump here
-	player.apply_central_impulse(Vector2(40,-450))
+	player.apply_central_impulse(Vector2(45,-450))
 	
 	emit_signal("beginGame")
 	
