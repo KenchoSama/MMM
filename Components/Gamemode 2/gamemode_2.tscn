@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bohc6wymllyla"]
+[gd_scene load_steps=61 format=3 uid="uid://bohc6wymllyla"]
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_kfx5p"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/gamemode_2.gd" id="1_vyval"]
@@ -30,9 +30,13 @@
 [ext_resource type="Script" path="res://Components/Gamemode 2/shipSprite.gd" id="23_hhkpq"]
 [ext_resource type="Texture2D" uid="uid://oew7047xyg1v" path="res://assets/scoreDisplayScreen.png" id="27_g3ib0"]
 [ext_resource type="FontFile" uid="uid://dltk8r13eljo4" path="res://Reusable Scenes/joystix monospace.otf" id="31_01vj6"]
-[ext_resource type="Texture2D" uid="uid://dijr45o0uia56" path="res://assets/columnDriverSide (1) (2).png" id="31_et1qu"]
+[ext_resource type="Texture2D" uid="uid://cql8he0vepbuj" path="res://assets/columnDriverSide (1) (3).png" id="31_5mr8d"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/DANGER.gd" id="32_x8nt2"]
 [ext_resource type="Texture2D" uid="uid://buyx31dpng333" path="res://assets/ColumnPassenger (1) (1).png" id="33_0a1l5"]
+[ext_resource type="Script" path="res://Components/Gamemode 2/HintsControl.gd" id="34_2vcpa"]
+[ext_resource type="Texture2D" uid="uid://crwrcwqoqmrbx" path="res://assets/Hints Menu.png" id="35_87f6i"]
+[ext_resource type="Texture2D" uid="uid://dfn1pqqkdt55d" path="res://assets/LinearExample1.png" id="36_6c3ig"]
+[ext_resource type="Texture2D" uid="uid://buiasspmjepwh" path="res://assets/LinearExample2.png" id="37_e7cvk"]
 
 [sub_resource type="Theme" id="Theme_plp58"]
 
@@ -134,10 +138,14 @@ font = ExtResource("31_01vj6")
 font_size = 23
 font_color = Color(0, 1, 0.00784314, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_d04uc"]
+font_size = 130
+font_color = Color(0, 0, 0, 1)
+
 [node name="Gamemode 2" type="Node2D"]
 script = ExtResource("1_vyval")
-metadata/_edit_vertical_guides_ = [0.0, 1152.0, 252.0, 900.0, 900.0, 576.0, 576.0, 522.0, 468.0, 414.0, 360.0, 306.0, 425.0, 569.0, 583.0]
-metadata/_edit_horizontal_guides_ = [648.0, 648.0, 648.0, 324.0, 108.0, 162.0, 216.0, 270.0, 378.0, 432.0, 486.0, 540.0, 594.0, 54.0]
+metadata/_edit_vertical_guides_ = [0.0, 1152.0, 252.0, 900.0, 900.0, 576.0, 576.0, 522.0, 468.0, 414.0, 360.0, 306.0, 425.0, 569.0, 583.0, 893.0]
+metadata/_edit_horizontal_guides_ = [648.0, 648.0, 648.0, 324.0, 108.0, 162.0, 216.0, 270.0, 378.0, 432.0, 486.0, 540.0, 594.0, 54.0, 395.0]
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 layer = 2
@@ -570,7 +578,7 @@ follow_viewport_scale = 1000.0
 visibility_layer = 512
 position = Vector2(126, 324)
 scale = Vector2(0.992126, 1)
-texture = ExtResource("31_et1qu")
+texture = ExtResource("31_5mr8d")
 
 [node name="DANGER" type="Label" parent="CanvasLayer2/Border"]
 offset_left = -106.0
@@ -608,6 +616,113 @@ label_settings = SubResource("LabelSettings_0vy5p")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Hints" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="HintsControl" type="Control" parent="Hints"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_52exn")
+script = ExtResource("34_2vcpa")
+
+[node name="HintsMenu" type="Sprite2D" parent="Hints/HintsControl"]
+position = Vector2(576, 324)
+texture = ExtResource("35_87f6i")
+
+[node name="HintsLabel" type="Label" parent="Hints/HintsControl"]
+offset_left = 258.0
+offset_top = 8.0
+offset_right = 896.0
+offset_bottom = 171.0
+text = "HINTS"
+label_settings = SubResource("LabelSettings_d04uc")
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="Hint1" type="Label" parent="Hints/HintsControl"]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 196.0
+offset_right = 569.0
+offset_bottom = 378.0
+text = "a number added to a
+linear equation will
+result in movement along
+the Y axis. The equation
+will maintain the same
+shape as the original!"
+
+[node name="Example1" type="Sprite2D" parent="Hints/HintsControl"]
+position = Vector2(802, 287)
+scale = Vector2(5.6875, 5.6875)
+texture = ExtResource("36_6c3ig")
+
+[node name="Added" type="Label" parent="Hints/HintsControl"]
+layout_mode = 0
+offset_left = 585.0
+offset_top = 196.0
+offset_right = 710.0
+offset_bottom = 378.0
+text = "y=1x + 1
+and
+y=1x
+
+shown
+on the
+right"
+
+[node name="Hint2" type="Label" parent="Hints/HintsControl"]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 395.0
+offset_right = 568.0
+offset_bottom = 577.0
+text = "A number next to the x
+is called a coefficient
+This controlls the how
+steep the line is.
+If the coeficcient is a
+negative number it will
+slope down!"
+
+[node name="Example2" type="Sprite2D" parent="Hints/HintsControl"]
+position = Vector2(802, 486)
+scale = Vector2(5.688, 5.688)
+texture = ExtResource("37_e7cvk")
+
+[node name="Multiplied" type="Label" parent="Hints/HintsControl"]
+offset_left = 585.0
+offset_top = 395.0
+offset_right = 710.0
+offset_bottom = 577.0
+text = "BLUE:
+y=1x
+RED:
+y=-1x
+PURPLE:
+y=3x
+
+"
+
+[node name="GoodLuck" type="Label" parent="Hints/HintsControl"]
+offset_left = 259.0
+offset_top = 594.0
+offset_right = 568.0
+offset_bottom = 639.0
+text = "GOOD LUCK!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitHints" type="Button" parent="Hints/HintsControl"]
+layout_mode = 0
+offset_left = 585.0
+offset_top = 594.0
+offset_right = 893.0
+offset_bottom = 639.0
+text = "Return to game"
+
 [connection signal="beginGame" from="." to="UI Layer/Debug/ColumnUI" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="UI Layer/Debug/DeathScreen" method="_on_gamemode_2_begin_game"]
@@ -620,6 +735,7 @@ vertical_alignment = 1
 [connection signal="startScreen" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_start_screen"]
 [connection signal="button_up" from="UI Layer/Debug/StartScreen/StartButton" to="." method="_on_start_button_button_up"]
 [connection signal="button_up" from="UI Layer/Debug/DeathScreen/RestartButton" to="." method="_on_restart_button_button_up"]
+[connection signal="button_up" from="UI Layer/Debug/DeathScreen/HintsButton" to="Hints/HintsControl" method="_on_hints_button_button_up"]
 [connection signal="button_up" from="UI Layer/Debug/DeathScreen/MainMeneuButton" to="UI Layer/Debug/DeathScreen/MainMeneuButton" method="_on_button_up"]
 [connection signal="timeout" from="Laser Cannon/Timer" to="Laser Cannon" method="_on_timer_timeout"]
 [connection signal="timeout" from="Laser Cannon/Timer2" to="Laser Cannon" method="_on_timer_2_timeout"]
@@ -641,3 +757,4 @@ vertical_alignment = 1
 [connection signal="timeout" from="CanvasLayer2/Border/DANGER/HideTimer" to="CanvasLayer2/Border/DANGER" method="_on_hide_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer2/Border/DANGER/ShowTimer" to="CanvasLayer2/Border/DANGER" method="_on_show_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer2/Border/DANGER/FlashTimer" to="CanvasLayer2/Border/DANGER" method="_on_flash_timer_timeout"]
+[connection signal="button_up" from="Hints/HintsControl/ExitHints" to="Hints/HintsControl" method="_on_exit_hints_button_up"]

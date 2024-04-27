@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dijr45o0uia56"
-path="res://.godot/imported/columnDriverSide (1) (2).png-631672d85e6011a8487b3640ae587c22.ctex"
+uid="uid://crwrcwqoqmrbx"
+path="res://.godot/imported/Hints Menu.png-7ec95c163f149d99ad444cba96beb703.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/columnDriverSide (1) (2).png"
-dest_files=["res://.godot/imported/columnDriverSide (1) (2).png-631672d85e6011a8487b3640ae587c22.ctex"]
+source_file="res://assets/Hints Menu.png"
+dest_files=["res://.godot/imported/Hints Menu.png-7ec95c163f149d99ad444cba96beb703.ctex"]
 
 [params]
 
