@@ -680,12 +680,12 @@ offset_top = 395.0
 offset_right = 568.0
 offset_bottom = 577.0
 text = "A number next to the x
-is called a coefficient
-This controlls the how
-steep the line is.
+is called a coefficient 
+or slope. This controls 
+how steep the line is. 
 If the coeficcient is a
 negative number it will
-slope down!"
+slope down to the right!"
 
 [node name="Example2" type="Sprite2D" parent="Hints/HintsControl"]
 position = Vector2(802, 486)
