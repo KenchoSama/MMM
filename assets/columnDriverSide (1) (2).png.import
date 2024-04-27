@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkiwhqtcrexl3"
-path="res://.godot/imported/ColumnPassenger (1).png-f0cbf5c49426a720f048ec9bece03ce5.ctex"
+uid="uid://dijr45o0uia56"
+path="res://.godot/imported/columnDriverSide (1) (2).png-631672d85e6011a8487b3640ae587c22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ColumnPassenger (1).png"
-dest_files=["res://.godot/imported/ColumnPassenger (1).png-f0cbf5c49426a720f048ec9bece03ce5.ctex"]
+source_file="res://assets/columnDriverSide (1) (2).png"
+dest_files=["res://.godot/imported/columnDriverSide (1) (2).png-631672d85e6011a8487b3640ae587c22.ctex"]
 
 [params]
 

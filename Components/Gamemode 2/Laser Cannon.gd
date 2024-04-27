@@ -46,13 +46,13 @@ func _on_timer_timeout():
 	else:
 		laserTarget = Vector2(648, 0)
 	if -1*xOffset < 0:
-		string = "Y = %dX - %d"
+		string = "Y=%dX-%d"
 		stringActual = string % [xMulti, xOffset/54]
 	elif -1*xOffset > 0:
-		string = "Y = %dX + %d"
+		string = "Y=%dX+%d"
 		stringActual = string % [xMulti, -1*xOffset/54]
 	else:
-		string = "Y = %dX"
+		string = "Y=%dX"
 		stringActual = string % xMulti
 	$"../UI Layer/Equation".set_text(stringActual)
 	reloadTimer.start(countDown)
@@ -68,9 +68,9 @@ func _on_timer_2_timeout():
 		position.y = 324 + xOffset
 	$RayCast2D._function_shoot()
 	if timePassed < 60:
-		timer.start(0.4)
+		timer.start(countDown/2)
 	else:
-		timer.start(0.2)
+		timer.start(countDown/4)
 
 
 func _on_ray_cast_2d_loss():
