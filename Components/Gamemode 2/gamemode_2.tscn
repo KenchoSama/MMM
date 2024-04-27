@@ -632,6 +632,7 @@ position = Vector2(576, 324)
 texture = ExtResource("35_87f6i")
 
 [node name="HintsLabel" type="Label" parent="Hints/HintsControl"]
+layout_mode = 0
 offset_left = 258.0
 offset_top = 8.0
 offset_right = 896.0
@@ -693,6 +694,7 @@ scale = Vector2(5.688, 5.688)
 texture = ExtResource("37_e7cvk")
 
 [node name="Multiplied" type="Label" parent="Hints/HintsControl"]
+layout_mode = 0
 offset_left = 585.0
 offset_top = 395.0
 offset_right = 710.0
@@ -707,6 +709,7 @@ y=3x
 "
 
 [node name="GoodLuck" type="Label" parent="Hints/HintsControl"]
+layout_mode = 0
 offset_left = 259.0
 offset_top = 594.0
 offset_right = 568.0
