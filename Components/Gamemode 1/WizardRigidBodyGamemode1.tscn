@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dmvncpbne41ro"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 1/PlayerScript1.gd" id="1_o0p1a"]
-[ext_resource type="AudioStream" uid="uid://c80ecy5xcu87a" path="res://assets/Numa Numa Original Music Video [ ezmp3.cc ].mp3" id="2_4j8h2"]
+[ext_resource type="AudioStream" uid="uid://w7mstovtgyl6" path="res://assets/Rock Lobster (Instrumental).mp3" id="2_8vbb7"]
 [ext_resource type="Material" uid="uid://c55s3lpmrxuyk" path="res://Components/Gamemode 1/jump_particles.tres" id="3_obciw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_42la4"]
@@ -38,7 +38,7 @@ base_gravity = 0.75
 shape = SubResource("CircleShape2D_aij12")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_4j8h2")
+stream = ExtResource("2_8vbb7")
 volume_db = -32.216
 
 [node name="WaterParticles" type="GPUParticles2D" parent="."]
