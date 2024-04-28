@@ -23,11 +23,11 @@
 [ext_resource type="Texture2D" uid="uid://c2xlaadels8a0" path="res://assets/greencrosshairline.png" id="18_rm1h5"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/UFO.gd" id="19_fxexf"]
 [ext_resource type="Texture2D" uid="uid://b7ki5qi4dddxf" path="res://assets/SpaceBackground.png" id="19_lyy0v"]
-[ext_resource type="AudioStream" uid="uid://b4gsbmng2hg3g" path="res://assets/Chaos Japan - Castle Crashers.mp3" id="20_0l4y0"]
 [ext_resource type="Texture2D" uid="uid://cnjbvcg735ver" path="res://assets/UFO.png" id="20_ibxlk"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/Spaceship.gd" id="21_2dgoo"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/GraphMain.gd" id="21_dn4no"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/shipSprite.gd" id="23_hhkpq"]
+[ext_resource type="AudioStream" uid="uid://do0xf5ok8qb60" path="res://assets/SpaceSongThingyYEAH!.wav" id="27_58867"]
 [ext_resource type="Texture2D" uid="uid://oew7047xyg1v" path="res://assets/scoreDisplayScreen.png" id="27_g3ib0"]
 [ext_resource type="FontFile" uid="uid://dltk8r13eljo4" path="res://Reusable Scenes/joystix monospace.otf" id="31_01vj6"]
 [ext_resource type="Texture2D" uid="uid://cql8he0vepbuj" path="res://assets/columnDriverSide (1) (3).png" id="31_5mr8d"]
@@ -517,7 +517,7 @@ rotation = 1.5708
 texture = ExtResource("18_rm1h5")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("20_0l4y0")
+stream = ExtResource("27_58867")
 volume_db = -32.0
 
 [node name="UFO" type="CharacterBody2D" parent="."]
@@ -732,8 +732,8 @@ environment = SubResource("Environment_kth7l")
 [connection signal="beginGame" from="." to="CrosshairLayer/Spaceship" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="CrosshairLayer/Spaceship/shipSprite" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="CrosshairLayer/GraphMain" method="_on_gamemode_2_begin_game"]
-[connection signal="beginGame" from="." to="Laser Cannon" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="UFO" method="_on_gamemode_2_begin_game"]
+[connection signal="beginGame" from="." to="Laser Cannon" method="_on_gamemode_2_begin_game"]
 [connection signal="startScreen" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_start_screen"]
 [connection signal="button_up" from="UI Layer/Debug/StartScreen/StartButton" to="." method="_on_start_button_button_up"]
 [connection signal="button_up" from="UI Layer/Debug/DeathScreen/RestartButton" to="." method="_on_restart_button_button_up"]
@@ -757,6 +757,6 @@ environment = SubResource("Environment_kth7l")
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="CrosshairLayer/Spaceship" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="CrosshairLayer/Spaceship/shipSprite" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="CrosshairLayer/GraphMain" method="_on_ray_cast_2d_loss"]
-[connection signal="loss" from="Laser Cannon/RayCast2D" to="Laser Cannon" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="UFO" method="_on_ray_cast_2d_loss"]
+[connection signal="loss" from="Laser Cannon/RayCast2D" to="Laser Cannon" method="_on_ray_cast_2d_loss"]
 [connection signal="timeout" from="Laser Cannon/RayCast2D/tweenTimer" to="Laser Cannon/RayCast2D" method="_on_tween_timer_timeout"]
