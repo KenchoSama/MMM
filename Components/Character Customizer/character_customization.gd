@@ -96,4 +96,4 @@ func _on_shirts_item_selected(index):
 
 
 func _on_shop_theme_finished():
-	$ShopTheme.start(0) # Replace with function body.
+	$ShopTheme.play(0) # Replace with function body.
