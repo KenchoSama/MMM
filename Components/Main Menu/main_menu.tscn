@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://corn6y012o67q"]
+[gd_scene load_steps=18 format=3 uid="uid://corn6y012o67q"]
 
 [ext_resource type="Script" path="res://Components/Main Menu/main_menu.gd" id="1_jth7i"]
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_jwc0v"]
+[ext_resource type="Texture2D" uid="uid://b7ki5qi4dddxf" path="res://assets/SpaceBackground.png" id="3_gqey7"]
 [ext_resource type="Texture2D" uid="uid://b5l4ahq7ri6l8" path="res://assets/greek background.png" id="3_hgg08"]
 [ext_resource type="Script" path="res://Components/Main Menu/MMMFollow.gd" id="3_kdqbl"]
 [ext_resource type="FontFile" uid="uid://dltk8r13eljo4" path="res://Reusable Scenes/joystix monospace.otf" id="3_rjifg"]
@@ -51,6 +52,10 @@ metadata/_edit_horizontal_guides_ = [-32.0]
 
 [node name="BackGround" type="CanvasLayer" parent="."]
 layer = -1
+
+[node name="ChangingBackground" type="Sprite2D" parent="BackGround"]
+position = Vector2(576, 324)
+texture = ExtResource("3_gqey7")
 
 [node name="BackGround Sprite" type="Sprite2D" parent="BackGround"]
 position = Vector2(576, 324)
