@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://corn6y012o67q"]
+[gd_scene load_steps=19 format=3 uid="uid://corn6y012o67q"]
 
 [ext_resource type="Script" path="res://Components/Main Menu/main_menu.gd" id="1_jth7i"]
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_jwc0v"]
@@ -35,6 +35,14 @@ shadow_size = 8
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jk5sb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kg5rp"]
+
+[sub_resource type="Environment" id="Environment_43jd1"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.72
+glow_strength = 0.82
+glow_bloom = 0.1
+glow_blend_mode = 1
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -156,6 +164,9 @@ autoplay = true
 
 [node name="loopTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_43jd1")
 
 [connection signal="button_down" from="Path2D/PathFollow2D/ColorChangeButton" to="Path2D/PathFollow2D/MMM" method="_change_color"]
 [connection signal="timeout" from="Path2D/PathFollow2D/ColorChangeButton/ColorTimer" to="Path2D/PathFollow2D/MMM" method="_on_color_timer_timeout"]
