@@ -93,6 +93,25 @@ size = Vector2(1152, 27)
 atlas = ExtResource("18_lo2y8")
 region = Rect2(32, 0, 32, 32)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dfafk"]
+height = 48.71
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tfcdi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vxt4d"]
+font = ExtResource("31_01vj6")
+font_size = 26
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0vy5p"]
+font = ExtResource("31_01vj6")
+font_size = 23
+font_color = Color(0, 1, 0.00784314, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d04uc"]
+font_size = 130
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_2dqln"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ne014"]
@@ -122,25 +141,6 @@ glow_strength = 1.39
 glow_mix = 0.095
 glow_blend_mode = 1
 volumetric_fog_density = 1.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dfafk"]
-height = 48.71
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_tfcdi"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_vxt4d"]
-font = ExtResource("31_01vj6")
-font_size = 26
-font_color = Color(1, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_0vy5p"]
-font = ExtResource("31_01vj6")
-font_size = 23
-font_color = Color(0, 1, 0.00784314, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_d04uc"]
-font_size = 130
-font_color = Color(0, 0, 0, 1)
 
 [node name="Gamemode 2" type="Node2D"]
 script = ExtResource("1_vyval")
@@ -516,35 +516,6 @@ position = Vector2(-216, 0)
 rotation = 1.5708
 texture = ExtResource("18_rm1h5")
 
-[node name="Laser Cannon" type="Node2D" parent="."]
-script = ExtResource("12_y37jy")
-
-[node name="Timer" type="Timer" parent="Laser Cannon"]
-one_shot = true
-
-[node name="Timer2" type="Timer" parent="Laser Cannon"]
-one_shot = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Laser Cannon"]
-texture = SubResource("CanvasTexture_2dqln")
-
-[node name="RayCast2D" type="RayCast2D" parent="Laser Cannon"]
-script = ExtResource("13_j826a")
-
-[node name="tweenTimer" type="Timer" parent="Laser Cannon/RayCast2D"]
-one_shot = true
-
-[node name="Line2D" type="Line2D" parent="Laser Cannon/RayCast2D"]
-z_as_relative = false
-material = SubResource("CanvasItemMaterial_ne014")
-points = PackedVector2Array(0, 0, 0, 50)
-default_color = Color(1, 0.321569, 0.266667, 1)
-texture = SubResource("CanvasTexture_phet0")
-texture_mode = 2
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Laser Cannon/RayCast2D"]
-environment = SubResource("Environment_kth7l")
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("20_0l4y0")
 volume_db = -32.0
@@ -726,6 +697,34 @@ offset_right = 893.0
 offset_bottom = 639.0
 text = "Return to game"
 
+[node name="Laser Cannon" type="Node2D" parent="."]
+script = ExtResource("12_y37jy")
+
+[node name="Timer" type="Timer" parent="Laser Cannon"]
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="Laser Cannon"]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Laser Cannon"]
+texture = SubResource("CanvasTexture_2dqln")
+
+[node name="RayCast2D" type="RayCast2D" parent="Laser Cannon"]
+script = ExtResource("13_j826a")
+
+[node name="tweenTimer" type="Timer" parent="Laser Cannon/RayCast2D"]
+one_shot = true
+
+[node name="Line2D" type="Line2D" parent="Laser Cannon/RayCast2D"]
+material = SubResource("CanvasItemMaterial_ne014")
+points = PackedVector2Array(0, 0, 0, 50)
+default_color = Color(1, 0.321569, 0.266667, 1)
+texture = SubResource("CanvasTexture_phet0")
+texture_mode = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Laser Cannon/RayCast2D"]
+environment = SubResource("Environment_kth7l")
+
 [connection signal="beginGame" from="." to="UI Layer/Debug/ColumnUI" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="UI Layer/Debug/DeathScreen" method="_on_gamemode_2_begin_game"]
@@ -743,6 +742,12 @@ text = "Return to game"
 [connection signal="pressed" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_pressed"]
 [connection signal="released" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_released"]
 [connection signal="changeSize" from="CrosshairLayer/Spaceship" to="CrosshairLayer/Spaceship/shipSprite" method="_on_spaceship_change_size"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="Player" method="_on_audio_stream_player_2d_finished"]
+[connection signal="area_entered" from="UFO/Area2D" to="UFO" method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="CanvasLayer2/Border/DANGER/HideTimer" to="CanvasLayer2/Border/DANGER" method="_on_hide_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer2/Border/DANGER/ShowTimer" to="CanvasLayer2/Border/DANGER" method="_on_show_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer2/Border/DANGER/FlashTimer" to="CanvasLayer2/Border/DANGER" method="_on_flash_timer_timeout"]
+[connection signal="button_up" from="Hints/HintsControl/ExitHints" to="Hints/HintsControl" method="_on_exit_hints_button_up"]
 [connection signal="timeout" from="Laser Cannon/Timer" to="Laser Cannon" method="_on_timer_timeout"]
 [connection signal="timeout" from="Laser Cannon/Timer2" to="Laser Cannon" method="_on_timer_2_timeout"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="." method="_on_ray_cast_2d_loss"]
@@ -755,9 +760,3 @@ text = "Return to game"
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="Laser Cannon" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="UFO" method="_on_ray_cast_2d_loss"]
 [connection signal="timeout" from="Laser Cannon/RayCast2D/tweenTimer" to="Laser Cannon/RayCast2D" method="_on_tween_timer_timeout"]
-[connection signal="finished" from="AudioStreamPlayer2D" to="Player" method="_on_audio_stream_player_2d_finished"]
-[connection signal="area_entered" from="UFO/Area2D" to="UFO" method="_on_area_2d_area_entered"]
-[connection signal="timeout" from="CanvasLayer2/Border/DANGER/HideTimer" to="CanvasLayer2/Border/DANGER" method="_on_hide_timer_timeout"]
-[connection signal="timeout" from="CanvasLayer2/Border/DANGER/ShowTimer" to="CanvasLayer2/Border/DANGER" method="_on_show_timer_timeout"]
-[connection signal="timeout" from="CanvasLayer2/Border/DANGER/FlashTimer" to="CanvasLayer2/Border/DANGER" method="_on_flash_timer_timeout"]
-[connection signal="button_up" from="Hints/HintsControl/ExitHints" to="Hints/HintsControl" method="_on_exit_hints_button_up"]

@@ -55,7 +55,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_jwc0v")
 script = ExtResource("1_jth7i")
-metadata/_edit_vertical_guides_ = [506.0, 646.0, 1152.0]
+metadata/_edit_vertical_guides_ = [506.0, 646.0, 1152.0, 0.0]
 metadata/_edit_horizontal_guides_ = [-32.0]
 
 [node name="BackGround" type="CanvasLayer" parent="."]
