@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=19 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_p6bw8"]
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_rgdqb"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Components/Gamemode 3/Control.gd" id="4_8hv4o"]
 [ext_resource type="Texture2D" uid="uid://8htax3pkoq4r" path="res://Reusable Scenes/PixelArtUI.png" id="4_nljn4"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/Control2.gd" id="6_8ut7r"]
+[ext_resource type="Texture2D" uid="uid://cqdls0ip1857e" path="res://Components/Gamemode 3/images/New Piskel (1).png" id="7_2c2u4"]
 [ext_resource type="Texture2D" uid="uid://cmdxtytd1w5j3" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard1.png" id="7_e4c4l"]
 [ext_resource type="Texture2D" uid="uid://benckrpvwuit1" path="res://Reusable Scenes/Player/Sprites/Legs/Legs.png" id="8_lguju"]
 [ext_resource type="Texture2D" uid="uid://w63ynxuoqsdk" path="res://Reusable Scenes/Player/Sprites/Legs/LegsLeftUp.png" id="9_nn13b"]
@@ -112,6 +113,23 @@ offset_right = 538.0
 offset_bottom = 276.0
 texture_normal = SubResource("AtlasTexture_2usdx")
 
+[node name="SpellsButton" type="Control" parent="UI Layer/control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="firebutton" type="Button" parent="UI Layer/control/SpellsButton"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 499.0
+offset_right = 65.0
+offset_bottom = 534.0
+
+[node name="fire" type="Sprite2D" parent="UI Layer/control/SpellsButton/firebutton"]
+position = Vector2(16.5, 15.5)
+scale = Vector2(1.71875, 1.71875)
+texture = ExtResource("7_2c2u4")
+
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(759, 348)
 motion_mode = 1
@@ -179,6 +197,7 @@ wait_time = 2.0
 [connection signal="button_up" from="UI Layer/control/Control/Restart" to="." method="_on_restart_button_up"]
 [connection signal="button_up" from="UI Layer/control/Control2/Start" to="." method="_on_start_button_up"]
 [connection signal="button_up" from="UI Layer/control/Control2/Start" to="Player" method="_on_start_button_up"]
+[connection signal="button_down" from="UI Layer/control/SpellsButton/firebutton" to="Player" method="_on_firebutton_button_down"]
 [connection signal="firespellActivated" from="Player" to="." method="_on_player_firespell_activated"]
 [connection signal="lightingspellActivated" from="Player" to="." method="_on_player_lightingspell_activated"]
 [connection signal="lost" from="Player" to="." method="_on_player_lost"]

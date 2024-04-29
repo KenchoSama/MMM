@@ -1,9 +1,7 @@
 extends CharacterBody2D
 
-const minSpeed = 300
-const maxSpeed = 800
+
 var speed = 300
-var acceleration = 0.03
 var target = position
 
 # used for preventing unnecessary math
@@ -13,6 +11,9 @@ signal firespellActivated(pos, direction)
 signal spellReleased
 signal lightingspellActivated(pos, direction)
 signal waterspellActivated(pos, direction)
+# Check if the player direction's x component is negative
+var player_direction = (get_global_mouse_position() - position).normalized()
+
 
 func _ready():
 	set_physics_process(false)
@@ -24,10 +25,6 @@ func _input(event):
 		target = event.get_position()
 
 func _physics_process(_delta):
-	if position.distance_to(target) > 150 and speed < maxSpeed:
-		speed = speed + speed * acceleration
-	elif position.distance_to(target) < 50 and speed > minSpeed:
-		speed = speed - speed * acceleration
 	
 	velocity = position.direction_to(target) * speed
 	
@@ -40,7 +37,6 @@ func _physics_process(_delta):
 	else:
 	# Reset the player sprite scale if the direction is not negative
 		player_sprite.scale.y = 1
-	
 	
 	if position.distance_to(target) > 20:
 		move_and_slide()
@@ -127,3 +123,9 @@ func _on_area_2d_body_entered(body):
 
 func _on_start_button_up():
 	set_physics_process(true)
+
+
+
+
+func _on_firebutton_button_down():
+	pass

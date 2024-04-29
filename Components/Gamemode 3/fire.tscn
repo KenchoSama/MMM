@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dd3r250yut3gy" path="res://Components/Gamemode 3/images/fireexplosion.png" id="3_t7o66"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqbqu"]
-size = Vector2(48.4996, 106.5)
+size = Vector2(42.4999, 68.5001)
 
 [sub_resource type="Animation" id="Animation_0btdn"]
 length = 0.001
@@ -65,6 +65,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b40ne"]
 _data = {
@@ -82,12 +96,12 @@ script = ExtResource("1_ac6ti")
 position = Vector2(-1.00002, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-3.25034, -60.75)
+position = Vector2(-6.25018, -41.75)
 shape = SubResource("RectangleShape2D_uqbqu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2.00024, -66)
-scale = Vector2(2.38898, 4.59645)
+position = Vector2(-7.33951, -44.9763)
+scale = Vector2(2.05528, 3.28247)
 texture = ExtResource("2_rvube")
 hframes = 2
 vframes = 3
@@ -99,10 +113,11 @@ libraries = {
 autoplay = "fireAnimation"
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="explosion" type="Sprite2D" parent="."]
-position = Vector2(-3.00045, -123)
-scale = Vector2(6.63279, 8.42971)
+position = Vector2(-7.6723, -104.312)
+scale = Vector2(6.3408, 7.26172)
 texture = ExtResource("3_t7o66")
 hframes = 4
 vframes = 4

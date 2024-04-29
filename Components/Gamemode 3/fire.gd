@@ -20,9 +20,10 @@ func _on_area_2d_area_entered(area):
 
 
 func _on_area_2d_body_entered(body):
-	body.hit()
-	$Sprite2D.visible = false
-	explode()
+	if "triangle" in body:
+		body.hit()
+		$Sprite2D.visible = false
+		explode()
 	
 
 

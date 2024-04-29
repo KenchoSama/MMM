@@ -72,3 +72,4 @@ func _on_start_button_up():
 
 func _on_begingame():
 	$Timer.start()
+
