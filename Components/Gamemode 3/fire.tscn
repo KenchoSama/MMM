@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhkis6556t7t7"]
+[gd_scene load_steps=9 format=3 uid="uid://bhkis6556t7t7"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 3/fire.gd" id="1_ac6ti"]
 [ext_resource type="Texture2D" uid="uid://ckykbf2sbxh2k" path="res://Components/Gamemode 3/firespell.png" id="2_rvube"]
+[ext_resource type="Texture2D" uid="uid://dd3r250yut3gy" path="res://Components/Gamemode 3/images/fireexplosion.png" id="3_t7o66"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqbqu"]
-size = Vector2(48.4996, 118.5)
+size = Vector2(48.4996, 106.5)
 
 [sub_resource type="Animation" id="Animation_0btdn"]
 length = 0.001
@@ -15,6 +16,18 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("explosion:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -37,9 +50,26 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
+[sub_resource type="Animation" id="Animation_qic0b"]
+resource_name = "explosion"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b40ne"]
 _data = {
 "RESET": SubResource("Animation_0btdn"),
+"explosion": SubResource("Animation_qic0b"),
 "fireAnimation": SubResource("Animation_yl0k8")
 }
 
@@ -49,10 +79,10 @@ rotation = 1.5708
 script = ExtResource("1_ac6ti")
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(-3.8147e-06, -1)
+position = Vector2(-1.00002, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-3.25027, -66.75)
+position = Vector2(-3.25034, -60.75)
 shape = SubResource("RectangleShape2D_uqbqu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -69,6 +99,13 @@ libraries = {
 autoplay = "fireAnimation"
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="explosion" type="Sprite2D" parent="."]
+position = Vector2(-3.00045, -123)
+scale = Vector2(6.63279, 8.42971)
+texture = ExtResource("3_t7o66")
+hframes = 4
+vframes = 4
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]

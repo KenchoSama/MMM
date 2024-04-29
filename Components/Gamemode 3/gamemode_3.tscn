@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=18 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_p6bw8"]
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_rgdqb"]
@@ -7,15 +7,19 @@
 [ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/WizardSprites.gd" id="2_o8ocu"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/Control.gd" id="4_8hv4o"]
 [ext_resource type="Texture2D" uid="uid://8htax3pkoq4r" path="res://Reusable Scenes/PixelArtUI.png" id="4_nljn4"]
+[ext_resource type="Script" path="res://Components/Gamemode 3/Control2.gd" id="6_8ut7r"]
 [ext_resource type="Texture2D" uid="uid://cmdxtytd1w5j3" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard1.png" id="7_e4c4l"]
 [ext_resource type="Texture2D" uid="uid://benckrpvwuit1" path="res://Reusable Scenes/Player/Sprites/Legs/Legs.png" id="8_lguju"]
 [ext_resource type="Texture2D" uid="uid://w63ynxuoqsdk" path="res://Reusable Scenes/Player/Sprites/Legs/LegsLeftUp.png" id="9_nn13b"]
 [ext_resource type="Texture2D" uid="uid://sg3xf4yhnf1n" path="res://Reusable Scenes/Player/Sprites/Legs/LegsRightUp.png" id="10_h6bwa"]
-[ext_resource type="PackedScene" uid="uid://4nyr3sr12iuu" path="res://Components/Gamemode 3/triangles.tscn" id="13_5ugqq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0q3jm"]
 atlas = ExtResource("4_nljn4")
 region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2usdx"]
+atlas = ExtResource("4_nljn4")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ql60"]
 animations = [{
@@ -91,6 +95,23 @@ offset_right = 573.0
 offset_bottom = 301.0
 texture_normal = SubResource("AtlasTexture_0q3jm")
 
+[node name="Control2" type="Control" parent="UI Layer/control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_8ut7r")
+
+[node name="Start" type="TextureButton" parent="UI Layer/control/Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.75
+offset_left = 538.0
+offset_top = 266.0
+offset_right = 538.0
+offset_bottom = 276.0
+texture_normal = SubResource("AtlasTexture_2usdx")
+
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(759, 348)
 motion_mode = 1
@@ -149,13 +170,15 @@ position = Vector2(563, 586)
 [node name="Marker2D5" type="Marker2D" parent="AllTriangles"]
 position = Vector2(294, 85)
 
-[node name="triangles" parent="." instance=ExtResource("13_5ugqq")]
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 
+[connection signal="begingame" from="." to="." method="_on_begingame"]
+[connection signal="begingame" from="." to="UI Layer/control/Control2" method="_on_gamemode_3_begingame"]
 [connection signal="gameLost" from="." to="UI Layer/control/Control" method="_on_gamemode_3_game_lost"]
 [connection signal="button_up" from="UI Layer/control/Control/Restart" to="." method="_on_restart_button_up"]
+[connection signal="button_up" from="UI Layer/control/Control2/Start" to="." method="_on_start_button_up"]
+[connection signal="button_up" from="UI Layer/control/Control2/Start" to="Player" method="_on_start_button_up"]
 [connection signal="firespellActivated" from="Player" to="." method="_on_player_firespell_activated"]
 [connection signal="lightingspellActivated" from="Player" to="." method="_on_player_lightingspell_activated"]
 [connection signal="lost" from="Player" to="." method="_on_player_lost"]

@@ -9,8 +9,8 @@ scale = Vector2(0.663082, 0.773279)
 script = ExtResource("1_1evgh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(24.1298, -7.75915)
-scale = Vector2(14.7799, 11.4113)
+position = Vector2(-54.8986, -63.4867)
+scale = Vector2(9.84062, 7.92833)
 texture = ExtResource("2_n5d8h")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -18,16 +18,18 @@ position = Vector2(3.0162, 2.58638)
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2(-82.946, -173.288)
+position = Vector2(-147.795, -218.55)
 scale = Vector2(0.998311, 0.955995)
-polygon = PackedVector2Array(54.3837, 29.7599, -154.087, 239.432, 364.069, 243.49)
+polygon = PackedVector2Array(58.9158, 68.9887, -74.0223, 209.672, 256.812, 208.319)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(285.033, 60.7801, -27.146, -139.665, -232.249, 59.4869)
+position = Vector2(-73.8974, -51.7278)
+scale = Vector2(0.657894, 0.670452)
+polygon = PackedVector2Array(280.733, 56.3841, -27.146, -139.665, -232.249, 59.4869)
 
 [node name="respawn points" type="Node2D" parent="."]
 
