@@ -63,54 +63,6 @@ func _on_spell_timer_1_timeout():
 
 
 
-#func _input(event):
-	#if event is InputEventScreenTouch and event.is_pressed():
-		#target = event.get_position()
-	#elif event is InputEventScreenDrag:
-		#target = event.get_position()
-#
-#
-#func _physics_process(_delta):
-	#if position.distance_to(target) > 150:
-		#speed = speed + speed
-	#elif position.distance_to(target) < 50:
-		#speed = speed - speed
-	#
-	#velocity = position.direction_to(target) * speed
-	#if position.distance_to(target) > 20:
-		#move_and_slide()
-		#
-	#var direction = (target - position).normalized() * speed
-	#var player_sprite = $Sprites
-	#if direction.x < 0:
-		#player_sprite.scale.y = -1
-	#else:
-		#player_sprite.scale.y = 1
-		#
-		#
-		#
-#func _process(delta):
-#
-#
-	#var input_vector = Vector2.ZERO
-	#input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	#input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	#input_vector = input_vector.normalized()
-	#var motion = input_vector * speed * delta
-	#var collision = move_and_collide(motion)
-
-
-##func get_mouse_input_action():
-	##if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		##return "primary"
-	##elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-		##return "secondary"
-	##elif Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
-		##return "thirdAction"
-	##else:
-		##return "no_input"
-#
-#
 func _on_area_2d_body_entered(body):
 	if "triangle" in body:
 		queue_free()
@@ -122,7 +74,8 @@ func _on_start_button_up():
 	set_physics_process(true)
 
 
-
-
 func _on_firebutton_button_down():
-	pass
+	if spellcooldown:
+		spellcooldown = false
+		$SpellTimer1.start()
+		firespellActivated.emit($spellposition.get_children()[0].global_position, (get_global_mouse_position() - position).normalized())

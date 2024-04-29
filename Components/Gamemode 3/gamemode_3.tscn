@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=20 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_p6bw8"]
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_rgdqb"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cqdls0ip1857e" path="res://Components/Gamemode 3/images/New Piskel (1).png" id="7_2c2u4"]
 [ext_resource type="Texture2D" uid="uid://cmdxtytd1w5j3" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard1.png" id="7_e4c4l"]
 [ext_resource type="Texture2D" uid="uid://benckrpvwuit1" path="res://Reusable Scenes/Player/Sprites/Legs/Legs.png" id="8_lguju"]
+[ext_resource type="Texture2D" uid="uid://yanmqwgm85ku" path="res://Components/Gamemode 3/images/sky.png" id="8_xajof"]
 [ext_resource type="Texture2D" uid="uid://w63ynxuoqsdk" path="res://Reusable Scenes/Player/Sprites/Legs/LegsLeftUp.png" id="9_nn13b"]
 [ext_resource type="Texture2D" uid="uid://sg3xf4yhnf1n" path="res://Reusable Scenes/Player/Sprites/Legs/LegsRightUp.png" id="10_h6bwa"]
 
@@ -126,9 +127,36 @@ offset_right = 65.0
 offset_bottom = 534.0
 
 [node name="fire" type="Sprite2D" parent="UI Layer/control/SpellsButton/firebutton"]
-position = Vector2(16.5, 15.5)
+position = Vector2(17, 16)
 scale = Vector2(1.71875, 1.71875)
 texture = ExtResource("7_2c2u4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(575.5, 322.5)
+scale = Vector2(36.0313, 20.3437)
+texture = ExtResource("8_xajof")
+
+[node name="AllSpells" type="Node2D" parent="."]
+
+[node name="AllTriangles" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="AllTriangles"]
+position = Vector2(61, 369)
+
+[node name="Marker2D2" type="Marker2D" parent="AllTriangles"]
+position = Vector2(1071, 587)
+
+[node name="Marker2D3" type="Marker2D" parent="AllTriangles"]
+position = Vector2(948, 90)
+
+[node name="Marker2D4" type="Marker2D" parent="AllTriangles"]
+position = Vector2(563, 586)
+
+[node name="Marker2D5" type="Marker2D" parent="AllTriangles"]
+position = Vector2(294, 85)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(759, 348)
@@ -169,27 +197,19 @@ wait_time = 2.0
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_hkmgt")
 
-[node name="AllSpells" type="Node2D" parent="."]
+[node name="clouds" type="Node2D" parent="."]
 
-[node name="AllTriangles" type="Node2D" parent="."]
+[node name="Marker2D" type="Marker2D" parent="clouds"]
+position = Vector2(-86, 327)
 
-[node name="Marker2D" type="Marker2D" parent="AllTriangles"]
-position = Vector2(37, 562)
+[node name="Marker2D2" type="Marker2D" parent="clouds"]
+position = Vector2(-78, 533)
 
-[node name="Marker2D2" type="Marker2D" parent="AllTriangles"]
-position = Vector2(1071, 587)
+[node name="Marker2D3" type="Marker2D" parent="clouds"]
+position = Vector2(-145, 429)
 
-[node name="Marker2D3" type="Marker2D" parent="AllTriangles"]
-position = Vector2(948, 90)
-
-[node name="Marker2D4" type="Marker2D" parent="AllTriangles"]
-position = Vector2(563, 586)
-
-[node name="Marker2D5" type="Marker2D" parent="AllTriangles"]
-position = Vector2(294, 85)
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+[node name="Marker2D4" type="Marker2D" parent="clouds"]
+position = Vector2(-130, 249)
 
 [connection signal="begingame" from="." to="." method="_on_begingame"]
 [connection signal="begingame" from="." to="UI Layer/control/Control2" method="_on_gamemode_3_begingame"]
@@ -198,10 +218,10 @@ wait_time = 2.0
 [connection signal="button_up" from="UI Layer/control/Control2/Start" to="." method="_on_start_button_up"]
 [connection signal="button_up" from="UI Layer/control/Control2/Start" to="Player" method="_on_start_button_up"]
 [connection signal="button_down" from="UI Layer/control/SpellsButton/firebutton" to="Player" method="_on_firebutton_button_down"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="firespellActivated" from="Player" to="." method="_on_player_firespell_activated"]
 [connection signal="lightingspellActivated" from="Player" to="." method="_on_player_lightingspell_activated"]
 [connection signal="lost" from="Player" to="." method="_on_player_lost"]
 [connection signal="waterspellActivated" from="Player" to="." method="_on_player_waterspell_activated"]
 [connection signal="timeout" from="Player/SpellTimer1" to="Player" method="_on_spell_timer_1_timeout"]
 [connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
