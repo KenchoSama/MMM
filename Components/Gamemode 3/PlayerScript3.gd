@@ -3,8 +3,6 @@ extends CharacterBody2D
 
 var speed = 300
 var target = position
-
-# used for preventing unnecessary math
 var spellcooldown: bool = true
 signal lost
 signal firespellActivated(pos, direction)
@@ -26,9 +24,8 @@ func _input(event):
 
 func _physics_process(_delta):
 	
+	#move and look
 	velocity = position.direction_to(target) * speed
-	
-	
 	var player_sprite = $Sprites
 	# Check if the player direction's x component is negative
 	var player_direction = (get_global_mouse_position() - position).normalized()
@@ -37,7 +34,7 @@ func _physics_process(_delta):
 	else:
 	# Reset the player sprite scale if the direction is not negative
 		player_sprite.scale.y = 1
-	
+
 	if position.distance_to(target) > 20:
 		move_and_slide()
 		
