@@ -5,12 +5,13 @@ var lightingSpell: PackedScene = preload("res://Components/Gamemode 3/lighting.t
 var waterSpell: PackedScene = preload("res://Components/Gamemode 3/water.tscn")
 var triangle: PackedScene = preload("res://Components/Gamemode 3/triangles.tscn")
 
-
+signal begingame
 signal gameLost
 
 func _ready():
 	# Start the timer to spawn triangles every 5 seconds
-	$Timer.start()
+	#$Timer.start()
+	pass
 
 
 func _on_player_firespell_activated(pos, direction):
@@ -52,13 +53,23 @@ func _on_restart_button_up():
 
 
 func _on_timer_timeout():
-	var new_triangle = triangle.instantiate()
-	var direction = ($Player.global_position - position).normalized() 
-	#var player_direction = (get_global_mouse_position() - position).normalized()
-	var triangle_positions = $AllTriangles.get_children()
-	var positionSpawn = triangle_positions[randi() % triangle_positions.size()]
-	new_triangle.position = positionSpawn.global_position
-	new_triangle.rotation_degrees = rad_to_deg(direction.angle())
-	new_triangle.direction = direction
-	add_child(new_triangle)
+	if $Player:
+		var new_triangle = triangle.instantiate()
+		var direction = ($Player.global_position - position).normalized() 
+		#var player_direction = (get_global_mouse_position() - position).normalized()
+		var triangle_positions = $AllTriangles.get_children()
+		var positionSpawn = triangle_positions[randi() % triangle_positions.size()]
+		new_triangle.position = positionSpawn.global_position
+		new_triangle.rotation_degrees = rad_to_deg(direction.angle())
+		new_triangle.direction = direction
+		add_child(new_triangle)
 	
+
+
+func _on_start_button_up():
+	emit_signal("begingame")
+
+
+func _on_begingame():
+	$Timer.start()
+

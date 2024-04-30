@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://hplngi8f4lds"]
+[gd_scene load_steps=9 format=3 uid="uid://hplngi8f4lds"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 3/water.gd" id="1_fqtxt"]
 [ext_resource type="Texture2D" uid="uid://lbovx3ddtpvt" path="res://Components/Gamemode 3/waterspell.png" id="2_jgjgk"]
+[ext_resource type="Texture2D" uid="uid://c2aet5bg3oado" path="res://Components/Gamemode 3/images/waterexplosion.png" id="3_xwhrr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0x0nw"]
-size = Vector2(119, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3evg"]
+size = Vector2(131, 33)
 
 [sub_resource type="Animation" id="Animation_2fubw"]
 length = 0.001
@@ -15,6 +16,18 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("waterexplosion:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -37,27 +50,60 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
+[sub_resource type="Animation" id="Animation_p6eks"]
+resource_name = "waterexplosion"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("waterexplosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_60p82"]
 _data = {
 "RESET": SubResource("Animation_2fubw"),
-"waterAnimation": SubResource("Animation_2ga6q")
+"waterAnimation": SubResource("Animation_2ga6q"),
+"waterexplosion": SubResource("Animation_p6eks")
 }
 
-[node name="water" type="Area2D"]
+[node name="water" type="Node2D"]
 position = Vector2(178, 264)
 script = ExtResource("1_fqtxt")
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(63.5, -6.5)
+shape = SubResource("RectangleShape2D_s3evg")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(64, -9)
+position = Vector2(62, -9)
 rotation = 1.5708
 scale = Vector2(3.6875, 4.36458)
 texture = ExtResource("2_jgjgk")
 hframes = 2
 vframes = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(63, -7)
-shape = SubResource("RectangleShape2D_0x0nw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -67,4 +113,13 @@ autoplay = "waterAnimation"
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="waterexplosion" type="Sprite2D" parent="."]
+position = Vector2(136.25, -10)
+scale = Vector2(5.48438, 3.28125)
+texture = ExtResource("3_xwhrr")
+hframes = 3
+vframes = 4
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
