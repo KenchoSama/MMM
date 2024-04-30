@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqay6i8p18pa6"]
+[gd_scene load_steps=10 format=3 uid="uid://dqay6i8p18pa6"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 3/lighting.gd" id="1_gndqf"]
 [ext_resource type="Texture2D" uid="uid://dwbxkqq2q5lqd" path="res://Components/Gamemode 3/lightingspell.png" id="2_nd362"]
+[ext_resource type="Texture2D" uid="uid://brxe5mlrxpe6f" path="res://Components/Gamemode 3/lightingexplosion.png" id="3_idqvy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdljx"]
-size = Vector2(181, 43.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1j0q"]
+size = Vector2(93, 17.5)
 
 [sub_resource type="Animation" id="Animation_lgbac"]
 length = 0.001
@@ -19,6 +20,47 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("lightingExplosion:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_rw5ja"]
+resource_name = "lightinexplosion"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lightingExplosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_rg042"]
@@ -37,27 +79,35 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
+[sub_resource type="Animation" id="Animation_7f2pm"]
+resource_name = "lightingExplosion"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nj7x0"]
 _data = {
 "RESET": SubResource("Animation_lgbac"),
-"lightingAnimation": SubResource("Animation_rg042")
+"lightinexplosion": SubResource("Animation_rw5ja"),
+"lightingAnimation": SubResource("Animation_rg042"),
+"lightingExplosion": SubResource("Animation_7f2pm")
 }
 
-[node name="lighting" type="Area2D"]
+[node name="lighting" type="Node2D"]
 position = Vector2(231, 313)
 script = ExtResource("1_gndqf")
 
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-1, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(54, -1)
+shape = SubResource("RectangleShape2D_d1j0q")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(85.3333, 1.625)
+position = Vector2(52, 1.00001)
 rotation = 1.5708
-scale = Vector2(2.60156, 5.64583)
+scale = Vector2(2.16357, 3.05958)
 texture = ExtResource("2_nd362")
 hframes = 2
 vframes = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(86.4583, -2.20833)
-shape = SubResource("RectangleShape2D_rdljx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -66,5 +116,15 @@ libraries = {
 autoplay = "lightingAnimation"
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 
+[node name="lightingExplosion" type="Sprite2D" parent="."]
+position = Vector2(108, 8)
+scale = Vector2(6.64062, 5.0625)
+texture = ExtResource("3_idqvy")
+hframes = 3
+vframes = 4
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
