@@ -9,7 +9,7 @@ signal shift_waves
 
 func _ready():
 	gravity_scale = base_gravity
-	$AudioStreamPlayer2D.play(1.4) # Default
+	$AudioStreamPlayer2D.play(0) # Default
 	$WaterParticles.emitting = false
 
 func _physics_process(_delta):
