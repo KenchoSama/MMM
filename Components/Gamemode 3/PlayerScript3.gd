@@ -71,7 +71,10 @@ func _on_area_2d_body_entered(body):
 
 
 func _on_start_button_up():
+	$AudioStreamPlayer2D.play()
 	set_physics_process(true)
+
+
 
 
 func _on_firebutton_button_down():
@@ -79,3 +82,7 @@ func _on_firebutton_button_down():
 		spellcooldown = false
 		$SpellTimer1.start()
 		firespellActivated.emit($spellposition.get_children()[0].global_position, (get_global_mouse_position() - position).normalized())
+
+
+func _on_audio_stream_player_2d_finished():
+	$AudioStreamPlayer2D.play()
