@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c4joyuph0465b"
+path="res://.godot/imported/SurfingWiWi.mp3-7402f9a20474650a22412bbc20c7c6b4.mp3str"
+
+[deps]
+
+source_file="res://Components/Gamemode 3/SurfingWiWi.mp3"
+dest_files=["res://.godot/imported/SurfingWiWi.mp3-7402f9a20474650a22412bbc20c7c6b4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
