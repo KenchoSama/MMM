@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://8xushpv5otf2"]
+[gd_scene load_steps=61 format=3 uid="uid://8xushpv5otf2"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 1/gamemode_1.gd" id="1_1dpkc"]
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_b5gcd"]
@@ -17,11 +17,18 @@
 [ext_resource type="Script" path="res://Components/Gamemode 1/Wave.gd" id="12_2hd1j"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/GameControls.gd" id="16_1dd73"]
 [ext_resource type="Texture2D" uid="uid://b16vyxxsejqhw" path="res://Reusable Scenes/DownArrow.png" id="16_nnpsy"]
+[ext_resource type="Texture2D" uid="uid://bm2eg1lsu1uhf" path="res://Reusable Scenes/Home.png" id="16_r8v8y"]
 [ext_resource type="Texture2D" uid="uid://cy18s18m3c8ht" path="res://Reusable Scenes/Jump.png" id="17_7ogvu"]
+[ext_resource type="Script" path="res://Components/Gamemode 1/Num.gd" id="17_gp2wd"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/TextFlash.gd" id="18_8v2m0"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/Jump.gd" id="18_idxmg"]
 [ext_resource type="LabelSettings" uid="uid://bd1ktuku5lvgs" path="res://Components/Gamemode 1/highscorelabelsettings.tres" id="18_vc0as"]
+[ext_resource type="Texture2D" uid="uid://1hpa1jhd44li" path="res://Reusable Scenes/DownArrowPressed.png" id="18_xf7fn"]
+[ext_resource type="Script" path="res://Components/Gamemode 1/Num2.gd" id="19_gyf6v"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/TimerText.gd" id="20_6iq5a"]
+[ext_resource type="Script" path="res://Components/Gamemode 1/PreviewWave.gd" id="20_rcsaq"]
+[ext_resource type="Texture2D" uid="uid://duhnyr3hjpr1s" path="res://Components/Gamemode 1/Gamemode1 Sprites/Graph.png" id="21_dhdxu"]
+[ext_resource type="Script" path="res://Components/Gamemode 1/Hints.gd" id="22_u0typ"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cdkbh"]
 load_path = "res://.godot/imported/BackgroundOcean.png-07b4aa23a64ccce46258944db132373c.ctex"
@@ -80,9 +87,41 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="LabelSettings" id="LabelSettings_ajsnh"]
 font_size = 100
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfbkr"]
+atlas = ExtResource("5_17sk6")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6hadj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vm01u"]
+font_size = 26
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ax17"]
 atlas = ExtResource("5_17sk6")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yjuh0"]
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_n6uu2"]
+font_size = 22
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rem3g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o3qp0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ecqcr"]
+font_size = 33
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v3vfo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xe8aj"]
+font_size = 19
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_611eh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ky4od"]
+font_size = 13
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3rtn6"]
 atlas = ExtResource("5_17sk6")
@@ -127,6 +166,8 @@ shadow_size = 7
 
 [node name="Gamemode 1" type="Node2D"]
 script = ExtResource("1_1dpkc")
+metadata/_edit_vertical_guides_ = [569.0]
+metadata/_edit_horizontal_guides_ = [103.0]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_base_offset = Vector2(500, 500)
@@ -352,52 +393,265 @@ offset_bottom = 35.0
 
 [node name="BeforeStart" type="Control" parent="UI Layer/Control"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 408.0
-offset_top = 171.0
-offset_right = 448.0
-offset_bottom = 211.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_left = 327.0
+offset_top = 7.0
+offset_right = 909.0
+offset_bottom = 454.0
 script = ExtResource("3_xxdqj")
 
-[node name="Amplitude" type="SpinBox" parent="UI Layer/Control/BeforeStart"]
+[node name="Panel" type="Panel" parent="UI Layer/Control/BeforeStart"]
 layout_mode = 0
-offset_left = 60.0
-offset_top = 52.0
-offset_right = 250.0
-offset_bottom = 90.0
-min_value = 0.5
-max_value = 1.5
-step = 0.1
-value = 1.0
-prefix = "Amplitude:"
+offset_left = 129.0
+offset_top = 47.0
+offset_right = 734.0
+offset_bottom = 566.0
 
-[node name="Frequency" type="SpinBox" parent="UI Layer/Control/BeforeStart"]
+[node name="HintsButton" type="Panel" parent="UI Layer/Control/BeforeStart/Panel"]
 layout_mode = 0
-offset_left = 60.0
-offset_top = 90.0
-offset_right = 274.0
-offset_bottom = 124.0
-scale = Vector2(1.00166, 1)
-min_value = 0.5
-max_value = 1.5
-step = 0.1
-value = 1.0
-prefix = "Frequency:"
+offset_left = 45.0
+offset_top = 369.0
+offset_right = 170.0
+offset_bottom = 497.0
 
-[node name="Play" type="TextureButton" parent="UI Layer/Control/BeforeStart"]
+[node name="Hints" type="TextureButton" parent="UI Layer/Control/BeforeStart/Panel/HintsButton"]
+layout_mode = 2
+offset_left = 6.0
+offset_top = 7.0
+offset_right = 41.0
+offset_bottom = 42.0
+scale = Vector2(3.36, 3.36)
+texture_normal = SubResource("AtlasTexture_pfbkr")
+
+[node name="Label" type="Label" parent="UI Layer/Control/BeforeStart/Panel/HintsButton"]
 layout_mode = 0
-offset_left = 125.0
-offset_top = 124.0
-offset_right = 157.0
-offset_bottom = 156.0
-scale = Vector2(2.10483, 2.10483)
+offset_left = 31.0
+offset_top = -30.0
+offset_right = 95.0
+offset_bottom = -9.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6hadj")
+text = "Hints"
+
+[node name="Play" type="Panel" parent="UI Layer/Control/BeforeStart/Panel"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 339.0
+offset_right = 388.0
+offset_bottom = 496.0
+
+[node name="Label" type="Label" parent="UI Layer/Control/BeforeStart/Panel/Play"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -40.0
+offset_right = 120.0
+offset_bottom = -5.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6hadj")
+text = "PLAY"
+label_settings = SubResource("LabelSettings_vm01u")
+
+[node name="Play" type="TextureButton" parent="UI Layer/Control/BeforeStart/Panel/Play"]
+layout_mode = 2
+offset_right = 40.0
+offset_bottom = 39.0
+scale = Vector2(3.96, 3.96)
 texture_normal = SubResource("AtlasTexture_3ax17")
+stretch_mode = 5
+
+[node name="Main Menu" type="Panel" parent="UI Layer/Control/BeforeStart/Panel"]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 368.0
+offset_right = 569.0
+offset_bottom = 496.0
+
+[node name="Label" type="Label" parent="UI Layer/Control/BeforeStart/Panel/Main Menu"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -29.0
+offset_right = 122.0
+offset_bottom = -8.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6hadj")
+text = "Main menu"
+
+[node name="Home" type="TextureButton" parent="UI Layer/Control/BeforeStart/Panel/Main Menu"]
+layout_mode = 2
+offset_top = 1.0
+offset_right = 32.0
+offset_bottom = 33.0
+scale = Vector2(3.92, 3.92)
+texture_normal = ExtResource("16_r8v8y")
+
+[node name="Amplitude" type="Label" parent="UI Layer/Control/BeforeStart/Panel"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 50.0
+offset_right = 228.0
+offset_bottom = 83.0
+text = "Amplitude:"
+label_settings = SubResource("LabelSettings_yjuh0")
+
+[node name="Num" type="Label" parent="UI Layer/Control/BeforeStart/Panel/Amplitude"]
+layout_mode = 0
+offset_left = 194.0
+offset_right = 251.0
+offset_bottom = 33.0
+text = "1.5
+"
+label_settings = SubResource("LabelSettings_n6uu2")
+script = ExtResource("17_gp2wd")
+
+[node name="Down" type="TextureButton" parent="UI Layer/Control/BeforeStart/Panel/Amplitude"]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 22.0
+offset_right = 167.0
+offset_bottom = 62.0
+rotation = 1.57079
+scale = Vector2(2.32, 2.32)
+texture_normal = ExtResource("16_nnpsy")
+texture_pressed = ExtResource("18_xf7fn")
+stretch_mode = 5
+
+[node name="Up" type="TextureButton" parent="UI Layer/Control/BeforeStart/Panel/Amplitude"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 112.0
+offset_right = 150.0
+offset_bottom = 152.0
+rotation = -1.57079
+scale = Vector2(2.32, 2.32)
+texture_normal = ExtResource("16_nnpsy")
+texture_pressed = ExtResource("18_xf7fn")
+stretch_mode = 5
+
+[node name="Frequency" type="Label" parent="UI Layer/Control/BeforeStart/Panel"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 170.0
+offset_right = 234.0
+offset_bottom = 203.0
+text = "Frequency:"
+label_settings = SubResource("LabelSettings_yjuh0")
+
+[node name="Num" type="Label" parent="UI Layer/Control/BeforeStart/Panel/Frequency"]
+layout_mode = 0
+offset_left = 194.0
+offset_right = 251.0
+offset_bottom = 33.0
+text = "1.5
+"
+label_settings = SubResource("LabelSettings_n6uu2")
+script = ExtResource("19_gyf6v")
+
+[node name="Down" type="TextureButton" parent="UI Layer/Control/BeforeStart/Panel/Frequency"]
+layout_mode = 0
+offset_left = 121.6
+offset_top = 34.2
+offset_right = 161.6
+offset_bottom = 74.2
+rotation = 1.57079
+scale = Vector2(2.32, 2.32)
+texture_normal = ExtResource("16_nnpsy")
+texture_pressed = ExtResource("18_xf7fn")
+stretch_mode = 5
+
+[node name="Up" type="TextureButton" parent="UI Layer/Control/BeforeStart/Panel/Frequency"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 124.0
+offset_right = 144.0
+offset_bottom = 164.0
+rotation = -1.57079
+scale = Vector2(2.32, 2.32)
+texture_normal = ExtResource("16_nnpsy")
+texture_pressed = ExtResource("18_xf7fn")
+stretch_mode = 5
+
+[node name="Graph" type="Panel" parent="UI Layer/Control/BeforeStart/Panel"]
+layout_mode = 0
+offset_left = 331.0
+offset_top = 19.0
+offset_right = 587.0
+offset_bottom = 275.0
+
+[node name="Graph" type="Sprite2D" parent="UI Layer/Control/BeforeStart/Panel/Graph"]
+position = Vector2(128, 128)
+scale = Vector2(7, 7)
+texture = ExtResource("21_dhdxu")
+
+[node name="PreviewWave" type="Node2D" parent="UI Layer/Control/BeforeStart/Panel/Graph"]
+position = Vector2(128, 128)
+script = ExtResource("20_rcsaq")
+
+[node name="Label" type="Label" parent="UI Layer/Control/BeforeStart/Panel"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 19.0
+offset_right = 249.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rem3g")
+text = "(Default 1, 1)"
+
+[node name="Hints" type="Panel" parent="UI Layer/Control/BeforeStart/Panel"]
+visible = false
+layout_mode = 0
+offset_left = -360.0
+offset_top = 1.0
+offset_right = -7.0
+offset_bottom = 521.0
+script = ExtResource("22_u0typ")
+metadata/_edit_lock_ = true
+
+[node name="!" type="Label" parent="UI Layer/Control/BeforeStart/Panel/Hints"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 13.0
+offset_right = 263.0
+offset_bottom = 56.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o3qp0")
+text = "Hints!"
+label_settings = SubResource("LabelSettings_ecqcr")
+
+[node name="Wave?" type="Label" parent="UI Layer/Control/BeforeStart/Panel/Hints"]
+offset_left = 13.0
+offset_top = 70.0
+offset_right = 353.0
+offset_bottom = 239.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_v3vfo")
+text = "What is a wave?"
+label_settings = SubResource("LabelSettings_xe8aj")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="UI Layer/Control/BeforeStart/Panel/Hints/Wave?"]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 323.0
+offset_bottom = 98.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_611eh")
+text = "A wave is a disturbance that transports energy. Some waves you experience every day - sound, radio, your microwave, even light! Anything that's wireless, like remote control cars, rely on waves. And yes, of course, the waves in the ocean. All of these waves can be represented with math."
+label_settings = SubResource("LabelSettings_ky4od")
+autowrap_mode = 2
+
+[node name="Math?" type="Label" parent="UI Layer/Control/BeforeStart/Panel/Hints"]
+offset_left = 13.0
+offset_top = 298.0
+offset_right = 353.0
+offset_bottom = 467.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_v3vfo")
+text = "What's the math?"
+label_settings = SubResource("LabelSettings_xe8aj")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="UI Layer/Control/BeforeStart/Panel/Hints/Math?"]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 331.0
+offset_bottom = 212.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_611eh")
+text = "The amplitude is the amount of energy in wave. Think of waves in the ocean being taller or shorter.
+The frequency is the amount of waves that pass a point in a certain amount of time. Think of the time between waves arriving at the shore."
+label_settings = SubResource("LabelSettings_ky4od")
+autowrap_mode = 2
 
 [node name="DeathScreen" type="Control" parent="UI Layer/Control"]
 layout_mode = 3
@@ -601,9 +855,17 @@ wait_time = 3.0
 [connection signal="preGame" from="." to="Camera" method="_pregame_begin"]
 [connection signal="preGame" from="." to="UI Layer/Control/BeforeStart" method="_pregame_selection"]
 [connection signal="preGame" from="." to="UI Layer/Control/DeathScreen" method="_on_pregame_start"]
-[connection signal="value_changed" from="UI Layer/Control/BeforeStart/Amplitude" to="Wave" method="_amplitude_changed"]
-[connection signal="value_changed" from="UI Layer/Control/BeforeStart/Frequency" to="Wave" method="_frequency_changed"]
-[connection signal="button_up" from="UI Layer/Control/BeforeStart/Play" to="." method="begin_game"]
+[connection signal="button_up" from="UI Layer/Control/BeforeStart/Panel/HintsButton/Hints" to="UI Layer/Control/BeforeStart/Panel/Hints" method="_on_hints_button_up"]
+[connection signal="button_up" from="UI Layer/Control/BeforeStart/Panel/Play/Play" to="." method="begin_game"]
+[connection signal="button_up" from="UI Layer/Control/BeforeStart/Panel/Main Menu/Home" to="UI Layer/Control/Debug/Return Button" method="_on_home_button_up"]
+[connection signal="change_amp" from="UI Layer/Control/BeforeStart/Panel/Amplitude/Num" to="Wave" method="_amplitude_changed"]
+[connection signal="change_amp" from="UI Layer/Control/BeforeStart/Panel/Amplitude/Num" to="UI Layer/Control/BeforeStart/Panel/Graph/PreviewWave" method="_on_num_change_amp"]
+[connection signal="button_up" from="UI Layer/Control/BeforeStart/Panel/Amplitude/Down" to="UI Layer/Control/BeforeStart/Panel/Amplitude/Num" method="_on_down_button_up"]
+[connection signal="button_up" from="UI Layer/Control/BeforeStart/Panel/Amplitude/Up" to="UI Layer/Control/BeforeStart/Panel/Amplitude/Num" method="_on_up_button_up"]
+[connection signal="change_freq" from="UI Layer/Control/BeforeStart/Panel/Frequency/Num" to="Wave" method="_frequency_changed"]
+[connection signal="change_freq" from="UI Layer/Control/BeforeStart/Panel/Frequency/Num" to="UI Layer/Control/BeforeStart/Panel/Graph/PreviewWave" method="_on_num_change_freq"]
+[connection signal="button_up" from="UI Layer/Control/BeforeStart/Panel/Frequency/Down" to="UI Layer/Control/BeforeStart/Panel/Frequency/Num" method="_on_down_button_up"]
+[connection signal="button_up" from="UI Layer/Control/BeforeStart/Panel/Frequency/Up" to="UI Layer/Control/BeforeStart/Panel/Frequency/Num" method="_on_up_button_up"]
 [connection signal="button_up" from="UI Layer/Control/DeathScreen/Restart" to="." method="_on_restart"]
 [connection signal="button_down" from="UI Layer/Control/GameControls/Jump" to="." method="_on_jump_button_down"]
 [connection signal="button_down" from="UI Layer/Control/GameControls/Jump" to="UI Layer/Control/GameControls/Jump" method="_on_button_down"]

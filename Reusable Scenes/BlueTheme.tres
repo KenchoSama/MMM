@@ -52,5 +52,6 @@ Button/styles/normal = SubResource("StyleBoxFlat_1la0o")
 Button/styles/pressed = SubResource("StyleBoxFlat_qjj2x")
 Label/font_sizes/font_size = 15
 Label/styles/normal = SubResource("StyleBoxFlat_1la0o")
+LineEdit/font_sizes/font_size = 22
 LineEdit/styles/normal = SubResource("StyleBoxFlat_1la0o")
 Panel/styles/panel = SubResource("StyleBoxFlat_th660")

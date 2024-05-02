@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://c55s3lpmrxuyk" path="res://Components/Gamemode 1/jump_particles.tres" id="3_obciw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_42la4"]
-friction = 0.05
+friction = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aij12"]
 custom_solver_bias = 1.0
