@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://wj5kh3fmtpul"]
 
 [ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/WizardSprites.gd" id="1_ro3t0"]
-[ext_resource type="Texture2D" uid="uid://dyj60e6d7blyx" path="res://Reusable Scenes/Player/Sprites/Shirts/Shirt1.png" id="2_2naus"]
+[ext_resource type="Texture2D" uid="uid://85j0p2x2ppwu" path="res://Reusable Scenes/Player/Sprites/Shirts/Shirt1.png" id="2_2naus"]
 [ext_resource type="Texture2D" uid="uid://biq1kq8g211ex" path="res://Reusable Scenes/Player/Sprites/Skin/Skin2.png" id="4_jbnmq"]
 [ext_resource type="Texture2D" uid="uid://bsxflpfd7fnnn" path="res://Reusable Scenes/Player/Sprites/Hats/Hat2.png" id="4_v420d"]
 [ext_resource type="Texture2D" uid="uid://cmdxtytd1w5j3" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard1.png" id="5_ak5p4"]

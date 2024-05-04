@@ -89,11 +89,11 @@ theme = ExtResource("2_577jr")
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 2.0
-offset_right = 173.0
-offset_bottom = 28.0
-text = "Character Customizer
+offset_left = 180.0
+offset_top = 75.0
+offset_right = 373.0
+offset_bottom = 101.0
+text = "Wizard Wardrobe
 "
 
 [node name="Return & Save" type="Button" parent="Control"]

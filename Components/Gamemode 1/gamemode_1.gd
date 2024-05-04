@@ -47,7 +47,7 @@ func begin_game():
 	player.position = Vector2(180,-365)
 	player.connect("lost", _on_player_lost)
 	player.connect("shift_waves", $Wave._shift_wave_right)
-	
+	$"UI Layer/Control/GameControls/Down".player_ref = player
 	# Initial jump here
 	player.apply_central_impulse(Vector2(45,-450))
 	

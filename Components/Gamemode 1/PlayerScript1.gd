@@ -7,6 +7,9 @@ var calculated_period_length: float = 0
 signal lost
 signal shift_waves
 
+#Gravity increased or not
+var down: bool = false
+
 func _ready():
 	gravity_scale = base_gravity
 	$AudioStreamPlayer2D.play(0) # Default
@@ -34,8 +37,9 @@ func _physics_process(_delta):
 		freeze = true
 		$WaterParticles.emitting = false
 		return
-		
-	if Input.is_key_label_pressed(KEY_S): # TODO work w/ touchscreen
+	
+	# Mobile input || PC input
+	if down || Input.is_key_label_pressed(KEY_S): # TODO work w/ touchscreen
 		var new_scale = gravity_scale
 		new_scale += 0.2
 		new_scale = clamp(new_scale, base_gravity, 2.4)

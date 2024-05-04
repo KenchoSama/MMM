@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgseroajc115s"]
+
+[ext_resource type="Script" path="res://Components/Main Menu/Confirm Screen.gd" id="1_sqtsu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3l8d0"]
+
+[node name="Confirm Screen" type="Panel"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -205.0
+offset_top = 181.0
+offset_right = 210.0
+offset_bottom = 414.0
+grow_horizontal = 2
+script = ExtResource("1_sqtsu")
+
+[node name="Yes" type="Button" parent="."]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 121.0
+offset_right = 145.0
+offset_bottom = 212.0
+text = "I'm sure!"
+
+[node name="No" type="Button" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 121.0
+offset_right = 402.0
+offset_bottom = 213.0
+text = "No thanks!"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 18.0
+offset_right = 402.0
+offset_bottom = 107.0
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3l8d0")
+text = "This will wipe your high score(s)
+for this gamemode. This cannot be
+undone. Are you sure?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="button_up" from="Yes" to="." method="_on_yes_button_up"]
+[connection signal="button_up" from="No" to="." method="_on_no_button_up"]

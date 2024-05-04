@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://corn6y012o67q"]
+[gd_scene load_steps=34 format=3 uid="uid://corn6y012o67q"]
 
 [ext_resource type="Script" path="res://Components/Main Menu/main_menu.gd" id="1_jth7i"]
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_jwc0v"]
@@ -9,6 +9,16 @@
 [ext_resource type="Script" path="res://Components/Main Menu/MMM.gd" id="4_412fd"]
 [ext_resource type="Texture2D" uid="uid://bkxdjkmrmtg6j" path="res://assets/unmuted.png" id="6_d0rm1"]
 [ext_resource type="AudioStream" uid="uid://wouc4ngqbirc" path="res://assets/wizzy loop.wav" id="7_6mgid"]
+[ext_resource type="Script" path="res://Components/Main Menu/ModulateThumbnail.gd" id="8_s5gxi"]
+[ext_resource type="Texture2D" uid="uid://btungs1s365m" path="res://Components/Main Menu/BackgroundGM1.png" id="8_tirg5"]
+[ext_resource type="Theme" uid="uid://by35faieybjhf" path="res://Reusable Scenes/GreenTheme.tres" id="8_xl2ed"]
+[ext_resource type="Texture2D" uid="uid://c8414kcpnmo1e" path="res://Components/Main Menu/Character.png" id="10_8o0r4"]
+[ext_resource type="Theme" uid="uid://bgbl23jfw6rk1" path="res://Reusable Scenes/GreyTheme.tres" id="11_gebbs"]
+[ext_resource type="Texture2D" uid="uid://8htax3pkoq4r" path="res://Reusable Scenes/PixelArtUI.png" id="14_4hwo4"]
+[ext_resource type="Script" path="res://Components/Main Menu/Settings Menu.gd" id="15_eray0"]
+[ext_resource type="Script" path="res://Components/Main Menu/ResetWW.gd" id="16_od4sa"]
+[ext_resource type="Script" path="res://Components/Main Menu/ResetLL.gd" id="17_qvcdi"]
+[ext_resource type="Script" path="res://Components/Main Menu/ResetT.gd" id="18_hnjh4"]
 
 [sub_resource type="Curve2D" id="Curve2D_4ejxc"]
 _data = {
@@ -36,6 +46,42 @@ shadow_size = 8
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kg5rp"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpbiw"]
+bg_color = Color(0, 0.45098, 0.701961, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.27451, 0.439216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acjnr"]
+bg_color = Color(0, 0.85098, 0.00392157, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0.654902, 0.0196078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fy1lo"]
+bg_color = Color(0.558522, 0.53966, 0.544359, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.368627, 0.352941, 0.356863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhjmp"]
+bg_color = Color(0, 0.45098, 0.701961, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0.27451, 0.439216, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnqfk"]
+atlas = ExtResource("14_4hwo4")
+region = Rect2(32, 32, 32, 32)
+
 [sub_resource type="Environment" id="Environment_43jd1"]
 background_mode = 3
 glow_enabled = true
@@ -55,7 +101,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_jwc0v")
 script = ExtResource("1_jth7i")
-metadata/_edit_vertical_guides_ = [506.0, 646.0, 1152.0, 0.0]
 metadata/_edit_horizontal_guides_ = [-32.0]
 
 [node name="BackGround" type="CanvasLayer" parent="."]
@@ -109,53 +154,201 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_kg5rp")
 
 [node name="ColorTimer" type="Timer" parent="Path2D/PathFollow2D/ColorChangeButton"]
 
-[node name="CenterContainer" type="VBoxContainer" parent="."]
+[node name="Button for Gamemode 1" type="Button" parent="."]
+layout_mode = 2
+offset_left = -209.0
+offset_top = 3.0
+offset_right = -4.0
+offset_bottom = 112.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_bpbiw")
+script = ExtResource("8_s5gxi")
+
+[node name="Thumbnail" type="Sprite2D" parent="Button for Gamemode 1"]
+self_modulate = Color(1, 1, 1, 0.843137)
+position = Vector2(103, 46)
+scale = Vector2(0.984372, 1.02134)
+texture = ExtResource("8_tirg5")
+
+[node name="Character" type="Sprite2D" parent="Button for Gamemode 1/Thumbnail"]
+position = Vector2(-31.0744, -2.30273)
+rotation = -0.601581
+scale = Vector2(0.226162, 0.226162)
+texture = ExtResource("10_8o0r4")
+
+[node name="Title" type="Label" parent="Button for Gamemode 1"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 87.0
+offset_right = 205.0
+offset_bottom = 111.0
+text = "Wave wizard"
+horizontal_alignment = 1
+
+[node name="Button for Gamemode 2" type="Button" parent="."]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 211.0
+offset_bottom = 114.0
+theme = ExtResource("8_xl2ed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_acjnr")
+script = ExtResource("8_s5gxi")
+
+[node name="Thumbnail" type="Sprite2D" parent="Button for Gamemode 2"]
+modulate = Color(1, 1, 1, 0.843137)
+position = Vector2(103.781, 49.0625)
+scale = Vector2(0.982188, 1.07165)
+texture = ExtResource("8_tirg5")
+
+[node name="Title" type="Label" parent="Button for Gamemode 2"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 87.0
+offset_right = 207.0
+offset_bottom = 111.0
+text = "Laser Lord"
+horizontal_alignment = 1
+
+[node name="Button for Gamemode 3" type="Button" parent="."]
+layout_mode = 2
+offset_left = -209.0
+offset_top = 119.0
+offset_right = -4.0
+offset_bottom = 232.0
+rotation = -2.57118e-05
+theme = ExtResource("11_gebbs")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fy1lo")
+script = ExtResource("8_s5gxi")
+
+[node name="Thumbnail" type="Sprite2D" parent="Button for Gamemode 3"]
+modulate = Color(1, 1, 1, 0.843137)
+position = Vector2(102.5, 46.9375)
+scale = Vector2(0.975, 1.02286)
+texture = ExtResource("8_tirg5")
+
+[node name="Title" type="Label" parent="Button for Gamemode 3"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 89.0
+offset_right = 205.0
+offset_bottom = 113.0
+text = "thaumatrig"
+horizontal_alignment = 1
+
+[node name="Button for CC" type="Button" parent="."]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 119.0
+offset_right = 211.0
+offset_bottom = 232.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_dhjmp")
+script = ExtResource("8_s5gxi")
+
+[node name="Thumbnail" type="Sprite2D" parent="Button for CC"]
+modulate = Color(1, 1, 1, 0.843137)
+position = Vector2(102.5, 47.4375)
+scale = Vector2(0.975, 1.03506)
+texture = ExtResource("8_tirg5")
+
+[node name="Title" type="Label" parent="Button for CC"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 89.0
+offset_right = 207.0
+offset_bottom = 113.0
+text = "wizard Wardrobe"
+horizontal_alignment = 1
+
+[node name="MuteButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 511.0
+offset_top = -317.0
+offset_right = 569.0
+offset_bottom = -260.0
+icon = ExtResource("6_d0rm1")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Settings Button" type="Button" parent="."]
+layout_mode = 2
+offset_left = 443.0
+offset_top = -317.0
+offset_right = 501.0
+offset_bottom = -260.0
+icon = SubResource("AtlasTexture_lnqfk")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Settings Menu" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -68.0
-offset_top = 24.0
-offset_right = 68.0
-offset_bottom = 132.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(68, 54)
+script = ExtResource("15_eray0")
 
-[node name="Buttons" type="VBoxContainer" parent="CenterContainer"]
-layout_mode = 2
+[node name="Panel" type="Panel" parent="Settings Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -204.0
+offset_top = -94.0
+offset_right = 208.0
+offset_bottom = 276.0
+grow_horizontal = 2
 
-[node name="Button for Gamemode 1" type="Button" parent="CenterContainer/Buttons"]
-layout_mode = 2
-text = "Gamemode 1"
+[node name="ResetWW" type="Button" parent="Settings Menu/Panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 390.0
+offset_bottom = 72.0
+text = "RESET WAVE WIZARD SCORES"
+script = ExtResource("16_od4sa")
 
-[node name="Button for Gamemode 2" type="Button" parent="CenterContainer/Buttons"]
-layout_mode = 2
-text = "Gamemode 2"
+[node name="ResetLL" type="Button" parent="Settings Menu/Panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 86.0
+offset_right = 390.0
+offset_bottom = 138.0
+text = "RESET LAser LORD SCORE"
+script = ExtResource("17_qvcdi")
 
-[node name="Button for Gamemode 3" type="Button" parent="CenterContainer/Buttons"]
-layout_mode = 2
-text = "Gamemode 3"
+[node name="ResetT" type="Button" parent="Settings Menu/Panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 153.0
+offset_right = 390.0
+offset_bottom = 205.0
+text = "RESET THAUMATRIG SCORE"
+script = ExtResource("18_hnjh4")
 
-[node name="Button for Gamemode 4" type="Button" parent="CenterContainer/Buttons"]
-visible = false
-layout_mode = 2
-text = "Gamemode 4"
+[node name="Support Us" type="Button" parent="Settings Menu/Panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 221.0
+offset_right = 390.0
+offset_bottom = 273.0
+text = "Support Us!"
 
-[node name="Button for CC" type="Button" parent="CenterContainer/Buttons"]
-layout_mode = 2
-text = "Wizard"
-
-[node name="MuteButton" type="Button" parent="."]
-layout_mode = 2
-offset_left = 529.0
-offset_top = 283.0
-offset_right = 567.0
-offset_bottom = 318.0
-icon = ExtResource("6_d0rm1")
-icon_alignment = 1
+[node name="Close" type="Button" parent="Settings Menu/Panel"]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 298.0
+offset_right = 274.0
+offset_bottom = 350.0
+theme_override_font_sizes/font_size = 27
+text = "DONE"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_6mgid")
@@ -170,11 +363,14 @@ environment = SubResource("Environment_43jd1")
 
 [connection signal="button_down" from="Path2D/PathFollow2D/ColorChangeButton" to="Path2D/PathFollow2D/MMM" method="_change_color"]
 [connection signal="timeout" from="Path2D/PathFollow2D/ColorChangeButton/ColorTimer" to="Path2D/PathFollow2D/MMM" method="_on_color_timer_timeout"]
-[connection signal="button_up" from="CenterContainer/Buttons/Button for Gamemode 1" to="." method="_on_button_for_gamemode_1_button_up"]
-[connection signal="button_up" from="CenterContainer/Buttons/Button for Gamemode 2" to="." method="_on_button_for_gamemode_2_button_up"]
-[connection signal="button_up" from="CenterContainer/Buttons/Button for Gamemode 3" to="." method="_on_button_for_gamemode_3_button_up"]
-[connection signal="button_up" from="CenterContainer/Buttons/Button for Gamemode 4" to="." method="_on_button_for_gamemode_4_button_up"]
-[connection signal="button_up" from="CenterContainer/Buttons/Button for CC" to="." method="_on_button_for_cc_button_up"]
+[connection signal="button_up" from="Button for Gamemode 1" to="." method="_on_button_for_gamemode_1_button_up"]
+[connection signal="button_up" from="Button for Gamemode 2" to="." method="_on_button_for_gamemode_2_button_up"]
+[connection signal="button_up" from="Button for Gamemode 3" to="." method="_on_button_for_gamemode_3_button_up"]
+[connection signal="button_up" from="Button for CC" to="." method="_on_button_for_cc_button_up"]
 [connection signal="button_up" from="MuteButton" to="." method="_on_mute_button_button_up"]
+[connection signal="button_down" from="Settings Button" to="Settings Menu" method="_on_settings_button_button_down"]
+[connection signal="button_up" from="Settings Menu/Panel/ResetWW" to="Settings Menu/Panel/ResetWW" method="_on_button_up"]
+[connection signal="button_up" from="Settings Menu/Panel/ResetLL" to="Settings Menu/Panel/ResetLL" method="_on_button_up"]
+[connection signal="button_up" from="Settings Menu/Panel/Close" to="Settings Menu" method="_on_close_button_up"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
 [connection signal="timeout" from="loopTimer" to="." method="_on_loop_timer_timeout"]

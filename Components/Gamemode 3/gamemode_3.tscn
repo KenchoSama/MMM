@@ -1,9 +1,9 @@
 [gd_scene load_steps=21 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_p6bw8"]
-[ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_rgdqb"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/gamemode_3.gd" id="1_ycoyy"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/PlayerScript3.gd" id="2_eates"]
+[ext_resource type="Theme" uid="uid://bgbl23jfw6rk1" path="res://Reusable Scenes/GreyTheme.tres" id="2_hr7at"]
 [ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/WizardSprites.gd" id="2_o8ocu"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/Control.gd" id="4_8hv4o"]
 [ext_resource type="Texture2D" uid="uid://8htax3pkoq4r" path="res://Reusable Scenes/PixelArtUI.png" id="4_nljn4"]
@@ -62,12 +62,13 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme = ExtResource("1_rgdqb")
+theme = ExtResource("2_hr7at")
 
 [node name="debug" type="Control" parent="UI Layer/control"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("2_hr7at")
 
 [node name="Label" type="Label" parent="UI Layer/control/debug"]
 layout_mode = 0

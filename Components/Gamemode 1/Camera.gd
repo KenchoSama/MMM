@@ -42,7 +42,7 @@ func _process(delta):
 		
 		# For high scores / camera movement
 		player_height = -1 * int(player.position.y - wave.position.y)
-		player_distance = player.position.x - 250 # Starting x pos
+		player_distance = (player.position.x - 250) / 10 # Starting x pos
 		
 		# Simple as.
 		if player_height > current_best_height:
@@ -115,4 +115,8 @@ func _on_gamemode_1_game_lost():
 	#cfg.set_value("GM1Scores", "best_distance", 0)
 	#cfg.set_value("GM1Scores", "best_height", 0)
 	
+	# Send data to deathscreen
+	$"../UI Layer/Control/DeathScreen/Panel/ScoreBounder/Label/BestDist".text = str(current_best_distance)
+	$"../UI Layer/Control/DeathScreen/Panel/ScoreBounder/Label2/YourDist".text = str(player_distance)
+	$"../UI Layer/Control/DeathScreen/Panel/ScoreBounder/Label3/BestHeight".text = str(current_best_height)
 	cfg.save("user://PlayerData.cfg")
