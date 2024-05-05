@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://8xushpv5otf2"]
+[gd_scene load_steps=67 format=3 uid="uid://8xushpv5otf2"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 1/gamemode_1.gd" id="1_1dpkc"]
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_b5gcd"]
@@ -31,6 +31,8 @@
 [ext_resource type="Texture2D" uid="uid://duhnyr3hjpr1s" path="res://Components/Gamemode 1/Gamemode1 Sprites/Graph.png" id="21_dhdxu"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/Hints.gd" id="22_u0typ"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/Down.gd" id="28_6i0fh"]
+[ext_resource type="PackedScene" uid="uid://c4bbh5tk18qss" path="res://Reusable Scenes/music_player.tscn" id="32_w5m24"]
+[ext_resource type="Texture2D" uid="uid://cvgimvkfuokli" path="res://Components/Gamemode 1/Gamemode1 Sprites/Cloud1.png" id="35_5ld2k"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cdkbh"]
 load_path = "res://.godot/imported/BackgroundOcean.png-07b4aa23a64ccce46258944db132373c.ctex"
@@ -211,6 +213,12 @@ scalefactor = 120
 position = Vector2(1475, 243)
 scale = Vector2(5.57921, 2.36883)
 texture = ExtResource("4_n1itg")
+
+[node name="BeachCollider" type="StaticBody2D" parent="Beach"]
+
+[node name="Box" type="CollisionPolygon2D" parent="Beach/BeachCollider"]
+position = Vector2(-102.523, 126.645)
+polygon = PackedVector2Array(0, 2.5329, -10.3958, -21.9518, 20.433, -13.5088, 46.4223, 0.42215, 59.5066, 10.9759, 99.4764, 35.4606, 119.013, 47.2807, 145.003, 65.4332, 183.18, 85.2742, 263.12, 119.89, 348.616, 146.908, 414.037, 195.877, 29.0364, 195.455)
 
 [node name="ClipDetector" type="StaticBody2D" parent="."]
 
@@ -761,6 +769,7 @@ text = "High Score:"
 label_settings = SubResource("LabelSettings_3cgti")
 
 [node name="BestDist" type="Label" parent="UI Layer/Control/DeathScreen/Panel/ScoreBounder/Label"]
+layout_mode = 0
 offset_left = 197.0
 offset_right = 302.0
 offset_bottom = 30.0
@@ -776,6 +785,7 @@ text = "Your Score:"
 label_settings = SubResource("LabelSettings_3cgti")
 
 [node name="YourDist" type="Label" parent="UI Layer/Control/DeathScreen/Panel/ScoreBounder/Label2"]
+layout_mode = 0
 offset_left = 197.0
 offset_right = 302.0
 offset_bottom = 30.0
@@ -791,6 +801,7 @@ text = "Best Height:"
 label_settings = SubResource("LabelSettings_3cgti")
 
 [node name="BestHeight" type="Label" parent="UI Layer/Control/DeathScreen/Panel/ScoreBounder/Label3"]
+layout_mode = 0
 offset_left = 212.0
 offset_right = 302.0
 offset_bottom = 30.0
@@ -893,6 +904,13 @@ script = ExtResource("20_6iq5a")
 
 [node name="JumpTimer" type="Timer" parent="UI Layer/Control/GameControls/Jump"]
 wait_time = 3.0
+
+[node name="MuteButton" parent="UI Layer" instance=ExtResource("32_w5m24")]
+
+[node name="Cloud1" type="Sprite2D" parent="."]
+position = Vector2(837, -416)
+scale = Vector2(6.1875, 6.1875)
+texture = ExtResource("35_5ld2k")
 
 [connection signal="beginGame" from="." to="Wave" method="_on_begin"]
 [connection signal="beginGame" from="." to="Camera" method="_game_begin"]

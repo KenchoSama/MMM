@@ -1,0 +1,40 @@
+[gd_scene load_steps=10 format=3 uid="uid://c4bbh5tk18qss"]
+
+[ext_resource type="Texture2D" uid="uid://bkxdjkmrmtg6j" path="res://assets/unmuted.png" id="1_0mdq7"]
+[ext_resource type="Script" path="res://Components/Main Menu/MusicPlayer.gd" id="2_kx4nk"]
+[ext_resource type="AudioStream" uid="uid://c4joyuph0465b" path="res://assets/SurfingWiWi.mp3" id="3_n3om6"]
+[ext_resource type="Script" path="res://Components/Gamemode 1/MMLooperScript.gd" id="4_t4dxc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sa1gb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kl2ni"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84mvt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ilywq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ayh10"]
+
+[node name="MuteButton" type="Button"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 1090.0
+offset_top = 3.0
+offset_right = 1148.0
+offset_bottom = 60.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sa1gb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kl2ni")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_84mvt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ilywq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ayh10")
+icon = ExtResource("1_0mdq7")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_kx4nk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_n3om6")
+volume_db = -32.0
+script = ExtResource("4_t4dxc")
+
+[connection signal="button_up" from="." to="." method="_on_mute_button_button_up" flags=18]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

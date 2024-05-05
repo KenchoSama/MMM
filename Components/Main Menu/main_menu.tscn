@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://corn6y012o67q"]
+[gd_scene load_steps=36 format=3 uid="uid://corn6y012o67q"]
 
 [ext_resource type="Script" path="res://Components/Main Menu/main_menu.gd" id="1_jth7i"]
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_jwc0v"]
@@ -14,8 +14,10 @@
 [ext_resource type="Theme" uid="uid://by35faieybjhf" path="res://Reusable Scenes/GreenTheme.tres" id="8_xl2ed"]
 [ext_resource type="Texture2D" uid="uid://c8414kcpnmo1e" path="res://Components/Main Menu/Character.png" id="10_8o0r4"]
 [ext_resource type="Theme" uid="uid://bgbl23jfw6rk1" path="res://Reusable Scenes/GreyTheme.tres" id="11_gebbs"]
+[ext_resource type="Script" path="res://Components/Main Menu/MusicPlayer.gd" id="14_03dgd"]
 [ext_resource type="Texture2D" uid="uid://8htax3pkoq4r" path="res://Reusable Scenes/PixelArtUI.png" id="14_4hwo4"]
 [ext_resource type="Script" path="res://Components/Main Menu/Settings Menu.gd" id="15_eray0"]
+[ext_resource type="Script" path="res://Components/Main Menu/MainMenuLooperScript.gd" id="16_3d6eg"]
 [ext_resource type="Script" path="res://Components/Main Menu/ResetWW.gd" id="16_od4sa"]
 [ext_resource type="Script" path="res://Components/Main Menu/ResetLL.gd" id="17_qvcdi"]
 [ext_resource type="Script" path="res://Components/Main Menu/ResetT.gd" id="18_hnjh4"]
@@ -260,7 +262,7 @@ text = "wizard Wardrobe"
 horizontal_alignment = 1
 
 [node name="MuteButton" type="Button" parent="."]
-layout_mode = 2
+layout_mode = 0
 offset_left = 511.0
 offset_top = -317.0
 offset_right = 569.0
@@ -268,6 +270,13 @@ offset_bottom = -260.0
 icon = ExtResource("6_d0rm1")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("14_03dgd")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MuteButton"]
+stream = ExtResource("7_6mgid")
+volume_db = -32.0
+autoplay = true
+script = ExtResource("16_3d6eg")
 
 [node name="Settings Button" type="Button" parent="."]
 layout_mode = 2
@@ -350,11 +359,6 @@ offset_bottom = 350.0
 theme_override_font_sizes/font_size = 27
 text = "DONE"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_6mgid")
-volume_db = -32.0
-autoplay = true
-
 [node name="loopTimer" type="Timer" parent="."]
 one_shot = true
 
@@ -367,10 +371,10 @@ environment = SubResource("Environment_43jd1")
 [connection signal="button_up" from="Button for Gamemode 2" to="." method="_on_button_for_gamemode_2_button_up"]
 [connection signal="button_up" from="Button for Gamemode 3" to="." method="_on_button_for_gamemode_3_button_up"]
 [connection signal="button_up" from="Button for CC" to="." method="_on_button_for_cc_button_up"]
-[connection signal="button_up" from="MuteButton" to="." method="_on_mute_button_button_up"]
+[connection signal="button_up" from="MuteButton" to="MuteButton" method="_on_mute_button_button_up" flags=18]
+[connection signal="finished" from="MuteButton/AudioStreamPlayer" to="MuteButton/AudioStreamPlayer" method="_on_finished"]
 [connection signal="button_down" from="Settings Button" to="Settings Menu" method="_on_settings_button_button_down"]
 [connection signal="button_up" from="Settings Menu/Panel/ResetWW" to="Settings Menu/Panel/ResetWW" method="_on_button_up"]
 [connection signal="button_up" from="Settings Menu/Panel/ResetLL" to="Settings Menu/Panel/ResetLL" method="_on_button_up"]
 [connection signal="button_up" from="Settings Menu/Panel/Close" to="Settings Menu" method="_on_close_button_up"]
-[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
 [connection signal="timeout" from="loopTimer" to="." method="_on_loop_timer_timeout"]

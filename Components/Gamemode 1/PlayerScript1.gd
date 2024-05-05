@@ -12,7 +12,6 @@ var down: bool = false
 
 func _ready():
 	gravity_scale = base_gravity
-	$AudioStreamPlayer2D.play(0) # Default
 	$WaterParticles.emitting = false
 
 func _physics_process(_delta):
@@ -31,7 +30,6 @@ func _physics_process(_delta):
 	
 	#print(linear_velocity)
 	if linear_velocity.x < 0:
-		$AudioStreamPlayer2D.stop()
 		emit_signal("lost")
 		set_physics_process(false)
 		freeze = true
@@ -60,7 +58,6 @@ func _integrate_forces(state):
 
 func _on_audio_stream_player_2d_finished():
 	$AudioStreamPlayer2D.play(1.4) # Replace with function body.
-
 
 
 func _on_body_entered(body):

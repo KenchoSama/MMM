@@ -68,11 +68,11 @@ func _on_restart():
 func _on_player_lost():
 	follow_rigidbody = false # Do this before game lost, maybe
 	emit_signal("gameLost")
-	pass # Replace with function body.
+	$"UI Layer/MuteButton/AudioStreamPlayer".stop()
 
 func _on_pre_game():
 	follow_rigidbody = true
-	
+	$"UI Layer/MuteButton/AudioStreamPlayer".play(0)
 	WizardSprites.position = Vector2(180, -365)
 	WizardSprites.scale = Vector2(1.5,1.5)
 	WizardSprites.rotation = 0

@@ -5,6 +5,7 @@ func _on_button_up():
 	var confirmer = load("res://Reusable Scenes/confirm_screen.tscn").instantiate()
 	confirmer.confirmed.connect(wipe_scores)
 	confirmer.top_level = true
+	$"../Close".connect("button_up", confirmer.queue_free)
 	add_child(confirmer)
 
 func wipe_scores(selection):
