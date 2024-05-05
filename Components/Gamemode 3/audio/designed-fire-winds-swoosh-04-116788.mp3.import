@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dd5irxtfsu0su"
+path="res://.godot/imported/designed-fire-winds-swoosh-04-116788.mp3-0e8975bb739961dc9d3f53908e73ffc2.mp3str"
+
+[deps]
+
+source_file="res://Components/Gamemode 3/audio/designed-fire-winds-swoosh-04-116788.mp3"
+dest_files=["res://.godot/imported/designed-fire-winds-swoosh-04-116788.mp3-0e8975bb739961dc9d3f53908e73ffc2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

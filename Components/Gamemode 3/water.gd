@@ -34,3 +34,7 @@ func explode():
 	speed = 0
 	$waterexplosion.visible = true
 	$AnimationPlayer.play("waterexplosion")
+	
+
+func explosionsound():
+	$AudioStreamPlayer.play()

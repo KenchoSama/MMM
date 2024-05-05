@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://hplngi8f4lds"]
+[gd_scene load_steps=10 format=3 uid="uid://hplngi8f4lds"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 3/water.gd" id="1_fqtxt"]
 [ext_resource type="Texture2D" uid="uid://lbovx3ddtpvt" path="res://Components/Gamemode 3/waterspell.png" id="2_jgjgk"]
 [ext_resource type="Texture2D" uid="uid://c2aet5bg3oado" path="res://Components/Gamemode 3/images/waterexplosion.png" id="3_xwhrr"]
+[ext_resource type="AudioStream" uid="uid://dvuo0bkm2k6py" path="res://Components/Gamemode 3/audio/large-underwater-explosion-190270.mp3" id="4_bjvso"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3evg"]
-size = Vector2(131, 33)
+size = Vector2(119, 33)
 
 [sub_resource type="Animation" id="Animation_2fubw"]
 length = 0.001
@@ -52,7 +53,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_p6eks"]
 resource_name = "waterexplosion"
-length = 1.1
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -60,7 +61,7 @@ tracks/0/path = NodePath("waterexplosion:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
@@ -72,11 +73,25 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(1.9),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"queue_free"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"explosionsound"
 }]
 }
 
@@ -94,7 +109,7 @@ script = ExtResource("1_fqtxt")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(63.5, -6.5)
+position = Vector2(69.5, -6.5)
 shape = SubResource("RectangleShape2D_s3evg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -106,19 +121,26 @@ hframes = 2
 vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "waterAnimation"
 libraries = {
 "": SubResource("AnimationLibrary_60p82")
 }
-autoplay = "waterAnimation"
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
 
 [node name="waterexplosion" type="Sprite2D" parent="."]
 position = Vector2(136.25, -10)
+rotation = 1.5708
 scale = Vector2(5.48438, 3.28125)
 texture = ExtResource("3_xwhrr")
 hframes = 3
 vframes = 4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_bjvso")
+volume_db = -24.361
+pitch_scale = 0.86
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

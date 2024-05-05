@@ -13,9 +13,9 @@ func _process(delta):
 	position += direction * delta * speed
 	
 
-func _on_area_2d_area_entered(area):
-	queue_free()
-	print("explode")
+#func _on_area_2d_area_entered(area):
+	#queue_free()
+	#print("explode")
 	
 
 
@@ -34,3 +34,7 @@ func explode():
 	speed = 0
 	$lightingExplosion.visible = true
 	$AnimationPlayer.play("lightinexplosion")
+	
+
+func explosionNoise():
+	$AudioStreamPlayer.play()

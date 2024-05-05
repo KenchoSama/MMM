@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d2lpax3fitu2j"
+path="res://.godot/imported/thunderstorm-ambiance-191991.mp3-90c9bfe98ee0ccc54228f92f3f6add5b.mp3str"
+
+[deps]
+
+source_file="res://Components/Gamemode 3/audio/thunderstorm-ambiance-191991.mp3"
+dest_files=["res://.godot/imported/thunderstorm-ambiance-191991.mp3-90c9bfe98ee0ccc54228f92f3f6add5b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
