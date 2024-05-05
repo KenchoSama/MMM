@@ -86,8 +86,3 @@ func _on_firebutton_button_down():
 
 func _on_audio_stream_player_2d_finished():
 	$AudioStreamPlayer2D.play()
-
-
-func _on_button_button_up():
-	$AudioStreamPlayer2D.play()
-	set_physics_process(true)

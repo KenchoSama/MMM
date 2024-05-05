@@ -1,31 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcvwjaty3x76h"]
+[gd_scene load_steps=2 format=3 uid="uid://dcvwjaty3x76h"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 3/clouds.gd" id="1_j455q"]
-[ext_resource type="Texture2D" uid="uid://cwcutfs5ebj3h" path="res://Components/Gamemode 3/images/cloud 1.png" id="2_ov0ot"]
-[ext_resource type="Texture2D" uid="uid://7gv170nq8k7d" path="res://Components/Gamemode 3/images/cloud2.png" id="3_ik5j6"]
-[ext_resource type="Texture2D" uid="uid://6hb035cy8phk" path="res://Components/Gamemode 3/images/cloud3.png" id="4_14kkg"]
-[ext_resource type="Texture2D" uid="uid://ccsh8wlebt4gl" path="res://Components/Gamemode 3/images/cloud4.png" id="5_7ieee"]
 
 [node name="clouds" type="Node2D"]
-position = Vector2(131, 156)
 script = ExtResource("1_j455q")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-46.75, 156.5)
-scale = Vector2(5.10938, 3.46875)
-texture = ExtResource("2_ov0ot")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(24, 32)
-scale = Vector2(7.4375, 7.03125)
-texture = ExtResource("3_ik5j6")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(151, 284)
-scale = Vector2(7, 3.09375)
-texture = ExtResource("4_14kkg")
-
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-position = Vector2(236, 76)
-scale = Vector2(7.03125, 3.375)
-texture = ExtResource("5_7ieee")
