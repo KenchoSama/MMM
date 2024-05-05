@@ -1,11 +1,14 @@
 extends Node2D
 
+var speed_min = 50
+var speed_max = 150
+var speed = 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	# Set a random speed between speed_min and speed_max
+	speed = randf_range(speed_min, speed_max)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	# Move the clouds to the left
+	var movement = Vector2.RIGHT * speed * delta
+	translate(movement)
