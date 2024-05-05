@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=32 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_p6bw8"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/gamemode_3.gd" id="1_ycoyy"]
@@ -8,21 +8,60 @@
 [ext_resource type="Script" path="res://Components/Gamemode 3/Control.gd" id="4_8hv4o"]
 [ext_resource type="Texture2D" uid="uid://8htax3pkoq4r" path="res://Reusable Scenes/PixelArtUI.png" id="4_nljn4"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/Control2.gd" id="6_8ut7r"]
-[ext_resource type="Texture2D" uid="uid://cqdls0ip1857e" path="res://Components/Gamemode 3/images/New Piskel (1).png" id="7_2c2u4"]
 [ext_resource type="Texture2D" uid="uid://cmdxtytd1w5j3" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard1.png" id="7_e4c4l"]
+[ext_resource type="Texture2D" uid="uid://jlqp38ntel1x" path="res://Components/Gamemode 3/images/firesymbol.png" id="7_h17bh"]
+[ext_resource type="Texture2D" uid="uid://brqvybd22878x" path="res://Components/Gamemode 3/images/newlightingsymbol.png" id="8_ccq74"]
 [ext_resource type="Texture2D" uid="uid://benckrpvwuit1" path="res://Reusable Scenes/Player/Sprites/Legs/Legs.png" id="8_lguju"]
 [ext_resource type="Texture2D" uid="uid://yanmqwgm85ku" path="res://Components/Gamemode 3/images/sky.png" id="8_xajof"]
 [ext_resource type="Texture2D" uid="uid://w63ynxuoqsdk" path="res://Reusable Scenes/Player/Sprites/Legs/LegsLeftUp.png" id="9_nn13b"]
+[ext_resource type="Texture2D" uid="uid://cpfmj8wakrywt" path="res://Components/Gamemode 3/images/watersymbol.png" id="9_u2nqj"]
+[ext_resource type="Script" path="res://Components/Gamemode 3/hints.gd" id="9_yfcgw"]
+[ext_resource type="Texture2D" uid="uid://ycia3ag14su8" path="res://Components/Gamemode 3/images/New Piskel (5).png" id="10_aw2xb"]
 [ext_resource type="Texture2D" uid="uid://sg3xf4yhnf1n" path="res://Reusable Scenes/Player/Sprites/Legs/LegsRightUp.png" id="10_h6bwa"]
+[ext_resource type="Texture2D" uid="uid://h8p4t48e4pgc" path="res://Components/Gamemode 3/images/triangleHint.png" id="11_u03y7"]
+[ext_resource type="Texture2D" uid="uid://7ijyruaikuq" path="res://Components/Gamemode 3/images/questionmark.png" id="12_7ntse"]
+[ext_resource type="Texture2D" uid="uid://bch30f4g76cti" path="res://Components/Gamemode 3/images/New Piskel (4).png" id="13_lb3v8"]
+[ext_resource type="Texture2D" uid="uid://dvis3ypxarvry" path="res://Components/Gamemode 3/images/New Piskel (3).png" id="14_j1l6f"]
 [ext_resource type="AudioStream" uid="uid://daxgqqe42wvah" path="res://assets/GM3SONG.mp3" id="15_spiiq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0q3jm"]
-atlas = ExtResource("4_nljn4")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lsua"]
+bg_color = Color(0.227451, 0.454902, 0.823529, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.65098, 0.831373, 0.909804, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1dye"]
+bg_color = Color(0.403922, 0.670588, 0.882353, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+
+[sub_resource type="Theme" id="Theme_vlle5"]
+Button/colors/font_color = Color(0.933333, 0.819608, 0.980392, 1)
+Button/styles/normal = SubResource("StyleBoxFlat_5lsua")
+Label/colors/font_color = Color(0.792157, 0.94902, 0.815686, 1)
+Label/styles/normal = SubResource("StyleBoxFlat_c1dye")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2usdx"]
 atlas = ExtResource("4_nljn4")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0q3jm"]
+atlas = ExtResource("4_nljn4")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ql60"]
 animations = [{
@@ -85,27 +124,17 @@ offset_top = 3.0
 offset_right = 1152.0
 offset_bottom = 34.0
 
-[node name="Control" type="Control" parent="UI Layer/control"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("4_8hv4o")
-
-[node name="Restart" type="TextureButton" parent="UI Layer/control/Control"]
-layout_mode = 0
-offset_left = 533.0
-offset_top = 261.0
-offset_right = 573.0
-offset_bottom = 301.0
-texture_normal = SubResource("AtlasTexture_0q3jm")
-
 [node name="Control2" type="Control" parent="UI Layer/control"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -153.0
+offset_top = 5.0
+offset_right = -113.0
+offset_bottom = 45.0
+theme = SubResource("Theme_vlle5")
 script = ExtResource("6_8ut7r")
 
 [node name="Start" type="TextureButton" parent="UI Layer/control/Control2"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -116,25 +145,334 @@ offset_right = 538.0
 offset_bottom = 276.0
 texture_normal = SubResource("AtlasTexture_2usdx")
 
-[node name="SpellsButton" type="Control" parent="UI Layer/control"]
+[node name="playgame" type="Button" parent="UI Layer/control/Control2"]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 494.0
+offset_right = 554.0
+offset_bottom = 534.0
+text = "Play Game
+"
+
+[node name="instructions" type="Label" parent="UI Layer/control/Control2"]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 87.0
+offset_right = 800.0
+offset_bottom = 476.0
+text = "avoid collision with the triangles
+
+use spells to destroy triangles
+
+on KeyBoard:
+'q' for fire spell
+'w' for lighting spell
+'e' for water spelll
+
+touch screen:
+press  for fire spell
+
+press  for lighting spell
+
+press  for water spell
+
+for help on which spell is used
+on a which triangle, click hints"
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Layer/control/Control2/instructions"]
+position = Vector2(74, 220)
+scale = Vector2(0.59375, 0.71875)
+texture = ExtResource("7_h17bh")
+
+[node name="Sprite2D2" type="Sprite2D" parent="UI Layer/control/Control2/instructions"]
+position = Vector2(75, 262)
+scale = Vector2(0.53125, 0.625)
+texture = ExtResource("8_ccq74")
+
+[node name="Sprite2D3" type="Sprite2D" parent="UI Layer/control/Control2/instructions"]
+position = Vector2(74, 299)
+texture = ExtResource("9_u2nqj")
+
+[node name="howtoplay" type="Label" parent="UI Layer/control/Control2"]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 62.0
+offset_right = 799.0
+offset_bottom = 84.0
+text = "how to play"
+horizontal_alignment = 1
+
+[node name="hints" type="Label" parent="UI Layer/control/Control2"]
+layout_mode = 0
+offset_left = 805.0
+offset_top = 62.0
+offset_right = 1251.0
+offset_bottom = 548.0
+text = "given two side of a right triangle
+fire spells destroy sin triangles
+sin  = oppsite/hypotenuse
+we look for adjacent (?) side
+
+
+
+
+lighting spell destroy cos triangles
+cos  = adjacent/hypotenuse
+we look for the opposite (?) side
+
+
+
+
+WATER SPELLS DESTROY TAN TRIANGLES
+TAN  = OPPOSITE/ADJACENT
+WE LOOK FOR THE HYPOTENUSE (?) SIDE
+"
+script = ExtResource("9_yfcgw")
+
+[node name="Button" type="Button" parent="UI Layer/control/Control2/hints"]
+visible = false
+layout_mode = 0
+offset_left = 150.0
+offset_top = 431.0
+offset_right = 241.0
+offset_bottom = 471.0
+text = "next"
+
+[node name="Sprite2D2" type="Sprite2D" parent="UI Layer/control/Control2/hints"]
+position = Vector2(50, 52)
+scale = Vector2(0.890625, 0.945312)
+texture = ExtResource("10_aw2xb")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Layer/control/Control2/hints"]
+position = Vector2(51, 198)
+scale = Vector2(0.890625, 0.945312)
+texture = ExtResource("10_aw2xb")
+
+[node name="Sprite2D3" type="Sprite2D" parent="UI Layer/control/Control2/hints"]
+position = Vector2(53, 349)
+scale = Vector2(0.890625, 0.945312)
+texture = ExtResource("10_aw2xb")
+
+[node name="sinetriangle" type="Sprite2D" parent="UI Layer/control/Control2/hints"]
+position = Vector2(86, 112)
+scale = Vector2(4.33594, 3.90625)
+texture = ExtResource("11_u03y7")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Layer/control/Control2/hints/sinetriangle"]
+position = Vector2(-1.25392, 12.1081)
+scale = Vector2(0.203762, 0.243243)
+texture = ExtResource("12_7ntse")
+
+[node name="Sprite2D2" type="Sprite2D" parent="UI Layer/control/Control2/hints/sinetriangle"]
+position = Vector2(-13.4671, -0.756757)
+scale = Vector2(0.173981, 0.182432)
+texture = ExtResource("13_lb3v8")
+
+[node name="Sprite2D3" type="Sprite2D" parent="UI Layer/control/Control2/hints/sinetriangle"]
+position = Vector2(3.56113, -3.67567)
+scale = Vector2(0.153605, 0.182432)
+texture = ExtResource("14_j1l6f")
+
+[node name="Sprite2D4" type="Sprite2D" parent="UI Layer/control/Control2/hints/sinetriangle"]
+position = Vector2(4.41379, 4.81081)
+scale = Vector2(0.163009, 0.138513)
+texture = ExtResource("10_aw2xb")
+
+[node name="sinetriangle2" type="Sprite2D" parent="UI Layer/control/Control2/hints"]
+position = Vector2(297, 114)
+scale = Vector2(4.52344, 3.8125)
+texture = ExtResource("11_u03y7")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Layer/control/Control2/hints/sinetriangle2"]
+position = Vector2(-13.442, 0.648649)
+scale = Vector2(0.203762, 0.243243)
+texture = ExtResource("12_7ntse")
+
+[node name="Sprite2D2" type="Sprite2D" parent="UI Layer/control/Control2/hints/sinetriangle2"]
+position = Vector2(4.4138, 11.027)
+scale = Vector2(0.173981, 0.182432)
+texture = ExtResource("13_lb3v8")
+
+[node name="Sprite2D3" type="Sprite2D" parent="UI Layer/control/Control2/hints/sinetriangle2"]
+position = Vector2(3.56113, -3.67567)
+scale = Vector2(0.153605, 0.182432)
+texture = ExtResource("14_j1l6f")
+
+[node name="Sprite2D4" type="Sprite2D" parent="UI Layer/control/Control2/hints/sinetriangle2"]
+position = Vector2(-5.81818, -1.08108)
+scale = Vector2(0.163009, 0.138513)
+texture = ExtResource("10_aw2xb")
+
+[node name="cosinetriangle3" type="Sprite2D" parent="UI Layer/control/Control2/hints"]
+position = Vector2(99, 262.75)
+scale = Vector2(4.33594, 3.76563)
+texture = ExtResource("11_u03y7")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Layer/control/Control2/hints/cosinetriangle3"]
+position = Vector2(0.922514, 11.776)
+scale = Vector2(0.203762, 0.243243)
+texture = ExtResource("12_7ntse")
+
+[node name="Sprite2D2" type="Sprite2D" parent="UI Layer/control/Control2/hints/cosinetriangle3"]
+position = Vector2(-13.146, 0.256001)
+scale = Vector2(0.173981, 0.182432)
+texture = ExtResource("13_lb3v8")
+
+[node name="Sprite2D3" type="Sprite2D" parent="UI Layer/control/Control2/hints/cosinetriangle3"]
+position = Vector2(3.56113, -3.67567)
+scale = Vector2(0.153605, 0.182432)
+texture = ExtResource("14_j1l6f")
+
+[node name="Sprite2D4" type="Sprite2D" parent="UI Layer/control/Control2/hints/cosinetriangle3"]
+position = Vector2(4.41379, 4.81081)
+scale = Vector2(0.163009, 0.138513)
+texture = ExtResource("10_aw2xb")
+
+[node name="cosinetriangle4" type="Sprite2D" parent="UI Layer/control/Control2/hints"]
+position = Vector2(306, 262)
+scale = Vector2(4.33594, 3.90625)
+texture = ExtResource("11_u03y7")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Layer/control/Control2/hints/cosinetriangle4"]
+position = Vector2(-13.8378, -0.256002)
+scale = Vector2(0.203762, 0.243243)
+texture = ExtResource("12_7ntse")
+
+[node name="Sprite2D2" type="Sprite2D" parent="UI Layer/control/Control2/hints/cosinetriangle4"]
+position = Vector2(0.46126, 11.264)
+scale = Vector2(0.173981, 0.182432)
+texture = ExtResource("13_lb3v8")
+
+[node name="Sprite2D3" type="Sprite2D" parent="UI Layer/control/Control2/hints/cosinetriangle4"]
+position = Vector2(3.56113, -3.67567)
+scale = Vector2(0.153605, 0.182432)
+texture = ExtResource("14_j1l6f")
+
+[node name="Sprite2D4" type="Sprite2D" parent="UI Layer/control/Control2/hints/cosinetriangle4"]
+position = Vector2(-6.22703, -1.536)
+scale = Vector2(0.163009, 0.138513)
+texture = ExtResource("10_aw2xb")
+
+[node name="TANtriangle5" type="Sprite2D" parent="UI Layer/control/Control2/hints"]
+position = Vector2(331, 425)
+scale = Vector2(4.33594, 3.90625)
+texture = ExtResource("11_u03y7")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Layer/control/Control2/hints/TANtriangle5"]
+position = Vector2(4.6126, -4.60801)
+scale = Vector2(0.203762, 0.243243)
+texture = ExtResource("12_7ntse")
+
+[node name="Sprite2D2" type="Sprite2D" parent="UI Layer/control/Control2/hints/TANtriangle5"]
+position = Vector2(0.46126, 11.264)
+scale = Vector2(0.173981, 0.182432)
+texture = ExtResource("13_lb3v8")
+
+[node name="Sprite2D3" type="Sprite2D" parent="UI Layer/control/Control2/hints/TANtriangle5"]
+position = Vector2(-14.0685, 1.02399)
+scale = Vector2(0.153605, 0.182432)
+texture = ExtResource("14_j1l6f")
+
+[node name="Sprite2D4" type="Sprite2D" parent="UI Layer/control/Control2/hints/TANtriangle5"]
+position = Vector2(-6.22703, -1.536)
+scale = Vector2(0.163009, 0.138513)
+texture = ExtResource("10_aw2xb")
+
+[node name="TANtriangle6" type="Sprite2D" parent="UI Layer/control/Control2/hints"]
+position = Vector2(94, 419)
+scale = Vector2(4.33594, 3.90625)
+texture = ExtResource("11_u03y7")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Layer/control/Control2/hints/TANtriangle6"]
+position = Vector2(4.15136, -3.58401)
+scale = Vector2(0.203762, 0.243243)
+texture = ExtResource("12_7ntse")
+
+[node name="Sprite2D2" type="Sprite2D" parent="UI Layer/control/Control2/hints/TANtriangle6"]
+position = Vector2(-13.3766, 0.255985)
+scale = Vector2(0.173981, 0.182432)
+texture = ExtResource("13_lb3v8")
+
+[node name="Sprite2D3" type="Sprite2D" parent="UI Layer/control/Control2/hints/TANtriangle6"]
+position = Vector2(-0.922528, 11.52)
+scale = Vector2(0.153605, 0.182432)
+texture = ExtResource("14_j1l6f")
+
+[node name="Sprite2D4" type="Sprite2D" parent="UI Layer/control/Control2/hints/TANtriangle6"]
+position = Vector2(2.53693, 4.09599)
+scale = Vector2(0.163009, 0.138513)
+texture = ExtResource("10_aw2xb")
+
+[node name="hintsbutton" type="Button" parent="UI Layer/control/Control2"]
+layout_mode = 0
+offset_left = 593.0
+offset_top = 494.0
+offset_right = 714.0
+offset_bottom = 535.0
+text = "hints"
+
+[node name="Control" type="Control" parent="UI Layer/control"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 560.0
+offset_top = 312.0
+offset_right = 600.0
+offset_bottom = 352.0
+script = ExtResource("4_8hv4o")
+
+[node name="Restart" type="TextureButton" parent="UI Layer/control/Control"]
+layout_mode = 0
+offset_left = -21.0
+offset_top = -13.0
+offset_right = 19.0
+offset_bottom = 27.0
+texture_normal = SubResource("AtlasTexture_0q3jm")
+
+[node name="SpellsButton" type="Control" parent="UI Layer/control"]
+visible = false
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 41.0
+offset_bottom = 43.0
 
 [node name="firebutton" type="Button" parent="UI Layer/control/SpellsButton"]
 layout_mode = 0
 offset_left = 30.0
 offset_top = 499.0
-offset_right = 65.0
-offset_bottom = 534.0
+offset_right = 61.0
+offset_bottom = 528.0
 
 [node name="fire" type="Sprite2D" parent="UI Layer/control/SpellsButton/firebutton"]
-position = Vector2(17, 16)
-scale = Vector2(1.71875, 1.71875)
-texture = ExtResource("7_2c2u4")
+position = Vector2(15, 11.5)
+scale = Vector2(2.25, 2.21875)
+texture = ExtResource("7_h17bh")
+
+[node name="lightingbutton" type="Button" parent="UI Layer/control/SpellsButton"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 564.0
+offset_right = 86.0
+offset_bottom = 594.0
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Layer/control/SpellsButton/lightingbutton"]
+position = Vector2(14, 9)
+scale = Vector2(1.75, 1.84375)
+texture = ExtResource("8_ccq74")
+
+[node name="waterbutton" type="Button" parent="UI Layer/control/SpellsButton"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 601.0
+offset_right = 161.0
+offset_bottom = 628.0
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Layer/control/SpellsButton/waterbutton"]
+position = Vector2(15, 0.500034)
+scale = Vector2(2.625, 2.40625)
+texture = ExtResource("9_u2nqj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(575.5, 322.5)
+position = Vector2(578, 323)
 scale = Vector2(36.0313, 20.3437)
 texture = ExtResource("8_xajof")
 
@@ -152,16 +490,16 @@ position = Vector2(1071, 587)
 position = Vector2(948, 90)
 
 [node name="Marker2D4" type="Marker2D" parent="AllTriangles"]
-position = Vector2(563, 586)
+position = Vector2(59, 509)
 
 [node name="Marker2D5" type="Marker2D" parent="AllTriangles"]
-position = Vector2(294, 85)
+position = Vector2(119, 95)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(759, 348)
+position = Vector2(977, 577)
 motion_mode = 1
 script = ExtResource("2_eates")
 
@@ -204,25 +542,29 @@ stream = ExtResource("15_spiiq")
 volume_db = -30.236
 
 [node name="clouds" type="Node2D" parent="."]
+position = Vector2(-235, -59)
 
 [node name="Marker2D" type="Marker2D" parent="clouds"]
-position = Vector2(-86, 327)
+position = Vector2(-41, 276)
 
 [node name="Marker2D2" type="Marker2D" parent="clouds"]
-position = Vector2(-78, 533)
+position = Vector2(-103, 490)
 
 [node name="Marker2D3" type="Marker2D" parent="clouds"]
-position = Vector2(-145, 429)
+position = Vector2(-200, 362)
 
 [node name="Marker2D4" type="Marker2D" parent="clouds"]
-position = Vector2(-130, 249)
+position = Vector2(-96, 151)
 
 [connection signal="begingame" from="." to="." method="_on_begingame"]
 [connection signal="begingame" from="." to="UI Layer/control/Control2" method="_on_gamemode_3_begingame"]
 [connection signal="gameLost" from="." to="UI Layer/control/Control" method="_on_gamemode_3_game_lost"]
-[connection signal="button_up" from="UI Layer/control/Control/Restart" to="." method="_on_restart_button_up"]
 [connection signal="button_up" from="UI Layer/control/Control2/Start" to="." method="_on_start_button_up"]
 [connection signal="button_up" from="UI Layer/control/Control2/Start" to="Player" method="_on_start_button_up"]
+[connection signal="button_up" from="UI Layer/control/Control2/playgame" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="UI Layer/control/Control2/playgame" to="Player" method="_on_button_button_up"]
+[connection signal="button_up" from="UI Layer/control/Control2/hintsbutton" to="UI Layer/control/Control2/hints" method="_on_hintsbutton_button_up"]
+[connection signal="button_up" from="UI Layer/control/Control/Restart" to="." method="_on_restart_button_up"]
 [connection signal="button_down" from="UI Layer/control/SpellsButton/firebutton" to="Player" method="_on_firebutton_button_down"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="firespellActivated" from="Player" to="." method="_on_player_firespell_activated"]

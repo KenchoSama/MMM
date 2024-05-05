@@ -4,6 +4,7 @@ var fireSpell: PackedScene = preload("res://Components/Gamemode 3/fire.tscn")
 var lightingSpell: PackedScene = preload("res://Components/Gamemode 3/lighting.tscn")
 var waterSpell: PackedScene = preload("res://Components/Gamemode 3/water.tscn")
 var triangle: PackedScene = preload("res://Components/Gamemode 3/triangles.tscn")
+var cloud:PackedScene = preload("res://Components/Gamemode 3/clouds.tscn")
 
 signal begingame
 signal gameLost
@@ -48,7 +49,7 @@ func _on_player_lost():
 
 
 func _on_restart_button_up():
-	get_tree().change_scene_to_file("res://Components/Main Menu/main_menu.tscn")
+	get_tree().change_scene_to_file("res://Components/Gamemode 3/gamemode_3.tscn")
 
 
 
@@ -63,6 +64,13 @@ func _on_timer_timeout():
 		new_triangle.rotation_degrees = rad_to_deg(direction.angle())
 		new_triangle.direction = direction
 		add_child(new_triangle)
+		
+		var new_cloud = cloud.instantiate()
+		var cloudPositions = $clouds.get_children()
+		var cloudPositionspawn = cloudPositions[randi() % cloudPositions.size()]
+		new_cloud.position = cloudPositionspawn.global_position
+		print(cloudPositions)
+		add_child(new_cloud)
 	
 
 
@@ -73,3 +81,7 @@ func _on_start_button_up():
 func _on_begingame():
 	$Timer.start()
 
+
+
+func _on_button_button_up():
+	emit_signal("begingame")

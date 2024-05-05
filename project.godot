@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Magic Math Man"
 run/main_scene="res://Components/Main Menu/main_menu.tscn"
-config/features=PackedStringArray("4.1", "Mobile")
+config/features=PackedStringArray("4.2", "Mobile")
 
 [display]
 
