@@ -20,10 +20,12 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body):
-	if "triangle" in body:
+	if "costriangle" in body:
 		body.hit()
 		$Sprite2D.visible = false
 		explode()
+	else:
+		queue_free()
 	
 
 

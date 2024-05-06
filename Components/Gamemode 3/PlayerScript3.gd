@@ -68,6 +68,14 @@ func _on_area_2d_body_entered(body):
 		queue_free()
 		print("body was crushed")
 		emit_signal("lost")
+	elif "costriangle" in body:
+		queue_free()
+		print("body was crushed")
+		emit_signal("lost")
+	elif "tantriangle" in body:
+		queue_free()
+		print("body was crushed")
+		emit_signal("lost")
 
 
 func _on_start_button_up():

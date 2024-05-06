@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var sintriangle: bool = true
+var tantriangle: bool = true
 var initialMovementComplete = false
 var initialDirection = Vector2.RIGHT
 var direction
@@ -16,7 +16,8 @@ func _ready():
 	$Sprite2D2.visible = false
 	$Sprite2D.visible = false
 	$Sprite2D3.visible = false
-	var random_number = rng.randi_range(1, 3)
+	$Sprite2D4.visible = false
+	var random_number = rng.randi_range(1, 4)
 	if random_number == 1:
 		$Sprite2D2.visible = true
 	
@@ -25,7 +26,9 @@ func _ready():
 	
 	elif random_number == 3:
 		$Sprite2D3.visible = true
-	
+		
+	elif random_number == 4:
+		$Sprite2D4.visible = true
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

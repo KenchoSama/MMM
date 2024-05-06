@@ -3,9 +3,13 @@ extends Node2D
 var fireSpell: PackedScene = preload("res://Components/Gamemode 3/fire.tscn")
 var lightingSpell: PackedScene = preload("res://Components/Gamemode 3/lighting.tscn")
 var waterSpell: PackedScene = preload("res://Components/Gamemode 3/water.tscn")
-var triangle: PackedScene = preload("res://Components/Gamemode 3/triangles.tscn")
+#var triangle: PackedScene = preload("res://Components/Gamemode 3/triangles.tscn")
 var cloud:PackedScene = preload("res://Components/Gamemode 3/clouds.tscn")
 var sintriangle:PackedScene = preload("res://Components/Gamemode 3/rigidSinTriangle.tscn")
+var costriangle:PackedScene = preload("res://Components/Gamemode 3/cos_triangle.tscn")
+var tantriangle:PackedScene = preload("res://Components/Gamemode 3/tantriangle.tscn")
+
+var rng = RandomNumberGenerator.new()
 
 signal begingame
 signal gameLost
@@ -56,15 +60,43 @@ func _on_restart_button_up():
 
 func _on_timer_timeout():
 	if $Player:
-		var new_sintriangle = sintriangle.instantiate()
-		#var direction = ($Player.global_position - position).normalized() 
-		#var player_direction = (get_global_mouse_position() - position).normalized()
-		var triangle_positions = $AllTriangles.get_children()
-		var positionSpawn = triangle_positions[randi() % triangle_positions.size()]
-		new_sintriangle.position = positionSpawn.global_position
-		#new_triangle.rotation_degrees = rad_to_deg(direction.angle())
-		#new_triangle.direction = direction
-		add_child(new_sintriangle)
+		
+		
+		var random_number = rng.randi_range(1, 3)
+		print(random_number)
+		if random_number == 1:
+			var new_sintriangle = sintriangle.instantiate()
+			#var direction = ($Player.global_position - position).normalized() 
+			#var player_direction = (get_global_mouse_position() - position).normalized()
+			var triangle_positions = $AllTriangles.get_children()
+			var positionSpawn = triangle_positions[randi() % triangle_positions.size()]
+			new_sintriangle.position = positionSpawn.global_position
+			#new_triangle.rotation_degrees = rad_to_deg(direction.angle())
+			#new_triangle.direction = direction
+			add_child(new_sintriangle)
+	
+		elif random_number == 2:
+			var new_costriangle = costriangle.instantiate()
+			#var direction = ($Player.global_position - position).normalized() 
+			#var player_direction = (get_global_mouse_position() - position).normalized()
+			var triangle_positions = $AllTriangles.get_children()
+			var positionSpawn = triangle_positions[randi() % triangle_positions.size()]
+			new_costriangle.position = positionSpawn.global_position
+			#new_triangle.rotation_degrees = rad_to_deg(direction.angle())
+			#new_triangle.direction = direction
+			add_child(new_costriangle)
+	
+		elif random_number == 3:
+			var new_tantriangle = tantriangle.instantiate()
+			#var direction = ($Player.global_position - position).normalized() 
+			#var player_direction = (get_global_mouse_position() - position).normalized()
+			var triangle_positions = $AllTriangles.get_children()
+			var positionSpawn = triangle_positions[randi() % triangle_positions.size()]
+			new_tantriangle.position = positionSpawn.global_position
+			#new_triangle.rotation_degrees = rad_to_deg(direction.angle())
+			#new_triangle.direction = direction
+			add_child(new_tantriangle)
+
 		
 		var new_cloud = cloud.instantiate()
 		var cloudPositions = $clouds.get_children()

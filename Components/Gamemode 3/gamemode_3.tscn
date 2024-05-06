@@ -86,10 +86,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aij12"]
-radius = 6.0
+radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hkmgt"]
-radius = 12.0
+radius = 9.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sjany"]
 size = Vector2(1155, 35)
@@ -173,8 +173,9 @@ offset_top = 87.0
 offset_right = 800.0
 offset_bottom = 476.0
 text = "avoid collision with the triangles
-
 use spells to destroy triangles
+the unknown side of a triangle is a
+different color from the other two
 
 on KeyBoard:
 'q' for fire spell

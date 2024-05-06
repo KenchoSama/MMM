@@ -133,10 +133,10 @@ hframes = 2
 vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "fireAnimation"
 libraries = {
 "": SubResource("AnimationLibrary_b40ne")
 }
+autoplay = "fireAnimation"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

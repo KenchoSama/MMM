@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://d15wje33s1t4h"]
+
+[ext_resource type="Script" path="res://Components/Gamemode 3/tantriangle.gd" id="1_1aasd"]
+[ext_resource type="Texture2D" uid="uid://bkywgr5cy0278" path="res://Components/Gamemode 3/tantriangle.png" id="1_887cg"]
+[ext_resource type="Texture2D" uid="uid://dfimfbmb1avga" path="res://Components/Gamemode 3/images/tantriangle1.png" id="2_wbfpf"]
+[ext_resource type="Texture2D" uid="uid://ycia3ag14su8" path="res://Components/Gamemode 3/images/New Piskel (5).png" id="3_k5bh3"]
+[ext_resource type="Texture2D" uid="uid://cyodvdhobr1ip" path="res://Components/Gamemode 3/images/tqntri2.png" id="5_6a8cq"]
+[ext_resource type="Texture2D" uid="uid://b8uyse5v10an3" path="res://Components/Gamemode 3/images/tantri3.png" id="6_yg6pc"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wku5s"]
+friction = 0.0
+bounce = 1.0
+
+[node name="tantriangle" type="RigidBody2D"]
+position = Vector2(366, 138)
+physics_material_override = SubResource("PhysicsMaterial_wku5s")
+gravity_scale = 0.0
+script = ExtResource("1_1aasd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(111.375, -65.625)
+scale = Vector2(8.10156, 6.64844)
+texture = ExtResource("1_887cg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(0.626792, 8.00306)
+scale = Vector2(0.131712, 0.169337)
+texture = ExtResource("3_k5bh3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(98.6875, -44.75)
+scale = Vector2(7.64453, 5.39063)
+texture = ExtResource("2_wbfpf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D2"]
+position = Vector2(3.37954, 4.91089)
+scale = Vector2(0.156766, 0.232673)
+texture = ExtResource("3_k5bh3")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(92, -58)
+scale = Vector2(7.25, 5.375)
+texture = ExtResource("5_6a8cq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D3"]
+position = Vector2(-9.27923, -2.10526)
+scale = Vector2(0.145107, 0.179825)
+texture = ExtResource("3_k5bh3")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(101.125, -45.5625)
+scale = Vector2(7.05469, 5.21484)
+texture = ExtResource("6_yg6pc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D4"]
+position = Vector2(-10.6341, -3.80269)
+scale = Vector2(0.134146, 0.201794)
+texture = ExtResource("3_k5bh3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-43, -339)
+polygon = PackedVector2Array(49, 232, 47, 346, 252, 344)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

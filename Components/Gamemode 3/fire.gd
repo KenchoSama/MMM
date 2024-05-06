@@ -30,7 +30,7 @@ func _on_area_2d_body_entered(body):
 
 
 func _on_timer_timeout():
-	$".".queue_free()
+	$".".queue_free() #$"."
 
 func explode():
 	speed = 0

@@ -1,27 +1,55 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0wixqukdejwl"]
+[gd_scene load_steps=7 format=3 uid="uid://b0wixqukdejwl"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 3/rigidSinTriangle.gd" id="1_bhnj7"]
-[ext_resource type="Texture2D" uid="uid://cacac1yomjtno" path="res://Components/Gamemode 3/images/New Piskel.png" id="2_wmocw"]
+[ext_resource type="Texture2D" uid="uid://dw20ha3wfot3s" path="res://Components/Gamemode 3/traingle.png" id="2_64uxx"]
+[ext_resource type="Texture2D" uid="uid://vymlrcwv24v8" path="res://Components/Gamemode 3/triangle.png" id="3_4eobi"]
+[ext_resource type="Texture2D" uid="uid://bcytvljc8skmv" path="res://Components/Gamemode 3/images/theta.png" id="3_51lp7"]
+[ext_resource type="Texture2D" uid="uid://bivig7tglk8ca" path="res://Components/Gamemode 3/images/triangle3.png" id="5_tsa6i"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xdflp"]
 friction = 0.0
 bounce = 100.0
 
 [node name="RigidBody2D" type="RigidBody2D"]
-position = Vector2(338, 235)
+position = Vector2(-10, 75)
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_xdflp")
 gravity_scale = 0.0
 script = ExtResource("1_bhnj7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(9.09998, -3.5)
-scale = Vector2(3.65625, 2.65625)
-texture = ExtResource("2_wmocw")
+position = Vector2(88.5, -35.5)
+scale = Vector2(6.78125, 4.46875)
+texture = ExtResource("2_64uxx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(4.6496, 8.28238)
+scale = Vector2(0.160256, 0.197059)
+texture = ExtResource("3_51lp7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(85.0625, -28.75)
+scale = Vector2(7.24609, 5.14063)
+texture = ExtResource("3_4eobi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D2"]
+position = Vector2(-6.57361, -2.04257)
+scale = Vector2(0.116279, 0.148936)
+texture = ExtResource("3_51lp7")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(99.7813, -32)
+scale = Vector2(6.70117, 4.9375)
+texture = ExtResource("5_tsa6i")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D3"]
+position = Vector2(3.38324, 7.27271)
+scale = Vector2(0.147577, 0.159091)
+texture = ExtResource("3_51lp7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-265.4, -280)
-polygon = PackedVector2Array(261.4, 247, 337.4, 292, 212.4, 293)
+position = Vector2(-218, -295)
+polygon = PackedVector2Array(230, 214, 415, 311, 227, 315)
 
 [node name="Timer" type="Timer" parent="."]
 

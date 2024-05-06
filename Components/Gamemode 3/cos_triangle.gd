@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var sintriangle: bool = true
+var costriangle: bool = true
 var initialMovementComplete = false
 var initialDirection = Vector2.RIGHT
 var direction
