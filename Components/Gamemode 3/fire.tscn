@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dd5irxtfsu0su" path="res://Components/Gamemode 3/audio/designed-fire-winds-swoosh-04-116788.mp3" id="4_s5u3g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqbqu"]
-size = Vector2(42.4999, 68.5001)
+size = Vector2(29, 72.2501)
 
 [sub_resource type="Animation" id="Animation_0btdn"]
 length = 0.001
@@ -111,11 +111,11 @@ script = ExtResource("1_ac6ti")
 position = Vector2(-1.00002, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-6.25018, -41.75)
+position = Vector2(-3.50018, -51.875)
 shape = SubResource("RectangleShape2D_uqbqu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-7.33951, -44.9763)
+position = Vector2(-3.60336, -46.2434)
 scale = Vector2(2.05528, 3.28247)
 texture = ExtResource("2_rvube")
 hframes = 2

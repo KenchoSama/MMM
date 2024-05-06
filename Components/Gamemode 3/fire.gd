@@ -20,15 +20,17 @@ func _on_area_2d_area_entered(area):
 
 
 func _on_area_2d_body_entered(body):
-	if "triangle" in body:
+	if "sintriangle" in body:
 		body.hit()
 		$Sprite2D.visible = false
 		explode()
+	else:
+		queue_free()
 	
 
 
 func _on_timer_timeout():
-	queue_free()
+	$".".queue_free()
 
 func explode():
 	speed = 0

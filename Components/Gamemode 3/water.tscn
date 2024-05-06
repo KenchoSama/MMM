@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dvuo0bkm2k6py" path="res://Components/Gamemode 3/audio/large-underwater-explosion-190270.mp3" id="4_bjvso"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3evg"]
-size = Vector2(119, 33)
+size = Vector2(88, 18)
 
 [sub_resource type="Animation" id="Animation_2fubw"]
 length = 0.001
@@ -109,13 +109,13 @@ script = ExtResource("1_fqtxt")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(69.5, -6.5)
+position = Vector2(61, 1)
 shape = SubResource("RectangleShape2D_s3evg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(62, -9)
+position = Vector2(64, -2)
 rotation = 1.5708
-scale = Vector2(3.6875, 4.36458)
+scale = Vector2(3.14864, 3.28686)
 texture = ExtResource("2_jgjgk")
 hframes = 2
 vframes = 3
@@ -130,9 +130,9 @@ libraries = {
 wait_time = 3.0
 
 [node name="waterexplosion" type="Sprite2D" parent="."]
-position = Vector2(136.25, -10)
+position = Vector2(124, -3)
 rotation = 1.5708
-scale = Vector2(5.48438, 3.28125)
+scale = Vector2(4.40666, 2.4265)
 texture = ExtResource("3_xwhrr")
 hframes = 3
 vframes = 4

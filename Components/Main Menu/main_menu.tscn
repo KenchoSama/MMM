@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://corn6y012o67q"]
+[gd_scene load_steps=38 format=3 uid="uid://corn6y012o67q"]
 
 [ext_resource type="Script" path="res://Components/Main Menu/main_menu.gd" id="1_jth7i"]
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_jwc0v"]
@@ -14,8 +14,10 @@
 [ext_resource type="Theme" uid="uid://by35faieybjhf" path="res://Reusable Scenes/GreenTheme.tres" id="8_xl2ed"]
 [ext_resource type="Texture2D" uid="uid://c8414kcpnmo1e" path="res://Components/Main Menu/Character.png" id="10_8o0r4"]
 [ext_resource type="Theme" uid="uid://bgbl23jfw6rk1" path="res://Reusable Scenes/GreyTheme.tres" id="11_gebbs"]
+[ext_resource type="Texture2D" uid="uid://ddkfad61bt2n6" path="res://Components/Gamemode 3/images/darkbackground.png" id="13_b07ej"]
 [ext_resource type="Script" path="res://Components/Main Menu/MusicPlayer.gd" id="14_03dgd"]
 [ext_resource type="Texture2D" uid="uid://8htax3pkoq4r" path="res://Reusable Scenes/PixelArtUI.png" id="14_4hwo4"]
+[ext_resource type="Texture2D" uid="uid://cykbjkjk4knfb" path="res://Components/Gamemode 3/images/crosstriangles.png" id="14_bucos"]
 [ext_resource type="Script" path="res://Components/Main Menu/Settings Menu.gd" id="15_eray0"]
 [ext_resource type="Script" path="res://Components/Main Menu/MainMenuLooperScript.gd" id="16_3d6eg"]
 [ext_resource type="Script" path="res://Components/Main Menu/ResetWW.gd" id="16_od4sa"]
@@ -224,9 +226,14 @@ script = ExtResource("8_s5gxi")
 
 [node name="Thumbnail" type="Sprite2D" parent="Button for Gamemode 3"]
 modulate = Color(1, 1, 1, 0.843137)
-position = Vector2(102.5, 46.9375)
-scale = Vector2(0.975, 1.02286)
-texture = ExtResource("8_tirg5")
+position = Vector2(101.89, 46.0675)
+scale = Vector2(6.38275, 2.88851)
+texture = ExtResource("13_b07ej")
+
+[node name="Sprite2D" type="Sprite2D" parent="Button for Gamemode 3/Thumbnail"]
+position = Vector2(0.330431, -2.09964)
+scale = Vector2(0.593634, 0.761965)
+texture = ExtResource("14_bucos")
 
 [node name="Title" type="Label" parent="Button for Gamemode 3"]
 layout_mode = 0
@@ -371,7 +378,7 @@ environment = SubResource("Environment_43jd1")
 [connection signal="button_up" from="Button for Gamemode 2" to="." method="_on_button_for_gamemode_2_button_up"]
 [connection signal="button_up" from="Button for Gamemode 3" to="." method="_on_button_for_gamemode_3_button_up"]
 [connection signal="button_up" from="Button for CC" to="." method="_on_button_for_cc_button_up"]
-[connection signal="button_up" from="MuteButton" to="MuteButton" method="_on_mute_button_button_up" flags=18]
+[connection signal="button_up" from="MuteButton" to="MuteButton" method="_on_mute_button_button_up"]
 [connection signal="finished" from="MuteButton/AudioStreamPlayer" to="MuteButton/AudioStreamPlayer" method="_on_finished"]
 [connection signal="button_down" from="Settings Button" to="Settings Menu" method="_on_settings_button_button_down"]
 [connection signal="button_up" from="Settings Menu/Panel/ResetWW" to="Settings Menu/Panel/ResetWW" method="_on_button_up"]

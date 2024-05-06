@@ -4,7 +4,7 @@ signal respawn(pos)
 
 
 var triangle: bool = true
-var triangle_scene: PackedScene = preload("res://Components/Gamemode 3/triangles.tscn")
+#var triangle_scene: PackedScene = preload("res://Components/Gamemode 3/triangles.tscn")
 var speed = 100  # Adjust the speed as needed
 var direction = Vector2.RIGHT  # Initial movement direction
 
