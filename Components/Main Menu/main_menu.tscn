@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://corn6y012o67q"]
+[gd_scene load_steps=45 format=3 uid="uid://corn6y012o67q"]
 
 [ext_resource type="Script" path="res://Components/Main Menu/main_menu.gd" id="1_jth7i"]
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_jwc0v"]
@@ -26,6 +26,10 @@
 [ext_resource type="Script" path="res://Components/Main Menu/ResetWW.gd" id="16_od4sa"]
 [ext_resource type="Script" path="res://Components/Main Menu/ResetLL.gd" id="17_qvcdi"]
 [ext_resource type="Script" path="res://Components/Main Menu/ResetT.gd" id="18_hnjh4"]
+[ext_resource type="Texture2D" uid="uid://b5np1yj23jafb" path="res://Reusable Scenes/Player/Sprites/Shirts/Shirt10.png" id="18_qv225"]
+[ext_resource type="Texture2D" uid="uid://dpx3ir4mym71u" path="res://Reusable Scenes/Player/Sprites/Shirts/Shirt3.png" id="19_n8niv"]
+[ext_resource type="Texture2D" uid="uid://ng6w87emdbig" path="res://Reusable Scenes/Player/Sprites/Shirts/Shirt8.png" id="20_j7hlm"]
+[ext_resource type="Texture2D" uid="uid://cvgimvkfuokli" path="res://Components/Gamemode 1/Gamemode1 Sprites/Cloud1.png" id="30_mdj46"]
 
 [sub_resource type="Curve2D" id="Curve2D_4ejxc"]
 _data = {
@@ -170,6 +174,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_bpbiw")
 script = ExtResource("8_s5gxi")
 
 [node name="Thumbnail" type="Sprite2D" parent="Button for Gamemode 1"]
+self_modulate = Color(0.52549, 1, 1, 1)
 position = Vector2(102.5, 44.5)
 scale = Vector2(1.005, 1.03659)
 texture = ExtResource("8_tirg5")
@@ -264,11 +269,14 @@ offset_bottom = 232.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_dhjmp")
 script = ExtResource("8_s5gxi")
 
-[node name="Thumbnail" type="Sprite2D" parent="Button for CC"]
-modulate = Color(1, 1, 1, 0.843137)
-position = Vector2(102.5, 47.4375)
-scale = Vector2(0.975, 1.03506)
-texture = ExtResource("8_tirg5")
+[node name="Thumbnail" type="ColorRect" parent="Button for CC"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 204.0
+offset_bottom = 89.0
+mouse_filter = 2
+color = Color(0, 1, 1, 1)
 
 [node name="Title" type="Label" parent="Button for CC"]
 layout_mode = 0
@@ -278,6 +286,22 @@ offset_right = 207.0
 offset_bottom = 113.0
 text = "wizard Wardrobe"
 horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Button for CC"]
+position = Vector2(48.1974, 36.0369)
+scale = Vector2(2.01234, 2.01234)
+texture = ExtResource("18_qv225")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Button for CC"]
+position = Vector2(153.197, 36.0369)
+scale = Vector2(2.01234, 2.01234)
+texture = ExtResource("19_n8niv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Button for CC"]
+position = Vector2(100.197, 36.0369)
+rotation = -0.000239098
+scale = Vector2(2.06431, 2.06431)
+texture = ExtResource("20_j7hlm")
 
 [node name="MuteButton" type="Button" parent="."]
 layout_mode = 0
@@ -382,6 +406,18 @@ one_shot = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_43jd1")
+
+[node name="Cloud1" type="Sprite2D" parent="."]
+position = Vector2(-45, 25)
+rotation = 0.013409
+scale = Vector2(0.798478, 0.798478)
+texture = ExtResource("30_mdj46")
+
+[node name="Cloud2" type="Sprite2D" parent="."]
+position = Vector2(-185, 19)
+rotation = 0.013409
+scale = Vector2(0.478975, 0.478975)
+texture = ExtResource("30_mdj46")
 
 [connection signal="button_down" from="Path2D/PathFollow2D/ColorChangeButton" to="Path2D/PathFollow2D/MMM" method="_change_color"]
 [connection signal="timeout" from="Path2D/PathFollow2D/ColorChangeButton/ColorTimer" to="Path2D/PathFollow2D/MMM" method="_on_color_timer_timeout"]
