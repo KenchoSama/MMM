@@ -517,6 +517,7 @@ rotation = 1.5708
 texture = ExtResource("18_rm1h5")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(648, 648)
 stream = ExtResource("27_58867")
 volume_db = -32.0
 
