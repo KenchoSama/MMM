@@ -26,6 +26,7 @@ func _ready():
 	tweenTimer = $tweenTimer
 
 func _function_shoot():
+	$"../AudioStreamPlayer".play(0)
 	set_physics_process(true)
 	
 func _fucntion_reload():

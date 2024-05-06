@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://bohc6wymllyla"]
+[gd_scene load_steps=62 format=3 uid="uid://bohc6wymllyla"]
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_kfx5p"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/gamemode_2.gd" id="1_vyval"]
@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://crwrcwqoqmrbx" path="res://assets/Hints Menu.png" id="35_87f6i"]
 [ext_resource type="Texture2D" uid="uid://dfn1pqqkdt55d" path="res://assets/LinearExample1.png" id="36_6c3ig"]
 [ext_resource type="Texture2D" uid="uid://buiasspmjepwh" path="res://assets/LinearExample2.png" id="37_e7cvk"]
+[ext_resource type="AudioStream" uid="uid://tr4nl4h5nbgt" path="res://assets/lasersound.mp3" id="38_w2qwo"]
 
 [sub_resource type="Theme" id="Theme_plp58"]
 
@@ -725,6 +726,10 @@ texture_mode = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Laser Cannon/RayCast2D"]
 environment = SubResource("Environment_kth7l")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Laser Cannon"]
+stream = ExtResource("38_w2qwo")
+volume_db = -32.409
 
 [connection signal="beginGame" from="." to="UI Layer/Debug/ColumnUI" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_begin_game"]
