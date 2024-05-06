@@ -611,7 +611,7 @@ shape = SubResource("CircleShape2D_hkmgt")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("23_7ps0h")
-volume_db = -18.056
+volume_db = -32.11
 
 [node name="clouds" type="Node2D" parent="."]
 position = Vector2(-235, -59)
