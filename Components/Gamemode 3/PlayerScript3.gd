@@ -64,7 +64,7 @@ func _on_spell_timer_1_timeout():
 
 
 func _on_area_2d_body_entered(body):
-	if "triangle" in body:
+	if "sintriangle" in body:
 		queue_free()
 		print("body was crushed")
 		emit_signal("lost")

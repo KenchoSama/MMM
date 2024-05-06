@@ -5,6 +5,7 @@ var lightingSpell: PackedScene = preload("res://Components/Gamemode 3/lighting.t
 var waterSpell: PackedScene = preload("res://Components/Gamemode 3/water.tscn")
 var triangle: PackedScene = preload("res://Components/Gamemode 3/triangles.tscn")
 var cloud:PackedScene = preload("res://Components/Gamemode 3/clouds.tscn")
+var sintriangle:PackedScene = preload("res://Components/Gamemode 3/rigidSinTriangle.tscn")
 
 signal begingame
 signal gameLost
@@ -55,21 +56,20 @@ func _on_restart_button_up():
 
 func _on_timer_timeout():
 	if $Player:
-		var new_triangle = triangle.instantiate()
-		var direction = ($Player.global_position - position).normalized() 
+		var new_sintriangle = sintriangle.instantiate()
+		#var direction = ($Player.global_position - position).normalized() 
 		#var player_direction = (get_global_mouse_position() - position).normalized()
 		var triangle_positions = $AllTriangles.get_children()
 		var positionSpawn = triangle_positions[randi() % triangle_positions.size()]
-		new_triangle.position = positionSpawn.global_position
-		new_triangle.rotation_degrees = rad_to_deg(direction.angle())
-		new_triangle.direction = direction
-		add_child(new_triangle)
+		new_sintriangle.position = positionSpawn.global_position
+		#new_triangle.rotation_degrees = rad_to_deg(direction.angle())
+		#new_triangle.direction = direction
+		add_child(new_sintriangle)
 		
 		var new_cloud = cloud.instantiate()
 		var cloudPositions = $clouds.get_children()
 		var cloudPositionspawn = cloudPositions[randi() % cloudPositions.size()]
 		new_cloud.position = cloudPositionspawn.global_position
-		print(cloudPositions)
 		add_child(new_cloud)
 	
 

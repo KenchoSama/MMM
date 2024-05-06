@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://d2lpax3fitu2j" path="res://Components/Gamemode 3/audio/thunderstorm-ambiance-191991.mp3" id="4_ix4j5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d1j0q"]
-size = Vector2(93, 17.5)
+size = Vector2(84.5, 17.5)
 
 [sub_resource type="Animation" id="Animation_lgbac"]
 length = 0.001
@@ -114,7 +114,7 @@ script = ExtResource("1_gndqf")
 position = Vector2(-1, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(54, -1)
+position = Vector2(58.25, -1)
 shape = SubResource("RectangleShape2D_d1j0q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
