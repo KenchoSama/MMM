@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://corn6y012o67q"]
+[gd_scene load_steps=41 format=3 uid="uid://corn6y012o67q"]
 
 [ext_resource type="Script" path="res://Components/Main Menu/main_menu.gd" id="1_jth7i"]
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_jwc0v"]
@@ -14,10 +14,13 @@
 [ext_resource type="Theme" uid="uid://by35faieybjhf" path="res://Reusable Scenes/GreenTheme.tres" id="8_xl2ed"]
 [ext_resource type="Texture2D" uid="uid://c8414kcpnmo1e" path="res://Components/Main Menu/Character.png" id="10_8o0r4"]
 [ext_resource type="Theme" uid="uid://bgbl23jfw6rk1" path="res://Reusable Scenes/GreyTheme.tres" id="11_gebbs"]
-[ext_resource type="Texture2D" uid="uid://ddkfad61bt2n6" path="res://Components/Gamemode 3/images/darkbackground.png" id="13_b07ej"]
+[ext_resource type="Texture2D" uid="uid://bh4da30syfa77" path="res://Components/Main Menu/LLThumb1.png" id="12_3s7yl"]
+[ext_resource type="Texture2D" uid="uid://behd0onte8wae" path="res://Components/Gamemode 3/images/darkbackground_big.png" id="13_w64t6"]
+[ext_resource type="Texture2D" uid="uid://biviyjgtw0762" path="res://Components/Main Menu/planet.png" id="13_wlx6g"]
 [ext_resource type="Script" path="res://Components/Main Menu/MusicPlayer.gd" id="14_03dgd"]
 [ext_resource type="Texture2D" uid="uid://8htax3pkoq4r" path="res://Reusable Scenes/PixelArtUI.png" id="14_4hwo4"]
 [ext_resource type="Texture2D" uid="uid://cykbjkjk4knfb" path="res://Components/Gamemode 3/images/crosstriangles.png" id="14_bucos"]
+[ext_resource type="Texture2D" uid="uid://c4c5cwhddwuca" path="res://Components/Main Menu/LLThumb2.png" id="14_qe7g6"]
 [ext_resource type="Script" path="res://Components/Main Menu/Settings Menu.gd" id="15_eray0"]
 [ext_resource type="Script" path="res://Components/Main Menu/MainMenuLooperScript.gd" id="16_3d6eg"]
 [ext_resource type="Script" path="res://Components/Main Menu/ResetWW.gd" id="16_od4sa"]
@@ -88,7 +91,6 @@ region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="Environment" id="Environment_43jd1"]
 background_mode = 3
-glow_enabled = true
 glow_intensity = 0.72
 glow_strength = 0.82
 glow_bloom = 0.1
@@ -168,9 +170,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_bpbiw")
 script = ExtResource("8_s5gxi")
 
 [node name="Thumbnail" type="Sprite2D" parent="Button for Gamemode 1"]
-self_modulate = Color(1, 1, 1, 0.843137)
-position = Vector2(103, 46)
-scale = Vector2(0.984372, 1.02134)
+position = Vector2(102.5, 44.5)
+scale = Vector2(1.005, 1.03659)
 texture = ExtResource("8_tirg5")
 
 [node name="Character" type="Sprite2D" parent="Button for Gamemode 1/Thumbnail"]
@@ -199,10 +200,20 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_acjnr")
 script = ExtResource("8_s5gxi")
 
 [node name="Thumbnail" type="Sprite2D" parent="Button for Gamemode 2"]
+position = Vector2(103.401, 45.2119)
+scale = Vector2(2.23554, 1.89946)
+texture = ExtResource("12_3s7yl")
+
+[node name="Planet" type="Sprite2D" parent="Button for Gamemode 2"]
+position = Vector2(151, 37)
+scale = Vector2(0.330986, 0.330986)
+texture = ExtResource("13_wlx6g")
+
+[node name="Thumbnail2" type="Sprite2D" parent="Button for Gamemode 2"]
 modulate = Color(1, 1, 1, 0.843137)
-position = Vector2(103.781, 49.0625)
-scale = Vector2(0.982188, 1.07165)
-texture = ExtResource("8_tirg5")
+position = Vector2(103.401, 45.2119)
+scale = Vector2(2.23554, 1.89946)
+texture = ExtResource("14_qe7g6")
 
 [node name="Title" type="Label" parent="Button for Gamemode 2"]
 layout_mode = 0
@@ -226,13 +237,13 @@ script = ExtResource("8_s5gxi")
 
 [node name="Thumbnail" type="Sprite2D" parent="Button for Gamemode 3"]
 modulate = Color(1, 1, 1, 0.843137)
-position = Vector2(101.89, 46.0675)
-scale = Vector2(6.38275, 2.88851)
-texture = ExtResource("13_b07ej")
+position = Vector2(102.333, 46.0006)
+scale = Vector2(2.20741, 1.95452)
+texture = ExtResource("13_w64t6")
 
-[node name="Sprite2D" type="Sprite2D" parent="Button for Gamemode 3/Thumbnail"]
-position = Vector2(0.330431, -2.09964)
-scale = Vector2(0.593634, 0.761965)
+[node name="Sprite2D" type="Sprite2D" parent="Button for Gamemode 3"]
+position = Vector2(103.999, 45.0027)
+scale = Vector2(2.36001, 2.36001)
 texture = ExtResource("14_bucos")
 
 [node name="Title" type="Label" parent="Button for Gamemode 3"]
