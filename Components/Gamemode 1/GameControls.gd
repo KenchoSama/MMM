@@ -28,5 +28,5 @@ func _on_gamemode_1_game_lost(_pos):
 	
 # Scores obtained from camera, which does the math.
 func _process(_delta):
-	dist.text = str(cam.player_distance)
+	dist.text = str(max(0, cam.player_distance))
 	

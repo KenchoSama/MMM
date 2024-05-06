@@ -9,6 +9,7 @@ signal shift_waves
 
 #Gravity increased or not
 var down: bool = false
+var alive: bool = true
 
 func _ready():
 	gravity_scale = base_gravity
@@ -18,8 +19,8 @@ func _physics_process(_delta):
 	if position.y > 700:
 		emit_signal("lost")
 		set_physics_process(false)
-		freeze = true
 		$WaterParticles.emitting = false
+		alive = false
 		return
 	
 	if calculated_period_length != 0: # Has been set by wave node.
@@ -32,7 +33,7 @@ func _physics_process(_delta):
 	if linear_velocity.x < 0:
 		emit_signal("lost")
 		set_physics_process(false)
-		freeze = true
+		alive = false
 		$WaterParticles.emitting = false
 		return
 	
@@ -62,10 +63,12 @@ func _on_audio_stream_player_2d_finished():
 
 func _on_body_entered(body):
 	if global_position.x > 800: #Past ramp
-		$WaterParticles.emitting = true
+		if alive:
+			$WaterParticles.emitting = true
 	
 func _on_body_exited(body):
-	$WaterParticles.emitting = false
+	if alive:
+		$WaterParticles.emitting = false
 
 
 func _on_jump():

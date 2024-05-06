@@ -18,7 +18,6 @@ class Period extends StaticBody2D:
 		var lastpos = global_position
 		var segment_width = ((1 / frequency * 2 * PI) / accuracy) * scalefactor
 		
-		print("Period:")
 		for i in accuracy:
 			var new_segment = SegmentShape2D.new()
 			new_segment.a = lastpos

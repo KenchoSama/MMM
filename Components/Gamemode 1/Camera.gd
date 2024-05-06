@@ -12,6 +12,7 @@ var height_high_score_updated: bool # Used to emit the signal to show that a new
 var dist_high_score_updated: bool
 
 func _pregame_begin():
+	hit_floor = false
 	position_smoothing_speed = 100
 	height_high_score_updated = false
 	dist_high_score_updated = false
@@ -35,12 +36,21 @@ func _game_begin():
 
 
 var fixing_offset = false
+var hit_floor = false
 func _process(delta):
 	#position = player.position
 	if not player is RigidBody2D:
 		# In death sink animation. Follow the new object without changing zoom.
-		position_smoothing_speed = 5
-		position.y = player.position.y
+		if position.y >= $"../Underwater".position.y:
+			if !hit_floor:
+				position.y = player.position.y
+				offset.y -= 30 * delta
+		else:
+			position_smoothing_speed = 5
+			position.y = player.position.y
+		
+		
+		return
 		
 	if player != null:
 		position.x = player.position.x
@@ -110,6 +120,8 @@ func _process(delta):
 	
 signal show_death_screen
 func _on_gamemode_1_game_lost(_pos):
+	zoom = Vector2(1,1)
+	
 	# Update high scores.
 	var cfg = ConfigFile.new()
 	cfg.load("user://PlayerData.cfg")

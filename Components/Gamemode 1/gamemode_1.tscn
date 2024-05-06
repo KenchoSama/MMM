@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://8xushpv5otf2"]
+[gd_scene load_steps=79 format=3 uid="uid://8xushpv5otf2"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 1/gamemode_1.gd" id="1_1dpkc"]
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_b5gcd"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://btyvk0e7aalu3" path="res://Components/Gamemode 1/Gamemode1 Sprites/RampWood.png" id="5_1wmex"]
 [ext_resource type="Texture2D" uid="uid://8htax3pkoq4r" path="res://Reusable Scenes/PixelArtUI.png" id="5_17sk6"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/Boundary.gd" id="5_nirlf"]
+[ext_resource type="Texture2D" uid="uid://byy87n6rsfhm0" path="res://Components/Gamemode 1/Gamemode1 Sprites/UnderSand.png" id="9_ood08"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/Camera.gd" id="11_yis6w"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/Wave.gd" id="12_2hd1j"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/GameControls.gd" id="16_1dd73"]
@@ -36,6 +37,9 @@
 [ext_resource type="PackedScene" uid="uid://c4bbh5tk18qss" path="res://Reusable Scenes/music_player.tscn" id="32_w5m24"]
 [ext_resource type="Texture2D" uid="uid://dipg8khe7ii2r" path="res://Components/Gamemode 1/Gamemode1 Sprites/Ducky.png" id="34_iyf80"]
 [ext_resource type="Texture2D" uid="uid://5v8udd52qub5" path="res://Components/Gamemode 1/Gamemode1 Sprites/Underwater.png" id="35_qmywq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0r2fu"]
+size = Vector2(1162, 21)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cdkbh"]
 load_path = "res://.godot/imported/BackgroundOcean.png-07b4aa23a64ccce46258944db132373c.ctex"
@@ -201,6 +205,57 @@ position = Vector2(197, -145)
 texture = ExtResource("35_qmywq")
 script = ExtResource("3_qfx60")
 
+[node name="Fade" type="Control" parent="Underwater"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FadeLayer" type="ColorRect" parent="Underwater/Fade"]
+self_modulate = Color(1, 1, 1, 0.607843)
+offset_left = -576.0
+offset_top = -938.0
+offset_right = 576.0
+offset_bottom = -815.0
+color = Color(0.337255, 0.694118, 1, 1)
+
+[node name="FadeLayer2" type="ColorRect" parent="Underwater/Fade"]
+self_modulate = Color(1, 1, 1, 0.705882)
+offset_left = -576.0
+offset_top = -815.0
+offset_right = 576.0
+offset_bottom = -668.0
+color = Color(0.337255, 0.694118, 1, 1)
+
+[node name="FadeLayer3" type="ColorRect" parent="Underwater/Fade"]
+self_modulate = Color(1, 1, 1, 0.803922)
+offset_left = -576.0
+offset_top = -668.0
+offset_right = 576.0
+offset_bottom = -518.0
+color = Color(0.337255, 0.694118, 1, 1)
+
+[node name="FadeLayer4" type="ColorRect" parent="Underwater/Fade"]
+self_modulate = Color(1, 1, 1, 0.901961)
+offset_left = -576.0
+offset_top = -518.0
+offset_right = 576.0
+offset_bottom = -324.0
+color = Color(0.337255, 0.694118, 1, 1)
+
+[node name="Ocean_Floor" type="StaticBody2D" parent="Underwater"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Underwater/Ocean_Floor"]
+position = Vector2(-5, 289)
+shape = SubResource("RectangleShape2D_0r2fu")
+
+[node name="ExtraSand" type="Sprite2D" parent="Underwater"]
+modulate = Color(1, 0.984314, 0.301961, 1)
+position = Vector2(-9.34537, 650.495)
+rotation = -3.14159
+scale = Vector2(1.53065, 1.01387)
+texture = ExtResource("9_ood08")
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_base_offset = Vector2(500, 500)
 scroll_base_scale = Vector2(0.1, 0.05)
@@ -240,23 +295,33 @@ visible = false
 position = Vector2(583, 395)
 
 [node name="Wave" type="Node2D" parent="."]
-modulate = Color(1, 1, 1, 0.572549)
-top_level = true
+modulate = Color(1, 1, 1, 0.509804)
+z_index = 1
 position = Vector2(1023, 526)
 script = ExtResource("12_2hd1j")
 scalefactor = 120
 
 [node name="Beach" type="Sprite2D" parent="."]
-top_level = true
+z_index = 2
 position = Vector2(1475, 243)
 scale = Vector2(5.57921, 2.36883)
 texture = ExtResource("4_n1itg")
+
+[node name="Undersand" type="Sprite2D" parent="Beach"]
+position = Vector2(-91.2316, 644.622)
+texture = ExtResource("9_ood08")
+
+[node name="Undersand" type="Sprite2D" parent="Beach/Undersand"]
+position = Vector2(-45.7083, 942.156)
+rotation = -3.14159
+scale = Vector2(1.07904, 1.91831)
+texture = ExtResource("9_ood08")
 
 [node name="BeachCollider" type="StaticBody2D" parent="Beach"]
 
 [node name="Box" type="CollisionPolygon2D" parent="Beach/BeachCollider"]
 position = Vector2(-102.523, 126.645)
-polygon = PackedVector2Array(0, 2.5329, -10.3958, -21.9518, 20.433, -13.5088, 46.4223, 0.42215, 59.5066, 10.9759, 99.4764, 35.4606, 119.013, 47.2807, 145.003, 65.4332, 183.18, 85.2742, 263.12, 119.89, 348.616, 146.908, 414.037, 195.877, 29.0364, 195.455)
+polygon = PackedVector2Array(0, 2.5329, -10.3958, -21.9518, 20.433, -13.5088, 46.4223, 0.42215, 59.5066, 10.9759, 99.4764, 35.4606, 119.013, 47.2807, 145.003, 65.4332, 183.18, 85.2742, 263.12, 119.89, 348.616, 146.908, 414.037, 195.877, 451.497, 260.044, 500.25, 365.159, 526.597, 469.852, 587.359, 835.433, 44.988, 293.394)
 
 [node name="ClipDetector" type="StaticBody2D" parent="."]
 
@@ -266,7 +331,7 @@ shape = SubResource("WorldBoundaryShape2D_5xj1l")
 script = ExtResource("5_nirlf")
 
 [node name="Ramp" type="StaticBody2D" parent="."]
-top_level = true
+z_index = 4
 position = Vector2(836, -418)
 scale = Vector2(3, 3)
 metadata/_edit_lock_ = true
@@ -713,14 +778,13 @@ label_settings = SubResource("LabelSettings_ky4od")
 autowrap_mode = 2
 
 [node name="DeathScreen" type="Control" parent="UI Layer/Control"]
-visible = false
 self_modulate = Color(1, 1, 1, 0.45098)
 layout_mode = 3
 anchors_preset = 0
-offset_left = 561.0
-offset_top = 326.0
-offset_right = 601.0
-offset_bottom = 366.0
+offset_left = 806.0
+offset_top = 317.0
+offset_right = 846.0
+offset_bottom = 357.0
 script = ExtResource("4_a2mkr")
 
 [node name="Panel" type="Panel" parent="UI Layer/Control/DeathScreen"]
@@ -801,10 +865,10 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_v1fgc")
 
 [node name="Label" type="Label" parent="UI Layer/Control/DeathScreen/Panel/ScoreBounder"]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 19.0
-offset_right = 200.0
-offset_bottom = 49.0
+offset_left = 9.0
+offset_top = 63.0
+offset_right = 195.0
+offset_bottom = 93.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_e4ui4")
 text = "High Score:"
 label_settings = SubResource("LabelSettings_3cgti")
@@ -819,10 +883,10 @@ label_settings = SubResource("LabelSettings_3cgti")
 
 [node name="Label2" type="Label" parent="UI Layer/Control/DeathScreen/Panel/ScoreBounder"]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 49.0
-offset_right = 200.0
-offset_bottom = 79.0
+offset_left = 9.0
+offset_top = 93.0
+offset_right = 195.0
+offset_bottom = 123.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_tkvkx")
 text = "Your Score:"
 label_settings = SubResource("LabelSettings_3cgti")
@@ -837,10 +901,10 @@ label_settings = SubResource("LabelSettings_3cgti")
 
 [node name="Label3" type="Label" parent="UI Layer/Control/DeathScreen/Panel/ScoreBounder"]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 79.0
-offset_right = 214.0
-offset_bottom = 109.0
+offset_left = 8.0
+offset_top = 21.0
+offset_right = 208.0
+offset_bottom = 51.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_uu7cl")
 text = "Best Height:"
 label_settings = SubResource("LabelSettings_3cgti")

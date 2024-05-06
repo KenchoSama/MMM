@@ -10,6 +10,7 @@ signal gameLost # The world will handle the loss condition. The player does the 
 func _ready():
 	RenderingServer.set_default_clear_color(Color.AQUA)
 	WizardSprites = load("res://Reusable Scenes/Player/WizardSprites.tscn").instantiate()
+	WizardSprites.z_index = 3
 	add_child(WizardSprites)
 	
 	emit_signal("preGame") 
@@ -43,6 +44,7 @@ func _process(_delta):
 		if player != null:
 			WizardSprites.position.y += 30 * _delta
 			WizardSprites.rotation += (-PI/2 - WizardSprites.rotation) * _delta / 3
+			player.position = WizardSprites.position
 
 func begin_game():
 	
@@ -70,15 +72,18 @@ func _on_restart():
 
 # Todo, will eventually call to update high scores
 func _on_player_lost():
+	WizardSprites.z_index = 0
 	follow_rigidbody = false # Do this before game lost, maybe
 	death_sink = true
 	$Camera.player = WizardSprites
+	player.connect("body_entered", _sunk_to_floor)
 	emit_signal("gameLost", player.global_position)
 	$"UI Layer/MuteButton/AudioStreamPlayer".stop()
 	
 	
 
 func _on_pre_game():
+	WizardSprites.z_index = 3
 	follow_rigidbody = true
 	$"UI Layer/MuteButton/AudioStreamPlayer".play(0)
 	WizardSprites.position = Vector2(180, -365)
@@ -98,3 +103,8 @@ func _on_jump_button_down():
 			player.apply_central_impulse(Vector2(0,-300))
 		
 		player._on_jump()
+
+func _sunk_to_floor(node):
+	if node == $Beach/BeachCollider || node == $Underwater/Ocean_Floor || node == $Ramp:
+		death_sink = false
+	$Camera.hit_floor = true
