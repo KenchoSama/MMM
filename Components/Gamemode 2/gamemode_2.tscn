@@ -27,8 +27,8 @@
 [ext_resource type="Script" path="res://Components/Gamemode 2/Spaceship.gd" id="21_2dgoo"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/GraphMain.gd" id="21_dn4no"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/shipSprite.gd" id="23_hhkpq"]
-[ext_resource type="AudioStream" uid="uid://do0xf5ok8qb60" path="res://assets/SpaceSongThingyYEAH!.wav" id="27_58867"]
 [ext_resource type="Texture2D" uid="uid://oew7047xyg1v" path="res://assets/scoreDisplayScreen.png" id="27_g3ib0"]
+[ext_resource type="AudioStream" uid="uid://dchw02w8oxny5" path="res://assets/SpaceSong.mp3" id="27_rcrwg"]
 [ext_resource type="FontFile" uid="uid://dltk8r13eljo4" path="res://Reusable Scenes/joystix monospace.otf" id="31_01vj6"]
 [ext_resource type="Texture2D" uid="uid://cql8he0vepbuj" path="res://assets/columnDriverSide (1) (3).png" id="31_5mr8d"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/DANGER.gd" id="32_x8nt2"]
@@ -519,7 +519,7 @@ texture = ExtResource("18_rm1h5")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(648, 648)
-stream = ExtResource("27_58867")
+stream = ExtResource("27_rcrwg")
 volume_db = -32.0
 
 [node name="UFO" type="CharacterBody2D" parent="."]
@@ -729,7 +729,7 @@ environment = SubResource("Environment_kth7l")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Laser Cannon"]
 stream = ExtResource("38_w2qwo")
-volume_db = -32.409
+volume_db = -41.778
 
 [connection signal="beginGame" from="." to="UI Layer/Debug/ColumnUI" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_begin_game"]
