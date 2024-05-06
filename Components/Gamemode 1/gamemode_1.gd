@@ -35,6 +35,7 @@ func _ready():
 
 var follow_rigidbody: bool = false
 var death_sink: bool = false
+var on_floor: bool = false
 func _process(_delta): 
 	if follow_rigidbody:
 		if player != null:
@@ -42,9 +43,16 @@ func _process(_delta):
 			WizardSprites.position = player.position + player.linear_velocity.normalized().orthogonal() * 10 # Pixel offset
 	elif death_sink:
 		if player != null:
+			if WizardSprites.position.y > $Underwater/Fade/FadeLayer.global_position.y:
+				$Bubbles.position = WizardSprites.position + Vector2(-10, 0)
+				$Bubbles.emitting = true
 			WizardSprites.position.y += 30 * _delta
 			WizardSprites.rotation += (-PI/2 - WizardSprites.rotation) * _delta / 3
 			player.position = WizardSprites.position
+	elif on_floor:
+		if WizardSprites.position.y > $Underwater/Fade/FadeLayer.global_position.y:
+				$Bubbles.position = WizardSprites.position + Vector2(-10, 0)
+				$Bubbles.emitting = true
 
 func begin_game():
 	
@@ -83,6 +91,8 @@ func _on_player_lost():
 	
 
 func _on_pre_game():
+	$Bubbles.emitting = false
+	on_floor = false
 	WizardSprites.z_index = 3
 	follow_rigidbody = true
 	$"UI Layer/MuteButton/AudioStreamPlayer".play(0)
@@ -107,4 +117,5 @@ func _on_jump_button_down():
 func _sunk_to_floor(node):
 	if node == $Beach/BeachCollider || node == $Underwater/Ocean_Floor || node == $Ramp:
 		death_sink = false
+		on_floor = true
 	$Camera.hit_floor = true

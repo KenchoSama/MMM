@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c8414kcpnmo1e" path="res://Components/Main Menu/Character.png" id="10_8o0r4"]
 [ext_resource type="Theme" uid="uid://bgbl23jfw6rk1" path="res://Reusable Scenes/GreyTheme.tres" id="11_gebbs"]
 [ext_resource type="Texture2D" uid="uid://bh4da30syfa77" path="res://Components/Main Menu/LLThumb1.png" id="12_3s7yl"]
+[ext_resource type="Texture2D" uid="uid://behd0onte8wae" path="res://Components/Gamemode 3/images/darkbackground_big.png" id="13_w64t6"]
 [ext_resource type="Texture2D" uid="uid://biviyjgtw0762" path="res://Components/Main Menu/planet.png" id="13_wlx6g"]
 [ext_resource type="Script" path="res://Components/Main Menu/MusicPlayer.gd" id="14_03dgd"]
 [ext_resource type="Texture2D" uid="uid://8htax3pkoq4r" path="res://Reusable Scenes/PixelArtUI.png" id="14_4hwo4"]
@@ -23,7 +24,6 @@
 [ext_resource type="Script" path="res://Components/Main Menu/Settings Menu.gd" id="15_eray0"]
 [ext_resource type="Script" path="res://Components/Main Menu/MainMenuLooperScript.gd" id="16_3d6eg"]
 [ext_resource type="Script" path="res://Components/Main Menu/ResetWW.gd" id="16_od4sa"]
-[ext_resource type="Texture2D" uid="uid://ddkfad61bt2n6" path="res://Components/Gamemode 3/images/darkbackground.png" id="16_qu7mt"]
 [ext_resource type="Script" path="res://Components/Main Menu/ResetLL.gd" id="17_qvcdi"]
 [ext_resource type="Script" path="res://Components/Main Menu/ResetT.gd" id="18_hnjh4"]
 
@@ -237,9 +237,9 @@ script = ExtResource("8_s5gxi")
 
 [node name="Thumbnail" type="Sprite2D" parent="Button for Gamemode 3"]
 modulate = Color(1, 1, 1, 0.843137)
-position = Vector2(102.333, 45.8238)
-scale = Vector2(6.20699, 2.65058)
-texture = ExtResource("16_qu7mt")
+position = Vector2(102.333, 46.0006)
+scale = Vector2(2.20741, 1.95452)
+texture = ExtResource("13_w64t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Button for Gamemode 3"]
 position = Vector2(103.999, 45.0027)

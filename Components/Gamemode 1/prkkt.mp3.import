@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://oeijcmg4ufyi"
+path="res://.godot/imported/prkkt.mp3-3e79250663b2d950220b3b3e7f37df97.mp3str"
+
+[deps]
+
+source_file="res://Components/Gamemode 1/prkkt.mp3"
+dest_files=["res://.godot/imported/prkkt.mp3-3e79250663b2d950220b3b3e7f37df97.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

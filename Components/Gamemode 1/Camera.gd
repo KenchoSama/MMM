@@ -34,10 +34,18 @@ func _game_begin():
 
 
 
-
+var last_val = 0
 var fixing_offset = false
 var hit_floor = false
 func _process(delta):
+	
+	if player_distance > 500:
+		if (player_distance - 500) / 1152 > last_val:
+			last_val = (player_distance - 500) / 1152
+			if last_val % 2 == 0:
+				$"../ParallaxBackground/BackGroundObjects/WaterObjects".change_object()
+	
+	
 	#position = player.position
 	if not player is RigidBody2D:
 		# In death sink animation. Follow the new object without changing zoom.
