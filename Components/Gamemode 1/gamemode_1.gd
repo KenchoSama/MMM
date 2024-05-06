@@ -33,12 +33,16 @@ func _ready():
 # To keep code in one place, high scores are fully handled by the camera.
 
 var follow_rigidbody: bool = false
+var death_sink: bool = false
 func _process(_delta): 
 	if follow_rigidbody:
 		if player != null:
 			WizardSprites.rotation = player.linear_velocity.angle()
 			WizardSprites.position = player.position + player.linear_velocity.normalized().orthogonal() * 10 # Pixel offset
-			
+	elif death_sink:
+		if player != null:
+			WizardSprites.position.y += 30 * _delta
+			WizardSprites.rotation += (-PI/2 - WizardSprites.rotation) * _delta / 3
 
 func begin_game():
 	
@@ -67,8 +71,12 @@ func _on_restart():
 # Todo, will eventually call to update high scores
 func _on_player_lost():
 	follow_rigidbody = false # Do this before game lost, maybe
-	emit_signal("gameLost")
+	death_sink = true
+	$Camera.player = WizardSprites
+	emit_signal("gameLost", player.global_position)
 	$"UI Layer/MuteButton/AudioStreamPlayer".stop()
+	
+	
 
 func _on_pre_game():
 	follow_rigidbody = true

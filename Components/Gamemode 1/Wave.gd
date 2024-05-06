@@ -3,7 +3,7 @@ extends Node2D
 @export var amplitude: float = 1 # Amplitude of a sin wave
 @export var frequency: float = 1 # Frequency of a sin wave (wavelength = 2PI)
 
-@export var scalefactor: int = 100 # Used to scale up the graphed wave
+@export var scalefactor: int = 64 # Used to scale up the graphed wave
 # The wave is a sin wave. 
 class Period extends StaticBody2D:
 	# All segmentshapes should be children of the period node
@@ -16,11 +16,15 @@ class Period extends StaticBody2D:
 		global_position = initial_pos
 		
 		var lastpos = global_position
+		var segment_width = ((1 / frequency * 2 * PI) / accuracy) * scalefactor
+		
+		print("Period:")
 		for i in accuracy:
 			var new_segment = SegmentShape2D.new()
 			new_segment.a = lastpos
 			
 			var x_value = ((1 / frequency * 2 * PI) / accuracy) * (i + 1)
+			
 			new_segment.b = Vector2(x_value, amplitude * sin(frequency * x_value)) * scalefactor # follows sinusoidal equation. Scalefactor to make the wave bigger.
 			lastpos = new_segment.b
 			period_length = new_segment.b.x # Finds final position
@@ -30,14 +34,16 @@ class Period extends StaticBody2D:
 			if enabled:
 				var water_rect = ColorRect.new()
 				water_rect.color = Color.LIGHT_SEA_GREEN
-				water_rect.position = lastpos - Vector2(2, 0)
-				water_rect.size = Vector2(2 + new_segment.b.x - new_segment.a.x, 1000)
+				water_rect.position = new_segment.a
+				water_rect.size = Vector2(segment_width, 5000)
+				water_rect.use_parent_material = true
 				add_child(water_rect)
 				
 				var surface_water_rect = ColorRect.new()
 				surface_water_rect.color = Color.TEAL
-				surface_water_rect.position = lastpos - Vector2(2, 0)
-				surface_water_rect.size = Vector2(2 + new_segment.b.x - new_segment.a.x, 5)
+				surface_water_rect.position = new_segment.a
+				surface_water_rect.size = Vector2(segment_width, 5)
+				surface_water_rect.use_parent_material = true
 				add_child(surface_water_rect)
 			
 			var new_collision_shape = CollisionShape2D.new()
@@ -45,8 +51,6 @@ class Period extends StaticBody2D:
 			new_collision_shape.one_way_collision = true
 			new_collision_shape.one_way_collision_margin = 10
 			add_child(new_collision_shape)
-		
-		queue_redraw()
 
 
 # Generates first 10 waves when signalled to begin.
@@ -79,7 +83,7 @@ func _on_lost():
 
 # Free old period, add a new period. Signalled to run by the player as it's global position increases. 
 func _shift_wave_right():
-	remove_child(get_child(0))
+	get_child(0).queue_free()
 	var new_period = Period.new(scalefactor, current_pos, amplitude, frequency)
 	add_child(new_period)
 	current_pos.x += calculated_period_length

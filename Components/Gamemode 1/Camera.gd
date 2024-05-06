@@ -1,6 +1,6 @@
 extends Camera2D
 
-@export var player: RigidBody2D
+var player
 @export var wave: Node2D # temp
 var player_height: int
 var player_distance: int
@@ -12,7 +12,7 @@ var height_high_score_updated: bool # Used to emit the signal to show that a new
 var dist_high_score_updated: bool
 
 func _pregame_begin():
-	
+	position_smoothing_speed = 100
 	height_high_score_updated = false
 	dist_high_score_updated = false
 	
@@ -37,6 +37,11 @@ func _game_begin():
 var fixing_offset = false
 func _process(delta):
 	#position = player.position
+	if not player is RigidBody2D:
+		# In death sink animation. Follow the new object without changing zoom.
+		position_smoothing_speed = 5
+		position.y = player.position.y
+		
 	if player != null:
 		position.x = player.position.x
 		
@@ -103,8 +108,8 @@ func _process(delta):
 			
 			
 	
-
-func _on_gamemode_1_game_lost():
+signal show_death_screen
+func _on_gamemode_1_game_lost(_pos):
 	# Update high scores.
 	var cfg = ConfigFile.new()
 	cfg.load("user://PlayerData.cfg")
@@ -120,3 +125,13 @@ func _on_gamemode_1_game_lost():
 	$"../UI Layer/Control/DeathScreen/Panel/ScoreBounder/Label2/YourDist".text = str(player_distance)
 	$"../UI Layer/Control/DeathScreen/Panel/ScoreBounder/Label3/BestHeight".text = str(current_best_height)
 	cfg.save("user://PlayerData.cfg")
+	
+	var timer = Timer.new()
+	add_child(timer)
+	timer.start(4)
+	await(timer.timeout)
+	timer.queue_free()
+	
+	emit_signal("show_death_screen")
+	
+	

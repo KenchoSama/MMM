@@ -6,6 +6,7 @@ func _on_button_up():
 	confirmer.confirmed.connect(wipe_scores)
 	confirmer.top_level = true
 	$"../Close".connect("button_up", confirmer.queue_free)
+	$"../../../Settings Button".connect("button_up", confirmer.queue_free)
 	add_child(confirmer)
 
 func wipe_scores(selection):
