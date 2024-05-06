@@ -10,7 +10,7 @@ var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var direction = ($"../Player".position - position).normalized() 
-	linear_velocity = direction * 250
+	linear_velocity = direction * 200
 	rotation_degrees = rad_to_deg(direction.angle())
 	$Timer.start()
 	$Sprite2D2.visible = false

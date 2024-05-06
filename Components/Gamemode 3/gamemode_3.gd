@@ -117,3 +117,7 @@ func _on_begingame():
 
 func _on_button_button_up():
 	emit_signal("begingame")
+
+
+func _on_restart_button_button_up():
+	get_tree().change_scene_to_file("res://Components/Gamemode 3/gamemode_3.tscn")
