@@ -19,6 +19,7 @@ func _ready():
 	
 func _on_gamemode_1_begin_game():
 	set_process(true)
+	$DistHUD/HighScoreRun.hide()
 	show()
 
 

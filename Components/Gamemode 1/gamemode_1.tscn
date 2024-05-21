@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://8xushpv5otf2"]
+[gd_scene load_steps=92 format=3 uid="uid://8xushpv5otf2"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 1/gamemode_1.gd" id="1_1dpkc"]
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_b5gcd"]
@@ -38,6 +38,7 @@
 [ext_resource type="Script" path="res://Components/Gamemode 1/Hints.gd" id="22_u0typ"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/Down.gd" id="28_6i0fh"]
 [ext_resource type="PackedScene" uid="uid://c4bbh5tk18qss" path="res://Reusable Scenes/music_player.tscn" id="32_w5m24"]
+[ext_resource type="Texture2D" uid="uid://bprh2vgd6alos" path="res://Components/Gamemode 1/HighScoreRun.png" id="34_12ylp"]
 [ext_resource type="Texture2D" uid="uid://5v8udd52qub5" path="res://Components/Gamemode 1/Gamemode1 Sprites/Underwater.png" id="35_qmywq"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k8h8s"]
@@ -1023,7 +1024,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_dy47f")
 label_settings = SubResource("LabelSettings_3cgti")
 
 [node name="GameControls" type="Control" parent="UI Layer/Control"]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1058,18 +1058,22 @@ offset_top = -481.0
 offset_right = -205.0
 offset_bottom = -441.0
 
+[node name="HighScoreRun" type="Sprite2D" parent="UI Layer/Control/GameControls/DistHUD"]
+position = Vector2(737, 1054)
+scale = Vector2(1.4375, 1.4375)
+texture = ExtResource("34_12ylp")
+
 [node name="Distance" type="Label" parent="UI Layer/Control/GameControls/DistHUD"]
 layout_mode = 0
-offset_left = 746.0
+offset_left = 764.0
 offset_top = 1032.0
-offset_right = 892.0
+offset_right = 910.0
 offset_bottom = 1077.0
 theme = ExtResource("2_4ifvl")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_au6mj")
 text = "0
 "
 label_settings = ExtResource("18_vc0as")
-horizontal_alignment = 1
 
 [node name="Down" type="Button" parent="UI Layer/Control/GameControls"]
 self_modulate = Color(0, 0, 0, 0.290196)

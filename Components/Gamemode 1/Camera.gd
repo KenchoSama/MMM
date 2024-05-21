@@ -85,6 +85,7 @@ func _process(delta):
 				dist_high_score_updated = true
 				# Hardref, too lazy to signal
 				$"../UI Layer/Control/GameControls/NewDist".flash()
+				$"../UI Layer/Control/GameControls/DistHUD/HighScoreRun".show()
 			
 		$Height.text = str(player_height - 1400)
 		
