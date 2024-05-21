@@ -16,9 +16,17 @@ class Period extends StaticBody2D:
 		global_position = initial_pos
 		
 		var lastpos = global_position
-		var segment_width = ((1 / frequency * 2 * PI) / accuracy) * scalefactor
+		var unrounded_segment_width = ((1 / frequency * 2 * PI) / accuracy) * scalefactor
+		var segment_width = floor(unrounded_segment_width)
+		var inaccuracy = unrounded_segment_width - segment_width
+		
+		var injection_pixel = 0
+		var injected_pixel_counter = 0
+		
+		var last_overlapped: bool = false
 		
 		for i in accuracy:
+			injection_pixel += inaccuracy
 			var new_segment = SegmentShape2D.new()
 			new_segment.a = lastpos
 			
@@ -28,22 +36,30 @@ class Period extends StaticBody2D:
 			lastpos = new_segment.b
 			period_length = new_segment.b.x # Finds final position
 			
+			#print(i + 1, ": ", offset, "   A: ", new_segment.a.x, "   B: ", new_segment.b.x)
+			
 			# Water lines
 			var enabled = true # for debug
 			if enabled:
 				var water_rect = ColorRect.new()
 				water_rect.color = Color.LIGHT_SEA_GREEN
-				water_rect.position = new_segment.a
+				water_rect.position = Vector2(i * segment_width + injected_pixel_counter, new_segment.a.y)
 				water_rect.size = Vector2(segment_width, 5000)
 				water_rect.use_parent_material = true
 				add_child(water_rect)
 				
 				var surface_water_rect = ColorRect.new()
 				surface_water_rect.color = Color.TEAL
-				surface_water_rect.position = new_segment.a
+				surface_water_rect.position = Vector2(i * segment_width + injected_pixel_counter, new_segment.a.y)
 				surface_water_rect.size = Vector2(segment_width, 5)
 				surface_water_rect.use_parent_material = true
 				add_child(surface_water_rect)
+				
+				if injection_pixel >= 1 or i == accuracy - 1:
+					injected_pixel_counter += 1
+					injection_pixel -= 1
+					water_rect.size.x += 1
+					surface_water_rect.size.x += 1
 			
 			var new_collision_shape = CollisionShape2D.new()
 			new_collision_shape.shape = new_segment

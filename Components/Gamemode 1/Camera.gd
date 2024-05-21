@@ -148,7 +148,7 @@ func _on_gamemode_1_game_lost(_pos):
 	
 	var timer = Timer.new()
 	add_child(timer)
-	timer.start(4)
+	timer.start(2)
 	await(timer.timeout)
 	timer.queue_free()
 	

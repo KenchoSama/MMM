@@ -3,7 +3,7 @@ extends Label
 # Min frequency 0.5, max 1.5.
 const MIN = 0.5
 const MAX = 1.5
-const STEP = 0.1
+const STEP = 0.2
 
 var freq = 1
 

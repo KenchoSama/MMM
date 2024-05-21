@@ -179,6 +179,20 @@ position = Vector2(102.5, 44.5)
 scale = Vector2(1.005, 1.03659)
 texture = ExtResource("8_tirg5")
 
+[node name="Cloud1" type="Sprite2D" parent="Button for Gamemode 1/Thumbnail"]
+position = Vector2(61.194, -21.7058)
+rotation = 0.0130004
+scale = Vector2(0.794501, 0.770298)
+skew = 0.000829935
+texture = ExtResource("30_mdj46")
+
+[node name="Cloud2" type="Sprite2D" parent="Button for Gamemode 1/Thumbnail"]
+position = Vector2(-78.1095, -27.494)
+rotation = 0.0130004
+scale = Vector2(0.476589, 0.46207)
+skew = 0.000829935
+texture = ExtResource("30_mdj46")
+
 [node name="Character" type="Sprite2D" parent="Button for Gamemode 1/Thumbnail"]
 position = Vector2(-31.0744, -2.30273)
 rotation = -0.601581
@@ -406,18 +420,6 @@ one_shot = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_43jd1")
-
-[node name="Cloud1" type="Sprite2D" parent="."]
-position = Vector2(-45, 25)
-rotation = 0.013409
-scale = Vector2(0.798478, 0.798478)
-texture = ExtResource("30_mdj46")
-
-[node name="Cloud2" type="Sprite2D" parent="."]
-position = Vector2(-185, 19)
-rotation = 0.013409
-scale = Vector2(0.478975, 0.478975)
-texture = ExtResource("30_mdj46")
 
 [connection signal="button_down" from="Path2D/PathFollow2D/ColorChangeButton" to="Path2D/PathFollow2D/MMM" method="_change_color"]
 [connection signal="timeout" from="Path2D/PathFollow2D/ColorChangeButton/ColorTimer" to="Path2D/PathFollow2D/MMM" method="_on_color_timer_timeout"]
