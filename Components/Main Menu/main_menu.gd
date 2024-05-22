@@ -21,8 +21,12 @@ func _ready():
 		PlayerData.set_value("CustomSprites", "shirt", "res://Reusable Scenes/Player/Sprites/Shirts/Shirt1.png")
 		PlayerData.set_value("CustomSprites", "haircolor", Color.WHITE)
 		PlayerData.set_value("Settings", "menu_muted", false)
+		PlayerData.set_value("Coins", "coins", 0) # Start with 100 coins.
 		PlayerData.save("user://PlayerData.cfg")
-		# TODO set appropriate high scores, currency to default
+	
+	$Coins/Coin.play()
+	$Coins/Coins.text = str(PlayerData.get_value("Coins", "coins", 0))
+		
 	
 func _process(_delta):
 	

@@ -28,6 +28,9 @@ func _ready():
 	facialhair_texture = load(cfg.get_value("CustomSprites", "facialhair"))
 	shirt_texture = load(cfg.get_value("CustomSprites", "shirt"))
 	
+	$Coins/Coins.text = str(cfg.get_value("Coins", "coins", 0))
+	$Coins/Coin.play()
+	
 
 
 
