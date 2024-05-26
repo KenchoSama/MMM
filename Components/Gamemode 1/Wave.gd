@@ -4,14 +4,19 @@ extends Node2D
 @export var frequency: float = 1 # Frequency of a sin wave (wavelength = 2PI)
 
 @export var scalefactor: int = 64 # Used to scale up the graphed wave
-# The wave is a sin wave. 
+# The wave is a sin wave.
+
+
+
+
+
 class Period extends StaticBody2D:
 	# All segmentshapes should be children of the period node
 	# This determines how many segments to generate per period
-	
 	var accuracy: int = 64
 	var period_length: float
-	func _init(scalefactor, initial_pos, amplitude, frequency): # Creating a new period takes in the position to build it at
+	func _init(scalefactor, initial_pos, amplitude, frequency, spawner_ref): # Creating a new period takes in the position to build it at
+		randomize()
 		
 		global_position = initial_pos
 		
@@ -24,6 +29,19 @@ class Period extends StaticBody2D:
 		var injected_pixel_counter = 0
 		
 		var last_overlapped: bool = false
+		
+		# For coin generation.
+		
+#		var coins = randf()
+#		var coin_wave: bool = false
+#		var selection_set = Vector2(0, 15) # Set of segments to generate coins in, period divided into quadrants.
+#		if coins <= 0.2: # 20% Chance to be a coin wave.
+#			coin_wave = true
+#			var rand = randi_range(0,3)
+#			selection_set.x += 15 * rand + rand
+#			selection_set.y += 15 * rand + rand
+			
+			
 		
 		for i in accuracy:
 			injection_pixel += inaccuracy
@@ -60,13 +78,21 @@ class Period extends StaticBody2D:
 					injection_pixel -= 1
 					water_rect.size.x += 1
 					surface_water_rect.size.x += 1
-			
+				
+				# Coin generation.
+#				var coin_enabled: bool = false
+#				if coin_enabled:
+#					if coin_wave and selection_set.x <= i and i <= selection_set.y and i % 3 == 0:
+#						spawner_ref.spawn_coin(position + Vector2(i * segment_width, new_segment.a.y + -30))
+					
+				
 			var new_collision_shape = CollisionShape2D.new()
 			new_collision_shape.shape = new_segment
 			new_collision_shape.one_way_collision = true
 			new_collision_shape.one_way_collision_margin = 10
 			add_child(new_collision_shape)
-
+			
+			
 
 # Generates first 10 waves when signalled to begin.
 @export var starting_pos = Vector2.ZERO
@@ -77,7 +103,7 @@ func _on_begin():
 	for i in get_children(): # Frees children if there are any leftover from the last run.
 		i.queue_free()
 		
-	var first_period: Period = Period.new(scalefactor, starting_pos, amplitude, frequency)
+	var first_period: Period = Period.new(scalefactor, starting_pos, amplitude, frequency, $"../CoinSpawner")
 	calculated_period_length = first_period.period_length # Used in infinite generation.
 	add_child(first_period)
 	emit_signal("period_length_known")
@@ -86,7 +112,7 @@ func _on_begin():
 	current_pos.x = calculated_period_length
 	
 	for i in 9: 
-		var new_period = Period.new(scalefactor, current_pos, amplitude, frequency)
+		var new_period = Period.new(scalefactor, current_pos, amplitude, frequency, $"../CoinSpawner")
 		add_child(new_period)
 		current_pos.x += calculated_period_length
 
@@ -99,10 +125,9 @@ func _on_lost():
 # Free old period, add a new period. Signalled to run by the player as it's global position increases. 
 func _shift_wave_right():
 	get_child(0).queue_free()
-	var new_period = Period.new(scalefactor, current_pos, amplitude, frequency)
+	var new_period = Period.new(scalefactor, current_pos, amplitude, frequency, $"../CoinSpawner")
 	add_child(new_period)
 	current_pos.x += calculated_period_length
-
 
 # ---------- Changes to amplitude / frequency ----------- 
 func _amplitude_changed(newamp: float):
