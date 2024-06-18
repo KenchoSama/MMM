@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=36 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_p6bw8"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/gamemode_3.gd" id="1_ycoyy"]
@@ -125,20 +125,9 @@ radius = 8.06226
 [sub_resource type="CircleShape2D" id="CircleShape2D_hkmgt"]
 radius = 11.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjany"]
-size = Vector2(1155, 35)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6m8rr"]
-size = Vector2(54.5, 686)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_23kmb"]
-size = Vector2(52, 686)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pglva"]
-size = Vector2(1269, 75)
-
 [node name="Gamemode 3" type="Node2D"]
 script = ExtResource("1_ycoyy")
+metadata/_edit_horizontal_guides_ = [648.0, 324.0, 474.0, 174.0]
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
@@ -568,10 +557,11 @@ position = Vector2(59, 509)
 position = Vector2(119, 95)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.018
+one_shot = true
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(977, 577)
+position = Vector2(977, 324)
 motion_mode = 1
 script = ExtResource("2_eates")
 
@@ -601,7 +591,8 @@ shape = SubResource("CircleShape2D_aij12")
 position = Vector2(18, 2)
 
 [node name="SpellTimer1" type="Timer" parent="Player"]
-wait_time = 2.0
+wait_time = 0.507
+one_shot = true
 
 [node name="Area2D" type="Area2D" parent="Player"]
 
@@ -628,32 +619,6 @@ position = Vector2(-200, 362)
 [node name="Marker2D4" type="Marker2D" parent="clouds"]
 position = Vector2(-96, 151)
 
-[node name="barrier" type="Node2D" parent="."]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="barrier"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barrier/StaticBody2D"]
-position = Vector2(579.5, -20)
-shape = SubResource("RectangleShape2D_sjany")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="barrier"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barrier/StaticBody2D2"]
-position = Vector2(1184.75, 307)
-shape = SubResource("RectangleShape2D_6m8rr")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="barrier"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barrier/StaticBody2D3"]
-position = Vector2(-28, 304)
-shape = SubResource("RectangleShape2D_23kmb")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="barrier"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barrier/StaticBody2D4"]
-position = Vector2(580.5, 683.5)
-shape = SubResource("RectangleShape2D_pglva")
-
 [connection signal="begingame" from="." to="." method="_on_begingame"]
 [connection signal="begingame" from="." to="UI Layer/control/Control2" method="_on_gamemode_3_begingame"]
 [connection signal="gameLost" from="." to="UI Layer/control/Control" method="_on_gamemode_3_game_lost"]
@@ -665,6 +630,8 @@ shape = SubResource("RectangleShape2D_pglva")
 [connection signal="button_up" from="UI Layer/control/Control/Restart" to="." method="_on_restart_button_up"]
 [connection signal="button_up" from="UI Layer/control/Control/restartButton" to="." method="_on_restart_button_button_up"]
 [connection signal="button_down" from="UI Layer/control/SpellsButton/firebutton" to="Player" method="_on_firebutton_button_down"]
+[connection signal="button_down" from="UI Layer/control/SpellsButton/lightingbutton" to="Player" method="_on_lightingbutton_button_down"]
+[connection signal="button_down" from="UI Layer/control/SpellsButton/waterbutton" to="Player" method="_on_waterbutton_button_down"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="firespellActivated" from="Player" to="." method="_on_player_firespell_activated"]
 [connection signal="lightingspellActivated" from="Player" to="." method="_on_player_lightingspell_activated"]
