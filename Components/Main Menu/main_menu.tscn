@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://corn6y012o67q"]
+[gd_scene load_steps=50 format=3 uid="uid://corn6y012o67q"]
 
 [ext_resource type="Script" path="res://Components/Main Menu/main_menu.gd" id="1_jth7i"]
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_jwc0v"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://dpx3ir4mym71u" path="res://Reusable Scenes/Player/Sprites/Shirts/Shirt3.png" id="19_n8niv"]
 [ext_resource type="Texture2D" uid="uid://ng6w87emdbig" path="res://Reusable Scenes/Player/Sprites/Shirts/Shirt8.png" id="20_j7hlm"]
 [ext_resource type="Texture2D" uid="uid://cvgimvkfuokli" path="res://Components/Gamemode 1/Gamemode1 Sprites/Cloud1.png" id="30_mdj46"]
+[ext_resource type="Script" path="res://Components/Main Menu/Support Us.gd" id="31_2mgan"]
 [ext_resource type="SpriteFrames" uid="uid://wd7fahkkelwr" path="res://Reusable Scenes/CoinAnimation.tres" id="31_tp2gg"]
 
 [sub_resource type="Curve2D" id="Curve2D_4ejxc"]
@@ -93,6 +94,8 @@ border_color = Color(0, 0.27451, 0.439216, 1)
 [sub_resource type="AtlasTexture" id="AtlasTexture_lnqfk"]
 atlas = ExtResource("14_4hwo4")
 region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wknih"]
 
 [sub_resource type="Environment" id="Environment_43jd1"]
 background_mode = 3
@@ -352,7 +355,6 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Settings Menu" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -412,6 +414,63 @@ offset_top = 221.0
 offset_right = 390.0
 offset_bottom = 273.0
 text = "Support Us!"
+script = ExtResource("31_2mgan")
+
+[node name="Control" type="Panel" parent="Settings Menu/Panel/Support Us"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.0
+offset_top = -348.0
+offset_right = 209.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Coffee" type="LinkButton" parent="Settings Menu/Panel/Support Us/Control"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 203.0
+offset_right = 266.0
+offset_bottom = 243.0
+text = "Donate!"
+uri = "https://buymeacoffee.com/magicmathmanteam"
+
+[node name="Coffee2" type="LinkButton" parent="Settings Menu/Panel/Support Us/Control"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 272.0
+offset_right = 267.0
+offset_bottom = 312.0
+text = "Patreon"
+uri = "https://www.patreon.com/user/about?u=133628650"
+
+[node name="Label" type="Label" parent="Settings Menu/Panel/Support Us/Control"]
+layout_mode = 0
+offset_left = -38.0
+offset_top = -27.0
+offset_right = 466.0
+offset_bottom = 343.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wknih")
+text = "We don't believe in ads.
+
+If you enjoy magic math man,
+consider supporting us!
+
+Rate us on the appstore!
+
+Buy us a coffee:
+
+
+Or our Patreon:
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Close" type="Button" parent="Settings Menu/Panel"]
 layout_mode = 0
@@ -460,5 +519,7 @@ frame_progress = 0.229321
 [connection signal="button_down" from="Settings Button" to="Settings Menu" method="_on_settings_button_button_down"]
 [connection signal="button_up" from="Settings Menu/Panel/ResetWW" to="Settings Menu/Panel/ResetWW" method="_on_button_up"]
 [connection signal="button_up" from="Settings Menu/Panel/ResetLL" to="Settings Menu/Panel/ResetLL" method="_on_button_up"]
+[connection signal="button_up" from="Settings Menu/Panel/Support Us" to="Settings Menu/Panel/Support Us" method="_on_button_up"]
 [connection signal="button_up" from="Settings Menu/Panel/Close" to="Settings Menu" method="_on_close_button_up"]
+[connection signal="button_up" from="Settings Menu/Panel/Close" to="Settings Menu/Panel/Support Us" method="_on_close_button_up"]
 [connection signal="timeout" from="loopTimer" to="." method="_on_loop_timer_timeout"]
