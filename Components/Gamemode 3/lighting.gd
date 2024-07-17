@@ -13,18 +13,15 @@ func _process(delta):
 	position += direction * delta * speed
 	
 
-#func _on_area_2d_area_entered(area):
-	#queue_free()
-	#print("explode")
-	
-
 
 func _on_area_2d_body_entered(body):
 	if "costriangle" in body:
 		body.hit()
 		$Sprite2D.visible = false
 		explode()
-	else:
+	if "sintriangle" in body:
+		queue_free()
+	if "tantriangle" in body:
 		queue_free()
 	
 
@@ -40,3 +37,9 @@ func explode():
 
 func explosionNoise():
 	$AudioStreamPlayer.play()
+	
+
+
+
+func _on_animation_player_animation_finished(anim_name):
+	queue_free()# Replace with function body.
