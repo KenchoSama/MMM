@@ -126,10 +126,10 @@ hframes = 2
 vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "lightingAnimation"
 libraries = {
 "": SubResource("AnimationLibrary_nj7x0")
 }
+autoplay = "lightingAnimation"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 4.0
@@ -146,6 +146,6 @@ stream = ExtResource("4_ix4j5")
 volume_db = -21.328
 pitch_scale = 1.45
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
