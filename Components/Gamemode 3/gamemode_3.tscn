@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=37 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_p6bw8"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/gamemode_3.gd" id="1_ycoyy"]
@@ -22,7 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://7ijyruaikuq" path="res://Components/Gamemode 3/images/questionmark.png" id="12_7ntse"]
 [ext_resource type="Texture2D" uid="uid://bch30f4g76cti" path="res://Components/Gamemode 3/images/New Piskel (4).png" id="13_lb3v8"]
 [ext_resource type="Texture2D" uid="uid://dvis3ypxarvry" path="res://Components/Gamemode 3/images/New Piskel (3).png" id="14_j1l6f"]
+[ext_resource type="Script" path="res://Components/Gamemode 3/Castle.gd" id="17_xr3j1"]
 [ext_resource type="AudioStream" uid="uid://b5ck60qmxvsgg" path="res://Components/Gamemode 3/audio/formyboigru.mp3" id="23_7ps0h"]
+[ext_resource type="Texture2D" uid="uid://dtas2y8f8dt6j" path="res://Components/Gamemode 3/Sprite-0001.png" id="24_j5lfy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lsua"]
 bg_color = Color(0.227451, 0.454902, 0.823529, 1)
@@ -97,6 +99,9 @@ Label/styles/normal = SubResource("StyleBoxFlat_cd2v4")
 atlas = ExtResource("4_nljn4")
 region = Rect2(32, 0, 32, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7dvx"]
+size = Vector2(200, 297)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ql60"]
 animations = [{
 "frames": [{
@@ -119,15 +124,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_aij12"]
-radius = 8.06226
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_hkmgt"]
-radius = 11.0
-
 [node name="Gamemode 3" type="Node2D"]
 script = ExtResource("1_ycoyy")
-metadata/_edit_horizontal_guides_ = [648.0, 324.0, 474.0, 174.0]
+metadata/_edit_horizontal_guides_ = [324.0, 474.0, 174.0]
+metadata/_edit_vertical_guides_ = [1152.0, 900.0]
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
@@ -533,9 +533,22 @@ scale = Vector2(2.625, 2.40625)
 texture = ExtResource("9_u2nqj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(578, 323)
-scale = Vector2(36.0313, 20.3437)
+position = Vector2(576.25, 324)
+scale = Vector2(35.9844, 20.25)
 texture = ExtResource("8_xajof")
+
+[node name="Castle" type="Area2D" parent="."]
+position = Vector2(908, 339)
+script = ExtResource("17_xr3j1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Castle"]
+position = Vector2(125, -14.5)
+shape = SubResource("RectangleShape2D_b7dvx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Castle"]
+position = Vector2(91, -15)
+scale = Vector2(4.79688, 4.79688)
+texture = ExtResource("24_j5lfy")
 
 [node name="AllSpells" type="Node2D" parent="."]
 
@@ -561,7 +574,7 @@ wait_time = 3.018
 one_shot = true
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(977, 324)
+position = Vector2(900, 324)
 motion_mode = 1
 script = ExtResource("2_eates")
 
@@ -581,10 +594,6 @@ texture = ExtResource("7_e4c4l")
 sprite_frames = SubResource("SpriteFrames_0ql60")
 animation = &"Idle"
 
-[node name="Hitbox" type="CollisionShape2D" parent="Player"]
-position = Vector2(0, 4)
-shape = SubResource("CircleShape2D_aij12")
-
 [node name="spellposition" type="Node2D" parent="Player"]
 
 [node name="Marker2D" type="Marker2D" parent="Player/spellposition"]
@@ -593,12 +602,6 @@ position = Vector2(18, 2)
 [node name="SpellTimer1" type="Timer" parent="Player"]
 wait_time = 0.507
 one_shot = true
-
-[node name="Area2D" type="Area2D" parent="Player"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
-position = Vector2(0, 4)
-shape = SubResource("CircleShape2D_hkmgt")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("23_7ps0h")
@@ -632,11 +635,11 @@ position = Vector2(-96, 151)
 [connection signal="button_down" from="UI Layer/control/SpellsButton/firebutton" to="Player" method="_on_firebutton_button_down"]
 [connection signal="button_down" from="UI Layer/control/SpellsButton/lightingbutton" to="Player" method="_on_lightingbutton_button_down"]
 [connection signal="button_down" from="UI Layer/control/SpellsButton/waterbutton" to="Player" method="_on_waterbutton_button_down"]
+[connection signal="body_entered" from="Castle" to="Castle" method="_on_body_entered"]
+[connection signal="lost" from="Castle" to="." method="_on_castle_lost"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="firespellActivated" from="Player" to="." method="_on_player_firespell_activated"]
 [connection signal="lightingspellActivated" from="Player" to="." method="_on_player_lightingspell_activated"]
-[connection signal="lost" from="Player" to="." method="_on_player_lost"]
 [connection signal="waterspellActivated" from="Player" to="." method="_on_player_waterspell_activated"]
 [connection signal="timeout" from="Player/SpellTimer1" to="Player" method="_on_spell_timer_1_timeout"]
-[connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="finished" from="Player/AudioStreamPlayer2D" to="Player" method="_on_audio_stream_player_2d_finished"]

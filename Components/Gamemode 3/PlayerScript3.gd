@@ -5,7 +5,6 @@ var speed = 300
 var target = position
 var spelltarget = Vector2(0,324)
 var spellcooldown: bool = true
-signal lost
 signal firespellActivated(pos, direction)
 signal spellReleased
 signal lightingspellActivated(pos, direction)
@@ -60,21 +59,6 @@ func _physics_process(_delta):
 func _on_spell_timer_1_timeout():
 	spellcooldown = true
 
-
-
-func _on_area_2d_body_entered(body):
-	if "sintriangle" in body:
-		queue_free()
-		print("body was crushed")
-		emit_signal("lost")
-	elif "costriangle" in body:
-		queue_free()
-		print("body was crushed")
-		emit_signal("lost")
-	elif "tantriangle" in body:
-		queue_free()
-		print("body was crushed")
-		emit_signal("lost")
 
 
 func _on_start_button_up():
