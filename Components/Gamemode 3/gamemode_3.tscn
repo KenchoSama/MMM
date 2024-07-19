@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=40 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_p6bw8"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/gamemode_3.gd" id="1_ycoyy"]
@@ -23,6 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://bch30f4g76cti" path="res://Components/Gamemode 3/images/New Piskel (4).png" id="13_lb3v8"]
 [ext_resource type="Texture2D" uid="uid://dvis3ypxarvry" path="res://Components/Gamemode 3/images/New Piskel (3).png" id="14_j1l6f"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/Castle.gd" id="17_xr3j1"]
+[ext_resource type="Texture2D" uid="uid://dmlnglvgj1lut" path="res://assets/Hp border.png" id="19_40eam"]
+[ext_resource type="Script" path="res://Components/Gamemode 3/Health Display.gd" id="20_2mk73"]
+[ext_resource type="Texture2D" uid="uid://cugblrufhxyq4" path="res://assets/greenbar.png" id="21_6dwiq"]
 [ext_resource type="AudioStream" uid="uid://b5ck60qmxvsgg" path="res://Components/Gamemode 3/audio/formyboigru.mp3" id="23_7ps0h"]
 [ext_resource type="Texture2D" uid="uid://dtas2y8f8dt6j" path="res://Components/Gamemode 3/Sprite-0001.png" id="24_j5lfy"]
 
@@ -127,7 +130,7 @@ animations = [{
 [node name="Gamemode 3" type="Node2D"]
 script = ExtResource("1_ycoyy")
 metadata/_edit_horizontal_guides_ = [324.0, 474.0, 174.0]
-metadata/_edit_vertical_guides_ = [1152.0, 900.0]
+metadata/_edit_vertical_guides_ = [1152.0, 900.0, 1152.0, 576.0]
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
@@ -549,6 +552,31 @@ shape = SubResource("RectangleShape2D_b7dvx")
 position = Vector2(91, -15)
 scale = Vector2(4.79688, 4.79688)
 texture = ExtResource("24_j5lfy")
+
+[node name="Health Display" type="Node2D" parent="Castle"]
+script = ExtResource("20_2mk73")
+
+[node name="Health Bar" type="TextureProgressBar" parent="Castle/Health Display"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -582.0
+offset_top = 198.0
+offset_right = -454.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.905, 2.215)
+value = 100.0
+allow_lesser = true
+texture_progress = ExtResource("21_6dwiq")
+
+[node name="Health Bar border" type="Sprite2D" parent="Castle"]
+position = Vector2(-332, 233)
+scale = Vector2(5, 5)
+texture = ExtResource("19_40eam")
 
 [node name="AllSpells" type="Node2D" parent="."]
 

@@ -4,7 +4,8 @@ var hp
 signal lost
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	hp = 2 # Replace with function body.
+	hp = 100 # Replace with function body.
+	$"Health Display".init_bar(hp)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,11 +16,12 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if "costriangle" in body:
-		hp = hp - 1 # Replace with function body.
+		hp = hp - 5 # Replace with function body.
 		body.hit()
 	if "sintriangle" in body:
-		hp = hp - 1
+		hp = hp - 5
 		body.hit()
 	if "tantriangle" in body:
-		hp = hp - 1
+		hp = hp - 5
 		body.hit()
+	$"Health Display".update_healthbar(hp)
