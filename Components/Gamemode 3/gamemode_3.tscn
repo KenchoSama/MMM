@@ -26,8 +26,8 @@
 [ext_resource type="Texture2D" uid="uid://dmlnglvgj1lut" path="res://assets/Hp border.png" id="19_40eam"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/Health Display.gd" id="20_2mk73"]
 [ext_resource type="Texture2D" uid="uid://cugblrufhxyq4" path="res://assets/greenbar.png" id="21_6dwiq"]
-[ext_resource type="AudioStream" uid="uid://b5ck60qmxvsgg" path="res://Components/Gamemode 3/audio/formyboigru.mp3" id="23_7ps0h"]
 [ext_resource type="Texture2D" uid="uid://dtas2y8f8dt6j" path="res://Components/Gamemode 3/Sprite-0001.png" id="24_j5lfy"]
+[ext_resource type="AudioStream" uid="uid://cpk5bw0nacy8x" path="res://assets/MagicCastle.wav" id="28_l3s12"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lsua"]
 bg_color = Color(0.227451, 0.454902, 0.823529, 1)
@@ -632,7 +632,7 @@ wait_time = 0.507
 one_shot = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Player"]
-stream = ExtResource("23_7ps0h")
+stream = ExtResource("28_l3s12")
 volume_db = -32.11
 
 [node name="clouds" type="Node2D" parent="."]
