@@ -10,8 +10,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if hp <= 0:
-		emit_signal("lost")
+	pass
 
 
 func _on_body_entered(body):
@@ -25,3 +24,5 @@ func _on_body_entered(body):
 		hp = hp - 5
 		body.hit()
 	$"Health Display".update_healthbar(hp)
+	if hp <= 0:
+		emit_signal("lost")
