@@ -19,9 +19,13 @@ func _on_area_2d_body_entered(body):
 		body.hit()
 		$Sprite2D.visible = false
 		explode()
+		get_tree().call_group("Player","mana_update",5)
+		get_tree().call_group("Player","super_update",5)
 	if "sintriangle" in body:
+		get_tree().call_group("Player","super_update",-20)
 		queue_free()
 	if "tantriangle" in body:
+		get_tree().call_group("Player","super_update",-20)
 		queue_free()
 	
 

@@ -6,7 +6,8 @@ var target = position
 var spelltarget = Vector2(0,324)
 var mana
 var maxMana
-var manabar
+var bars
+var superMana
 var firespell : bool = true
 var waterspell : bool = true
 var lightningspell : bool = true
@@ -21,8 +22,10 @@ var player_direction = (get_global_mouse_position() - position).normalized()
 func _ready():
 	maxMana = 100
 	mana = maxMana
-	manabar = $"../Bars"
-	manabar.init_manabar(maxMana)
+	superMana = 0
+	bars = $"../Bars"
+	bars.init_manabar(maxMana)
+	bars.init_super(maxMana)
 	set_physics_process(false)
 
 func _input(event):
@@ -33,7 +36,6 @@ func _input(event):
 
 func _physics_process(_delta):
 	mana_update(0.05)
-	print(mana)
 	#move and look
 	velocity = position.direction_to(target) * speed
 	var player_sprite = $Sprites
@@ -69,11 +71,19 @@ func _physics_process(_delta):
 		waterspellActivated.emit(spell_marker[0].global_position, player_direction)
 		
 
+func super_update(value):
+	superMana += value
+	if superMana > 100:
+		superMana = 100
+	elif superMana < 0:
+		superMana = 0
+	bars.update_super(superMana)
+	
 func mana_update(value):
 	mana += value
 	if mana > maxMana:
 		mana = maxMana
-	manabar.update_manabar(mana)
+	bars.update_manabar(mana)
 
 func _on_start_button_up():
 	$AudioStreamPlayer2D.play()

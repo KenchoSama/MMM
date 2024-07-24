@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=42 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_p6bw8"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/gamemode_3.gd" id="1_ycoyy"]
@@ -25,8 +25,9 @@
 [ext_resource type="Script" path="res://Components/Gamemode 3/Castle.gd" id="17_xr3j1"]
 [ext_resource type="Texture2D" uid="uid://bl4dk4hrhv8wb" path="res://assets/bluebar.png" id="19_x6puj"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/Health Display.gd" id="20_2mk73"]
+[ext_resource type="Texture2D" uid="uid://nmb0ubq208pi" path="res://assets/superbar.png" id="20_p6e0y"]
 [ext_resource type="Texture2D" uid="uid://cugblrufhxyq4" path="res://assets/greenbar.png" id="21_6dwiq"]
-[ext_resource type="Texture2D" uid="uid://bjsgqhnp3j4wm" path="res://assets/healthbar.png" id="21_ol5fq"]
+[ext_resource type="Texture2D" uid="uid://d2n8tse4dyq0d" path="res://assets/healthbar.png" id="21_ol5fq"]
 [ext_resource type="Texture2D" uid="uid://dtas2y8f8dt6j" path="res://Components/Gamemode 3/Sprite-0001.png" id="24_j5lfy"]
 [ext_resource type="AudioStream" uid="uid://cpk5bw0nacy8x" path="res://assets/MagicCastle.wav" id="28_l3s12"]
 
@@ -571,6 +572,20 @@ scale = Vector2(2.345, 0.975)
 value = 100.0
 texture_progress = ExtResource("19_x6puj")
 
+[node name="Super Bar" type="TextureProgressBar" parent="Bars"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = 298.0
+offset_right = -32.0
+offset_bottom = 330.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+scale = Vector2(4.1, 1.355)
+texture_progress = ExtResource("20_p6e0y")
+
 [node name="Castle" type="Area2D" parent="."]
 position = Vector2(908, 339)
 script = ExtResource("17_xr3j1")
@@ -612,7 +627,7 @@ position = Vector2(119, 95)
 wait_time = 3.018
 one_shot = true
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="." groups=["Player"]]
 position = Vector2(900, 324)
 motion_mode = 1
 script = ExtResource("2_eates")
