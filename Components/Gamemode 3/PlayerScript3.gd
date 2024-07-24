@@ -4,7 +4,12 @@ extends CharacterBody2D
 var speed = 300
 var target = position
 var spelltarget = Vector2(0,324)
-var spellcooldown: bool = true
+var mana
+var maxMana
+var manabar
+var firespell : bool = true
+var waterspell : bool = true
+var lightningspell : bool = true
 signal firespellActivated(pos, direction)
 signal spellReleased
 signal lightingspellActivated(pos, direction)
@@ -14,6 +19,10 @@ var player_direction = (get_global_mouse_position() - position).normalized()
 
 
 func _ready():
+	maxMana = 100
+	mana = maxMana
+	manabar = $"../Bars"
+	manabar.init_manabar(maxMana)
 	set_physics_process(false)
 
 func _input(event):
@@ -23,7 +32,8 @@ func _input(event):
 		target = event.get_position()
 
 func _physics_process(_delta):
-	
+	mana_update(0.05)
+	print(mana)
 	#move and look
 	velocity = position.direction_to(target) * speed
 	var player_sprite = $Sprites
@@ -42,36 +52,39 @@ func _physics_process(_delta):
 	#var spell_type = get_mouse_input_action()
 	var spell_marker = $spellposition.get_children()
 
-	if Input.is_key_pressed(KEY_Q) and spellcooldown:
-		spellcooldown = false
-		$SpellTimer1.start()
+	if Input.is_key_pressed(KEY_Q) and mana > 20 and firespell:
+		mana_update(-10)
+		$firecd.start(1)
+		firespell = false
 		firespellActivated.emit(spell_marker[0].global_position, player_direction)
-	elif Input.is_key_pressed(KEY_W) and spellcooldown:
-		spellcooldown = false
-		$SpellTimer1.start()
+	elif Input.is_key_pressed(KEY_W) and mana > 20 and lightningspell:
+		mana_update(-10)
+		$lightningcd.start(1)
+		lightningspell = false
 		lightingspellActivated.emit(spell_marker[0].global_position, player_direction)
-	elif Input.is_key_pressed(KEY_E) and spellcooldown:
-		spellcooldown = false
-		$SpellTimer1.start()
+	elif Input.is_key_pressed(KEY_E) and mana > 20 and waterspell:
+		mana_update(-10)
+		$watercd.start(1)
+		waterspell = false
 		waterspellActivated.emit(spell_marker[0].global_position, player_direction)
 		
 
-func _on_spell_timer_1_timeout():
-	spellcooldown = true
-
-
+func mana_update(value):
+	mana += value
+	if mana > maxMana:
+		mana = maxMana
+	manabar.update_manabar(mana)
 
 func _on_start_button_up():
 	$AudioStreamPlayer2D.play()
 	set_physics_process(true)
 
 
-
-
 func _on_firebutton_button_down():
-	if spellcooldown:
-		spellcooldown = false
-		$SpellTimer1.start()
+	if firespell:
+		mana_update(-10)
+		$firecd.start(1)
+		firespell = false
 		firespellActivated.emit($spellposition.get_children()[0].global_position, (spelltarget - position).normalized())
 
 
@@ -85,14 +98,28 @@ func _on_button_button_up():
 
 
 func _on_lightingbutton_button_down():
-	if spellcooldown:
-		spellcooldown = false
-		$SpellTimer1.start()
+	if lightningspell:
+		mana_update(-10)
+		$lightningcd.start(1)
+		lightningspell = false
 		lightingspellActivated.emit($spellposition.get_children()[0].global_position, (spelltarget - position).normalized())
 
 
 func _on_waterbutton_button_down():
-	if spellcooldown:
-		spellcooldown = false
-		$SpellTimer1.start()
+	if waterspell:
+		mana_update(-10)
+		$watercd.start(1)
+		waterspell = false
 		waterspellActivated.emit($spellposition.get_children()[0].global_position, (spelltarget - position).normalized())
+
+
+func _on_firecd_timeout():
+	firespell = true # Replace with function body.
+
+
+func _on_lightningcd_timeout():
+	lightningspell = true # Replace with function body.
+	
+	
+func _on_watercd_timeout():
+	waterspell = true # Replace with function body.

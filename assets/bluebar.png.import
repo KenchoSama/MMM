@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmlnglvgj1lut"
-path="res://.godot/imported/Hp border.png-3bc3bee948c87ada22285bada95f163b.ctex"
+uid="uid://bl4dk4hrhv8wb"
+path="res://.godot/imported/bluebar.png-0c718d1b8306e597552be239e0fdcc52.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Hp border.png"
-dest_files=["res://.godot/imported/Hp border.png-3bc3bee948c87ada22285bada95f163b.ctex"]
+source_file="res://assets/bluebar.png"
+dest_files=["res://.godot/imported/bluebar.png-0c718d1b8306e597552be239e0fdcc52.ctex"]
 
 [params]
 

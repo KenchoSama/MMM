@@ -5,7 +5,7 @@ signal lost
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hp = 100 # Replace with function body.
-	$"Health Display".init_bar(hp)
+	$"../Bars".init_bar(hp)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,6 +23,6 @@ func _on_body_entered(body):
 	if "tantriangle" in body:
 		hp = hp - 5
 		body.hit()
-	$"Health Display".update_healthbar(hp)
+	$"../Bars".update_healthbar(hp)
 	if hp <= 0:
 		emit_signal("lost")
