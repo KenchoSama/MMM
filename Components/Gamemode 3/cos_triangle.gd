@@ -40,7 +40,6 @@ func _process(delta):
 	pass
 
 func hit():
-	print("hit")
 	queue_free()
 
 

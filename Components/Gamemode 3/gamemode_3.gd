@@ -8,6 +8,13 @@ var cloud:PackedScene = preload("res://Components/Gamemode 3/clouds.tscn")
 var sintriangle:PackedScene = preload("res://Components/Gamemode 3/rigidSinTriangle.tscn")
 var costriangle:PackedScene = preload("res://Components/Gamemode 3/cos_triangle.tscn")
 var tantriangle:PackedScene = preload("res://Components/Gamemode 3/tantriangle.tscn")
+var superSpell:PackedScene = preload("res://Components/Gamemode 3/SuperLaser.tscn")
+var time
+var triangleTimer
+var superSpellActive
+var waiting
+var triangleElims
+
 
 var rng = RandomNumberGenerator.new()
 
@@ -17,8 +24,13 @@ signal gameLost
 func _ready():
 	# Start the timer to spawn triangles every 5 seconds
 	#$Timer.start()
-	pass
+	time = 0
+	triangleTimer = 5
+	triangleElims = 0
+	waiting = false
 
+func _physics_process(delta):
+	time += delta
 
 func _on_player_firespell_activated(pos, direction):
 	#print("spell activated from the gamemode script")
@@ -46,6 +58,8 @@ func _on_player_waterspell_activated(pos, direction):
 	spell2.rotation_degrees = rad_to_deg(direction.angle())
 	spell2.direction = direction
 	$AllSpells.add_child(spell2)
+	
+
 
 
 
@@ -59,7 +73,7 @@ func _on_timer_timeout():
 		
 		
 		var random_number = rng.randi_range(1, 3)
-		print(random_number)
+		#print(random_number)
 		if random_number == 1:
 			var new_sintriangle = sintriangle.instantiate()
 			#var direction = ($Player.global_position - position).normalized() 
@@ -92,15 +106,10 @@ func _on_timer_timeout():
 			#new_triangle.rotation_degrees = rad_to_deg(direction.angle())
 			#new_triangle.direction = direction
 			add_child(new_tantriangle)
-		$Timer.start()
-
-		
-		var new_cloud = cloud.instantiate()
-		var cloudPositions = $clouds.get_children()
-		var cloudPositionspawn = cloudPositions[randi() % cloudPositions.size()]
-		new_cloud.position = cloudPositionspawn.global_position
-		add_child(new_cloud)
-	
+		if !superSpellActive:
+			$Timer.start(triangleTimer)
+		elif superSpellActive:
+			print("triangleTimerPaused")
 
 
 func _on_start_button_up():
@@ -108,7 +117,9 @@ func _on_start_button_up():
 
 
 func _on_begingame():
-	$Timer.start()
+	$Timer.start(triangleTimer)
+	$difficultyTimer.start(10)
+	$cloudTimer.start()
 
 
 
@@ -122,3 +133,46 @@ func _on_restart_button_button_up():
 
 func _on_castle_lost():
 	emit_signal("gameLost")
+
+
+func _on_player_super_spell_activated():
+	superSpellActive = true
+	var newSuperSpell = superSpell.instantiate()
+	$AllSpells.add_child(newSuperSpell) # Replace with function body.
+
+func endSuper():
+	superSpellActive = false
+	waiting = true
+	timerModify(4)
+	print("restarting wave")
+	$restartWave.start(3)
+
+	
+func timerModify(val):
+	triangleTimer += val
+	
+
+func _on_cloud_timer_timeout():
+	if $Player:
+		var new_cloud = cloud.instantiate()
+		var cloudPositions = $clouds.get_children()
+		var cloudPositionspawn = cloudPositions[randi() % cloudPositions.size()]
+		new_cloud.position = cloudPositionspawn.global_position
+		add_child(new_cloud) # Replace with function body.
+		$cloudTimer.start()
+
+
+func _on_restart_wave_timeout():
+	waiting = false
+	print("wave restarted")
+	$Timer.start(triangleTimer) # Replace with function body.
+	
+
+func addElim():
+	triangleElims += 1
+
+
+func _on_difficulty_timer_timeout():
+	if triangleTimer > 1:
+		timerModify(-0.5) # Replace with function body.
+	$difficultyTimer.start(10)

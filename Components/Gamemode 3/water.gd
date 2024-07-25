@@ -6,7 +6,7 @@ var direction = Vector2.RIGHT
 
 func _ready():
 	# Start a Timer to delete the node after 2 seconds
-	$Timer.start()
+	$Timer.start() 
 	$waterexplosion.visible = false
 
 func _process(delta):
@@ -21,7 +21,8 @@ func _on_area_2d_body_entered(body):
 		$Sprite2D.visible = false
 		explode()
 		get_tree().call_group("Player","mana_update",5)
-		get_tree().call_group("Player","super_update",5)
+		get_tree().call_group("Player","super_update",10)
+		get_tree().call_group("GameMethod","addElim")
 	if "sintriangle" in body:
 		get_tree().call_group("Player","super_update",-20)
 		queue_free()

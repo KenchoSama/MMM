@@ -11,10 +11,12 @@ var superMana
 var firespell : bool = true
 var waterspell : bool = true
 var lightningspell : bool = true
+var superReady : bool = true
 signal firespellActivated(pos, direction)
 signal spellReleased
 signal lightingspellActivated(pos, direction)
 signal waterspellActivated(pos, direction)
+signal superSpellActivated
 # Check if the player direction's x component is negative
 var player_direction = (get_global_mouse_position() - position).normalized()
 
@@ -35,7 +37,7 @@ func _input(event):
 		target = event.get_position()
 
 func _physics_process(_delta):
-	mana_update(0.05)
+	mana_update(0.01)
 	#move and look
 	velocity = position.direction_to(target) * speed
 	var player_sprite = $Sprites
@@ -55,20 +57,25 @@ func _physics_process(_delta):
 	var spell_marker = $spellposition.get_children()
 
 	if Input.is_key_pressed(KEY_Q) and mana > 20 and firespell:
+		firespell = false
 		mana_update(-10)
 		$firecd.start(1)
-		firespell = false
 		firespellActivated.emit(spell_marker[0].global_position, player_direction)
 	elif Input.is_key_pressed(KEY_W) and mana > 20 and lightningspell:
+		lightningspell = false
 		mana_update(-10)
 		$lightningcd.start(1)
-		lightningspell = false
 		lightingspellActivated.emit(spell_marker[0].global_position, player_direction)
 	elif Input.is_key_pressed(KEY_E) and mana > 20 and waterspell:
+		waterspell = false
 		mana_update(-10)
 		$watercd.start(1)
-		waterspell = false
 		waterspellActivated.emit(spell_marker[0].global_position, player_direction)
+	elif Input.is_key_pressed(KEY_R) and superMana >= 100 and superReady:
+		superReady = false
+		super_update(-100)
+		superSpellActivated.emit()
+		$SuperCD.start()
 		
 
 func super_update(value):
@@ -133,3 +140,7 @@ func _on_lightningcd_timeout():
 	
 func _on_watercd_timeout():
 	waterspell = true # Replace with function body.
+
+
+func _on_super_cd_timeout():
+	superReady = true # Replace with function body.

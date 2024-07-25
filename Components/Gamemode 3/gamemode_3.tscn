@@ -129,7 +129,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Gamemode 3" type="Node2D"]
+[node name="Gamemode 3" type="Node2D" groups=["GameMethod"]]
 script = ExtResource("1_ycoyy")
 metadata/_edit_horizontal_guides_ = [324.0, 474.0, 174.0]
 metadata/_edit_vertical_guides_ = [1152.0, 900.0, 1152.0, 576.0]
@@ -623,8 +623,8 @@ position = Vector2(59, 509)
 [node name="Marker2D5" type="Marker2D" parent="AllTriangles"]
 position = Vector2(119, 95)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.018
+[node name="Timer" type="Timer" parent="." groups=["GameMethod"]]
+process_mode = 3
 one_shot = true
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["Player"]]
@@ -666,6 +666,10 @@ one_shot = true
 [node name="watercd" type="Timer" parent="Player"]
 one_shot = true
 
+[node name="SuperCD" type="Timer" parent="Player"]
+wait_time = 5.0
+one_shot = true
+
 [node name="clouds" type="Node2D" parent="."]
 position = Vector2(-235, -59)
 
@@ -680,6 +684,16 @@ position = Vector2(-200, 362)
 
 [node name="Marker2D4" type="Marker2D" parent="clouds"]
 position = Vector2(-96, 151)
+
+[node name="difficultyTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="cloudTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="restartWave" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="begingame" from="." to="." method="_on_begingame"]
 [connection signal="begingame" from="." to="UI Layer/control/Control2" method="_on_gamemode_3_begingame"]
@@ -699,8 +713,13 @@ position = Vector2(-96, 151)
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="firespellActivated" from="Player" to="." method="_on_player_firespell_activated"]
 [connection signal="lightingspellActivated" from="Player" to="." method="_on_player_lightingspell_activated"]
+[connection signal="superSpellActivated" from="Player" to="." method="_on_player_super_spell_activated"]
 [connection signal="waterspellActivated" from="Player" to="." method="_on_player_waterspell_activated"]
 [connection signal="finished" from="Player/AudioStreamPlayer2D" to="Player" method="_on_audio_stream_player_2d_finished"]
 [connection signal="timeout" from="Player/firecd" to="Player" method="_on_firecd_timeout"]
 [connection signal="timeout" from="Player/lightningcd" to="Player" method="_on_lightningcd_timeout"]
 [connection signal="timeout" from="Player/watercd" to="Player" method="_on_watercd_timeout"]
+[connection signal="timeout" from="Player/SuperCD" to="Player" method="_on_super_cd_timeout"]
+[connection signal="timeout" from="difficultyTimer" to="." method="_on_difficulty_timer_timeout"]
+[connection signal="timeout" from="cloudTimer" to="." method="_on_cloud_timer_timeout"]
+[connection signal="timeout" from="restartWave" to="." method="_on_restart_wave_timeout"]
