@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0w8ro0e1jvqm"]
+[gd_scene load_steps=7 format=3 uid="uid://cjqrbkjk40o8y"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 3/cos_triangle.gd" id="1_75c7d"]
 [ext_resource type="Texture2D" uid="uid://dw20ha3wfot3s" path="res://Components/Gamemode 3/traingle.png" id="1_b6vm1"]

@@ -4,8 +4,8 @@ extends CharacterBody2D
 var speed = 300
 var target = position
 var spelltarget = Vector2(0,324)
-var mana
-var maxMana
+var mana = 0
+const maxMana = 100
 var bars
 var superMana
 var firespell : bool = true
@@ -17,18 +17,12 @@ signal spellReleased
 signal lightingspellActivated(pos, direction)
 signal waterspellActivated(pos, direction)
 signal superSpellActivated
-# Check if the player direction's x component is negative
-var player_direction = (get_global_mouse_position() - position).normalized()
 
 
 func _ready():
-	maxMana = 100
-	mana = maxMana
-	superMana = 0
-	bars = $"../Bars"
-	bars.init_manabar(maxMana)
-	bars.init_super(maxMana)
+	bars = $"../UI Layer/Control/HUD/Bars"
 	set_physics_process(false)
+
 
 func _input(event):
 	if event is InputEventScreenTouch and event.is_pressed():
@@ -92,10 +86,20 @@ func mana_update(value):
 		mana = maxMana
 	bars.update_manabar(mana)
 
-func _on_start_button_up():
+
+func _on_audio_stream_player_2d_finished():
+	$AudioStreamPlayer2D.play()
+
+func _on_begin_game():
 	$AudioStreamPlayer2D.play()
 	set_physics_process(true)
+	mana = maxMana
+	superMana = 0
+	bars.init_manabar(maxMana)
+	bars.init_super(maxMana)
 
+
+# ------------- Spell casting ------------------- #
 
 func _on_firebutton_button_down():
 	if firespell:
@@ -103,15 +107,6 @@ func _on_firebutton_button_down():
 		$firecd.start(1)
 		firespell = false
 		firespellActivated.emit($spellposition.get_children()[0].global_position, (spelltarget - position).normalized())
-
-
-func _on_audio_stream_player_2d_finished():
-	$AudioStreamPlayer2D.play()
-
-
-func _on_button_button_up():
-	$AudioStreamPlayer2D.play()
-	set_physics_process(true)
 
 
 func _on_lightingbutton_button_down():
@@ -129,18 +124,12 @@ func _on_waterbutton_button_down():
 		waterspell = false
 		waterspellActivated.emit($spellposition.get_children()[0].global_position, (spelltarget - position).normalized())
 
-
 func _on_firecd_timeout():
-	firespell = true # Replace with function body.
-
-
+	firespell = true
 func _on_lightningcd_timeout():
-	lightningspell = true # Replace with function body.
-	
-	
+	lightningspell = true
 func _on_watercd_timeout():
-	waterspell = true # Replace with function body.
-
-
+	waterspell = true
 func _on_super_cd_timeout():
-	superReady = true # Replace with function body.
+	superReady = true
+

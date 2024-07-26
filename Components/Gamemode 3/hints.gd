@@ -1,15 +1,8 @@
 extends Label
 
 var showing = false
-
-
 func _ready():
-	if showing == false:
-		hide()
-
-
-func _process(delta):
-	pass
+	hide()
 
 func _on_hintsbutton_button_up():
 	if showing:

@@ -6,10 +6,12 @@ var initialDirection = Vector2.RIGHT
 var direction
 var rng = RandomNumberGenerator.new()
 
+# Assigned at moment of instancing.
+var player_ref 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var direction = ($"../Player".position - position).normalized() 
+	var direction = (player_ref.position - position).normalized() 
 	linear_velocity = direction * 200
 	rotation_degrees = rad_to_deg(direction.angle())
 	$Timer.start()

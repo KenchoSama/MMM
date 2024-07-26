@@ -9,6 +9,9 @@ func _ready():
 	speed = randf_range(speed_min, speed_max)
 
 func _process(delta):
-	# Move the clouds to the left
+	# Move the clouds to the left and delete upon exit of screen
 	var movement = Vector2.RIGHT * speed * delta
 	translate(movement)
+	if global_position.x >= 1600:
+		queue_free()
+

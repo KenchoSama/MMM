@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d15wje33s1t4h"]
+[gd_scene load_steps=8 format=3 uid="uid://dp5a5apbcegkj"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 3/tantriangle.gd" id="1_1aasd"]
 [ext_resource type="Texture2D" uid="uid://bkywgr5cy0278" path="res://Components/Gamemode 3/tantriangle.png" id="1_887cg"]

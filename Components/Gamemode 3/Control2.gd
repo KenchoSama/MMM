@@ -5,10 +5,8 @@ extends Control
 func _ready():
 	show()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-func _on_gamemode_3_begingame():
+func _on_pregame():
+	show()
+	
+func _on_begin_game():
 	hide()

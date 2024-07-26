@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0wixqukdejwl"]
+[gd_scene load_steps=7 format=3 uid="uid://cjlaryxlnqd3d"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 3/rigidSinTriangle.gd" id="1_bhnj7"]
 [ext_resource type="Texture2D" uid="uid://dw20ha3wfot3s" path="res://Components/Gamemode 3/traingle.png" id="2_64uxx"]

@@ -10,16 +10,20 @@ var manabar
 var superbar
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	healthbar = $"Health Bar"
+	healthbar = $"HP/Health Bar"
 	manabar = $"Mana Bar"
 	superbar = $"Super Bar"
+	
 
+# Starts the game with full HP.
+func _on_begin_game():
+	init_bar(100)
+	
 func init_bar(value):
 	healthbar.texture_progress = greenbar
 	healthbar.value = value
 	healthbar.max_value = value
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-
+	
 func init_manabar(value):
 	manabar.texture_progress = bluebar
 	manabar.value = value
@@ -29,10 +33,7 @@ func init_super(value):
 	superbar.texture_progress = superbarcolor
 	superbar.max_value = value
 	superbar.value = 0
-	
-func _process(delta):
-	pass
-	
+
 func update_manabar(value):
 	manabar.value = value
 	

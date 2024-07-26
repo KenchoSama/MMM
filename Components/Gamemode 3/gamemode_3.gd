@@ -3,34 +3,14 @@ extends Node2D
 var fireSpell: PackedScene = preload("res://Components/Gamemode 3/fire.tscn")
 var lightingSpell: PackedScene = preload("res://Components/Gamemode 3/lighting.tscn")
 var waterSpell: PackedScene = preload("res://Components/Gamemode 3/water.tscn")
-#var triangle: PackedScene = preload("res://Components/Gamemode 3/triangles.tscn")
-var cloud:PackedScene = preload("res://Components/Gamemode 3/clouds.tscn")
-var sintriangle:PackedScene = preload("res://Components/Gamemode 3/rigidSinTriangle.tscn")
-var costriangle:PackedScene = preload("res://Components/Gamemode 3/cos_triangle.tscn")
-var tantriangle:PackedScene = preload("res://Components/Gamemode 3/tantriangle.tscn")
-var superSpell:PackedScene = preload("res://Components/Gamemode 3/SuperLaser.tscn")
-var time
-var triangleTimer
-var superSpellActive
-var waiting
-var triangleElims
 
-
-var rng = RandomNumberGenerator.new()
-
+# Main signals for switching game state .
+signal pregame
 signal begingame
 signal gameLost
 
 func _ready():
-	# Start the timer to spawn triangles every 5 seconds
-	#$Timer.start()
-	time = 0
-	triangleTimer = 5
-	triangleElims = 0
-	waiting = false
-
-func _physics_process(delta):
-	time += delta
+	emit_signal("pregame")
 
 func _on_player_firespell_activated(pos, direction):
 	#print("spell activated from the gamemode script")
@@ -61,118 +41,18 @@ func _on_player_waterspell_activated(pos, direction):
 	
 
 
+# Begins the game. Initializes all necessary variables for game start and signals other components to do their own beginning methods.
+func _on_play_button_up():
+	emit_signal("begingame")
 
-
+# Restarting behaves the same. 
 func _on_restart_button_up():
-	get_tree().change_scene_to_file("res://Components/Gamemode 3/gamemode_3.tscn")
-
-
-
-func _on_timer_timeout():
-	if $Player:
-		
-		
-		var random_number = rng.randi_range(1, 3)
-		#print(random_number)
-		if random_number == 1:
-			var new_sintriangle = sintriangle.instantiate()
-			#var direction = ($Player.global_position - position).normalized() 
-			#var player_direction = (get_global_mouse_position() - position).normalized()
-			var triangle_positions = $AllTriangles.get_children()
-			var positionSpawn = Vector2(-100, rng.randi_range(200, 500))
-			new_sintriangle.position = positionSpawn
-			#new_triangle.rotation_degrees = rad_to_deg(direction.angle())
-			#new_triangle.direction = direction
-			add_child(new_sintriangle)
+	emit_signal("pregame")
 	
-		elif random_number == 2:
-			var new_costriangle = costriangle.instantiate()
-			#var direction = ($Player.global_position - position).normalized() 
-			#var player_direction = (get_global_mouse_position() - position).normalized()
-			var triangle_positions = $AllTriangles.get_children()
-			var positionSpawn = Vector2(-100, rng.randi_range(200, 500))
-			new_costriangle.position = positionSpawn
-			#new_triangle.rotation_degrees = rad_to_deg(direction.angle())
-			#new_triangle.direction = direction
-			add_child(new_costriangle)
-	
-		elif random_number == 3:
-			var new_tantriangle = tantriangle.instantiate()
-			#var direction = ($Player.global_position - position).normalized() 
-			#var player_direction = (get_global_mouse_position() - position).normalized()
-			var triangle_positions = $AllTriangles.get_children()
-			var positionSpawn = Vector2(-100, rng.randi_range(200, 500))
-			new_tantriangle.position = positionSpawn
-			#new_triangle.rotation_degrees = rad_to_deg(direction.angle())
-			#new_triangle.direction = direction
-			add_child(new_tantriangle)
-		if !superSpellActive:
-			$Timer.start(triangleTimer)
-		elif superSpellActive:
-			print("triangleTimerPaused")
 
-
-func _on_start_button_up():
-	emit_signal("begingame")
-
-
-func _on_begingame():
-	$Timer.start(triangleTimer)
-	$difficultyTimer.start(10)
-	$cloudTimer.start()
-
-
-
-func _on_button_button_up():
-	emit_signal("begingame")
-
-
-func _on_restart_button_button_up():
-	get_tree().change_scene_to_file("res://Components/Gamemode 3/gamemode_3.tscn")
-
-
+# Upon recieving the loss signal from the castle, signals down to all relevant nodes.
 func _on_castle_lost():
 	emit_signal("gameLost")
 
 
-func _on_player_super_spell_activated():
-	superSpellActive = true
-	var newSuperSpell = superSpell.instantiate()
-	$AllSpells.add_child(newSuperSpell) # Replace with function body.
 
-func endSuper():
-	superSpellActive = false
-	waiting = true
-	timerModify(4)
-	print("restarting wave")
-	$restartWave.start(3)
-
-	
-func timerModify(val):
-	triangleTimer += val
-	
-
-func _on_cloud_timer_timeout():
-	if $Player:
-		var new_cloud = cloud.instantiate()
-		var cloudPositions = $clouds.get_children()
-		var cloudPositionspawn = cloudPositions[randi() % cloudPositions.size()]
-		new_cloud.position = cloudPositionspawn.global_position
-		add_child(new_cloud) # Replace with function body.
-		$cloudTimer.start()
-
-
-func _on_restart_wave_timeout():
-	waiting = false
-	print("wave restarted")
-	$Timer.start(triangleTimer) # Replace with function body.
-	
-
-func addElim():
-	triangleElims += 1
-
-
-func _on_difficulty_timer_timeout():
-	if triangleTimer > 1:
-		timerModify(-0.5) # Replace with function body.
-	$difficultyTimer.start(10)

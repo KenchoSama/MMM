@@ -1,12 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfp7bn2oojiwo"]
-
-[ext_resource type="Texture2D" uid="uid://26l2tebvoxla" path="res://Components/Gamemode 3/godotImages/waterspell.png" id="1_n7q4h"]
+[gd_scene load_steps=2 format=3 uid="uid://q3mk45d73bm6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8wk4f"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_n7q4h")
+"texture": null
 }],
 "loop": true,
 "name": &"default",
