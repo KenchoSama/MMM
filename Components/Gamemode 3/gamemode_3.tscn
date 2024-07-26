@@ -185,14 +185,14 @@ texture_progress = ExtResource("19_x6puj")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -64.0
-offset_top = 298.0
-offset_right = -32.0
-offset_bottom = 330.0
+offset_left = 194.0
+offset_top = 280.0
+offset_right = 226.0
+offset_bottom = 312.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -1.5708
-scale = Vector2(4.1, 1.355)
+scale = Vector2(2.755, 0.865)
 texture_progress = ExtResource("20_p6e0y")
 
 [node name="Health Bar border" type="Sprite2D" parent="UI Layer/Control/HUD/Bars"]
