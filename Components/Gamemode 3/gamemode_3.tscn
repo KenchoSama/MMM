@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=44 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_p6bw8"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/gamemode_3.gd" id="1_ycoyy"]
@@ -32,6 +32,7 @@
 [ext_resource type="Script" path="res://Components/Gamemode 3/CloudHandler.gd" id="24_rbkrx"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/TriangleHandler.gd" id="25_kp2y5"]
 [ext_resource type="AudioStream" uid="uid://cpk5bw0nacy8x" path="res://assets/MagicCastle.wav" id="28_l3s12"]
+[ext_resource type="Script" path="res://Components/Gamemode 3/SpellHandler.gd" id="33_ahqoi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lsua"]
 bg_color = Color(0.227451, 0.454902, 0.823529, 1)
@@ -621,9 +622,7 @@ position = Vector2(-200, 362)
 [node name="Marker2D4" type="Marker2D" parent="World/CloudHandler/Spawnpoints"]
 position = Vector2(-96, 151)
 
-[node name="AllSpells" type="Node2D" parent="."]
-
-[node name="TriangleHandler" type="Node2D" parent="."]
+[node name="TriangleHandler" type="Node2D" parent="." groups=["GameMethod"]]
 script = ExtResource("25_kp2y5")
 
 [node name="restartWave" type="Timer" parent="TriangleHandler"]
@@ -679,6 +678,9 @@ one_shot = true
 wait_time = 5.0
 one_shot = true
 
+[node name="SpellHandler" type="Node2D" parent="."]
+script = ExtResource("33_ahqoi")
+
 [connection signal="begingame" from="." to="UI Layer/Control/HUD/Bars" method="_on_begin_game"]
 [connection signal="begingame" from="." to="UI Layer/Control/PregameScreen" method="_on_begin_game"]
 [connection signal="begingame" from="." to="World/Castle" method="_on_begin_game"]
@@ -703,10 +705,10 @@ one_shot = true
 [connection signal="timeout" from="TriangleHandler/restartWave" to="TriangleHandler" method="_on_restart_wave_timeout"]
 [connection signal="timeout" from="TriangleHandler/difficultyTimer" to="TriangleHandler" method="_on_difficulty_timer_timeout"]
 [connection signal="timeout" from="TriangleHandler/SpawnTimer" to="TriangleHandler" method="spawn_triangle"]
-[connection signal="firespellActivated" from="Player" to="." method="_on_player_firespell_activated"]
-[connection signal="lightingspellActivated" from="Player" to="." method="_on_player_lightingspell_activated"]
-[connection signal="superSpellActivated" from="Player" to="." method="_on_player_super_spell_activated"]
-[connection signal="waterspellActivated" from="Player" to="." method="_on_player_waterspell_activated"]
+[connection signal="firespellActivated" from="Player" to="SpellHandler" method="_on_player_firespell_activated"]
+[connection signal="lightingspellActivated" from="Player" to="SpellHandler" method="_on_player_lightingspell_activated"]
+[connection signal="superSpellActivated" from="Player" to="SpellHandler" method="_on_player_super_spell_activated"]
+[connection signal="waterspellActivated" from="Player" to="SpellHandler" method="_on_player_waterspell_activated"]
 [connection signal="finished" from="Player/AudioStreamPlayer2D" to="Player" method="_on_audio_stream_player_2d_finished"]
 [connection signal="timeout" from="Player/firecd" to="Player" method="_on_firecd_timeout"]
 [connection signal="timeout" from="Player/lightningcd" to="Player" method="_on_lightningcd_timeout"]

@@ -13,7 +13,6 @@ var waterspell : bool = true
 var lightningspell : bool = true
 var superReady : bool = true
 signal firespellActivated(pos, direction)
-signal spellReleased
 signal lightingspellActivated(pos, direction)
 signal waterspellActivated(pos, direction)
 signal superSpellActivated
@@ -46,9 +45,11 @@ func _physics_process(_delta):
 	if target.y < 474 && target.y > 174:
 		look_at(target)
 		spelltarget = target
-	#activation of spells
-	#var spell_type = get_mouse_input_action()
 	var spell_marker = $spellposition.get_children()
+
+####################################################
+# ------- INPUT METHODS USED FOR DEBUGGING --------#
+####################################################
 
 	if Input.is_key_pressed(KEY_Q) and mana > 20 and firespell:
 		firespell = false
@@ -94,7 +95,7 @@ func _on_begin_game():
 	$AudioStreamPlayer2D.play()
 	set_physics_process(true)
 	mana = maxMana
-	superMana = 0
+	superMana = 100
 	bars.init_manabar(maxMana)
 	bars.init_super(maxMana)
 
