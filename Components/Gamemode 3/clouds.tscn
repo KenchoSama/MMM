@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ccsh8wlebt4gl" path="res://Components/Gamemode 3/images/cloud4.png" id="5_7ieee"]
 
 [node name="clouds" type="Node2D"]
+z_index = -1
 position = Vector2(131, 156)
 script = ExtResource("1_j455q")
 

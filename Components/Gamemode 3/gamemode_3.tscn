@@ -134,6 +134,21 @@ script = ExtResource("1_ycoyy")
 metadata/_edit_horizontal_guides_ = [324.0, 474.0, 174.0]
 metadata/_edit_vertical_guides_ = [1152.0, 900.0, 1152.0, 576.0]
 
+[node name="clouds" type="Node2D" parent="."]
+position = Vector2(-235, -59)
+
+[node name="Marker2D" type="Marker2D" parent="clouds"]
+position = Vector2(-41, 276)
+
+[node name="Marker2D2" type="Marker2D" parent="clouds"]
+position = Vector2(-103, 490)
+
+[node name="Marker2D3" type="Marker2D" parent="clouds"]
+position = Vector2(-200, 362)
+
+[node name="Marker2D4" type="Marker2D" parent="clouds"]
+position = Vector2(-96, 151)
+
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
 [node name="control" type="Control" parent="UI Layer"]
@@ -538,6 +553,7 @@ scale = Vector2(2.625, 2.40625)
 texture = ExtResource("9_u2nqj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
 position = Vector2(576.25, 324)
 scale = Vector2(35.9844, 20.25)
 texture = ExtResource("8_xajof")
@@ -669,21 +685,6 @@ one_shot = true
 [node name="SuperCD" type="Timer" parent="Player"]
 wait_time = 5.0
 one_shot = true
-
-[node name="clouds" type="Node2D" parent="."]
-position = Vector2(-235, -59)
-
-[node name="Marker2D" type="Marker2D" parent="clouds"]
-position = Vector2(-41, 276)
-
-[node name="Marker2D2" type="Marker2D" parent="clouds"]
-position = Vector2(-103, 490)
-
-[node name="Marker2D3" type="Marker2D" parent="clouds"]
-position = Vector2(-200, 362)
-
-[node name="Marker2D4" type="Marker2D" parent="clouds"]
-position = Vector2(-96, 151)
 
 [node name="difficultyTimer" type="Timer" parent="."]
 one_shot = true
