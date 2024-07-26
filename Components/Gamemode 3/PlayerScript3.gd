@@ -95,7 +95,7 @@ func _on_begin_game():
 	$AudioStreamPlayer2D.play()
 	set_physics_process(true)
 	mana = maxMana
-	superMana = 100
+	superMana = 0
 	bars.init_manabar(maxMana)
 	bars.init_super(maxMana)
 
