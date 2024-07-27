@@ -1,12 +1,14 @@
-[gd_scene load_steps=44 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=56 format=3 uid="uid://uefpmlu6ommb"]
 
-[ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_p6bw8"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/gamemode_3.gd" id="1_ycoyy"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/PlayerScript3.gd" id="2_eates"]
 [ext_resource type="Theme" uid="uid://bgbl23jfw6rk1" path="res://Reusable Scenes/GreyTheme.tres" id="2_hr7at"]
 [ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/WizardSprites.gd" id="2_o8ocu"]
+[ext_resource type="Texture2D" uid="uid://bkxdjkmrmtg6j" path="res://assets/unmuted.png" id="3_w4fqv"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/Control.gd" id="4_8hv4o"]
+[ext_resource type="Script" path="res://Components/Main Menu/MusicPlayer.gd" id="4_kc1ky"]
 [ext_resource type="Texture2D" uid="uid://8htax3pkoq4r" path="res://Reusable Scenes/PixelArtUI.png" id="4_nljn4"]
+[ext_resource type="Script" path="res://Components/Gamemode 3/GM3AudioLooper.gd" id="5_ycubq"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/Control2.gd" id="6_8ut7r"]
 [ext_resource type="Texture2D" uid="uid://cmdxtytd1w5j3" path="res://Reusable Scenes/Player/Sprites/Facial Hair/Beard1.png" id="7_e4c4l"]
 [ext_resource type="Texture2D" uid="uid://jlqp38ntel1x" path="res://Components/Gamemode 3/images/firesymbol.png" id="7_h17bh"]
@@ -18,21 +20,64 @@
 [ext_resource type="Script" path="res://Components/Gamemode 3/hints.gd" id="9_yfcgw"]
 [ext_resource type="Texture2D" uid="uid://ycia3ag14su8" path="res://Components/Gamemode 3/images/New Piskel (5).png" id="10_aw2xb"]
 [ext_resource type="Texture2D" uid="uid://sg3xf4yhnf1n" path="res://Reusable Scenes/Player/Sprites/Legs/LegsRightUp.png" id="10_h6bwa"]
-[ext_resource type="Texture2D" uid="uid://h8p4t48e4pgc" path="res://Components/Gamemode 3/images/triangleHint.png" id="11_u03y7"]
-[ext_resource type="Texture2D" uid="uid://7ijyruaikuq" path="res://Components/Gamemode 3/images/questionmark.png" id="12_7ntse"]
-[ext_resource type="Texture2D" uid="uid://bch30f4g76cti" path="res://Components/Gamemode 3/images/New Piskel (4).png" id="13_lb3v8"]
-[ext_resource type="Texture2D" uid="uid://dvis3ypxarvry" path="res://Components/Gamemode 3/images/New Piskel (3).png" id="14_j1l6f"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/Castle.gd" id="17_xr3j1"]
+[ext_resource type="Script" path="res://Components/Gamemode 3/HUD.gd" id="19_f2wx6"]
 [ext_resource type="Texture2D" uid="uid://bl4dk4hrhv8wb" path="res://assets/bluebar.png" id="19_x6puj"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/Health Display.gd" id="20_2mk73"]
 [ext_resource type="Texture2D" uid="uid://nmb0ubq208pi" path="res://assets/superbar.png" id="20_p6e0y"]
 [ext_resource type="Texture2D" uid="uid://cugblrufhxyq4" path="res://assets/greenbar.png" id="21_6dwiq"]
 [ext_resource type="Texture2D" uid="uid://d2n8tse4dyq0d" path="res://assets/healthbar.png" id="21_ol5fq"]
+[ext_resource type="Texture2D" uid="uid://bkywgr5cy0278" path="res://Components/Gamemode 3/tantriangle.png" id="21_qc0da"]
+[ext_resource type="Texture2D" uid="uid://dw20ha3wfot3s" path="res://Components/Gamemode 3/traingle.png" id="21_s7ynk"]
+[ext_resource type="Texture2D" uid="uid://vymlrcwv24v8" path="res://Components/Gamemode 3/triangle.png" id="22_t7qri"]
 [ext_resource type="Texture2D" uid="uid://dtas2y8f8dt6j" path="res://Components/Gamemode 3/Sprite-0001.png" id="24_j5lfy"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/CloudHandler.gd" id="24_rbkrx"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/TriangleHandler.gd" id="25_kp2y5"]
 [ext_resource type="AudioStream" uid="uid://cpk5bw0nacy8x" path="res://assets/MagicCastle.wav" id="28_l3s12"]
+[ext_resource type="Script" path="res://Reusable Scenes/Return Button/return_button.gd" id="28_vr5c3"]
+[ext_resource type="Texture2D" uid="uid://bm2eg1lsu1uhf" path="res://Reusable Scenes/Home.png" id="29_af7hm"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/SpellHandler.gd" id="33_ahqoi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7dvx"]
+size = Vector2(200, 297)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ql60"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_lguju")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_nn13b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_h6bwa")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xmsjt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v50lt"]
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sa1gb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kl2ni"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84mvt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ilywq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ayh10"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lsua"]
 bg_color = Color(0.227451, 0.454902, 0.823529, 1)
@@ -64,6 +109,8 @@ Button/colors/font_color = Color(0.933333, 0.819608, 0.980392, 1)
 Button/styles/normal = SubResource("StyleBoxFlat_5lsua")
 Label/colors/font_color = Color(0.792157, 0.94902, 0.815686, 1)
 Label/styles/normal = SubResource("StyleBoxFlat_c1dye")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4h25s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4jk8"]
 bg_color = Color(0.654902, 0.533333, 0.823529, 1)
@@ -103,51 +150,130 @@ Label/styles/normal = SubResource("StyleBoxFlat_cd2v4")
 atlas = ExtResource("4_nljn4")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7dvx"]
-size = Vector2(200, 297)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0ql60"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_lguju")
-}],
-"loop": false,
-"name": &"Idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_nn13b")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_h6bwa")
-}],
-"loop": true,
-"name": &"Walking",
-"speed": 5.0
-}]
-
 [node name="Gamemode 3" type="Node2D" groups=["GameMethod"]]
 script = ExtResource("1_ycoyy")
 metadata/_edit_horizontal_guides_ = [324.0, 474.0, 174.0]
 metadata/_edit_vertical_guides_ = [1152.0, 900.0, 1152.0, 576.0]
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Castle" type="Area2D" parent="World"]
+position = Vector2(908, 339)
+script = ExtResource("17_xr3j1")
+
+[node name="CastleHitbox" type="CollisionShape2D" parent="World/Castle"]
+position = Vector2(125, -14.5)
+shape = SubResource("RectangleShape2D_b7dvx")
+
+[node name="CastleSprite" type="Sprite2D" parent="World/Castle"]
+position = Vector2(91, -15)
+scale = Vector2(4.79688, 4.79688)
+texture = ExtResource("24_j5lfy")
+
+[node name="Background" type="Sprite2D" parent="World"]
+z_index = -2
+position = Vector2(576.25, 324)
+scale = Vector2(35.9844, 20.25)
+texture = ExtResource("8_xajof")
+
+[node name="CloudHandler" type="Node2D" parent="World"]
+position = Vector2(-235, -59)
+script = ExtResource("24_rbkrx")
+
+[node name="Clouds" type="Node2D" parent="World/CloudHandler"]
+
+[node name="cloudTimer" type="Timer" parent="World/CloudHandler"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Spawnpoints" type="Node2D" parent="World/CloudHandler"]
+
+[node name="Marker2D" type="Marker2D" parent="World/CloudHandler/Spawnpoints"]
+position = Vector2(-41, 276)
+
+[node name="Marker2D2" type="Marker2D" parent="World/CloudHandler/Spawnpoints"]
+position = Vector2(-103, 490)
+
+[node name="Marker2D3" type="Marker2D" parent="World/CloudHandler/Spawnpoints"]
+position = Vector2(-200, 362)
+
+[node name="Marker2D4" type="Marker2D" parent="World/CloudHandler/Spawnpoints"]
+position = Vector2(-96, 151)
+
+[node name="TriangleHandler" type="Node2D" parent="." groups=["GameMethod"]]
+script = ExtResource("25_kp2y5")
+
+[node name="ActiveTriangles" type="Node2D" parent="TriangleHandler"]
+
+[node name="restartWave" type="Timer" parent="TriangleHandler"]
+one_shot = true
+
+[node name="difficultyTimer" type="Timer" parent="TriangleHandler"]
+one_shot = true
+
+[node name="SpawnTimer" type="Timer" parent="TriangleHandler" groups=["GameMethod"]]
+process_mode = 3
+one_shot = true
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["Player"]]
+position = Vector2(900, 324)
+motion_mode = 1
+script = ExtResource("2_eates")
+
+[node name="Sprites" type="Node2D" parent="Player"]
+script = ExtResource("2_o8ocu")
+
+[node name="Skin" type="Sprite2D" parent="Player/Sprites"]
+
+[node name="Hat" type="Sprite2D" parent="Player/Sprites"]
+
+[node name="Shirt" type="Sprite2D" parent="Player/Sprites"]
+
+[node name="Facial Hair" type="Sprite2D" parent="Player/Sprites"]
+texture = ExtResource("7_e4c4l")
+
+[node name="Legs" type="AnimatedSprite2D" parent="Player/Sprites"]
+sprite_frames = SubResource("SpriteFrames_0ql60")
+animation = &"Idle"
+
+[node name="spellposition" type="Node2D" parent="Player"]
+
+[node name="Marker2D" type="Marker2D" parent="Player/spellposition"]
+position = Vector2(18, 2)
+
+[node name="firecd" type="Timer" parent="Player"]
+one_shot = true
+
+[node name="lightningcd" type="Timer" parent="Player"]
+one_shot = true
+
+[node name="watercd" type="Timer" parent="Player"]
+one_shot = true
+
+[node name="SuperCD" type="Timer" parent="Player"]
+wait_time = 5.0
+one_shot = true
+
+[node name="SpellHandler" type="Node2D" parent="."]
+script = ExtResource("33_ahqoi")
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="UI Layer"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1150.0
+offset_bottom = 648.0
 theme = ExtResource("2_hr7at")
 
 [node name="HUD" type="Control" parent="UI Layer/Control"]
+layout_mode = 3
 anchors_preset = 0
 offset_left = 1.0
 offset_top = 3.0
 offset_right = 41.0
 offset_bottom = 43.0
+script = ExtResource("19_f2wx6")
 
 [node name="Bars" type="Node2D" parent="UI Layer/Control/HUD"]
 position = Vector2(907, 336)
@@ -202,10 +328,10 @@ texture = ExtResource("21_ol5fq")
 
 [node name="firebutton" type="TextureButton" parent="UI Layer/Control/HUD"]
 layout_mode = 0
-offset_left = 30.0
-offset_top = 391.0
-offset_right = 62.0
-offset_bottom = 423.0
+offset_left = 82.0
+offset_top = 463.0
+offset_right = 114.0
+offset_bottom = 495.0
 scale = Vector2(4, 4)
 texture_normal = ExtResource("7_h17bh")
 texture_pressed = ExtResource("7_h17bh")
@@ -213,12 +339,23 @@ texture_hover = ExtResource("7_h17bh")
 texture_disabled = ExtResource("7_h17bh")
 texture_focused = ExtResource("7_h17bh")
 
+[node name="Label" type="Label" parent="UI Layer/Control/HUD/firebutton"]
+layout_mode = 0
+offset_left = 5.75
+offset_top = 29.75
+offset_right = 44.75
+offset_bottom = 47.75
+scale = Vector2(0.756592, 0.756592)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xmsjt")
+text = "sin"
+label_settings = SubResource("LabelSettings_v50lt")
+
 [node name="lightingbutton" type="TextureButton" parent="UI Layer/Control/HUD"]
 layout_mode = 0
-offset_left = 134.0
-offset_top = 496.0
-offset_right = 166.0
-offset_bottom = 528.0
+offset_left = 231.0
+offset_top = 475.0
+offset_right = 263.0
+offset_bottom = 507.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("8_ccq74")
 texture_pressed = ExtResource("8_ccq74")
@@ -226,12 +363,22 @@ texture_hover = ExtResource("8_ccq74")
 texture_disabled = ExtResource("8_ccq74")
 texture_focused = ExtResource("8_ccq74")
 
+[node name="Label2" type="Label" parent="UI Layer/Control/HUD/lightingbutton"]
+layout_mode = 0
+offset_left = 3.33333
+offset_top = 36.0
+offset_right = 42.3333
+offset_bottom = 54.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xmsjt")
+text = "cos"
+label_settings = SubResource("LabelSettings_v50lt")
+
 [node name="waterbutton" type="TextureButton" parent="UI Layer/Control/HUD"]
 layout_mode = 0
-offset_left = 257.0
-offset_top = 506.0
-offset_right = 289.0
-offset_bottom = 538.0
+offset_left = 343.0
+offset_top = 455.0
+offset_right = 375.0
+offset_bottom = 487.0
 scale = Vector2(4, 4)
 texture_normal = ExtResource("9_u2nqj")
 texture_pressed = ExtResource("9_u2nqj")
@@ -239,28 +386,71 @@ texture_hover = ExtResource("9_u2nqj")
 texture_disabled = ExtResource("9_u2nqj")
 texture_focused = ExtResource("9_u2nqj")
 
+[node name="Label3" type="Label" parent="UI Layer/Control/HUD/waterbutton"]
+layout_mode = 0
+offset_left = 6.25
+offset_top = 32.0
+offset_right = 45.25
+offset_bottom = 50.0
+scale = Vector2(0.770464, 0.770464)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xmsjt")
+text = "tan"
+label_settings = SubResource("LabelSettings_v50lt")
+
 [node name="Debug" type="Control" parent="UI Layer/Control"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1033.0
+offset_top = 3.0
+offset_right = 1073.0
+offset_bottom = 43.0
 theme = ExtResource("2_hr7at")
 
-[node name="Label" type="Label" parent="UI Layer/Control/Debug"]
+[node name="Panel" type="Panel" parent="UI Layer/Control/Debug"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 7.0
-offset_right = 136.0
-offset_bottom = 33.0
-text = "Gamemode 3"
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 53.0
+offset_bottom = 53.0
 
-[node name="Return Button" parent="UI Layer/Control/Debug" instance=ExtResource("1_p6bw8")]
+[node name="MuteButton" type="Button" parent="UI Layer/Control/Debug/Panel"]
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 1011.0
-offset_top = 3.0
-offset_right = 1152.0
-offset_bottom = 34.0
+offset_left = -7.0
+offset_top = -5.0
+offset_right = 51.0
+offset_bottom = 52.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sa1gb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kl2ni")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_84mvt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ilywq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ayh10")
+icon = ExtResource("3_w4fqv")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_kc1ky")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI Layer/Control/Debug/Panel/MuteButton"]
+stream = ExtResource("28_l3s12")
+volume_db = -32.0
+script = ExtResource("5_ycubq")
+
+[node name="Return Button" type="Button" parent="UI Layer/Control/Debug"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 8.0
+offset_right = 108.0
+offset_bottom = 53.0
+toggle_mode = true
+script = ExtResource("28_vr5c3")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Layer/Control/Debug/Return Button"]
+position = Vector2(20, 22)
+scale = Vector2(1.40625, 1.40625)
+texture = ExtResource("29_af7hm")
 
 [node name="PregameScreen" type="Control" parent="UI Layer/Control"]
+visible = false
+layout_mode = 3
 anchors_preset = 0
 offset_left = -153.0
 offset_top = 5.0
@@ -271,10 +461,10 @@ script = ExtResource("6_8ut7r")
 
 [node name="Play" type="Button" parent="UI Layer/Control/PregameScreen"]
 layout_mode = 0
-offset_left = 431.0
-offset_top = 494.0
-offset_right = 554.0
-offset_bottom = 534.0
+offset_left = 428.0
+offset_top = 516.0
+offset_right = 551.0
+offset_bottom = 556.0
 text = "Play Game
 "
 
@@ -285,31 +475,32 @@ offset_bottom = 40.0
 
 [node name="Body" type="Label" parent="UI Layer/Control/PregameScreen/Instructions"]
 layout_mode = 0
-offset_left = 355.0
+offset_left = 194.0
 offset_top = 87.0
-offset_right = 800.0
+offset_right = 721.0
 offset_bottom = 492.0
-text = "avoid collision with the triangles
-use spells to destroy triangles
-the unknown side of a triangle is a
-different color from the other two
+text = "this is the most difficult gamemode.
+Protect your castle from triangles!
 
-on KeyBoard:
-'q' for fire spell
-'w' for lighting spell
-'e' for water spelll
+Each spell eliminates a specific kind
+of triangle. It takes mana to fire 
+these spells, so choose carefully!
 
-touch screen:
-press  for fire spell
+Two of the sides of a triangle
+will be the same color. 
+Look at the position of theta (  ).
 
-press  for lighting spell
-
-press  for water spell
-
-for help on which spell is used
-on a which triangle, click hints"
+to theta, If these two sides are:
+- The opposite side and the hypotenuse,
+    It's a sin triangle! Use fire!
+- The adjacent side and the hypotenuse,
+    It's a cos triangle! Use lightning!
+- The opposite side and the adjacent side,
+    It's a tan triangle! Use water!
+"
 
 [node name="Icons" type="Node2D" parent="UI Layer/Control/PregameScreen/Instructions/Body"]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Instructions/Body/Icons"]
 position = Vector2(74, 220)
@@ -327,223 +518,144 @@ texture = ExtResource("9_u2nqj")
 
 [node name="Header" type="Label" parent="UI Layer/Control/PregameScreen/Instructions"]
 layout_mode = 0
-offset_left = 354.0
+offset_left = 194.0
 offset_top = 62.0
-offset_right = 799.0
+offset_right = 721.0
 offset_bottom = 89.0
 text = "how to play"
 horizontal_alignment = 1
 
-[node name="Hints" type="Label" parent="UI Layer/Control/PregameScreen"]
+[node name="Theta" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Instructions"]
+position = Vector2(592, 288)
+scale = Vector2(0.890625, 0.945312)
+texture = ExtResource("10_aw2xb")
+
+[node name="UnderstandingMath" type="Label" parent="UI Layer/Control/PregameScreen"]
 layout_mode = 0
-offset_left = 805.0
-offset_top = 62.0
-offset_right = 1251.0
-offset_bottom = 548.0
-text = "given two side of a right triangle
-fire spells destroy sin triangles
-sin  = oppsite/hypotenuse
-look for theta and the unknown side
-
-
-
-
-lighting spell destroy cos triangles
-cos  = adjacent/hypotenuse
-look for theta and the unknown side
-
-
-
-
-WATER SPELLS DESTROY TAN TRIANGLES
-TAN  = OPPOSITE/ADJACENT
-look for theta and the unknown side
-"
+offset_left = 721.0
+offset_top = 89.0
+offset_right = 1293.0
+offset_bottom = 492.0
 script = ExtResource("9_yfcgw")
 
-[node name="Button" type="Button" parent="UI Layer/Control/PregameScreen/Hints"]
-visible = false
+[node name="Label5" type="Label" parent="UI Layer/Control/PregameScreen/UnderstandingMath"]
 layout_mode = 0
-offset_left = 150.0
-offset_top = 431.0
-offset_right = 241.0
-offset_bottom = 471.0
-text = "next"
+offset_left = 412.0
+offset_top = 163.0
+offset_right = 534.0
+offset_bottom = 232.0
 
-[node name="Sprite2D2" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints"]
-position = Vector2(50, 52)
-scale = Vector2(0.890625, 0.945312)
+[node name="Label6" type="Label" parent="UI Layer/Control/PregameScreen/UnderstandingMath"]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 231.0
+offset_right = 534.0
+offset_bottom = 301.0
+
+[node name="Label7" type="Label" parent="UI Layer/Control/PregameScreen/UnderstandingMath"]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 300.0
+offset_right = 534.0
+offset_bottom = 372.0
+
+[node name="Label2" type="Label" parent="UI Layer/Control/PregameScreen/UnderstandingMath"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 545.0
+offset_bottom = 177.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4h25s")
+text = "Remember SOH-CAH-TOA!
+Sin = opposite/Hypotenuse.
+Cos = Adjacent/Hypotenuse.
+Tan = Opposite/Adjacent.
+
+hypotenuse = longest side of a right triangle
+adjacent basically means \"next to\"."
+
+[node name="Header" type="Label" parent="UI Layer/Control/PregameScreen/UnderstandingMath"]
+layout_mode = 0
+offset_top = -27.0
+offset_right = 568.0
+text = "Understanding the math"
+horizontal_alignment = 1
+
+[node name="Traingle" type="Sprite2D" parent="UI Layer/Control/PregameScreen/UnderstandingMath"]
+position = Vector2(474, 190)
+scale = Vector2(2.75, 2.75)
+texture = ExtResource("21_s7ynk")
+
+[node name="Triangle" type="Sprite2D" parent="UI Layer/Control/PregameScreen/UnderstandingMath"]
+position = Vector2(473, 264)
+scale = Vector2(3.2004, 3.2004)
+texture = ExtResource("22_t7qri")
+
+[node name="Tantriangle" type="Sprite2D" parent="UI Layer/Control/PregameScreen/UnderstandingMath"]
+position = Vector2(488, 326)
+scale = Vector2(3.34375, 3.34375)
+texture = ExtResource("21_qc0da")
+
+[node name="Theta" type="Sprite2D" parent="UI Layer/Control/PregameScreen/UnderstandingMath"]
+position = Vector2(484, 212)
+scale = Vector2(0.61062, 0.648114)
 texture = ExtResource("10_aw2xb")
 
-[node name="Sprite2D" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints"]
-position = Vector2(51, 198)
-scale = Vector2(0.890625, 0.945312)
+[node name="Theta3" type="Sprite2D" parent="UI Layer/Control/PregameScreen/UnderstandingMath"]
+position = Vector2(489, 282)
+scale = Vector2(0.55531, 0.589408)
 texture = ExtResource("10_aw2xb")
 
-[node name="Sprite2D3" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints"]
+[node name="Theta4" type="Sprite2D" parent="UI Layer/Control/PregameScreen/UnderstandingMath"]
+position = Vector2(488, 352)
+scale = Vector2(0.61062, 0.648114)
+texture = ExtResource("10_aw2xb")
+
+[node name="Theta2" type="Sprite2D" parent="UI Layer/Control/PregameScreen/UnderstandingMath"]
 position = Vector2(53, 349)
 scale = Vector2(0.890625, 0.945312)
 texture = ExtResource("10_aw2xb")
 
-[node name="sinetriangle" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints"]
-position = Vector2(86, 112)
-scale = Vector2(4.33594, 3.90625)
-texture = ExtResource("11_u03y7")
+[node name="Label" type="Label" parent="UI Layer/Control/PregameScreen/UnderstandingMath"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 231.0
+offset_right = 412.0
+offset_bottom = 300.0
+text = "one side is adjacent to theta, 
+and the other is the hypotenuse.
+This is a \"cos\" triangle."
 
-[node name="Sprite2D" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/sinetriangle"]
-position = Vector2(-1.25392, 12.1081)
-scale = Vector2(0.203762, 0.243243)
-texture = ExtResource("12_7ntse")
+[node name="Label4" type="Label" parent="UI Layer/Control/PregameScreen/UnderstandingMath"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 163.0
+offset_right = 412.0
+offset_bottom = 232.0
+text = "one side is opposite to theta, 
+and the other is the hypotenuse.
+This is a \"sin\" triangle."
 
-[node name="Sprite2D2" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/sinetriangle"]
-position = Vector2(-13.4671, -0.756757)
-scale = Vector2(0.173981, 0.182432)
-texture = ExtResource("13_lb3v8")
-
-[node name="Sprite2D3" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/sinetriangle"]
-position = Vector2(3.56113, -3.67567)
-scale = Vector2(0.153605, 0.182432)
-texture = ExtResource("14_j1l6f")
-
-[node name="Sprite2D4" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/sinetriangle"]
-position = Vector2(4.41379, 4.81081)
-scale = Vector2(0.163009, 0.138513)
-texture = ExtResource("10_aw2xb")
-
-[node name="sinetriangle2" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints"]
-position = Vector2(297, 114)
-scale = Vector2(4.52344, 3.8125)
-texture = ExtResource("11_u03y7")
-
-[node name="Sprite2D" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/sinetriangle2"]
-position = Vector2(-13.442, 0.648649)
-scale = Vector2(0.203762, 0.243243)
-texture = ExtResource("12_7ntse")
-
-[node name="Sprite2D2" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/sinetriangle2"]
-position = Vector2(4.4138, 11.027)
-scale = Vector2(0.173981, 0.182432)
-texture = ExtResource("13_lb3v8")
-
-[node name="Sprite2D3" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/sinetriangle2"]
-position = Vector2(3.56113, -3.67567)
-scale = Vector2(0.153605, 0.182432)
-texture = ExtResource("14_j1l6f")
-
-[node name="Sprite2D4" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/sinetriangle2"]
-position = Vector2(-5.81818, -1.08108)
-scale = Vector2(0.163009, 0.138513)
-texture = ExtResource("10_aw2xb")
-
-[node name="cosinetriangle3" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints"]
-position = Vector2(99, 262.75)
-scale = Vector2(4.33594, 3.76563)
-texture = ExtResource("11_u03y7")
-
-[node name="Sprite2D" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/cosinetriangle3"]
-position = Vector2(0.922514, 11.776)
-scale = Vector2(0.203762, 0.243243)
-texture = ExtResource("12_7ntse")
-
-[node name="Sprite2D2" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/cosinetriangle3"]
-position = Vector2(-13.146, 0.256001)
-scale = Vector2(0.173981, 0.182432)
-texture = ExtResource("13_lb3v8")
-
-[node name="Sprite2D3" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/cosinetriangle3"]
-position = Vector2(3.56113, -3.67567)
-scale = Vector2(0.153605, 0.182432)
-texture = ExtResource("14_j1l6f")
-
-[node name="Sprite2D4" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/cosinetriangle3"]
-position = Vector2(4.41379, 4.81081)
-scale = Vector2(0.163009, 0.138513)
-texture = ExtResource("10_aw2xb")
-
-[node name="cosinetriangle4" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints"]
-position = Vector2(306, 262)
-scale = Vector2(4.33594, 3.90625)
-texture = ExtResource("11_u03y7")
-
-[node name="Sprite2D" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/cosinetriangle4"]
-position = Vector2(-13.8378, -0.256002)
-scale = Vector2(0.203762, 0.243243)
-texture = ExtResource("12_7ntse")
-
-[node name="Sprite2D2" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/cosinetriangle4"]
-position = Vector2(0.46126, 11.264)
-scale = Vector2(0.173981, 0.182432)
-texture = ExtResource("13_lb3v8")
-
-[node name="Sprite2D3" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/cosinetriangle4"]
-position = Vector2(3.56113, -3.67567)
-scale = Vector2(0.153605, 0.182432)
-texture = ExtResource("14_j1l6f")
-
-[node name="Sprite2D4" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/cosinetriangle4"]
-position = Vector2(-6.22703, -1.536)
-scale = Vector2(0.163009, 0.138513)
-texture = ExtResource("10_aw2xb")
-
-[node name="TANtriangle5" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints"]
-position = Vector2(331, 425)
-scale = Vector2(4.33594, 3.90625)
-texture = ExtResource("11_u03y7")
-
-[node name="Sprite2D" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/TANtriangle5"]
-position = Vector2(4.6126, -4.60801)
-scale = Vector2(0.203762, 0.243243)
-texture = ExtResource("12_7ntse")
-
-[node name="Sprite2D2" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/TANtriangle5"]
-position = Vector2(0.46126, 11.264)
-scale = Vector2(0.173981, 0.182432)
-texture = ExtResource("13_lb3v8")
-
-[node name="Sprite2D3" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/TANtriangle5"]
-position = Vector2(-14.0685, 1.02399)
-scale = Vector2(0.153605, 0.182432)
-texture = ExtResource("14_j1l6f")
-
-[node name="Sprite2D4" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/TANtriangle5"]
-position = Vector2(-6.22703, -1.536)
-scale = Vector2(0.163009, 0.138513)
-texture = ExtResource("10_aw2xb")
-
-[node name="TANtriangle6" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints"]
-position = Vector2(94, 419)
-scale = Vector2(4.33594, 3.90625)
-texture = ExtResource("11_u03y7")
-
-[node name="Sprite2D" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/TANtriangle6"]
-position = Vector2(4.15136, -3.58401)
-scale = Vector2(0.203762, 0.243243)
-texture = ExtResource("12_7ntse")
-
-[node name="Sprite2D2" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/TANtriangle6"]
-position = Vector2(-13.3766, 0.255985)
-scale = Vector2(0.173981, 0.182432)
-texture = ExtResource("13_lb3v8")
-
-[node name="Sprite2D3" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/TANtriangle6"]
-position = Vector2(-0.922528, 11.52)
-scale = Vector2(0.153605, 0.182432)
-texture = ExtResource("14_j1l6f")
-
-[node name="Sprite2D4" type="Sprite2D" parent="UI Layer/Control/PregameScreen/Hints/TANtriangle6"]
-position = Vector2(2.53693, 4.09599)
-scale = Vector2(0.163009, 0.138513)
-texture = ExtResource("10_aw2xb")
+[node name="Label3" type="Label" parent="UI Layer/Control/PregameScreen/UnderstandingMath"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 300.0
+offset_right = 412.0
+offset_bottom = 372.0
+text = "one side is opposite to theta,  
+the other is adjacent to theta.
+This is a \"Tan\" triangle."
 
 [node name="ShowHints" type="Button" parent="UI Layer/Control/PregameScreen"]
 layout_mode = 0
-offset_left = 593.0
-offset_top = 494.0
-offset_right = 714.0
-offset_bottom = 535.0
+offset_left = 578.0
+offset_top = 516.0
+offset_right = 699.0
+offset_bottom = 557.0
 text = "hints"
 
 [node name="DeathScreen" type="Control" parent="UI Layer/Control"]
+layout_mode = 3
 anchors_preset = 0
 offset_left = 560.0
 offset_top = 312.0
@@ -577,128 +689,21 @@ side and the placement of theta
 to maximize spell accuracy
 "
 
-[node name="World" type="Node2D" parent="."]
-
-[node name="Castle" type="Area2D" parent="World"]
-position = Vector2(908, 339)
-script = ExtResource("17_xr3j1")
-
-[node name="CastleHitbox" type="CollisionShape2D" parent="World/Castle"]
-position = Vector2(125, -14.5)
-shape = SubResource("RectangleShape2D_b7dvx")
-
-[node name="CastleSprite" type="Sprite2D" parent="World/Castle"]
-position = Vector2(91, -15)
-scale = Vector2(4.79688, 4.79688)
-texture = ExtResource("24_j5lfy")
-
-[node name="Background" type="Sprite2D" parent="World"]
-z_index = -2
-position = Vector2(576.25, 324)
-scale = Vector2(35.9844, 20.25)
-texture = ExtResource("8_xajof")
-
-[node name="CloudHandler" type="Node2D" parent="World"]
-position = Vector2(-235, -59)
-script = ExtResource("24_rbkrx")
-
-[node name="Clouds" type="Node2D" parent="World/CloudHandler"]
-
-[node name="cloudTimer" type="Timer" parent="World/CloudHandler"]
-wait_time = 3.0
-one_shot = true
-
-[node name="Spawnpoints" type="Node2D" parent="World/CloudHandler"]
-
-[node name="Marker2D" type="Marker2D" parent="World/CloudHandler/Spawnpoints"]
-position = Vector2(-41, 276)
-
-[node name="Marker2D2" type="Marker2D" parent="World/CloudHandler/Spawnpoints"]
-position = Vector2(-103, 490)
-
-[node name="Marker2D3" type="Marker2D" parent="World/CloudHandler/Spawnpoints"]
-position = Vector2(-200, 362)
-
-[node name="Marker2D4" type="Marker2D" parent="World/CloudHandler/Spawnpoints"]
-position = Vector2(-96, 151)
-
-[node name="TriangleHandler" type="Node2D" parent="." groups=["GameMethod"]]
-script = ExtResource("25_kp2y5")
-
-[node name="restartWave" type="Timer" parent="TriangleHandler"]
-one_shot = true
-
-[node name="difficultyTimer" type="Timer" parent="TriangleHandler"]
-one_shot = true
-
-[node name="SpawnTimer" type="Timer" parent="TriangleHandler" groups=["GameMethod"]]
-process_mode = 3
-one_shot = true
-
-[node name="Player" type="CharacterBody2D" parent="." groups=["Player"]]
-position = Vector2(900, 324)
-motion_mode = 1
-script = ExtResource("2_eates")
-
-[node name="Sprites" type="Node2D" parent="Player"]
-script = ExtResource("2_o8ocu")
-
-[node name="Skin" type="Sprite2D" parent="Player/Sprites"]
-
-[node name="Hat" type="Sprite2D" parent="Player/Sprites"]
-
-[node name="Shirt" type="Sprite2D" parent="Player/Sprites"]
-
-[node name="Facial Hair" type="Sprite2D" parent="Player/Sprites"]
-texture = ExtResource("7_e4c4l")
-
-[node name="Legs" type="AnimatedSprite2D" parent="Player/Sprites"]
-sprite_frames = SubResource("SpriteFrames_0ql60")
-animation = &"Idle"
-
-[node name="spellposition" type="Node2D" parent="Player"]
-
-[node name="Marker2D" type="Marker2D" parent="Player/spellposition"]
-position = Vector2(18, 2)
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Player"]
-stream = ExtResource("28_l3s12")
-volume_db = -32.11
-
-[node name="firecd" type="Timer" parent="Player"]
-one_shot = true
-
-[node name="lightningcd" type="Timer" parent="Player"]
-one_shot = true
-
-[node name="watercd" type="Timer" parent="Player"]
-one_shot = true
-
-[node name="SuperCD" type="Timer" parent="Player"]
-wait_time = 5.0
-one_shot = true
-
-[node name="SpellHandler" type="Node2D" parent="."]
-script = ExtResource("33_ahqoi")
-
-[connection signal="begingame" from="." to="UI Layer/Control/HUD/Bars" method="_on_begin_game"]
-[connection signal="begingame" from="." to="UI Layer/Control/PregameScreen" method="_on_begin_game"]
 [connection signal="begingame" from="." to="World/Castle" method="_on_begin_game"]
 [connection signal="begingame" from="." to="World/CloudHandler" method="_on_begin_game"]
 [connection signal="begingame" from="." to="TriangleHandler" method="_on_begin_game"]
 [connection signal="begingame" from="." to="Player" method="_on_begin_game"]
-[connection signal="gameLost" from="." to="UI Layer/Control/DeathScreen" method="_on_gamemode_3_game_lost"]
+[connection signal="begingame" from="." to="UI Layer/Control/Debug/Panel/MuteButton/AudioStreamPlayer" method="_on_gamemode_3_begingame"]
+[connection signal="begingame" from="." to="UI Layer/Control/HUD" method="_on_gamemode_3_begingame"]
+[connection signal="begingame" from="." to="UI Layer/Control/HUD/Bars" method="_on_begin_game"]
+[connection signal="begingame" from="." to="UI Layer/Control/PregameScreen" method="_on_begin_game"]
 [connection signal="gameLost" from="." to="World/CloudHandler" method="_on_loss"]
 [connection signal="gameLost" from="." to="TriangleHandler" method="_on_game_loss"]
+[connection signal="gameLost" from="." to="UI Layer/Control/HUD" method="_on_gamemode_3_game_lost"]
+[connection signal="gameLost" from="." to="UI Layer/Control/DeathScreen" method="_on_gamemode_3_game_lost"]
+[connection signal="pregame" from="." to="TriangleHandler" method="_on_pregame"]
 [connection signal="pregame" from="." to="UI Layer/Control/PregameScreen" method="_on_pregame"]
 [connection signal="pregame" from="." to="UI Layer/Control/DeathScreen" method="_on_pregame_start"]
-[connection signal="pregame" from="." to="TriangleHandler" method="_on_pregame"]
-[connection signal="button_down" from="UI Layer/Control/HUD/firebutton" to="Player" method="_on_firebutton_button_down"]
-[connection signal="button_down" from="UI Layer/Control/HUD/lightingbutton" to="Player" method="_on_lightingbutton_button_down"]
-[connection signal="button_down" from="UI Layer/Control/HUD/waterbutton" to="Player" method="_on_waterbutton_button_down"]
-[connection signal="button_up" from="UI Layer/Control/PregameScreen/Play" to="." method="_on_play_button_up"]
-[connection signal="button_up" from="UI Layer/Control/PregameScreen/ShowHints" to="UI Layer/Control/PregameScreen/Hints" method="_on_hintsbutton_button_up"]
-[connection signal="button_up" from="UI Layer/Control/DeathScreen/Restart" to="." method="_on_restart_button_up"]
 [connection signal="body_entered" from="World/Castle" to="World/Castle" method="_on_body_entered"]
 [connection signal="lost" from="World/Castle" to="." method="_on_castle_lost"]
 [connection signal="timeout" from="World/CloudHandler/cloudTimer" to="World/CloudHandler" method="generate_cloud"]
@@ -709,8 +714,16 @@ script = ExtResource("33_ahqoi")
 [connection signal="lightingspellActivated" from="Player" to="SpellHandler" method="_on_player_lightingspell_activated"]
 [connection signal="superSpellActivated" from="Player" to="SpellHandler" method="_on_player_super_spell_activated"]
 [connection signal="waterspellActivated" from="Player" to="SpellHandler" method="_on_player_waterspell_activated"]
-[connection signal="finished" from="Player/AudioStreamPlayer2D" to="Player" method="_on_audio_stream_player_2d_finished"]
 [connection signal="timeout" from="Player/firecd" to="Player" method="_on_firecd_timeout"]
 [connection signal="timeout" from="Player/lightningcd" to="Player" method="_on_lightningcd_timeout"]
 [connection signal="timeout" from="Player/watercd" to="Player" method="_on_watercd_timeout"]
 [connection signal="timeout" from="Player/SuperCD" to="Player" method="_on_super_cd_timeout"]
+[connection signal="button_down" from="UI Layer/Control/HUD/firebutton" to="Player" method="_on_firebutton_button_down"]
+[connection signal="button_down" from="UI Layer/Control/HUD/lightingbutton" to="Player" method="_on_lightingbutton_button_down"]
+[connection signal="button_down" from="UI Layer/Control/HUD/waterbutton" to="Player" method="_on_waterbutton_button_down"]
+[connection signal="button_up" from="UI Layer/Control/Debug/Panel/MuteButton" to="UI Layer/Control/Debug/Panel/MuteButton" method="_on_mute_button_button_up" flags=18]
+[connection signal="finished" from="UI Layer/Control/Debug/Panel/MuteButton/AudioStreamPlayer" to="UI Layer/Control/Debug/Panel/MuteButton/AudioStreamPlayer" method="_on_finished" flags=18]
+[connection signal="toggled" from="UI Layer/Control/Debug/Return Button" to="UI Layer/Control/Debug/Return Button" method="_on_toggled" flags=18]
+[connection signal="button_up" from="UI Layer/Control/PregameScreen/Play" to="." method="_on_play_button_up"]
+[connection signal="button_up" from="UI Layer/Control/PregameScreen/ShowHints" to="UI Layer/Control/PregameScreen/UnderstandingMath" method="_on_hintsbutton_button_up"]
+[connection signal="button_up" from="UI Layer/Control/DeathScreen/Restart" to="." method="_on_restart_button_up"]

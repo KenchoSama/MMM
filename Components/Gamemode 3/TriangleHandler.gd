@@ -29,6 +29,8 @@ func _on_begin_game():
 func _on_game_loss():
 	# On loss, break the recursive triangle spawning.
 	$SpawnTimer.stop()
+	for i in $ActiveTriangles.get_children():
+		i.queue_free()
 
 
 # This is essentially recursive, since it will start the SpawnTimer which has its timeout signal connected to this method.
@@ -47,7 +49,7 @@ func spawn_triangle():
 	new_triangle.player_ref = $"../Player"
 	var positionSpawn = Vector2(-100, rng.randi_range(200, 500))
 	new_triangle.position = positionSpawn
-	add_child(new_triangle)
+	$ActiveTriangles.add_child(new_triangle)
 	
 	# Connor, might need to look here.
 	#if !superSpellActive:

@@ -87,7 +87,7 @@ func _on_player_lost():
 	$Camera.player = WizardSprites
 	player.connect("body_entered", _sunk_to_floor)
 	emit_signal("gameLost", player.global_position)
-	$"UI Layer/MuteButton/AudioStreamPlayer".stop()
+	$"UI Layer/Control/Debug/Panel/MuteButton/AudioStreamPlayer".stop()
 	
 	
 
@@ -96,7 +96,7 @@ func _on_pre_game():
 	on_floor = false
 	WizardSprites.z_index = 3
 	follow_rigidbody = true
-	$"UI Layer/MuteButton/AudioStreamPlayer".play(0)
+	$"UI Layer/Control/Debug/Panel/MuteButton/AudioStreamPlayer".play(0)
 	WizardSprites.position = Vector2(180, -365)
 	WizardSprites.scale = Vector2(1.5,1.5)
 	WizardSprites.rotation = 0

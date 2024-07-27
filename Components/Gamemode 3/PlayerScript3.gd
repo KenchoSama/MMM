@@ -87,12 +87,7 @@ func mana_update(value):
 		mana = maxMana
 	bars.update_manabar(mana)
 
-
-func _on_audio_stream_player_2d_finished():
-	$AudioStreamPlayer2D.play()
-
 func _on_begin_game():
-	$AudioStreamPlayer2D.play()
 	set_physics_process(true)
 	mana = maxMana
 	superMana = 0
