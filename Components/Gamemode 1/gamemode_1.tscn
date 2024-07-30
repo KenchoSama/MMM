@@ -622,6 +622,7 @@ offset_right = 1010.0
 offset_bottom = 45.0
 
 [node name="Panel" type="Panel" parent="UI Layer/Control/Debug"]
+layout_mode = 0
 offset_left = 7.0
 offset_top = 7.0
 offset_right = 81.0
@@ -630,6 +631,7 @@ theme = ExtResource("2_4ifvl")
 
 [node name="MuteButton" type="Button" parent="UI Layer/Control/Debug/Panel"]
 self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
 offset_right = 73.0
 offset_bottom = 70.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sa1gb")
@@ -648,6 +650,7 @@ volume_db = -32.0
 script = ExtResource("24_bry2a")
 
 [node name="Main Menu2" type="Panel" parent="UI Layer/Control/Debug"]
+layout_mode = 0
 offset_left = 94.0
 offset_top = 7.0
 offset_right = 168.0
