@@ -30,7 +30,7 @@ func _input(event):
 		target = event.get_position()
 
 func _physics_process(_delta):
-	mana_update(0.01)
+	mana_update(0.02)
 	#move and look
 	velocity = position.direction_to(target) * speed
 	var player_sprite = $Sprites
@@ -51,17 +51,17 @@ func _physics_process(_delta):
 # ------- INPUT METHODS USED FOR DEBUGGING --------#
 ####################################################
 
-	if Input.is_key_pressed(KEY_Q) and mana > 20 and firespell:
+	if Input.is_key_pressed(KEY_Q) and mana > 10 and firespell:
 		firespell = false
 		mana_update(-10)
 		$firecd.start(1)
 		firespellActivated.emit(spell_marker[0].global_position, player_direction)
-	elif Input.is_key_pressed(KEY_W) and mana > 20 and lightningspell:
+	elif Input.is_key_pressed(KEY_W) and mana > 10 and lightningspell:
 		lightningspell = false
 		mana_update(-10)
 		$lightningcd.start(1)
 		lightingspellActivated.emit(spell_marker[0].global_position, player_direction)
-	elif Input.is_key_pressed(KEY_E) and mana > 20 and waterspell:
+	elif Input.is_key_pressed(KEY_E) and mana > 10 and waterspell:
 		waterspell = false
 		mana_update(-10)
 		$watercd.start(1)
@@ -120,6 +120,13 @@ func _on_waterbutton_button_down():
 		waterspell = false
 		waterspellActivated.emit($spellposition.get_children()[0].global_position, (spelltarget - position).normalized())
 
+func _on_superbutton_button_down():
+	if superReady:
+		superReady = false
+		super_update(-100)
+		superSpellActivated.emit()
+		$SuperCD.start()
+	
 func _on_firecd_timeout():
 	firespell = true
 func _on_lightningcd_timeout():

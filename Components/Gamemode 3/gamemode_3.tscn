@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=60 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 3/gamemode_3.gd" id="1_ycoyy"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/PlayerScript3.gd" id="2_eates"]
@@ -30,8 +30,10 @@
 [ext_resource type="Texture2D" uid="uid://bkywgr5cy0278" path="res://Components/Gamemode 3/tantriangle.png" id="21_qc0da"]
 [ext_resource type="Texture2D" uid="uid://dw20ha3wfot3s" path="res://Components/Gamemode 3/traingle.png" id="21_s7ynk"]
 [ext_resource type="Texture2D" uid="uid://vymlrcwv24v8" path="res://Components/Gamemode 3/triangle.png" id="22_t7qri"]
+[ext_resource type="Texture2D" uid="uid://duyoayymgb4li" path="res://Components/Gamemode 3/super_button.png" id="24_8iqe6"]
 [ext_resource type="Texture2D" uid="uid://dtas2y8f8dt6j" path="res://Components/Gamemode 3/Sprite-0001.png" id="24_j5lfy"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/CloudHandler.gd" id="24_rbkrx"]
+[ext_resource type="Script" path="res://Components/Gamemode 3/superbutton.gd" id="25_5sbh3"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/TriangleHandler.gd" id="25_kp2y5"]
 [ext_resource type="AudioStream" uid="uid://cpk5bw0nacy8x" path="res://assets/MagicCastle.wav" id="28_l3s12"]
 [ext_resource type="Script" path="res://Reusable Scenes/Return Button/return_button.gd" id="28_vr5c3"]
@@ -68,6 +70,14 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_v50lt"]
 font_size = 10
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uftg0"]
+atlas = ExtResource("24_8iqe6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hqxc"]
+atlas = ExtResource("24_8iqe6")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sa1gb"]
 
@@ -262,8 +272,10 @@ script = ExtResource("33_ahqoi")
 [node name="Control" type="Control" parent="UI Layer"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1150.0
-offset_bottom = 648.0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 1164.0
+offset_bottom = 662.0
 theme = ExtResource("2_hr7at")
 
 [node name="HUD" type="Control" parent="UI Layer/Control"]
@@ -287,10 +299,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -161.0
-offset_top = 210.0
-offset_right = -33.0
-offset_bottom = 242.0
+offset_left = -188.727
+offset_top = 176.568
+offset_right = -60.7274
+offset_bottom = 208.568
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.72423, 1.66524)
@@ -299,10 +311,10 @@ allow_lesser = true
 texture_progress = ExtResource("21_6dwiq")
 
 [node name="Mana Bar" type="TextureProgressBar" parent="UI Layer/Control/HUD/Bars"]
-offset_left = -87.0
-offset_top = 190.0
-offset_right = 41.0
-offset_bottom = 222.0
+offset_left = -114.727
+offset_top = 156.568
+offset_right = 13.2726
+offset_bottom = 188.568
 scale = Vector2(1.58063, 0.723718)
 value = 100.0
 texture_progress = ExtResource("19_x6puj")
@@ -311,10 +323,10 @@ texture_progress = ExtResource("19_x6puj")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 194.0
-offset_top = 280.0
-offset_right = 226.0
-offset_bottom = 312.0
+offset_left = 166.273
+offset_top = 246.568
+offset_right = 198.273
+offset_bottom = 278.568
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -1.5708
@@ -322,16 +334,16 @@ scale = Vector2(2.755, 0.865)
 texture_progress = ExtResource("20_p6e0y")
 
 [node name="Health Bar border" type="Sprite2D" parent="UI Layer/Control/HUD/Bars"]
-position = Vector2(14, 236)
+position = Vector2(-13.7274, 202.568)
 scale = Vector2(3.34801, 3.34801)
 texture = ExtResource("21_ol5fq")
 
 [node name="firebutton" type="TextureButton" parent="UI Layer/Control/HUD"]
 layout_mode = 0
-offset_left = 82.0
-offset_top = 463.0
-offset_right = 114.0
-offset_bottom = 495.0
+offset_left = 80.0
+offset_top = 441.0
+offset_right = 112.0
+offset_bottom = 473.0
 scale = Vector2(4, 4)
 texture_normal = ExtResource("7_h17bh")
 texture_pressed = ExtResource("7_h17bh")
@@ -352,10 +364,10 @@ label_settings = SubResource("LabelSettings_v50lt")
 
 [node name="lightingbutton" type="TextureButton" parent="UI Layer/Control/HUD"]
 layout_mode = 0
-offset_left = 231.0
-offset_top = 475.0
-offset_right = 263.0
-offset_bottom = 507.0
+offset_left = 229.0
+offset_top = 453.0
+offset_right = 261.0
+offset_bottom = 485.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("8_ccq74")
 texture_pressed = ExtResource("8_ccq74")
@@ -375,10 +387,10 @@ label_settings = SubResource("LabelSettings_v50lt")
 
 [node name="waterbutton" type="TextureButton" parent="UI Layer/Control/HUD"]
 layout_mode = 0
-offset_left = 343.0
-offset_top = 455.0
-offset_right = 375.0
-offset_bottom = 487.0
+offset_left = 341.0
+offset_top = 433.0
+offset_right = 373.0
+offset_bottom = 465.0
 scale = Vector2(4, 4)
 texture_normal = ExtResource("9_u2nqj")
 texture_pressed = ExtResource("9_u2nqj")
@@ -395,6 +407,27 @@ offset_bottom = 50.0
 scale = Vector2(0.770464, 0.770464)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xmsjt")
 text = "tan"
+label_settings = SubResource("LabelSettings_v50lt")
+
+[node name="superbutton" type="TextureButton" parent="UI Layer/Control/HUD"]
+layout_mode = 0
+offset_left = 473.0
+offset_top = 431.0
+offset_right = 636.0
+offset_bottom = 594.0
+texture_normal = SubResource("AtlasTexture_uftg0")
+texture_disabled = SubResource("AtlasTexture_2hqxc")
+stretch_mode = 0
+script = ExtResource("25_5sbh3")
+
+[node name="Label3" type="Label" parent="UI Layer/Control/HUD/superbutton"]
+offset_left = 35.0
+offset_top = 153.0
+offset_right = 134.0
+offset_bottom = 195.0
+scale = Vector2(2.25047, 2.25047)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xmsjt")
+text = "Super"
 label_settings = SubResource("LabelSettings_v50lt")
 
 [node name="Debug" type="Control" parent="UI Layer/Control"]
@@ -693,9 +726,9 @@ to maximize spell accuracy
 [connection signal="begingame" from="." to="World/CloudHandler" method="_on_begin_game"]
 [connection signal="begingame" from="." to="TriangleHandler" method="_on_begin_game"]
 [connection signal="begingame" from="." to="Player" method="_on_begin_game"]
-[connection signal="begingame" from="." to="UI Layer/Control/Debug/Panel/MuteButton/AudioStreamPlayer" method="_on_gamemode_3_begingame"]
 [connection signal="begingame" from="." to="UI Layer/Control/HUD" method="_on_gamemode_3_begingame"]
 [connection signal="begingame" from="." to="UI Layer/Control/HUD/Bars" method="_on_begin_game"]
+[connection signal="begingame" from="." to="UI Layer/Control/Debug/Panel/MuteButton/AudioStreamPlayer" method="_on_gamemode_3_begingame"]
 [connection signal="begingame" from="." to="UI Layer/Control/PregameScreen" method="_on_begin_game"]
 [connection signal="gameLost" from="." to="World/CloudHandler" method="_on_loss"]
 [connection signal="gameLost" from="." to="TriangleHandler" method="_on_game_loss"]
@@ -721,6 +754,8 @@ to maximize spell accuracy
 [connection signal="button_down" from="UI Layer/Control/HUD/firebutton" to="Player" method="_on_firebutton_button_down"]
 [connection signal="button_down" from="UI Layer/Control/HUD/lightingbutton" to="Player" method="_on_lightingbutton_button_down"]
 [connection signal="button_down" from="UI Layer/Control/HUD/waterbutton" to="Player" method="_on_waterbutton_button_down"]
+[connection signal="button_down" from="UI Layer/Control/HUD/superbutton" to="Player" method="_on_superbutton_button_down"]
+[connection signal="button_down" from="UI Layer/Control/HUD/superbutton" to="UI Layer/Control/HUD/superbutton" method="_on_button_down"]
 [connection signal="button_up" from="UI Layer/Control/Debug/Panel/MuteButton" to="UI Layer/Control/Debug/Panel/MuteButton" method="_on_mute_button_button_up" flags=18]
 [connection signal="finished" from="UI Layer/Control/Debug/Panel/MuteButton/AudioStreamPlayer" to="UI Layer/Control/Debug/Panel/MuteButton/AudioStreamPlayer" method="_on_finished" flags=18]
 [connection signal="toggled" from="UI Layer/Control/Debug/Return Button" to="UI Layer/Control/Debug/Return Button" method="_on_toggled" flags=18]

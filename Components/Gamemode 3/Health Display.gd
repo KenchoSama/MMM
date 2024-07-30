@@ -8,6 +8,7 @@ var superbarcolor = preload("res://assets/superbar.png")
 var healthbar
 var manabar
 var superbar
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	healthbar = $"HP/Health Bar"
@@ -33,12 +34,15 @@ func init_super(value):
 	superbar.texture_progress = superbarcolor
 	superbar.max_value = value
 	superbar.value = 0
+	$"../superbutton".disabled = true
 
 func update_manabar(value):
 	manabar.value = value
 	
 func update_super(value):
 	superbar.value = value
+	if superbar.value >= 100:
+		$"../superbutton".disabled = false
 
 func update_healthbar(value):
 	if value > healthbar.max_value * 0.7:
