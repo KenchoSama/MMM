@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=77 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 3/gamemode_3.gd" id="1_ycoyy"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/PlayerScript3.gd" id="2_eates"]
@@ -23,7 +23,6 @@
 [ext_resource type="Script" path="res://Components/Gamemode 3/HUD.gd" id="19_f2wx6"]
 [ext_resource type="Texture2D" uid="uid://bl4dk4hrhv8wb" path="res://assets/bluebar.png" id="19_x6puj"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/Health Display.gd" id="20_2mk73"]
-[ext_resource type="Texture2D" uid="uid://nmb0ubq208pi" path="res://assets/superbar.png" id="20_p6e0y"]
 [ext_resource type="Texture2D" uid="uid://cugblrufhxyq4" path="res://assets/greenbar.png" id="21_6dwiq"]
 [ext_resource type="Texture2D" uid="uid://d2n8tse4dyq0d" path="res://assets/healthbar.png" id="21_ol5fq"]
 [ext_resource type="Texture2D" uid="uid://bkywgr5cy0278" path="res://Components/Gamemode 3/tantriangle.png" id="21_qc0da"]
@@ -66,6 +65,103 @@ animations = [{
 "name": &"Walking",
 "speed": 5.0
 }]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_80d8i"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeColorFunc" id="VisualShaderNodeColorFunc_pxg08"]
+output_port_for_preview = 0
+default_input_values = [0, Vector3(244, 255, 255)]
+function = 1
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_nom8r"]
+constant = 0.5
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_b0e3m"]
+constant = 0.75
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_wtd00"]
+constant = 1.0
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_dii4n"]
+default_input_values = [0, 238.72, 1, 1000.0, 2, 1000.0, 3, 0.0]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_a50jw"]
+input_name = "time"
+
+[sub_resource type="VisualShader" id="VisualShader_lhosm"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+
+void fragment() {
+// Input:8
+	float n_out8p0 = TIME;
+
+
+// FloatConstant:4
+	float n_out4p0 = 0.500000;
+
+
+// FloatOp:2
+	float n_out2p0 = n_out8p0 * n_out4p0;
+
+
+// FloatConstant:5
+	float n_out5p0 = 0.750000;
+
+
+// FloatConstant:6
+	float n_out6p0 = 1.000000;
+
+
+// VectorCompose:7
+	vec3 n_out7p0 = vec3(n_out2p0, n_out5p0, n_out6p0);
+
+
+	vec3 n_out3p0;
+// ColorFunc:3
+	{
+		vec3 c = n_out7p0;
+		vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+		vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+		n_out3p0 = c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+	}
+
+
+// Output:0
+	COLOR.rgb = n_out3p0;
+
+
+}
+"
+graph_offset = Vector2(-721.851, 62.5837)
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(840, 60)
+nodes/fragment/2/node = SubResource("VisualShaderNodeFloatOp_80d8i")
+nodes/fragment/2/position = Vector2(80, 60)
+nodes/fragment/3/node = SubResource("VisualShaderNodeColorFunc_pxg08")
+nodes/fragment/3/position = Vector2(560, 60)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatConstant_nom8r")
+nodes/fragment/4/position = Vector2(-300, 160)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatConstant_b0e3m")
+nodes/fragment/5/position = Vector2(-120, 260)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatConstant_wtd00")
+nodes/fragment/6/position = Vector2(60, 300)
+nodes/fragment/7/node = SubResource("VisualShaderNodeVectorCompose_dii4n")
+nodes/fragment/7/position = Vector2(320, 60)
+nodes/fragment/8/node = SubResource("VisualShaderNodeInput_a50jw")
+nodes/fragment/8/position = Vector2(-320, 60)
+nodes/fragment/connections = PackedInt32Array(4, 0, 2, 1, 7, 0, 3, 0, 2, 0, 7, 0, 5, 0, 7, 1, 6, 0, 7, 2, 3, 0, 0, 0, 8, 0, 2, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lioar"]
+shader = SubResource("VisualShader_lhosm")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x2vyp"]
+load_path = "res://.godot/imported/superbar.png-6dab106844fdaf0986f31a3454484b40.ctex"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xmsjt"]
 
@@ -314,18 +410,19 @@ value = 100.0
 texture_progress = ExtResource("19_x6puj")
 
 [node name="Super Bar" type="TextureProgressBar" parent="UI Layer/Control/HUD/Bars"]
+material = SubResource("ShaderMaterial_lioar")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 166.273
-offset_top = 246.568
-offset_right = 198.273
-offset_bottom = 278.568
+offset_left = 167.0
+offset_top = 247.0
+offset_right = 199.0
+offset_bottom = 279.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -1.5708
 scale = Vector2(2.755, 0.865)
-texture_progress = ExtResource("20_p6e0y")
+texture_progress = SubResource("CompressedTexture2D_x2vyp")
 
 [node name="Health Bar border" type="Sprite2D" parent="UI Layer/Control/HUD/Bars"]
 position = Vector2(-13.7274, 202.568)
@@ -415,6 +512,7 @@ stretch_mode = 0
 script = ExtResource("25_5sbh3")
 
 [node name="Label3" type="Label" parent="UI Layer/Control/HUD/superbutton"]
+layout_mode = 0
 offset_left = 35.0
 offset_top = 153.0
 offset_right = 134.0
