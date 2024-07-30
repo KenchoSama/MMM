@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=62 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 3/gamemode_3.gd" id="1_ycoyy"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/PlayerScript3.gd" id="2_eates"]
@@ -78,6 +78,13 @@ region = Rect2(32, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hqxc"]
 atlas = ExtResource("24_8iqe6")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u8yhx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mh0we"]
+font_size = 40
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sa1gb"]
 
@@ -430,6 +437,17 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_xmsjt")
 text = "Super"
 label_settings = SubResource("LabelSettings_v50lt")
 
+[node name="Score" type="Label" parent="UI Layer/Control/HUD"]
+layout_mode = 0
+offset_left = 545.0
+offset_top = 22.0
+offset_right = 578.0
+offset_bottom = 73.0
+scale = Vector2(1, 0.973148)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_u8yhx")
+text = "0"
+label_settings = SubResource("LabelSettings_mh0we")
+
 [node name="Debug" type="Control" parent="UI Layer/Control"]
 anchors_preset = 0
 offset_left = 1033.0
@@ -440,10 +458,10 @@ theme = ExtResource("2_hr7at")
 
 [node name="Panel" type="Panel" parent="UI Layer/Control/Debug"]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 8.0
-offset_right = 53.0
-offset_bottom = 53.0
+offset_left = -30.0
+offset_top = -3.0
+offset_right = 14.0
+offset_bottom = 42.0
 
 [node name="MuteButton" type="Button" parent="UI Layer/Control/Debug/Panel"]
 self_modulate = Color(0, 0, 0, 1)
@@ -469,10 +487,10 @@ script = ExtResource("5_ycubq")
 
 [node name="Return Button" type="Button" parent="UI Layer/Control/Debug"]
 layout_mode = 0
-offset_left = 65.0
-offset_top = 8.0
-offset_right = 108.0
-offset_bottom = 53.0
+offset_left = 29.0
+offset_top = -3.0
+offset_right = 72.0
+offset_bottom = 42.0
 toggle_mode = true
 script = ExtResource("28_vr5c3")
 

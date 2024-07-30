@@ -9,6 +9,7 @@ var rng = RandomNumberGenerator.new()
 # Assigned at moment of instancing.
 var player_ref 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var direction = (player_ref.position - position).normalized() 
@@ -42,6 +43,9 @@ func _process(delta):
 	pass
 
 func hit():
+	# Eventually put an animation here before queue free.
+	
+	
 	queue_free()
 
 

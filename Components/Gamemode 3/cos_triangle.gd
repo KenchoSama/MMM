@@ -42,6 +42,9 @@ func _process(delta):
 	pass
 
 func hit():
+	# Eventually put an animation here before queue free.
+	
+	
 	queue_free()
 
 

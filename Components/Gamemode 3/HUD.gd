@@ -6,6 +6,7 @@ func _ready():
 
 
 func _on_gamemode_3_begingame():
+	$Score.text = "0"
 	show()
 	
 	

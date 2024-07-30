@@ -47,6 +47,7 @@ func spawn_triangle():
 		new_triangle = tantriangle.instantiate()
 	
 	new_triangle.player_ref = $"../Player"
+	
 	var positionSpawn = Vector2(-100, rng.randi_range(200, 500))
 	new_triangle.position = positionSpawn
 	$ActiveTriangles.add_child(new_triangle)
@@ -76,6 +77,7 @@ func timerModify(val):
 
 func addElim():
 	triangleElims += 1
+	$"../UI Layer/Control/HUD/Score".text = str(triangleElims)
 
 
 func _on_difficulty_timer_timeout():
