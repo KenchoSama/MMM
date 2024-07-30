@@ -13,6 +13,7 @@ func _process(delta):
 
 func _on_area_2d_body_entered(body):
 	body.hit() # Replace with function body.
+	get_tree().call_group("GameMethod","addElim")
 
 func setSpellFalse():
 	get_tree().call_group("GameMethod","endSuper")

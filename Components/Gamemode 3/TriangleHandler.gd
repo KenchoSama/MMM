@@ -12,7 +12,7 @@ const superSpell:PackedScene = preload("res://Components/Gamemode 3/SuperLaser.t
 var triangleTimer
 var triangleElims
 
-var superSpellActive
+var superSpellActive : bool = false
 var waiting
 
 
@@ -21,6 +21,7 @@ var waiting
 func _on_pregame():
 	triangleTimer = 5
 	triangleElims = 0
+	superSpellActive
 	
 func _on_begin_game():
 	spawn_triangle()
@@ -52,13 +53,11 @@ func spawn_triangle():
 	new_triangle.position = positionSpawn
 	$ActiveTriangles.add_child(new_triangle)
 	
-	# Connor, might need to look here.
-	#if !superSpellActive:
-		#$Timer.start(triangleTimer)
+	if !superSpellActive:
+		$SpawnTimer.start(triangleTimer)
 		
-	#elif superSpellActive:
-		#print("triangleTimerPaused")
-	$SpawnTimer.start(triangleTimer)
+	elif superSpellActive:
+		$SpawnTimer.stop()
 	
 
 # --------------- Recent stuff from Connor, not refactored, just moved here --------------------- #
