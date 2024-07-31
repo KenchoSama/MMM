@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://8xushpv5otf2"]
+[gd_scene load_steps=108 format=3 uid="uid://8xushpv5otf2"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 1/gamemode_1.gd" id="1_1dpkc"]
 [ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="2_4ifvl"]
@@ -41,7 +41,9 @@
 [ext_resource type="AudioStream" uid="uid://c4joyuph0465b" path="res://assets/SurfingWiWi.mp3" id="23_4q26s"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/MMLooperScript.gd" id="24_bry2a"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/Home1.gd" id="26_ljefj"]
+[ext_resource type="Texture2D" uid="uid://wpl6vnheryp7" path="res://Reusable Scenes/Pause.png" id="27_i7h1v"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/Down.gd" id="28_6i0fh"]
+[ext_resource type="Script" path="res://Components/Gamemode 1/PauseMenuGM1.gd" id="28_bg3rw"]
 [ext_resource type="Script" path="res://Components/Gamemode 1/Home2.gd" id="30_docxn"]
 [ext_resource type="Texture2D" uid="uid://bprh2vgd6alos" path="res://Components/Gamemode 1/HighScoreRun.png" id="34_12ylp"]
 [ext_resource type="Texture2D" uid="uid://5v8udd52qub5" path="res://Components/Gamemode 1/Gamemode1 Sprites/Underwater.png" id="35_qmywq"]
@@ -155,16 +157,6 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="LabelSettings" id="LabelSettings_ajsnh"]
 font_size = 100
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sa1gb"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kl2ni"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84mvt"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ilywq"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ayh10"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfbkr"]
 atlas = ExtResource("5_17sk6")
 region = Rect2(0, 32, 32, 32)
@@ -263,6 +255,24 @@ corner_radius_bottom_left = 100
 shadow_size = 7
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dn1w4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sa1gb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kl2ni"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84mvt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ilywq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ayh10"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r1tlm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7sqvu"]
+font_size = 46
+
+[sub_resource type="LabelSettings" id="LabelSettings_giknm"]
+font_size = 36
 
 [node name="Gamemode 1" type="Node2D"]
 script = ExtResource("1_1dpkc")
@@ -614,59 +624,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("2_4ifvl")
 
-[node name="Debug" type="Control" parent="UI Layer/Control"]
-anchors_preset = 0
-offset_left = 970.0
-offset_top = 5.0
-offset_right = 1010.0
-offset_bottom = 45.0
-
-[node name="Panel" type="Panel" parent="UI Layer/Control/Debug"]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 81.0
-offset_bottom = 81.0
-theme = ExtResource("2_4ifvl")
-
-[node name="MuteButton" type="Button" parent="UI Layer/Control/Debug/Panel"]
-self_modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_right = 73.0
-offset_bottom = 70.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_sa1gb")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_kl2ni")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_84mvt")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ilywq")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ayh10")
-icon = ExtResource("21_nj4uu")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("22_l7vq7")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI Layer/Control/Debug/Panel/MuteButton"]
-stream = ExtResource("23_4q26s")
-volume_db = -32.0
-script = ExtResource("24_bry2a")
-
-[node name="Main Menu2" type="Panel" parent="UI Layer/Control/Debug"]
-layout_mode = 0
-offset_left = 94.0
-offset_top = 7.0
-offset_right = 168.0
-offset_bottom = 80.0
-theme = ExtResource("2_4ifvl")
-
-[node name="Home" type="TextureButton" parent="UI Layer/Control/Debug/Main Menu2"]
-layout_mode = 2
-offset_right = 32.0
-offset_bottom = 32.0
-scale = Vector2(2.30598, 2.30598)
-texture_normal = ExtResource("16_r8v8y")
-ignore_texture_size = true
-script = ExtResource("26_ljefj")
-
 [node name="BeforeStart" type="Control" parent="UI Layer/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 0
 offset_left = 327.0
@@ -935,6 +894,7 @@ label_settings = SubResource("LabelSettings_ky4od")
 autowrap_mode = 2
 
 [node name="DeathScreen" type="Control" parent="UI Layer/Control"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.45098)
 layout_mode = 3
 anchors_preset = 0
@@ -1076,6 +1036,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_dy47f")
 label_settings = SubResource("LabelSettings_3cgti")
 
 [node name="GameControls" type="Control" parent="UI Layer/Control"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1177,6 +1138,103 @@ script = ExtResource("20_6iq5a")
 [node name="JumpTimer" type="Timer" parent="UI Layer/Control/GameControls/Jump"]
 wait_time = 3.0
 
+[node name="PauseMenu" type="TextureButton" parent="UI Layer/Control"]
+process_mode = 3
+layout_mode = 0
+offset_left = 1043.0
+offset_top = -10.0
+offset_right = 1163.0
+offset_bottom = 110.0
+texture_normal = ExtResource("27_i7h1v")
+stretch_mode = 0
+script = ExtResource("28_bg3rw")
+
+[node name="BoundingBox" type="Panel" parent="UI Layer/Control/PauseMenu"]
+layout_mode = 0
+offset_left = -684.0
+offset_top = 177.0
+offset_right = -267.0
+offset_bottom = 441.0
+
+[node name="Panel" type="Panel" parent="UI Layer/Control/PauseMenu/BoundingBox"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 150.0
+offset_right = 184.0
+offset_bottom = 224.0
+theme = ExtResource("2_4ifvl")
+
+[node name="MuteButton" type="Button" parent="UI Layer/Control/PauseMenu/BoundingBox/Panel"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 73.0
+offset_bottom = 70.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sa1gb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kl2ni")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_84mvt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ilywq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ayh10")
+icon = ExtResource("21_nj4uu")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("22_l7vq7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI Layer/Control/PauseMenu/BoundingBox/Panel/MuteButton"]
+stream = ExtResource("23_4q26s")
+volume_db = -32.0
+script = ExtResource("24_bry2a")
+
+[node name="Main Menu2" type="Panel" parent="UI Layer/Control/PauseMenu/BoundingBox"]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 150.0
+offset_right = 276.0
+offset_bottom = 223.0
+theme = ExtResource("2_4ifvl")
+
+[node name="Home" type="TextureButton" parent="UI Layer/Control/PauseMenu/BoundingBox/Main Menu2"]
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(2.30598, 2.30598)
+texture_normal = ExtResource("16_r8v8y")
+ignore_texture_size = true
+script = ExtResource("26_ljefj")
+
+[node name="Paused" type="Label" parent="UI Layer/Control/PauseMenu/BoundingBox"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 12.0
+offset_right = 321.0
+offset_bottom = 74.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_r1tlm")
+text = "Paused"
+label_settings = SubResource("LabelSettings_7sqvu")
+
+[node name="High Score" type="Label" parent="UI Layer/Control/PauseMenu/BoundingBox"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 68.0
+offset_right = 444.0
+offset_bottom = 127.0
+scale = Vector2(0.600247, 0.600247)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_r1tlm")
+text = "High Score:"
+label_settings = SubResource("LabelSettings_giknm")
+
+[node name="HighScore" type="Label" parent="UI Layer/Control/PauseMenu/BoundingBox"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 103.0
+offset_right = 429.0
+offset_bottom = 162.0
+scale = Vector2(0.600247, 0.600247)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_r1tlm")
+text = "0
+"
+label_settings = SubResource("LabelSettings_giknm")
+horizontal_alignment = 1
+
 [connection signal="beginGame" from="." to="Wave" method="_on_begin"]
 [connection signal="beginGame" from="." to="Camera" method="_game_begin"]
 [connection signal="beginGame" from="." to="UI Layer/Control/BeforeStart" method="_on_game_begin"]
@@ -1195,9 +1253,6 @@ wait_time = 3.0
 [connection signal="preGame" from="." to="UI Layer/Control/BeforeStart" method="_pregame_selection"]
 [connection signal="preGame" from="." to="UI Layer/Control/DeathScreen" method="_on_pregame_start"]
 [connection signal="show_death_screen" from="Camera" to="UI Layer/Control/DeathScreen" method="_on_death"]
-[connection signal="button_up" from="UI Layer/Control/Debug/Panel/MuteButton" to="UI Layer/Control/Debug/Panel/MuteButton" method="_on_mute_button_button_up" flags=18]
-[connection signal="finished" from="UI Layer/Control/Debug/Panel/MuteButton/AudioStreamPlayer" to="UI Layer/Control/Debug/Panel/MuteButton/AudioStreamPlayer" method="_on_finished" flags=18]
-[connection signal="button_up" from="UI Layer/Control/Debug/Main Menu2/Home" to="UI Layer/Control/Debug/Main Menu2/Home" method="_on_button_up"]
 [connection signal="button_up" from="UI Layer/Control/BeforeStart/Panel/HintsButton/Hints" to="UI Layer/Control/BeforeStart/Panel/Hints" method="_on_hints_button_up"]
 [connection signal="button_up" from="UI Layer/Control/BeforeStart/Panel/Play/Play" to="." method="begin_game"]
 [connection signal="button_up" from="UI Layer/Control/BeforeStart/Panel/Main Menu/Home" to="UI Layer/Control/BeforeStart/Panel/Main Menu/Home" method="_on_button_up"]
@@ -1216,3 +1271,7 @@ wait_time = 3.0
 [connection signal="button_down" from="UI Layer/Control/GameControls/Jump" to="." method="_on_jump_button_down"]
 [connection signal="button_down" from="UI Layer/Control/GameControls/Jump" to="UI Layer/Control/GameControls/Jump" method="_on_button_down"]
 [connection signal="timeout" from="UI Layer/Control/GameControls/Jump/JumpTimer" to="UI Layer/Control/GameControls/Jump" method="_on_jump_timer_timeout"]
+[connection signal="button_up" from="UI Layer/Control/PauseMenu" to="UI Layer/Control/PauseMenu" method="_on_button_up"]
+[connection signal="button_up" from="UI Layer/Control/PauseMenu/BoundingBox/Panel/MuteButton" to="UI Layer/Control/PauseMenu/BoundingBox/Panel/MuteButton" method="_on_mute_button_button_up" flags=18]
+[connection signal="finished" from="UI Layer/Control/PauseMenu/BoundingBox/Panel/MuteButton/AudioStreamPlayer" to="UI Layer/Control/PauseMenu/BoundingBox/Panel/MuteButton/AudioStreamPlayer" method="_on_finished" flags=18]
+[connection signal="button_up" from="UI Layer/Control/PauseMenu/BoundingBox/Main Menu2/Home" to="UI Layer/Control/PauseMenu/BoundingBox/Main Menu2/Home" method="_on_button_up"]

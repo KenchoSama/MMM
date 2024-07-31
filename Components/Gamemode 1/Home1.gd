@@ -7,5 +7,6 @@ func _on_toggled(_button_press):
 
 
 func _on_button_up():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Components/Main Menu/main_menu.tscn")
 

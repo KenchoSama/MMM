@@ -23,6 +23,8 @@ func _pregame_begin():
 	current_best_distance = cfg.get_value("GM1Scores", "best_distance", 0)
 	current_best_height = cfg.get_value("GM1Scores", "best_height", 0)
 	
+	$"../UI Layer/Control/PauseMenu/BoundingBox/HighScore".text = str(current_best_distance)
+
 	set_process(false)
 	zoom = Vector2(1,1)
 	offset = Vector2(200, -150) # Offset above at start
