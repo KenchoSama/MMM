@@ -519,6 +519,7 @@ frame_progress = 0.229321
 [connection signal="button_down" from="Settings Button" to="Settings Menu" method="_on_settings_button_button_down"]
 [connection signal="button_up" from="Settings Menu/Panel/ResetWW" to="Settings Menu/Panel/ResetWW" method="_on_button_up"]
 [connection signal="button_up" from="Settings Menu/Panel/ResetLL" to="Settings Menu/Panel/ResetLL" method="_on_button_up"]
+[connection signal="button_up" from="Settings Menu/Panel/ResetT" to="Settings Menu/Panel/ResetT" method="_on_button_up"]
 [connection signal="button_up" from="Settings Menu/Panel/Support Us" to="Settings Menu/Panel/Support Us" method="_on_button_up"]
 [connection signal="button_up" from="Settings Menu/Panel/Close" to="Settings Menu" method="_on_close_button_up"]
 [connection signal="button_up" from="Settings Menu/Panel/Close" to="Settings Menu/Panel/Support Us" method="_on_close_button_up"]

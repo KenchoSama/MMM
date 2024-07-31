@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=78 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 3/gamemode_3.gd" id="1_ycoyy"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/PlayerScript3.gd" id="2_eates"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://dtas2y8f8dt6j" path="res://Components/Gamemode 3/Sprite-0001.png" id="24_j5lfy"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/CloudHandler.gd" id="24_rbkrx"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/superbutton.gd" id="25_5sbh3"]
+[ext_resource type="Script" path="res://Components/Gamemode 3/Score.gd" id="25_bc1v2"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/TriangleHandler.gd" id="25_kp2y5"]
 [ext_resource type="AudioStream" uid="uid://cpk5bw0nacy8x" path="res://assets/MagicCastle.wav" id="28_l3s12"]
 [ext_resource type="Script" path="res://Reusable Scenes/Return Button/return_button.gd" id="28_vr5c3"]
@@ -161,7 +162,6 @@ nodes/fragment/connections = PackedInt32Array(4, 0, 2, 1, 7, 0, 3, 0, 2, 0, 7, 0
 shader = SubResource("VisualShader_lhosm")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x2vyp"]
-load_path = "res://.godot/imported/superbar.png-6dab106844fdaf0986f31a3454484b40.ctex"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xmsjt"]
 
@@ -532,6 +532,7 @@ scale = Vector2(1, 0.973148)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_u8yhx")
 text = "0"
 label_settings = SubResource("LabelSettings_mh0we")
+script = ExtResource("25_bc1v2")
 
 [node name="Debug" type="Control" parent="UI Layer/Control"]
 anchors_preset = 0
@@ -893,6 +894,7 @@ offset_left = 197.0
 offset_right = 302.0
 offset_bottom = 30.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_c8rx0")
+text = "0"
 label_settings = SubResource("LabelSettings_auyqd")
 
 [node name="Label2" type="Label" parent="UI Layer/Control/DeathScreen/Panel/ScoreBounder"]
@@ -911,6 +913,7 @@ offset_left = 197.0
 offset_right = 302.0
 offset_bottom = 30.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_qiqwm")
+text = "0"
 label_settings = SubResource("LabelSettings_auyqd")
 
 [connection signal="begingame" from="." to="World/Castle" method="_on_begin_game"]
@@ -924,8 +927,10 @@ label_settings = SubResource("LabelSettings_auyqd")
 [connection signal="gameLost" from="." to="World/CloudHandler" method="_on_loss"]
 [connection signal="gameLost" from="." to="TriangleHandler" method="_on_game_loss"]
 [connection signal="gameLost" from="." to="UI Layer/Control/HUD" method="_on_gamemode_3_game_lost"]
+[connection signal="gameLost" from="." to="UI Layer/Control/HUD/Score" method="_on_loss"]
 [connection signal="gameLost" from="." to="UI Layer/Control/DeathScreen" method="_on_death"]
 [connection signal="pregame" from="." to="TriangleHandler" method="_on_pregame"]
+[connection signal="pregame" from="." to="UI Layer/Control/HUD/Score" method="_on_pregame"]
 [connection signal="pregame" from="." to="UI Layer/Control/PregameScreen" method="_on_pregame"]
 [connection signal="pregame" from="." to="UI Layer/Control/DeathScreen" method="_on_pregame_start"]
 [connection signal="body_entered" from="World/Castle" to="World/Castle" method="_on_body_entered"]

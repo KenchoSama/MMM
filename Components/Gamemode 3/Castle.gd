@@ -11,7 +11,7 @@ func _on_begin_game():
 # On a triangle hitting the castle, reduce the castle's health.
 # Any body that enters the castle is going to be one of the triangles by design. So call its "hit" method
 func _on_body_entered(body): 
-	hp -= 10
+	hp -= 100
 	body.hit()
 	
 	$"../../UI Layer/Control/HUD/Bars".update_healthbar(hp)

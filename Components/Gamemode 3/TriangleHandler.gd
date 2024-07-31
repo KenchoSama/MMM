@@ -80,7 +80,7 @@ func addElim():
 
 
 func _on_difficulty_timer_timeout():
-	if triangleTimer > 2:
+	if triangleTimer > 1.5:
 		timerModify(-0.5) # Replace with function body.
 	$difficultyTimer.start(10)
 
