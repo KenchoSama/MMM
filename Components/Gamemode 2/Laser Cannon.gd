@@ -17,6 +17,15 @@ func _ready():
 	reloadTimer = $Timer2
 	rng = RandomNumberGenerator.new()
 	set_physics_process(false)
+	
+	# Added so high score shows in pause menu on first play.
+	# Read high score from disk
+	var cfg = ConfigFile.new()
+	cfg.load("user://PlayerData.cfg")
+	var current_high_score = cfg.get_value("GM2Score", "score", 0) # 0 if none
+	$"../UI Layer/Debug/Pause Menu/BoundingBox/HighScore".text = str(current_high_score)
+	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -95,6 +104,7 @@ func _on_ray_cast_2d_loss():
 		cfg.save("user://PlayerData.cfg")
 	
 	# Display to user
+	$"../UI Layer/Debug/Pause Menu/BoundingBox/HighScore".text = str(current_high_score)
 	$"../UI Layer/Debug/DeathScreen/YourScore".set_text(str(score))
 	$"../UI Layer/Debug/DeathScreen/HiScore".set_text(str(current_high_score))
 	
