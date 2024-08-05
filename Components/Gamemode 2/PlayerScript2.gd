@@ -52,10 +52,10 @@ func _physics_process(_delta):
 
 
 func _on_gamemode_2_begin_game():
-	$"../UI Layer/Debug/ColumnUI/MuteButton/AudioStreamPlayer".play(0)
+	$"../UI Layer/Debug/Pause Menu/BoundingBox/Panel/MuteButton/AudioStreamPlayer".play(0)
 	set_physics_process(true) # Replace with function body.
 
 
 func _on_ray_cast_2d_loss():
-	$"../UI Layer/Debug/ColumnUI/MuteButton/AudioStreamPlayer".stop()
+	$"../UI Layer/Debug/Pause Menu/BoundingBox/Panel/MuteButton/AudioStreamPlayer".stop()
 	set_physics_process(false) # Replace with function body.

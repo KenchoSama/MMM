@@ -1,10 +1,10 @@
-[gd_scene load_steps=66 format=3 uid="uid://bohc6wymllyla"]
+[gd_scene load_steps=70 format=3 uid="uid://bohc6wymllyla"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 2/gamemode_2.gd" id="1_vyval"]
 [ext_resource type="Theme" uid="uid://by35faieybjhf" path="res://Reusable Scenes/GreenTheme.tres" id="2_52exn"]
 [ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/WizardSprites.gd" id="2_gm15n"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/PlayerScript2.gd" id="2_rwuf6"]
-[ext_resource type="Script" path="res://Components/Gamemode 2/ColumnUI.gd" id="3_xy25s"]
+[ext_resource type="Script" path="res://Components/Gamemode 1/PauseMenuGM1.gd" id="3_e66hi"]
 [ext_resource type="Texture2D" uid="uid://bkxdjkmrmtg6j" path="res://assets/unmuted.png" id="4_p8sxl"]
 [ext_resource type="Script" path="res://Components/Gamemode 2/DeathScreen.gd" id="4_pvdla"]
 [ext_resource type="Texture2D" uid="uid://85j0p2x2ppwu" path="res://Reusable Scenes/Player/Sprites/Shirts/Shirt1.png" id="5_gmhr6"]
@@ -40,20 +40,9 @@
 [ext_resource type="Script" path="res://Components/Gamemode 2/HintsControl.gd" id="34_2vcpa"]
 [ext_resource type="Texture2D" uid="uid://crwrcwqoqmrbx" path="res://assets/Hints Menu.png" id="35_87f6i"]
 [ext_resource type="Texture2D" uid="uid://dfn1pqqkdt55d" path="res://assets/LinearExample1.png" id="36_6c3ig"]
+[ext_resource type="Texture2D" uid="uid://wpl6vnheryp7" path="res://Reusable Scenes/Pause.png" id="36_gq2lg"]
 [ext_resource type="Texture2D" uid="uid://buiasspmjepwh" path="res://assets/LinearExample2.png" id="37_e7cvk"]
 [ext_resource type="AudioStream" uid="uid://tr4nl4h5nbgt" path="res://assets/lasersound.mp3" id="38_w2qwo"]
-
-[sub_resource type="Theme" id="Theme_plp58"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_jo73e"]
-font = ExtResource("31_01vj6")
-font_size = 34
-font_color = Color(0, 1, 0.00784314, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ovjny"]
-font = ExtResource("31_01vj6")
-font_size = 28
-font_color = Color(0, 1, 0.00784314, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ql60"]
 animations = [{
@@ -113,10 +102,6 @@ font = ExtResource("31_01vj6")
 font_size = 23
 font_color = Color(0, 1, 0.00784314, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_d04uc"]
-font_size = 130
-font_color = Color(0, 0, 0, 1)
-
 [sub_resource type="CanvasTexture" id="CanvasTexture_2dqln"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ne014"]
@@ -147,243 +132,34 @@ glow_mix = 0.095
 glow_blend_mode = 1
 volumetric_fog_density = 1.0
 
+[sub_resource type="Theme" id="Theme_plp58"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d04uc"]
+font_size = 130
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_56irs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p1r57"]
+font_size = 46
+
+[sub_resource type="LabelSettings" id="LabelSettings_btx8y"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_jo73e"]
+font = ExtResource("31_01vj6")
+font_size = 34
+font_color = Color(0, 1, 0.00784314, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ovjny"]
+font = ExtResource("31_01vj6")
+font_size = 28
+font_color = Color(0, 1, 0.00784314, 1)
+
 [node name="Gamemode 2" type="Node2D"]
 script = ExtResource("1_vyval")
 metadata/_edit_vertical_guides_ = [0.0, 1152.0, 252.0, 900.0, 900.0, 576.0, 576.0, 522.0, 468.0, 414.0, 360.0, 306.0, 425.0, 569.0, 583.0, 893.0]
 metadata/_edit_horizontal_guides_ = [648.0, 648.0, 648.0, 324.0, 108.0, 162.0, 216.0, 270.0, 378.0, 432.0, 486.0, 540.0, 594.0, 54.0, 395.0]
-
-[node name="UI Layer" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="Debug" type="Control" parent="UI Layer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 39.0
-offset_bottom = 41.0
-theme = ExtResource("2_52exn")
-
-[node name="ColumnUI" type="Control" parent="UI Layer/Debug"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme = ExtResource("2_52exn")
-script = ExtResource("3_xy25s")
-
-[node name="Panel" type="Panel" parent="UI Layer/Debug/ColumnUI"]
-layout_mode = 0
-offset_left = 1026.0
-offset_top = 9.0
-offset_right = 1079.0
-offset_bottom = 61.0
-
-[node name="MuteButton" type="Button" parent="UI Layer/Debug/ColumnUI"]
-self_modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = 1026.0
-offset_top = 7.0
-offset_right = 1084.0
-offset_bottom = 64.0
-icon = ExtResource("4_p8sxl")
-flat = true
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("5_x4061")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI Layer/Debug/ColumnUI/MuteButton"]
-stream = ExtResource("27_rcrwg")
-volume_db = -32.0
-script = ExtResource("6_jij40")
-
-[node name="Return Button" type="Button" parent="UI Layer/Debug/ColumnUI"]
-layout_mode = 0
-offset_left = 1090.0
-offset_top = 9.0
-offset_right = 1142.0
-offset_bottom = 61.0
-theme = ExtResource("2_52exn")
-toggle_mode = true
-script = ExtResource("7_ahlan")
-
-[node name="Sprite2D" type="Sprite2D" parent="UI Layer/Debug/ColumnUI/Return Button"]
-position = Vector2(25, 26)
-scale = Vector2(1.57031, 1.57031)
-texture = ExtResource("8_77ggc")
-
-[node name="GameModeLabel" type="Label" parent="UI Layer/Debug/ColumnUI"]
-top_level = true
-layout_mode = 0
-offset_left = 9.0
-offset_top = 7.0
-offset_right = 245.0
-offset_bottom = 38.0
-theme = ExtResource("2_52exn")
-text = "Laser lord"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="StartScreen" type="Control" parent="UI Layer/Debug"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme = ExtResource("2_52exn")
-script = ExtResource("6_4xocm")
-
-[node name="StartScreen" type="Sprite2D" parent="UI Layer/Debug/StartScreen"]
-position = Vector2(576, 324)
-texture = ExtResource("9_lx130")
-
-[node name="StartButton" type="Button" parent="UI Layer/Debug/StartScreen"]
-layout_mode = 0
-offset_left = 427.0
-offset_top = 428.0
-offset_right = 727.0
-offset_bottom = 475.0
-text = "PLAY GAME"
-
-[node name="Label" type="Label" parent="UI Layer/Debug/StartScreen"]
-layout_mode = 0
-offset_left = 423.0
-offset_top = 169.0
-offset_right = 731.0
-offset_bottom = 202.0
-text = "COOL GAMEMODE 2 NAME"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Enemy Example" type="Sprite2D" parent="UI Layer/Debug/StartScreen"]
-position = Vector2(674.835, 254.915)
-scale = Vector2(2.985, 2.985)
-texture = ExtResource("20_ibxlk")
-
-[node name="Enemy Explanation" type="Label" parent="UI Layer/Debug/StartScreen"]
-layout_mode = 0
-offset_left = 427.0
-offset_top = 216.0
-offset_right = 582.0
-offset_bottom = 307.0
-theme = SubResource("Theme_plp58")
-text = "The Ufo enemy
-will chase you
-be sure to keep
-an eye on it!"
-
-[node name="Laser Warning!" type="Label" parent="UI Layer/Debug/StartScreen"]
-layout_mode = 0
-offset_left = 427.0
-offset_top = 324.0
-offset_right = 617.0
-offset_bottom = 411.0
-text = "An Equation
-on the left
-warns you of an
-incoming laser!"
-
-[node name="Equation Example" type="Sprite2D" parent="UI Layer/Debug/StartScreen"]
-position = Vector2(674, 367)
-scale = Vector2(0.133, 0.133)
-texture = ExtResource("11_w827n")
-
-[node name="DeathScreen" type="Control" parent="UI Layer/Debug"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme = ExtResource("2_52exn")
-script = ExtResource("4_pvdla")
-
-[node name="ScoreBoard" type="Sprite2D" parent="UI Layer/Debug/DeathScreen"]
-position = Vector2(576, 324)
-texture = ExtResource("27_g3ib0")
-
-[node name="RestartButton" type="Button" parent="UI Layer/Debug/DeathScreen"]
-layout_mode = 0
-offset_left = 427.0
-offset_top = 387.0
-offset_right = 569.0
-offset_bottom = 423.0
-text = "PLAY AGAIN"
-
-[node name="HintsButton" type="Button" parent="UI Layer/Debug/DeathScreen"]
-layout_mode = 0
-offset_left = 585.0
-offset_top = 387.0
-offset_right = 728.0
-offset_bottom = 423.0
-text = "HINTS"
-
-[node name="MainMeneuButton" type="Button" parent="UI Layer/Debug/DeathScreen"]
-layout_mode = 0
-offset_left = 427.0
-offset_top = 434.0
-offset_right = 728.0
-offset_bottom = 470.0
-text = "RETURN TO MAIN MENU"
-script = ExtResource("7_hei8t")
-
-[node name="HiScore" type="Label" parent="UI Layer/Debug/DeathScreen"]
-layout_mode = 0
-offset_left = 431.0
-offset_top = 251.0
-offset_right = 565.0
-offset_bottom = 331.0
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="YourScore" type="Label" parent="UI Layer/Debug/DeathScreen"]
-layout_mode = 0
-offset_left = 589.0
-offset_top = 251.0
-offset_right = 723.0
-offset_bottom = 331.0
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TITLE1" type="Label" parent="UI Layer/Debug/DeathScreen"]
-layout_mode = 0
-offset_left = 431.0
-offset_top = 227.0
-offset_right = 565.0
-offset_bottom = 251.0
-text = "HIgh score"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TITLE2" type="Label" parent="UI Layer/Debug/DeathScreen"]
-layout_mode = 0
-offset_left = 589.0
-offset_top = 227.0
-offset_right = 723.0
-offset_bottom = 251.0
-text = "YOUR SCORE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LossMessage" type="Label" parent="UI Layer/Debug/DeathScreen"]
-layout_mode = 0
-offset_left = 423.0
-offset_top = 169.0
-offset_right = 731.0
-offset_bottom = 202.0
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Equation" type="Label" parent="UI Layer"]
-top_level = true
-offset_left = 20.0
-offset_top = 287.0
-offset_right = 232.0
-offset_bottom = 363.0
-label_settings = SubResource("LabelSettings_jo73e")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Counter" type="Label" parent="UI Layer"]
-offset_left = 921.0
-offset_top = 287.0
-offset_right = 1131.0
-offset_bottom = 363.0
-label_settings = SubResource("LabelSettings_ovjny")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = -1
@@ -620,116 +396,6 @@ label_settings = SubResource("LabelSettings_0vy5p")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Hints" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="HintsControl" type="Control" parent="Hints"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme = ExtResource("2_52exn")
-script = ExtResource("34_2vcpa")
-
-[node name="HintsMenu" type="Sprite2D" parent="Hints/HintsControl"]
-position = Vector2(576, 324)
-texture = ExtResource("35_87f6i")
-
-[node name="HintsLabel" type="Label" parent="Hints/HintsControl"]
-layout_mode = 0
-offset_left = 258.0
-offset_top = 8.0
-offset_right = 896.0
-offset_bottom = 171.0
-text = "HINTS"
-label_settings = SubResource("LabelSettings_d04uc")
-horizontal_alignment = 1
-vertical_alignment = 3
-
-[node name="Hint1" type="Label" parent="Hints/HintsControl"]
-layout_mode = 0
-offset_left = 259.0
-offset_top = 196.0
-offset_right = 569.0
-offset_bottom = 378.0
-text = "a number added to a
-linear equation will
-result in movement along
-the Y axis. The equation
-will maintain the same
-shape as the original!"
-
-[node name="Example1" type="Sprite2D" parent="Hints/HintsControl"]
-position = Vector2(802, 287)
-scale = Vector2(5.6875, 5.6875)
-texture = ExtResource("36_6c3ig")
-
-[node name="Added" type="Label" parent="Hints/HintsControl"]
-layout_mode = 0
-offset_left = 585.0
-offset_top = 196.0
-offset_right = 710.0
-offset_bottom = 378.0
-text = "y=1x + 1
-and
-y=1x
-
-shown
-on the
-right"
-
-[node name="Hint2" type="Label" parent="Hints/HintsControl"]
-layout_mode = 0
-offset_left = 259.0
-offset_top = 395.0
-offset_right = 569.0
-offset_bottom = 577.0
-text = "A number next to the x
-is called a coefficient 
-or slope. This controls 
-how steep the line is. 
-If the coeficcient is a
-negative number it will
-slope down to the right!"
-
-[node name="Example2" type="Sprite2D" parent="Hints/HintsControl"]
-position = Vector2(802, 486)
-scale = Vector2(5.688, 5.688)
-texture = ExtResource("37_e7cvk")
-
-[node name="Multiplied" type="Label" parent="Hints/HintsControl"]
-layout_mode = 0
-offset_left = 585.0
-offset_top = 395.0
-offset_right = 710.0
-offset_bottom = 577.0
-text = "BLUE:
-y=1x
-RED:
-y=-1x
-PURPLE:
-y=3x
-
-"
-
-[node name="GoodLuck" type="Label" parent="Hints/HintsControl"]
-layout_mode = 0
-offset_left = 259.0
-offset_top = 594.0
-offset_right = 568.0
-offset_bottom = 639.0
-text = "GOOD LUCK!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ExitHints" type="Button" parent="Hints/HintsControl"]
-layout_mode = 0
-offset_left = 585.0
-offset_top = 594.0
-offset_right = 893.0
-offset_bottom = 639.0
-text = "Return to game"
-
 [node name="Laser Cannon" type="Node2D" parent="."]
 script = ExtResource("12_y37jy")
 
@@ -762,7 +428,391 @@ environment = SubResource("Environment_kth7l")
 stream = ExtResource("38_w2qwo")
 volume_db = -41.778
 
-[connection signal="beginGame" from="." to="UI Layer/Debug/ColumnUI" method="_on_gamemode_2_begin_game"]
+[node name="UI Layer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Debug" type="Control" parent="UI Layer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 39.0
+offset_bottom = 41.0
+theme = ExtResource("2_52exn")
+
+[node name="GameModeLabel" type="Label" parent="UI Layer/Debug"]
+top_level = true
+layout_mode = 0
+offset_left = 9.0
+offset_top = 7.0
+offset_right = 245.0
+offset_bottom = 38.0
+theme = ExtResource("2_52exn")
+text = "Laser lord"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartScreen" type="Control" parent="UI Layer/Debug"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_52exn")
+script = ExtResource("6_4xocm")
+
+[node name="StartScreen" type="Sprite2D" parent="UI Layer/Debug/StartScreen"]
+position = Vector2(576, 324)
+texture = ExtResource("9_lx130")
+
+[node name="StartButton" type="Button" parent="UI Layer/Debug/StartScreen"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 428.0
+offset_right = 727.0
+offset_bottom = 475.0
+text = "PLAY GAME"
+
+[node name="Label" type="Label" parent="UI Layer/Debug/StartScreen"]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 169.0
+offset_right = 731.0
+offset_bottom = 202.0
+text = "COOL GAMEMODE 2 NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Enemy Example" type="Sprite2D" parent="UI Layer/Debug/StartScreen"]
+position = Vector2(674.835, 254.915)
+scale = Vector2(2.985, 2.985)
+texture = ExtResource("20_ibxlk")
+
+[node name="Enemy Explanation" type="Label" parent="UI Layer/Debug/StartScreen"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 216.0
+offset_right = 582.0
+offset_bottom = 307.0
+theme = SubResource("Theme_plp58")
+text = "The Ufo enemy
+will chase you
+be sure to keep
+an eye on it!"
+
+[node name="Laser Warning!" type="Label" parent="UI Layer/Debug/StartScreen"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 324.0
+offset_right = 617.0
+offset_bottom = 411.0
+text = "An Equation
+on the left
+warns you of an
+incoming laser!"
+
+[node name="Equation Example" type="Sprite2D" parent="UI Layer/Debug/StartScreen"]
+position = Vector2(674, 367)
+scale = Vector2(0.133, 0.133)
+texture = ExtResource("11_w827n")
+
+[node name="DeathScreen" type="Control" parent="UI Layer/Debug"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_52exn")
+script = ExtResource("4_pvdla")
+
+[node name="ScoreBoard" type="Sprite2D" parent="UI Layer/Debug/DeathScreen"]
+position = Vector2(576, 324)
+texture = ExtResource("27_g3ib0")
+
+[node name="RestartButton" type="Button" parent="UI Layer/Debug/DeathScreen"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 387.0
+offset_right = 569.0
+offset_bottom = 423.0
+text = "PLAY AGAIN"
+
+[node name="HintsButton" type="Button" parent="UI Layer/Debug/DeathScreen"]
+layout_mode = 0
+offset_left = 585.0
+offset_top = 387.0
+offset_right = 728.0
+offset_bottom = 423.0
+text = "HINTS"
+
+[node name="MainMeneuButton" type="Button" parent="UI Layer/Debug/DeathScreen"]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 434.0
+offset_right = 728.0
+offset_bottom = 470.0
+text = "RETURN TO MAIN MENU"
+script = ExtResource("7_hei8t")
+
+[node name="HiScore" type="Label" parent="UI Layer/Debug/DeathScreen"]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 251.0
+offset_right = 565.0
+offset_bottom = 331.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="YourScore" type="Label" parent="UI Layer/Debug/DeathScreen"]
+layout_mode = 0
+offset_left = 589.0
+offset_top = 251.0
+offset_right = 723.0
+offset_bottom = 331.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TITLE1" type="Label" parent="UI Layer/Debug/DeathScreen"]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 227.0
+offset_right = 565.0
+offset_bottom = 251.0
+text = "HIgh score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TITLE2" type="Label" parent="UI Layer/Debug/DeathScreen"]
+layout_mode = 0
+offset_left = 589.0
+offset_top = 227.0
+offset_right = 723.0
+offset_bottom = 251.0
+text = "YOUR SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LossMessage" type="Label" parent="UI Layer/Debug/DeathScreen"]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 169.0
+offset_right = 731.0
+offset_bottom = 202.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HintsControl" type="Control" parent="UI Layer/Debug"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_52exn")
+script = ExtResource("34_2vcpa")
+
+[node name="HintsMenu" type="Sprite2D" parent="UI Layer/Debug/HintsControl"]
+position = Vector2(576, 324)
+texture = ExtResource("35_87f6i")
+
+[node name="HintsLabel" type="Label" parent="UI Layer/Debug/HintsControl"]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 8.0
+offset_right = 896.0
+offset_bottom = 171.0
+text = "HINTS"
+label_settings = SubResource("LabelSettings_d04uc")
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="Hint1" type="Label" parent="UI Layer/Debug/HintsControl"]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 196.0
+offset_right = 569.0
+offset_bottom = 378.0
+text = "a number added to a
+linear equation will
+result in movement along
+the Y axis. The equation
+will maintain the same
+shape as the original!"
+
+[node name="Example1" type="Sprite2D" parent="UI Layer/Debug/HintsControl"]
+position = Vector2(802, 287)
+scale = Vector2(5.6875, 5.6875)
+texture = ExtResource("36_6c3ig")
+
+[node name="Added" type="Label" parent="UI Layer/Debug/HintsControl"]
+layout_mode = 0
+offset_left = 585.0
+offset_top = 196.0
+offset_right = 710.0
+offset_bottom = 378.0
+text = "y=1x + 1
+and
+y=1x
+
+shown
+on the
+right"
+
+[node name="Hint2" type="Label" parent="UI Layer/Debug/HintsControl"]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 395.0
+offset_right = 569.0
+offset_bottom = 577.0
+text = "A number next to the x
+is called a coefficient 
+or slope. This controls 
+how steep the line is. 
+If the coeficcient is a
+negative number it will
+slope down to the right!"
+
+[node name="Example2" type="Sprite2D" parent="UI Layer/Debug/HintsControl"]
+position = Vector2(802, 486)
+scale = Vector2(5.688, 5.688)
+texture = ExtResource("37_e7cvk")
+
+[node name="Multiplied" type="Label" parent="UI Layer/Debug/HintsControl"]
+layout_mode = 0
+offset_left = 585.0
+offset_top = 395.0
+offset_right = 710.0
+offset_bottom = 577.0
+text = "BLUE:
+y=1x
+RED:
+y=-1x
+PURPLE:
+y=3x
+
+"
+
+[node name="GoodLuck" type="Label" parent="UI Layer/Debug/HintsControl"]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 594.0
+offset_right = 568.0
+offset_bottom = 639.0
+text = "GOOD LUCK!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitHints" type="Button" parent="UI Layer/Debug/HintsControl"]
+layout_mode = 0
+offset_left = 585.0
+offset_top = 594.0
+offset_right = 893.0
+offset_bottom = 639.0
+text = "Return to game"
+
+[node name="Pause Menu" type="TextureButton" parent="UI Layer/Debug"]
+process_mode = 3
+layout_mode = 0
+offset_left = 981.0
+offset_top = 5.0
+offset_right = 1075.0
+offset_bottom = 99.0
+theme = ExtResource("2_52exn")
+texture_normal = ExtResource("36_gq2lg")
+stretch_mode = 0
+script = ExtResource("3_e66hi")
+
+[node name="BoundingBox" type="Panel" parent="UI Layer/Debug/Pause Menu"]
+layout_mode = 0
+offset_left = -578.0
+offset_top = 227.0
+offset_right = -252.0
+offset_bottom = 445.0
+
+[node name="Panel" type="Panel" parent="UI Layer/Debug/Pause Menu/BoundingBox"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 147.0
+offset_right = 160.0
+offset_bottom = 199.0
+
+[node name="MuteButton" type="Button" parent="UI Layer/Debug/Pause Menu/BoundingBox/Panel"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_top = -2.0
+offset_right = 58.0
+offset_bottom = 55.0
+icon = ExtResource("4_p8sxl")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("5_x4061")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI Layer/Debug/Pause Menu/BoundingBox/Panel/MuteButton"]
+stream = ExtResource("27_rcrwg")
+volume_db = -32.0
+script = ExtResource("6_jij40")
+
+[node name="Return Button" type="Button" parent="UI Layer/Debug/Pause Menu/BoundingBox"]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 146.0
+offset_right = 231.0
+offset_bottom = 198.0
+theme = ExtResource("2_52exn")
+toggle_mode = true
+script = ExtResource("7_ahlan")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Layer/Debug/Pause Menu/BoundingBox/Return Button"]
+position = Vector2(25, 26)
+scale = Vector2(1.57031, 1.57031)
+texture = ExtResource("8_77ggc")
+
+[node name="Paused" type="Label" parent="UI Layer/Debug/Pause Menu/BoundingBox"]
+offset_left = 55.0
+offset_top = 12.0
+offset_right = 286.0
+offset_bottom = 74.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_56irs")
+text = "Paused"
+label_settings = SubResource("LabelSettings_p1r57")
+
+[node name="High Score" type="Label" parent="UI Layer/Debug/Pause Menu/BoundingBox"]
+offset_left = 77.0
+offset_top = 68.0
+offset_right = 409.0
+offset_bottom = 127.0
+scale = Vector2(0.600247, 0.600247)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_56irs")
+text = "High Score:"
+label_settings = SubResource("LabelSettings_btx8y")
+
+[node name="HighScore" type="Label" parent="UI Layer/Debug/Pause Menu/BoundingBox"]
+offset_left = 62.0
+offset_top = 103.0
+offset_right = 394.0
+offset_bottom = 162.0
+scale = Vector2(0.600247, 0.600247)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_56irs")
+text = "0
+"
+label_settings = SubResource("LabelSettings_btx8y")
+horizontal_alignment = 1
+
+[node name="Equation" type="Label" parent="UI Layer"]
+top_level = true
+offset_left = 20.0
+offset_top = 287.0
+offset_right = 232.0
+offset_bottom = 363.0
+label_settings = SubResource("LabelSettings_jo73e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Counter" type="Label" parent="UI Layer"]
+offset_left = 921.0
+offset_top = 287.0
+offset_right = 1131.0
+offset_bottom = 363.0
+label_settings = SubResource("LabelSettings_ovjny")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="beginGame" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="UI Layer/Debug/DeathScreen" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="Player" method="_on_gamemode_2_begin_game"]
@@ -772,13 +822,6 @@ volume_db = -41.778
 [connection signal="beginGame" from="." to="UFO" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="Laser Cannon" method="_on_gamemode_2_begin_game"]
 [connection signal="startScreen" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_start_screen"]
-[connection signal="button_up" from="UI Layer/Debug/ColumnUI/MuteButton" to="UI Layer/Debug/ColumnUI/MuteButton" method="_on_mute_button_button_up" flags=18]
-[connection signal="finished" from="UI Layer/Debug/ColumnUI/MuteButton/AudioStreamPlayer" to="UI Layer/Debug/ColumnUI/MuteButton/AudioStreamPlayer" method="_on_finished" flags=18]
-[connection signal="toggled" from="UI Layer/Debug/ColumnUI/Return Button" to="UI Layer/Debug/ColumnUI/Return Button" method="_on_toggled" flags=18]
-[connection signal="button_up" from="UI Layer/Debug/StartScreen/StartButton" to="." method="_on_start_button_button_up"]
-[connection signal="button_up" from="UI Layer/Debug/DeathScreen/RestartButton" to="." method="_on_restart_button_button_up"]
-[connection signal="button_up" from="UI Layer/Debug/DeathScreen/HintsButton" to="Hints/HintsControl" method="_on_hints_button_button_up"]
-[connection signal="button_up" from="UI Layer/Debug/DeathScreen/MainMeneuButton" to="UI Layer/Debug/DeathScreen/MainMeneuButton" method="_on_button_up"]
 [connection signal="pressed" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_pressed"]
 [connection signal="released" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_released"]
 [connection signal="changeSize" from="CrosshairLayer/Spaceship" to="CrosshairLayer/Spaceship/shipSprite" method="_on_spaceship_change_size"]
@@ -786,11 +829,8 @@ volume_db = -41.778
 [connection signal="timeout" from="CanvasLayer2/Border/DANGER/HideTimer" to="CanvasLayer2/Border/DANGER" method="_on_hide_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer2/Border/DANGER/ShowTimer" to="CanvasLayer2/Border/DANGER" method="_on_show_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer2/Border/DANGER/FlashTimer" to="CanvasLayer2/Border/DANGER" method="_on_flash_timer_timeout"]
-[connection signal="button_up" from="Hints/HintsControl/ExitHints" to="Hints/HintsControl" method="_on_exit_hints_button_up"]
 [connection signal="timeout" from="Laser Cannon/Timer" to="Laser Cannon" method="_on_timer_timeout"]
 [connection signal="timeout" from="Laser Cannon/Timer2" to="Laser Cannon" method="_on_timer_2_timeout"]
-[connection signal="loss" from="Laser Cannon/RayCast2D" to="." method="_on_ray_cast_2d_loss"]
-[connection signal="loss" from="Laser Cannon/RayCast2D" to="UI Layer/Debug/ColumnUI" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="UI Layer/Debug/DeathScreen" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="Player" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="CrosshairLayer/Spaceship" method="_on_ray_cast_2d_loss"]
@@ -799,3 +839,12 @@ volume_db = -41.778
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="UFO" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="Laser Cannon" method="_on_ray_cast_2d_loss"]
 [connection signal="timeout" from="Laser Cannon/RayCast2D/tweenTimer" to="Laser Cannon/RayCast2D" method="_on_tween_timer_timeout"]
+[connection signal="button_up" from="UI Layer/Debug/StartScreen/StartButton" to="." method="_on_start_button_button_up"]
+[connection signal="button_up" from="UI Layer/Debug/DeathScreen/RestartButton" to="." method="_on_restart_button_button_up"]
+[connection signal="button_up" from="UI Layer/Debug/DeathScreen/HintsButton" to="UI Layer/Debug/HintsControl" method="_on_hints_button_button_up"]
+[connection signal="button_up" from="UI Layer/Debug/DeathScreen/MainMeneuButton" to="UI Layer/Debug/DeathScreen/MainMeneuButton" method="_on_button_up"]
+[connection signal="button_up" from="UI Layer/Debug/HintsControl/ExitHints" to="UI Layer/Debug/HintsControl" method="_on_exit_hints_button_up"]
+[connection signal="button_up" from="UI Layer/Debug/Pause Menu" to="UI Layer/Debug/Pause Menu" method="_on_button_up"]
+[connection signal="button_up" from="UI Layer/Debug/Pause Menu/BoundingBox/Panel/MuteButton" to="UI Layer/Debug/Pause Menu/BoundingBox/Panel/MuteButton" method="_on_mute_button_button_up" flags=18]
+[connection signal="finished" from="UI Layer/Debug/Pause Menu/BoundingBox/Panel/MuteButton/AudioStreamPlayer" to="UI Layer/Debug/Pause Menu/BoundingBox/Panel/MuteButton/AudioStreamPlayer" method="_on_finished" flags=18]
+[connection signal="toggled" from="UI Layer/Debug/Pause Menu/BoundingBox/Return Button" to="UI Layer/Debug/Pause Menu/BoundingBox/Return Button" method="_on_toggled" flags=18]

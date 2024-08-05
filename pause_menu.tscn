@@ -1,0 +1,130 @@
+[gd_scene load_steps=18 format=3 uid="uid://c8gpyhvjbxgd5"]
+
+[ext_resource type="Texture2D" uid="uid://wpl6vnheryp7" path="res://Reusable Scenes/Pause.png" id="1_mjgff"]
+[ext_resource type="Script" path="res://Components/Gamemode 1/PauseMenuGM1.gd" id="2_1v8da"]
+[ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="3_uhrc4"]
+[ext_resource type="Texture2D" uid="uid://bkxdjkmrmtg6j" path="res://assets/unmuted.png" id="4_jj78p"]
+[ext_resource type="Script" path="res://Components/Main Menu/MusicPlayer.gd" id="5_dtpyi"]
+[ext_resource type="AudioStream" uid="uid://c4joyuph0465b" path="res://assets/SurfingWiWi.mp3" id="6_pnsil"]
+[ext_resource type="Script" path="res://Components/Gamemode 1/MMLooperScript.gd" id="7_hmywu"]
+[ext_resource type="Texture2D" uid="uid://bm2eg1lsu1uhf" path="res://Reusable Scenes/Home.png" id="8_aiywc"]
+[ext_resource type="Script" path="res://Components/Gamemode 1/Home1.gd" id="9_g2v82"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sa1gb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kl2ni"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84mvt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ilywq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ayh10"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r1tlm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7sqvu"]
+font_size = 46
+
+[sub_resource type="LabelSettings" id="LabelSettings_giknm"]
+font_size = 36
+
+[node name="PauseMenu" type="TextureButton"]
+process_mode = 3
+offset_left = 1043.0
+offset_top = -10.0
+offset_right = 1163.0
+offset_bottom = 110.0
+texture_normal = ExtResource("1_mjgff")
+stretch_mode = 0
+script = ExtResource("2_1v8da")
+
+[node name="BoundingBox" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -684.0
+offset_top = 177.0
+offset_right = -267.0
+offset_bottom = 441.0
+
+[node name="Panel" type="Panel" parent="BoundingBox"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 150.0
+offset_right = 184.0
+offset_bottom = 224.0
+theme = ExtResource("3_uhrc4")
+
+[node name="MuteButton" type="Button" parent="BoundingBox/Panel"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 73.0
+offset_bottom = 70.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sa1gb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kl2ni")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_84mvt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ilywq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ayh10")
+icon = ExtResource("4_jj78p")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("5_dtpyi")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BoundingBox/Panel/MuteButton"]
+stream = ExtResource("6_pnsil")
+volume_db = -32.0
+script = ExtResource("7_hmywu")
+
+[node name="Main Menu2" type="Panel" parent="BoundingBox"]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 150.0
+offset_right = 276.0
+offset_bottom = 223.0
+theme = ExtResource("3_uhrc4")
+
+[node name="Home" type="TextureButton" parent="BoundingBox/Main Menu2"]
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(2.30598, 2.30598)
+texture_normal = ExtResource("8_aiywc")
+ignore_texture_size = true
+script = ExtResource("9_g2v82")
+
+[node name="Paused" type="Label" parent="BoundingBox"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 12.0
+offset_right = 321.0
+offset_bottom = 74.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_r1tlm")
+text = "Paused"
+label_settings = SubResource("LabelSettings_7sqvu")
+
+[node name="High Score" type="Label" parent="BoundingBox"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 68.0
+offset_right = 444.0
+offset_bottom = 127.0
+scale = Vector2(0.600247, 0.600247)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_r1tlm")
+text = "High Score:"
+label_settings = SubResource("LabelSettings_giknm")
+
+[node name="HighScore" type="Label" parent="BoundingBox"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 103.0
+offset_right = 429.0
+offset_bottom = 162.0
+scale = Vector2(0.600247, 0.600247)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_r1tlm")
+text = "0
+"
+label_settings = SubResource("LabelSettings_giknm")
+horizontal_alignment = 1
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="button_up" from="BoundingBox/Panel/MuteButton" to="BoundingBox/Panel/MuteButton" method="_on_mute_button_button_up" flags=18]
+[connection signal="finished" from="BoundingBox/Panel/MuteButton/AudioStreamPlayer" to="BoundingBox/Panel/MuteButton/AudioStreamPlayer" method="_on_finished" flags=18]
+[connection signal="button_up" from="BoundingBox/Main Menu2/Home" to="BoundingBox/Main Menu2/Home" method="_on_button_up"]
