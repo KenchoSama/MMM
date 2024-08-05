@@ -1,9 +1,10 @@
-[gd_scene load_steps=78 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=82 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 3/gamemode_3.gd" id="1_ycoyy"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/PlayerScript3.gd" id="2_eates"]
 [ext_resource type="Theme" uid="uid://bgbl23jfw6rk1" path="res://Reusable Scenes/GreyTheme.tres" id="2_hr7at"]
 [ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/WizardSprites.gd" id="2_o8ocu"]
+[ext_resource type="Texture2D" uid="uid://dttwfvgvc1for" path="res://Components/Gamemode 3/images/MMMcastle.png" id="3_718vw"]
 [ext_resource type="Texture2D" uid="uid://bkxdjkmrmtg6j" path="res://assets/unmuted.png" id="3_w4fqv"]
 [ext_resource type="Script" path="res://Components/Main Menu/MusicPlayer.gd" id="4_kc1ky"]
 [ext_resource type="Texture2D" uid="uid://8htax3pkoq4r" path="res://Reusable Scenes/PixelArtUI.png" id="4_nljn4"]
@@ -29,7 +30,6 @@
 [ext_resource type="Texture2D" uid="uid://dw20ha3wfot3s" path="res://Components/Gamemode 3/traingle.png" id="21_s7ynk"]
 [ext_resource type="Texture2D" uid="uid://vymlrcwv24v8" path="res://Components/Gamemode 3/triangle.png" id="22_t7qri"]
 [ext_resource type="Texture2D" uid="uid://duyoayymgb4li" path="res://Components/Gamemode 3/super_button.png" id="24_8iqe6"]
-[ext_resource type="Texture2D" uid="uid://dtas2y8f8dt6j" path="res://Components/Gamemode 3/Sprite-0001.png" id="24_j5lfy"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/CloudHandler.gd" id="24_rbkrx"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/superbutton.gd" id="25_5sbh3"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/Score.gd" id="25_bc1v2"]
@@ -44,6 +44,50 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7dvx"]
 size = Vector2(200, 297)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvdd0"]
+atlas = ExtResource("3_718vw")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Animation" id="Animation_nh7ud"]
+resource_name = "hit animation"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(908, 339), Vector2(905, 335), Vector2(912, 342), Vector2(908, 330), Vector2(908, 339)]
+}
+
+[sub_resource type="Animation" id="Animation_7i57l"]
+resource_name = "floating"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(908, 339), Vector2(908, 335)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ne3dd"]
+_data = {
+"floating": SubResource("Animation_7i57l"),
+"hit animation": SubResource("Animation_nh7ud")
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ql60"]
 animations = [{
@@ -138,7 +182,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-721.851, 62.5837)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(840, 60)
@@ -258,7 +301,7 @@ metadata/_edit_vertical_guides_ = [1152.0, 900.0, 1152.0, 576.0]
 [node name="World" type="Node2D" parent="."]
 
 [node name="Castle" type="Area2D" parent="World"]
-position = Vector2(908, 339)
+position = Vector2(908, 335.163)
 script = ExtResource("17_xr3j1")
 
 [node name="CastleHitbox" type="CollisionShape2D" parent="World/Castle"]
@@ -268,7 +311,12 @@ shape = SubResource("RectangleShape2D_b7dvx")
 [node name="CastleSprite" type="Sprite2D" parent="World/Castle"]
 position = Vector2(91, -15)
 scale = Vector2(4.79688, 4.79688)
-texture = ExtResource("24_j5lfy")
+texture = SubResource("AtlasTexture_uvdd0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/Castle"]
+libraries = {
+"": SubResource("AnimationLibrary_ne3dd")
+}
 
 [node name="Background" type="Sprite2D" parent="World"]
 z_index = -2
