@@ -764,6 +764,7 @@ scale = Vector2(1.57031, 1.57031)
 texture = ExtResource("8_77ggc")
 
 [node name="Paused" type="Label" parent="UI Layer/Debug/Pause Menu/BoundingBox"]
+layout_mode = 0
 offset_left = 55.0
 offset_top = 12.0
 offset_right = 286.0
@@ -773,6 +774,7 @@ text = "Paused"
 label_settings = SubResource("LabelSettings_p1r57")
 
 [node name="High Score" type="Label" parent="UI Layer/Debug/Pause Menu/BoundingBox"]
+layout_mode = 0
 offset_left = 77.0
 offset_top = 68.0
 offset_right = 409.0
@@ -783,6 +785,7 @@ text = "High Score:"
 label_settings = SubResource("LabelSettings_btx8y")
 
 [node name="HighScore" type="Label" parent="UI Layer/Debug/Pause Menu/BoundingBox"]
+layout_mode = 0
 offset_left = 62.0
 offset_top = 103.0
 offset_right = 394.0
@@ -813,14 +816,14 @@ label_settings = SubResource("LabelSettings_ovjny")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="beginGame" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_begin_game"]
-[connection signal="beginGame" from="." to="UI Layer/Debug/DeathScreen" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="Player" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="CrosshairLayer/Spaceship" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="CrosshairLayer/Spaceship/shipSprite" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="CrosshairLayer/GraphMain" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="UFO" method="_on_gamemode_2_begin_game"]
 [connection signal="beginGame" from="." to="Laser Cannon" method="_on_gamemode_2_begin_game"]
+[connection signal="beginGame" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_begin_game"]
+[connection signal="beginGame" from="." to="UI Layer/Debug/DeathScreen" method="_on_gamemode_2_begin_game"]
 [connection signal="startScreen" from="." to="UI Layer/Debug/StartScreen" method="_on_gamemode_2_start_screen"]
 [connection signal="pressed" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_pressed"]
 [connection signal="released" from="Player/TouchScreenButton" to="Player" method="_on_touch_screen_button_released"]
@@ -831,13 +834,13 @@ vertical_alignment = 1
 [connection signal="timeout" from="CanvasLayer2/Border/DANGER/FlashTimer" to="CanvasLayer2/Border/DANGER" method="_on_flash_timer_timeout"]
 [connection signal="timeout" from="Laser Cannon/Timer" to="Laser Cannon" method="_on_timer_timeout"]
 [connection signal="timeout" from="Laser Cannon/Timer2" to="Laser Cannon" method="_on_timer_2_timeout"]
-[connection signal="loss" from="Laser Cannon/RayCast2D" to="UI Layer/Debug/DeathScreen" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="Player" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="CrosshairLayer/Spaceship" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="CrosshairLayer/Spaceship/shipSprite" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="CrosshairLayer/GraphMain" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="UFO" method="_on_ray_cast_2d_loss"]
 [connection signal="loss" from="Laser Cannon/RayCast2D" to="Laser Cannon" method="_on_ray_cast_2d_loss"]
+[connection signal="loss" from="Laser Cannon/RayCast2D" to="UI Layer/Debug/DeathScreen" method="_on_ray_cast_2d_loss"]
 [connection signal="timeout" from="Laser Cannon/RayCast2D/tweenTimer" to="Laser Cannon/RayCast2D" method="_on_tween_timer_timeout"]
 [connection signal="button_up" from="UI Layer/Debug/StartScreen/StartButton" to="." method="_on_start_button_button_up"]
 [connection signal="button_up" from="UI Layer/Debug/DeathScreen/RestartButton" to="." method="_on_restart_button_button_up"]

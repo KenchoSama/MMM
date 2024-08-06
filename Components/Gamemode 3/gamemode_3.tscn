@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=88 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 3/gamemode_3.gd" id="1_ycoyy"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/PlayerScript3.gd" id="2_eates"]
@@ -40,7 +40,9 @@
 [ext_resource type="Texture2D" uid="uid://bm2eg1lsu1uhf" path="res://Reusable Scenes/Home.png" id="29_af7hm"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/SpellHandler.gd" id="33_ahqoi"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/GM3Deatg.gd" id="38_7tuvt"]
+[ext_resource type="Texture2D" uid="uid://wpl6vnheryp7" path="res://Reusable Scenes/Pause.png" id="38_slc0w"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/Home.gd" id="39_tyfrt"]
+[ext_resource type="Script" path="res://Components/Gamemode 1/PauseMenuGM1.gd" id="39_vc7q6"]
 [ext_resource type="Texture2D" uid="uid://dir8g8jkxwdhk" path="res://Reusable Scenes/PixelArtUIPressed.png" id="41_b5wlc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7dvx"]
@@ -228,16 +230,6 @@ font_size = 40
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sa1gb"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kl2ni"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84mvt"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ilywq"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ayh10"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lsua"]
 bg_color = Color(0.227451, 0.454902, 0.823529, 1)
 border_width_left = 1
@@ -293,6 +285,24 @@ font_size = 20
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2lilp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qiqwm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4rh63"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6pkvu"]
+font_size = 46
+
+[sub_resource type="LabelSettings" id="LabelSettings_a56j7"]
+font_size = 36
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sa1gb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kl2ni"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84mvt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ilywq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ayh10"]
 
 [node name="Gamemode 3" type="Node2D" groups=["GameMethod"]]
 script = ExtResource("1_ycoyy")
@@ -587,57 +597,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_u8yhx")
 text = "0"
 label_settings = SubResource("LabelSettings_mh0we")
 script = ExtResource("25_bc1v2")
-
-[node name="Debug" type="Control" parent="UI Layer/Control"]
-anchors_preset = 0
-offset_left = 1033.0
-offset_top = 3.0
-offset_right = 1073.0
-offset_bottom = 43.0
-theme = ExtResource("2_hr7at")
-
-[node name="Panel" type="Panel" parent="UI Layer/Control/Debug"]
-layout_mode = 0
-offset_left = -30.0
-offset_top = -3.0
-offset_right = 14.0
-offset_bottom = 42.0
-
-[node name="MuteButton" type="Button" parent="UI Layer/Control/Debug/Panel"]
-self_modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = -7.0
-offset_top = -5.0
-offset_right = 51.0
-offset_bottom = 52.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_sa1gb")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_kl2ni")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_84mvt")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ilywq")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ayh10")
-icon = ExtResource("3_w4fqv")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("4_kc1ky")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI Layer/Control/Debug/Panel/MuteButton"]
-stream = ExtResource("28_l3s12")
-volume_db = -32.0
-script = ExtResource("5_ycubq")
-
-[node name="Return Button" type="Button" parent="UI Layer/Control/Debug"]
-layout_mode = 0
-offset_left = 29.0
-offset_top = -3.0
-offset_right = 72.0
-offset_bottom = 42.0
-toggle_mode = true
-script = ExtResource("28_vr5c3")
-
-[node name="Sprite2D" type="Sprite2D" parent="UI Layer/Control/Debug/Return Button"]
-position = Vector2(20, 22)
-scale = Vector2(1.40625, 1.40625)
-texture = ExtResource("29_af7hm")
 
 [node name="PregameScreen" type="Control" parent="UI Layer/Control"]
 visible = false
@@ -970,13 +929,115 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_qiqwm")
 text = "0"
 label_settings = SubResource("LabelSettings_auyqd")
 
+[node name="Pause Menu" type="TextureButton" parent="UI Layer/Control"]
+process_mode = 3
+offset_left = 1015.0
+offset_top = -13.0
+offset_right = 1140.0
+offset_bottom = 112.0
+texture_normal = ExtResource("38_slc0w")
+stretch_mode = 0
+script = ExtResource("39_vc7q6")
+
+[node name="Debug" type="Control" parent="UI Layer/Control/Pause Menu"]
+anchors_preset = 0
+offset_left = 52.0
+offset_top = -2.0
+offset_right = 92.0
+offset_bottom = 38.0
+theme = ExtResource("2_hr7at")
+
+[node name="BoundingBox" type="Panel" parent="UI Layer/Control/Pause Menu"]
+layout_mode = 0
+offset_left = -617.0
+offset_top = 239.0
+offset_right = -291.0
+offset_bottom = 457.0
+
+[node name="Paused" type="Label" parent="UI Layer/Control/Pause Menu/BoundingBox"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 12.0
+offset_right = 286.0
+offset_bottom = 74.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4rh63")
+text = "Paused"
+label_settings = SubResource("LabelSettings_6pkvu")
+
+[node name="High Score" type="Label" parent="UI Layer/Control/Pause Menu/BoundingBox"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 68.0
+offset_right = 409.0
+offset_bottom = 127.0
+scale = Vector2(0.600247, 0.600247)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4rh63")
+text = "High Score:"
+label_settings = SubResource("LabelSettings_a56j7")
+
+[node name="HighScore" type="Label" parent="UI Layer/Control/Pause Menu/BoundingBox"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 103.0
+offset_right = 394.0
+offset_bottom = 162.0
+scale = Vector2(0.600247, 0.600247)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4rh63")
+text = "0
+"
+label_settings = SubResource("LabelSettings_a56j7")
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="UI Layer/Control/Pause Menu/BoundingBox"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 157.0
+offset_right = 158.0
+offset_bottom = 202.0
+
+[node name="MuteButton" type="Button" parent="UI Layer/Control/Pause Menu/BoundingBox/Panel"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -7.0
+offset_top = -5.0
+offset_right = 51.0
+offset_bottom = 52.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sa1gb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kl2ni")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_84mvt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ilywq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ayh10")
+icon = ExtResource("3_w4fqv")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_kc1ky")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI Layer/Control/Pause Menu/BoundingBox/Panel/MuteButton"]
+stream = ExtResource("28_l3s12")
+volume_db = -32.0
+script = ExtResource("5_ycubq")
+
+[node name="Return Button" type="Button" parent="UI Layer/Control/Pause Menu/BoundingBox"]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 157.0
+offset_right = 216.0
+offset_bottom = 202.0
+toggle_mode = true
+script = ExtResource("28_vr5c3")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Layer/Control/Pause Menu/BoundingBox/Return Button"]
+position = Vector2(20, 22)
+scale = Vector2(1.40625, 1.40625)
+texture = ExtResource("29_af7hm")
+
 [connection signal="begingame" from="." to="World/Castle" method="_on_begin_game"]
 [connection signal="begingame" from="." to="World/CloudHandler" method="_on_begin_game"]
 [connection signal="begingame" from="." to="TriangleHandler" method="_on_begin_game"]
 [connection signal="begingame" from="." to="Player" method="_on_begin_game"]
 [connection signal="begingame" from="." to="UI Layer/Control/HUD" method="_on_gamemode_3_begingame"]
 [connection signal="begingame" from="." to="UI Layer/Control/HUD/Bars" method="_on_begin_game"]
-[connection signal="begingame" from="." to="UI Layer/Control/Debug/Panel/MuteButton/AudioStreamPlayer" method="_on_gamemode_3_begingame"]
+[connection signal="begingame" from="." to="UI Layer/Control/Pause Menu/BoundingBox/Panel/MuteButton/AudioStreamPlayer" method="_on_gamemode_3_begingame"]
 [connection signal="begingame" from="." to="UI Layer/Control/PregameScreen" method="_on_begin_game"]
 [connection signal="gameLost" from="." to="World/CloudHandler" method="_on_loss"]
 [connection signal="gameLost" from="." to="TriangleHandler" method="_on_game_loss"]
@@ -1008,10 +1069,11 @@ label_settings = SubResource("LabelSettings_auyqd")
 [connection signal="button_down" from="UI Layer/Control/HUD/waterbutton" to="Player" method="_on_waterbutton_button_down"]
 [connection signal="button_down" from="UI Layer/Control/HUD/superbutton" to="Player" method="_on_superbutton_button_down"]
 [connection signal="button_down" from="UI Layer/Control/HUD/superbutton" to="UI Layer/Control/HUD/superbutton" method="_on_button_down"]
-[connection signal="button_up" from="UI Layer/Control/Debug/Panel/MuteButton" to="UI Layer/Control/Debug/Panel/MuteButton" method="_on_mute_button_button_up" flags=18]
-[connection signal="finished" from="UI Layer/Control/Debug/Panel/MuteButton/AudioStreamPlayer" to="UI Layer/Control/Debug/Panel/MuteButton/AudioStreamPlayer" method="_on_finished" flags=18]
-[connection signal="toggled" from="UI Layer/Control/Debug/Return Button" to="UI Layer/Control/Debug/Return Button" method="_on_toggled" flags=18]
 [connection signal="button_up" from="UI Layer/Control/PregameScreen/Play" to="." method="_on_play_button_up"]
 [connection signal="button_up" from="UI Layer/Control/PregameScreen/ShowHints" to="UI Layer/Control/PregameScreen/UnderstandingMath" method="_on_hintsbutton_button_up"]
 [connection signal="button_up" from="UI Layer/Control/DeathScreen/Panel/Main Menu/Home" to="UI Layer/Control/DeathScreen/Panel/Main Menu/Home" method="_on_button_up"]
 [connection signal="button_up" from="UI Layer/Control/DeathScreen/Panel/Panel/Restart" to="." method="_on_restart_button_up"]
+[connection signal="button_up" from="UI Layer/Control/Pause Menu" to="UI Layer/Control/Pause Menu" method="_on_button_up"]
+[connection signal="button_up" from="UI Layer/Control/Pause Menu/BoundingBox/Panel/MuteButton" to="UI Layer/Control/Pause Menu/BoundingBox/Panel/MuteButton" method="_on_mute_button_button_up" flags=18]
+[connection signal="finished" from="UI Layer/Control/Pause Menu/BoundingBox/Panel/MuteButton/AudioStreamPlayer" to="UI Layer/Control/Pause Menu/BoundingBox/Panel/MuteButton/AudioStreamPlayer" method="_on_finished" flags=18]
+[connection signal="toggled" from="UI Layer/Control/Pause Menu/BoundingBox/Return Button" to="UI Layer/Control/Pause Menu/BoundingBox/Return Button" method="_on_toggled" flags=18]

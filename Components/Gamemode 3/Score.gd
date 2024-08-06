@@ -7,6 +7,7 @@ func _on_pregame():
 	var cfg = ConfigFile.new()
 	cfg.load("user://PlayerData.cfg")
 	current_best = cfg.get_value("GM3Score", "best", 0)
+	$"../../Pause Menu/BoundingBox/HighScore".text = str(current_best)
 	
 func _on_loss():
 	# Terrible practice. Don't care.
@@ -21,6 +22,7 @@ func _on_loss():
 	
 	$"../../DeathScreen/Panel/ScoreBounder/Label/BestDist".text = str(current_best)
 	$"../../DeathScreen/Panel/ScoreBounder/Label2/YourDist".text = str(current)
+	$"../../Pause Menu/BoundingBox/HighScore".text = str(current_best)
 	
 	
 
