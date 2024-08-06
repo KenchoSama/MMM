@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://hplngi8f4lds"]
+[gd_scene load_steps=11 format=3 uid="uid://hplngi8f4lds"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 3/water.gd" id="1_fqtxt"]
 [ext_resource type="Texture2D" uid="uid://lbovx3ddtpvt" path="res://Components/Gamemode 3/waterspell.png" id="2_jgjgk"]
 [ext_resource type="Texture2D" uid="uid://c2aet5bg3oado" path="res://Components/Gamemode 3/images/waterexplosion.png" id="3_xwhrr"]
 [ext_resource type="AudioStream" uid="uid://dvuo0bkm2k6py" path="res://Components/Gamemode 3/audio/large-underwater-explosion-190270.mp3" id="4_bjvso"]
+[ext_resource type="AudioStream" uid="uid://pqaf45b52pcx" path="res://Components/Gamemode 3/audio/spellfailed.wav" id="5_tkqmk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3evg"]
 size = Vector2(88, 18)
@@ -142,6 +143,11 @@ stream = ExtResource("4_bjvso")
 volume_db = -32.793
 pitch_scale = 0.86
 
+[node name="spellFailSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_tkqmk")
+volume_db = -28.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="spellFailSound" to="." method="_on_spell_fail_sound_finished"]

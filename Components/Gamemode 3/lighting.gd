@@ -24,12 +24,16 @@ func _on_area_2d_body_entered(body):
 		get_tree().call_group("Player","mana_update",5)
 		get_tree().call_group("Player","super_update",10)
 		get_tree().call_group("GameMethod","addElim")
-	if "sintriangle" in body:
+	if "sintriangle" in body and !collission:
 		get_tree().call_group("Player","super_update",-20)
-		queue_free()
-	if "tantriangle" in body:
+		$Sprite2D.visible = false
+		collission = true
+		$spellFailSound.play()
+	if "tantriangle" in body and !collission:
 		get_tree().call_group("Player","super_update",-20)
-		queue_free()
+		$Sprite2D.visible = false
+		collission = true
+		$spellFailSound.play()
 	
 
 
@@ -50,3 +54,7 @@ func explosionNoise():
 
 func _on_animation_player_animation_finished(anim_name):
 	queue_free()# Replace with function body.
+
+
+func _on_spell_fail_sound_finished():
+	queue_free() # Replace with function body.

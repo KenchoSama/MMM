@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://uefpmlu6ommb"]
+[gd_scene load_steps=83 format=3 uid="uid://uefpmlu6ommb"]
 
 [ext_resource type="Script" path="res://Components/Gamemode 3/gamemode_3.gd" id="1_ycoyy"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/PlayerScript3.gd" id="2_eates"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/WizardSprites.gd" id="2_o8ocu"]
 [ext_resource type="Texture2D" uid="uid://dttwfvgvc1for" path="res://Components/Gamemode 3/images/MMMcastle.png" id="3_718vw"]
 [ext_resource type="Texture2D" uid="uid://bkxdjkmrmtg6j" path="res://assets/unmuted.png" id="3_w4fqv"]
+[ext_resource type="AudioStream" uid="uid://ke56cm464kpq" path="res://Components/Gamemode 3/audio/castlehit.wav" id="4_ixbn3"]
 [ext_resource type="Script" path="res://Components/Main Menu/MusicPlayer.gd" id="4_kc1ky"]
 [ext_resource type="Texture2D" uid="uid://8htax3pkoq4r" path="res://Reusable Scenes/PixelArtUI.png" id="4_nljn4"]
 [ext_resource type="Script" path="res://Components/Gamemode 3/GM3AudioLooper.gd" id="5_ycubq"]
@@ -317,6 +318,11 @@ texture = SubResource("AtlasTexture_uvdd0")
 libraries = {
 "": SubResource("AnimationLibrary_ne3dd")
 }
+
+[node name="CastleHitSoundEffect" type="AudioStreamPlayer" parent="World/Castle"]
+stream = ExtResource("4_ixbn3")
+volume_db = -3.748
+pitch_scale = 0.86
 
 [node name="Background" type="Sprite2D" parent="World"]
 z_index = -2

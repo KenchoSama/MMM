@@ -26,6 +26,7 @@ func _on_gamemode_3_pregame():
 # Any body that enters the castle is going to be one of the triangles by design. So call its "hit" method
 func _on_body_entered(body): 
 	hp -= 10
+	$CastleHitSoundEffect.play()
 	$AnimationPlayer.play("hit animation")
 	body.hit()
 	
