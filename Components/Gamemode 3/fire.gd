@@ -2,12 +2,13 @@ extends Node2D
 
 @export var speed: int = 300
 var direction = Vector2.RIGHT
-
+var collission
 
 func _ready():
 	# Start a Timer to delete the node after 2 seconds
 	$Timer.start()
 	$explosion.visible = false
+	collission = false
 
 func _process(delta):
 	position += direction * delta * speed
@@ -16,8 +17,9 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body):
-	if "sintriangle" in body:
+	if "sintriangle" in body and !collission:
 		body.hit()
+		collission = true
 		$Sprite2D.visible = false
 		explode()
 		get_tree().call_group("Player","mana_update",5)

@@ -977,6 +977,7 @@ label_settings = SubResource("LabelSettings_auyqd")
 [connection signal="gameLost" from="." to="UI Layer/Control/HUD" method="_on_gamemode_3_game_lost"]
 [connection signal="gameLost" from="." to="UI Layer/Control/HUD/Score" method="_on_loss"]
 [connection signal="gameLost" from="." to="UI Layer/Control/DeathScreen" method="_on_death"]
+[connection signal="pregame" from="." to="World/Castle" method="_on_gamemode_3_pregame"]
 [connection signal="pregame" from="." to="TriangleHandler" method="_on_pregame"]
 [connection signal="pregame" from="." to="UI Layer/Control/HUD/Score" method="_on_pregame"]
 [connection signal="pregame" from="." to="UI Layer/Control/PregameScreen" method="_on_pregame"]
